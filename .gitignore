@@ -1,3 +1,4 @@
+**/.*lock*
 **/*.pdf
 !pdf_output/*.pdf
 
