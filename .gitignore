@@ -1,4 +1,5 @@
 **/.*lock*
 **/*.pdf
-!pdf_output/*.pdf
+build/*
+!/*.pdf
 
