@@ -1,6 +1,6 @@
 %.pdf : %.odt ; 
 	soffice --headless --convert-to pdf --outdir $(dir $?) $?
-	sleep 0.25
+	@sleep 0.25
 
 define unite =
 pdfunite $^ $@
