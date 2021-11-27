@@ -138,9 +138,9 @@ Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 Okay, stay with me for a minute. I've been hacking away at this engine
 for, like, a lot of hours now. I've got all the general rules to tell
-an exciting adventure story cut down to 4 pages that work for (most)
-any world unchanged. Even if you knew you'd license an engine, did you
-expect to get it down to 4 pre-written pages?
+an exciting adventure story cut down to 4 pages that work unchanged
+for (most) any world. Even if you knew you'd license an engine, did
+you expect to get it down to 4 pre-written pages?
 
 What's more, you don't even have to print those pages in your
 book. You're gonna publish them in PDFs just like you'd planned for
@@ -154,11 +154,11 @@ your book. You can fill every page with the awesome fruits of your
 imagination without wasting anything on how tables play out the next
 narrative beat. Or you can cut your page count and widen your margin.
 
-If you don't screw it up, you're going to write 1 page (2 max!) for
-the playbook representing each class or whatever in your game. And
-since there's literally no space for lore or worldbuilding in those
-measley columns, they're gonna be almost 100% game mechanics--nigh
-uncopyrightable anyway.
+If you don't screw it up, you're going to write maybe 1 page (2 pages
+max!) for the playbook representing each class or whatever in your
+game. And since there's literally no space for lore or worldbuilding
+in those measley columns, they're gonna be almost 100% game
+mechanics.
 
 Finally you've got to remember: this is a fiction first game, so the
 'game mechanics' just call right back into the fiction anyway. That'd

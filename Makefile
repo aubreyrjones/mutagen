@@ -1,13 +1,14 @@
+SOFFICE = soffice
+PDFUNITE = pdfunite
+
+-include config.mk
+
 %.pdf : %.odt ; 
-	soffice --headless --convert-to pdf --outdir $(dir $?) $?
+	$(SOFFICE) --headless --convert-to pdf --outdir $(dir $?) $?
 	@sleep 0.25
 
 define unite =
-pdfunite $^ $@
-endef
-
-define oo_unite =
-ooo_cat -o $@ $^
+$(PDFUNITE) $^ $@
 endef
 
 all: wizard.pdf sorcerer.pdf soma_master.pdf gm.pdf
@@ -15,16 +16,16 @@ all: wizard.pdf sorcerer.pdf soma_master.pdf gm.pdf
 # Define what's common to every player's playbook.
 pc_book = $(2): common/common.pdf $(1) common/meta.pdf ; $$(unite)
 
-# Build each PC playbook. source playbook sections, then output playbook name
+# Build each PC playbook. Mind the spaces: $(call  pc_book,source_playbook_sections,output_name)
 $(call pc_book,pcs/wizard.pdf,wizard.pdf)
 $(call pc_book,pcs/sorcerer.pdf,sorcerer.pdf)
 $(call pc_book,pcs/soma_master.pdf,soma_master.pdf)
 
 # Define what's common to every gm.
-GMC = gm/gm.pdf common/common_gm.pdf
+GM_Common = gm/gm.pdf common/common_gm.pdf
 
 # Build the generic GM playbook.
-gm.pdf: $(GMC) ; $(unite)
+gm.pdf: $(GM_Common) ; $(unite)
 
 clean:
 	@find . -name \*.pdf -exec rm {} \;
