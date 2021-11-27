@@ -108,6 +108,36 @@ your game or homebrew with Mutagen:
   and stuff under regular trade law. See "Copyright and License" below
   for more.
 
+FAQ
+---
+
+## I thought it was self-contained.
+
+That is not a question, but I take your point. I'm doing my best to
+define everything in the core rulebooks as clearly as I can. But given
+the extreme space constraints, I usually only get 1 shot at defining a
+concept. While I've tried to pick framing and style so that most
+people understand what I'm writing, I know my framing can't work for
+everybody. These FAQs are requests I've received for clarification
+from some portion of players, but not so many that I want to revise
+the section.
+
+## What's with the dice symbols (⚅⚅, ⚃⚅, etc.)?
+
+These symbols seem to trip up some people, often because they want the
+pips displayed in the icon to relate to the physical dice
+directly. But the icons are dumber than that: they're just
+abbreviations for named results ranges.
+
+"⚅⚅" is literally just "Critical Success".
+"⚃⚅" is literally just "Full Success".
+"⚂⚃" is literally just "Partial Success".
+"⚀⚀" is literally just "Failure".
+
+Writing out the result range name every time takes too space. The dice
+seem to provide a little bit of mnemonic aid compared to something
+arbitrary like ◐ ◑ ◒ ◓ or something like that.
+
 
 Building Playbooks
 ------------------
