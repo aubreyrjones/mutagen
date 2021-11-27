@@ -129,14 +129,32 @@ pips displayed in the icon to relate to the physical dice
 directly. But the icons are dumber than that: they're just
 abbreviations for named results ranges.
 
-"⚅⚅" is literally just "Critical Success".
-"⚃⚅" is literally just "Full Success".
-"⚂⚃" is literally just "Partial Success".
-"⚀⚀" is literally just "Failure".
+* "⚅⚅" is literally just "Critical Success".
+* "⚃⚅" is literally just "Full Success".
+* "⚂⚃" is literally just "Partial Success".
+* "⚀⚀" is literally just "Failure".
 
 Writing out the result range name every time takes too space. The dice
 seem to provide a little bit of mnemonic aid compared to something
 arbitrary like ◐ ◑ ◒ ◓ or something like that.
+
+I have some neurological visual problems differentiating symbols, so I
+did my best to make them identifiable even to my fuzzy brain. If
+you're having trouble reading them, it might help to notice that:
+
+  * you don't have to "read" the symbols by counting the dots. It's
+    good enough just to recognize the different shorthands visually.
+
+  * the first die of each icon is different (6, 4, 3, 1) and fairly
+    visually distinct.
+
+  * the dice get visually "less full" as the result range goes down.
+
+  * when next to each other, ranges are always listed in descending
+    order. So a move will always say "if you roll ⚅⚅ or ⚃⚅" and never
+    the other way around.
+
+  
 
 
 Building Playbooks
