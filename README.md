@@ -16,9 +16,9 @@ features I consider unique or outstanding:
   containing just what's necessary.
 
 * Made up of modular sections, playbooks are short and
-  self-contained. For most games, PC playbooks are 5 pages (6
-  max!). The GM playbook might be twice as long. Other than lore,
-  nobody needs to read anything else.
+  self-contained. For most games and playbooks, players get 5-6 pages.
+  The GM playbook might be twice as long. Other than lore, nobody
+  needs to read anything else.
 
 * Mutagen is low-stress for players. The rules are brief, and printed
   right on your character sheet for easy reference. Mark Health right
@@ -28,6 +28,30 @@ features I consider unique or outstanding:
   go with the flow--without risk of drowning. Throw fun problems at
   your PCs without needing to pre-balance everything. Find out what
   happens along with them!
+
+
+# Raw Mutagen
+
+While Mutagen shines with custom playbooks, you can run a dope-ass
+game with just the vanilla Meta and Common Mutagen playbooks, without
+any specialized moves. These core playbooks define rules in terms of a
+few universal concepts and narrative goals that apply to most RPG
+scenarios, not in terms of what a character can specifically do.
+
+In a Raw Mutagen game, each PC mostly has access to the same powers
+and resources as the others--however you define that in your
+world. PCs can grow and get better at doing stuff with those powers,
+but they don't have moves that would let them defy reality differently
+than other PCs. Basically, they do whatever people (or whatever) can
+do in your world to drive a story forward. If that's driving oxen or a
+spaceship, it doesn't matter much for the rules.
+
+This works great playing "mundane" games, no matter what that means in
+your world. If your PCs are "regular" acid-spitting trans-Plutonian
+gene truckers, Raw Mutagen will take you to the stars. You need
+specialized moves or playbook sections when different PCs gain access
+to significantly different or unique in-game powers. They define the
+exceptions to your norm.
 
 
 # Playing with Mutagen
@@ -54,29 +78,28 @@ features I consider unique or outstanding:
   their playbooks in another 10 minutes. So long as the game's premise
   is simple enough, many GMs can get a group playing in half an hour.
 
-
-# Raw Mutagen
-
-You can run a satisfying game with just the vanilla Meta and Common
-Mutagen playbooks, without any additional, specialized playbook
-sections. These core playbooks define rules in terms of a few
-universal concepts and narrative goals that apply to most RPG
-scenarios, not in terms of what a character can specifically do--what
-your character wants as opposed to how they get it.
-
-In such a game, each PC mostly has access to the same powers and
-resources as the others--however you define that in your world. PCs
-can grow and get better at doing stuff with those powers, but they
-don't have moves that would let them defy reality differently than
-other PCs. Basically, they do whatever people (or whatever) can do in
-your world to drive a story forward. If that's driving oxen or a
-spaceship, it doesn't matter much for the rules.
-
-You really need specialized moves or playbook sections when different
-PCs gain access to significantly different or unique in-game
-powers. They define the exceptions to your normal.
+* Mutagen is awesome for no-show/impromptu one-shots. When missing a
+  player, lots of us turn to one-page mini RPGs or boardgames. But if
+  everybody already knows Mutagen, you can get a one-shot going in no
+  time just by referencing some common media you've all seen and
+  playing Raw Mutagen in that world. "Hey, Art's out. Has everyone
+  read some Discworld? Make up a concept for a city guard 'cause I've
+  got an idea."
 
 # Building with Mutagen
+
+Mutagen is designed from the ground up to support modular additions in
+the form of new moves and playbook sections. Because the flexible
+_story moves_ system resolves risk and conflict in the story, you
+don't need to include those kinds of considerations when designing a
+move. A move can be as simple as "○ Speak to Animals - You can speak
+to and understand animals."
+
+You can add moves piecemeal as much as you want (that's how I built
+and refined Mutagen), but you might want to make a whole game world's
+worth of moves and playbook sections, presented coherently like the
+example playbooks. I call this a "mutation". A mutation is
+self-contained and suitable for distribution directly to your players.
 
 In addition to everything above, here's why you might want to build
 your game or homebrew with Mutagen:
@@ -99,7 +122,7 @@ your game or homebrew with Mutagen:
   might help you get into the Mutagen headspace when writing a game or
   homebrew using the system. There's also a simple automation
   framework for piecing together multiple playbooks into seamless
-  final documents for your players.
+  final documents for your players--if you're a computer nerd like me.
 
 * It's open source, even for commercial use. The core Mutagen system
   and several example playbooks are available for your own use,
@@ -113,57 +136,20 @@ FAQ
 
 ## I thought it was self-contained.
 
-That is not a question, but I take your point. I'm doing my best to
-define everything in the core playbooks as clearly as I can. But given
-the extreme space constraints, I usually only get 1 shot at defining a
-concept. While I've tried to pick framing and style so that most
-people understand what I'm writing, I know my description can't work
-for everybody. These FAQs are requests I've received for clarification
-from some portion of players, but not so many that I want to revise
-the rules themselves--or maybe I just haven't thought of a better
-solution.
+That is not a question, but I take the rhetorical point. I'm doing my
+best to define everything in the core playbooks as clearly as I
+can. But given the extreme space constraints, I usually only get 1
+shot at defining a concept. While I've tried to pick framing and style
+so that most people understand what I'm writing, I know my description
+can't work for everybody. These FAQs are requests I've received for
+clarification from some portion of players, but not so many that I
+want to revise the rules themselves--or maybe I just haven't thought
+of a better solution.
 
-## What's with the dice symbols (⚅⚅, ⚃⚅, etc.)?
+## No questions?
 
-These symbols seem to trip up some people, often because they want the
-pips displayed in the icon to relate to the physical dice
-directly. But the icons are dumber than that: they're just
-abbreviations for named results ranges.
-
-* "⚅⚅" is literally just "Critical Success".
-* "⚃⚅" is literally just "Full Success".
-* "⚂⚃" is literally just "Partial Success".
-* "⚀⚀" is literally just "Failure".
-
-Writing out the result range name every time takes too space, and the
-name will frequently split over lines making it harder to visually
-scan a move's text. The dice are included in most unicode-enabled
-fonts, and seem to provide a little bit of mnemonic aid compared to
-something arbitrary like ◐ ◑ ◒ ◓. Probably the nearest runner-up was
-②, ⑦, ⑩, ⑫: but those symbols aren't the same physical size (which
-screws up formatting), feel less "fun" to me than the dice, and suffer
-from looking like a specific target number even more than the dice
-(imo).
-
-I have a neurological visual problem differentiating visual symbols
-(didn't read or write till 3rd grade), so I did my best to make them
-identifiable even to my fuzzy brain. If you're having trouble reading
-them, it might help to notice that:
-
-  * you don't have to "decode" the symbols by counting the dots. It's
-    good enough just to recognize the different shorthands visually.
-
-  * the first die of each icon is unique (6, 4, 3, 1) and visually
-    distinct.
-
-  * the dice get visually "less full" as the result range goes down.
-
-  * when written next to each other, results are always listed in
-    descending order. So a move will always say "if you roll ⚅⚅ or ⚃⚅"
-    and never the other way around.
-
-  
-
+I just eliminated the only major confusion feedback I've gotten. Go
+back in the repo to see what I'm talking about if you care enough.
 
 Building Playbooks
 ------------------
@@ -194,7 +180,8 @@ text. If it looks like gibberish to you, ask your techy friends if
 they know somebody.
 
 
-# Copyright and License
+Copyright and License
+---------------------
 
 Copyright 2021 by Aubrey R. Jones.
 
@@ -225,17 +212,16 @@ your book. You can fill every page with the awesome fruits of your
 imagination without wasting anything on how tables play out the next
 narrative beat. Or you can cut your page count and widen your margin.
 
-If you don't screw it up, you're going to write maybe 1 page (2 pages
-max!) for the playbook representing each class or whatever in your
-game. And since there's literally no space for lore or worldbuilding
-in those measley columns, they're gonna be almost 100% game
-mechanics.
+If you don't screw it up, you're going to write 1-2 pages for the
+playbook representing each class or whatever in your game. And since
+there's literally no space for lore or worldbuilding in those measley
+columns, they're gonna be almost 100% game mechanics.
 
 Finally you've got to remember: this is a fiction first game, so the
 'game mechanics' just call right back into the fiction anyway. That'd
 be the book you're selling. [Or actually it could be a movie, a novel,
 Patreon serial, or any other media you're making. I'd love to see some
-author publish playbooks to go with their novel.]
+author publish playbooks to go with their novel--DM me, I'll help.]
 
 So check it out: in your book, which you're publishing for cash moneys
 and claim trad copyright on, you describe this dope-ass creature you're
@@ -248,7 +234,7 @@ Then in a completely separate PDF you were gonna give away anyway,
 you'll put a line in the Guppy Tender playbook that's like `○ Summon
 Mana Guppy - Spend 1 Guppy Bait. If the conditions are right, you
 summon your Mana Guppy.` And you're telling me--the guy giving you a
-free game engine you don't even have to print--you can't even share
+free game engine you don't pay to print--that you can't even share
 *that much*?
 
 
