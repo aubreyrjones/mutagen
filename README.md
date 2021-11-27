@@ -114,13 +114,14 @@ FAQ
 ## I thought it was self-contained.
 
 That is not a question, but I take your point. I'm doing my best to
-define everything in the core rulebooks as clearly as I can. But given
+define everything in the core playbooks as clearly as I can. But given
 the extreme space constraints, I usually only get 1 shot at defining a
 concept. While I've tried to pick framing and style so that most
-people understand what I'm writing, I know my framing can't work for
-everybody. These FAQs are requests I've received for clarification
+people understand what I'm writing, I know my description can't work
+for everybody. These FAQs are requests I've received for clarification
 from some portion of players, but not so many that I want to revise
-the section.
+the rules themselves--or maybe I just haven't thought of a better
+solution.
 
 ## What's with the dice symbols (⚅⚅, ⚃⚅, etc.)?
 
@@ -134,25 +135,32 @@ abbreviations for named results ranges.
 * "⚂⚃" is literally just "Partial Success".
 * "⚀⚀" is literally just "Failure".
 
-Writing out the result range name every time takes too space. The dice
-seem to provide a little bit of mnemonic aid compared to something
-arbitrary like ◐ ◑ ◒ ◓ or something like that.
+Writing out the result range name every time takes too space, and the
+name will frequently split over lines making it harder to visually
+scan a move's text. The dice are included in most unicode-enabled
+fonts, and seem to provide a little bit of mnemonic aid compared to
+something arbitrary like ◐ ◑ ◒ ◓. Probably the nearest runner-up was
+②, ⑦, ⑩, ⑫: but those symbols aren't the same physical size (which
+screws up formatting), feel less "fun" to me than the dice, and suffer
+from looking like a specific target number even more than the dice
+(imo).
 
-I have some neurological visual problems differentiating symbols, so I
-did my best to make them identifiable even to my fuzzy brain. If
-you're having trouble reading them, it might help to notice that:
+I have a neurological visual problem differentiating visual symbols
+(didn't read or write till 3rd grade), so I did my best to make them
+identifiable even to my fuzzy brain. If you're having trouble reading
+them, it might help to notice that:
 
-  * you don't have to "read" the symbols by counting the dots. It's
+  * you don't have to "decode" the symbols by counting the dots. It's
     good enough just to recognize the different shorthands visually.
 
-  * the first die of each icon is different (6, 4, 3, 1) and fairly
-    visually distinct.
+  * the first die of each icon is unique (6, 4, 3, 1) and visually
+    distinct.
 
   * the dice get visually "less full" as the result range goes down.
 
-  * when next to each other, ranges are always listed in descending
-    order. So a move will always say "if you roll ⚅⚅ or ⚃⚅" and never
-    the other way around.
+  * when written next to each other, results are always listed in
+    descending order. So a move will always say "if you roll ⚅⚅ or ⚃⚅"
+    and never the other way around.
 
   
 
@@ -161,10 +169,25 @@ Building Playbooks
 ------------------
 
 You can manually build full playbooks from their sections using
-OpenOffice, but if you're doing it a lot, it's potentially easier to
+LibreOffice. But if you're doing it a lot, it's potentially easier to
 use the included Makefile.
 
-Honestly? It's pretty easy to figure out if you know `make` a little
+On Ubuntu, you'll need LibreOffice installed plus `sudo apt install
+build-essential poppler-utils`. You can then build the core and
+example playbooks with just `make` in the project directory.
+
+You can add your own game to be built by putting it in a `mutation`
+subdirectory with a Makefile called `all.mk`. You can define your own
+targets in `all.mk` that build your custom playbooks using the pattern
+established in the main Makefile.
+
+I haven't tested it on Windows, but you should be able to edit the top
+of the Makefile to point at your `soffice.exe` executable and whatever
+command line tool you're using to concatenate PDF documents. I don't
+know what tool concatenates PDF on Windows--I only play videogames on
+Windows.
+
+It's pretty easy to figure out the build if you know `make` a little
 bit and read the comments, and it's probably impossible to figure out
 if you don't know `make`. Teaching `make` is beyond the scope of this
 text. If it looks like gibberish to you, ask your techy friends if
