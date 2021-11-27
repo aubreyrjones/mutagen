@@ -6,17 +6,19 @@ define unite =
 pdfunite $^ $@
 endef
 
+define oo_unite =
+ooo_cat -o $@ $^
+endef
+
 all: wizard.pdf sorcerer.pdf soma_master.pdf gm.pdf
 
 # Define what's common to every player's playbook.
-PCC = common/meta.pdf common/common.pdf
+pc_book = $(2): common/common.pdf $(1) common/meta.pdf ; $$(unite)
 
-# Build the example playbooks.
-wizard.pdf: $(PCC) pcs/wizard.pdf ; $(unite)
-
-sorcerer.pdf: $(PCC) pcs/sorcerer.pdf ; $(unite)
-
-soma_master.pdf: $(PCC) pcs/soma_master.pdf ; $(unite)
+# Build each PC playbook. source playbook sections, then output playbook name
+$(call pc_book,pcs/wizard.pdf,wizard.pdf)
+$(call pc_book,pcs/sorcerer.pdf,sorcerer.pdf)
+$(call pc_book,pcs/soma_master.pdf,soma_master.pdf)
 
 # Define what's common to every gm.
 GMC = gm/gm.pdf common/common_gm.pdf

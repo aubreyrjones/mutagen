@@ -64,17 +64,17 @@ universal concepts and narrative goals that apply to most RPG
 scenarios, not in terms of what a character can specifically do--what
 your character wants as opposed to how they get it.
 
-In such a game, PCs mostly have access to the same powers and
-resources--however you define that in your world. PCs can grow and get
-better at doing stuff with those powers, but they don't have moves
-that would let them defy reality differently than other
-PCs. Basically, they do whatever people (or whatever) can do in your
-world to drive a story forward. If that's driving oxen or a spaceship,
-it doesn't matter much for the rules.
+In such a game, each PC mostly has access to the same powers and
+resources as the others--however you define that in your world. PCs
+can grow and get better at doing stuff with those powers, but they
+don't have moves that would let them defy reality differently than
+other PCs. Basically, they do whatever people (or whatever) can do in
+your world to drive a story forward. If that's driving oxen or a
+spaceship, it doesn't matter much for the rules.
 
-You really only need specialized moves or playbook sections when
-different PCs gain access to significantly different or unique in-game
-powers.
+You really need specialized moves or playbook sections when different
+PCs gain access to significantly different or unique in-game
+powers. They define the exceptions to your normal.
 
 # Building with Mutagen
 
@@ -83,9 +83,7 @@ your game or homebrew with Mutagen:
 
 * The Mutagen core (4 pages total for the Meta and Common playbooks)
   is ready to go to out of the box to handle anything "normal"--no
-  matter what normal means in your world. If any PC can do a thing in
-  your world, you don't have to write mechanical rules about it (if
-  you don't want).
+  matter what normal means in your world.
 
 * Layer in character progression, specialization, and differentiation
   through new playbook sections without rewriting anything. Easily
