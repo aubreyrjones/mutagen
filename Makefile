@@ -22,7 +22,7 @@ $(call pc_book,pcs/sorcerer.pdf,sorcerer.pdf)
 $(call pc_book,pcs/soma_master.pdf,soma_master.pdf)
 
 # Define what's common to every gm.
-GM_Common = gm/gm.pdf common/common_gm.pdf
+GM_Common = gm/gm.pdf gm/gm_common.pdf
 
 # Build the generic GM playbook.
 gm.pdf: $(GM_Common) ; $(unite)
