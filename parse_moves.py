@@ -2,16 +2,18 @@
 
 import argparse
 import json
+import sys
 from textwrap import wrap
 
 ap = argparse.ArgumentParser(description="Parse moves from text into JSON.")
 ap.add_argument('--wrap', default=False, const=True, action='store_const', help="Hard-wrap text")
-ap.add_argument('playbook', type=str, help='Playbook input text.')
+#ap.add_argument('playbook', type=str, help='Playbook input text.')
 args = ap.parse_args()
 
-infile = open(args.playbook, 'r', encoding="utf8")
+#infile = open(args.playbook, 'r', encoding="utf8")
 
-lines = infile.readlines()
+#lines = infile.readlines()
+lines = sys.stdin.readlines()
 
 moves = []
 latch = False
