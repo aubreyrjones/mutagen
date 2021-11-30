@@ -23,7 +23,7 @@ all: wizard.pdf sorcerer.pdf soma_master.pdf gm.pdf
 
 # Define what's common to every player's playbook.
 pc_book = $(2): common/common.pdf $(1) common/meta.pdf ; $$(unite)
-pc_text = $(2): common/common.txt $(1) common/meta.txt ; $$(txtcat)
+pc_text = $(2): common/common.txt $(1) ; $$(txtcat)
 
 # Build each PC playbook. Mind the spaces: $(call  pc_book,source_playbook_sections,output_name)
 $(call pc_book,pcs/wizard.pdf,wizard.pdf)
