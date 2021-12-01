@@ -96,6 +96,10 @@ def make_playbook(pb_name, pb_list):
     '''
 
     print("Making", pb_name)
+    if len(pb_list) < 1:
+        print(f'ERROR! No playbook sections specified. Skipping {pb_name}.')
+        return
+
     outfile = path.join(OUT_DIR, pb_name + ".pdf")
     outfile_json = path.join(JSON_DIR, pb_name + ".mutagen.json")
     
@@ -106,7 +110,7 @@ def make_playbook(pb_name, pb_list):
         stage_section(pbs)
     
     # # extract JSON move list for PC playbooks only.
-    if not 'gm_' in pb_name:
+    if 'gm_' not in pb_name and '_gm' not in pb_name:
         all_moves = sum([parse_moves(pbs) for pbs in pb_list], [])
         with open(outfile_json, 'w', encoding='utf8') as json_out:
             json_out.write(json.dumps({'items': all_moves, 'status': ''}))
@@ -147,15 +151,23 @@ if len(sys.argv) > 1:
 # dictionary of all playbook defs
 playbooks = {}
 
+# open the playbook definition and parse the lines
+# skip line starting with `#` as comments.
+# skip any line that doesn't have a `=` in it
 with open(pb_def_file, encoding='utf8') as pb_defs:
     lines = pb_defs.readlines()
+
     for line in lines:
-        stripped = line.strip()
-        if line.startswith('#'): continue
-        if '=' not in stripped: continue
-        splits = stripped.split('=')
-        pb_name = splits[0].strip()
-        playbooks[pb_name] = [s.strip() for s in splits[1].split()]
+        try:
+            stripped = line.strip()
+            if stripped.startswith('#'): continue
+            if '=' not in stripped: continue
+            splits = stripped.split('=')
+            pb_name = splits[0].strip()
+            playbooks[pb_name] = [s.strip() for s in splits[1].split()]
+        except:
+            print("Error in playbook definition file", pb_def_file, "line:", line)
+            exit(1)
 
 for k, v in playbooks.items():
     make_playbook(k, v)
