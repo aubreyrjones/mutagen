@@ -112,6 +112,7 @@ def make_playbook(pb_name, pb_list):
     pdf_merger.write(outfile)
     pdf_merger.close()
 
+os.makedirs(BUILD_DIR, exist_ok=True)
 os.makedirs(JSON_DIR, exist_ok=True)
 
 # Here's the default playbooks def file

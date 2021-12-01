@@ -2,5 +2,5 @@
 **/.*lock*
 **/*.pdf
 build/*
-!/*.pdf
+!/playbook_output/*.pdf
 /mutation
