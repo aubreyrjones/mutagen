@@ -134,7 +134,7 @@ your game or homebrew with Mutagen:
 FAQ
 ---
 
-## I thought it was self-contained.
+### I thought it was self-contained.
 
 That is not a question, but I take the rhetorical point. I'm doing my
 best to define everything in the core playbooks as clearly as I
@@ -146,38 +146,132 @@ clarification from some portion of players, but not so many that I
 want to revise the rules themselves--or maybe I just haven't thought
 of a better solution.
 
-## No questions?
+### No questions?
 
 I just eliminated the only major confusion feedback I've gotten. Go
-back in the repo to see what I'm talking about if you care enough.
+back in the repo to see what I'm talking about if you care enough. I'm
+sure there'll be more later.
 
-Building Playbooks
-------------------
+
+# Building Playbooks
 
 You can manually build full playbooks from their sections using
-LibreOffice. But if you're doing it a lot, it's potentially easier to
-use the included Makefile.
+LibreOffice, however it's much easier to use the included build
+system. Not only will it build pretty, integrated PDFs; but if you
+follow the exact formatting/symbol conventions in the core sections,
+it'll also create an electronic playbook template for use in the
+(upcoming) Mutagen character tracker app.
 
-On Ubuntu, you'll need LibreOffice installed plus `sudo apt install
-build-essential poppler-utils`. You can then build the core and
-example playbooks with just `make` in the project directory.
+The build is tested on Ubuntu Linux and Windows 10 Home. I expect the
+Linux instructions can be used with only a little modification on Mac,
+but I don't have one and haven't tested it.
 
-You can add your own game to be built by putting it in a `mutation`
-subdirectory with a Makefile called `all.mk`. You can define your own
-targets in `all.mk` that build your custom playbooks using the pattern
-established in the main Makefile.
 
-I haven't tested it on Windows, but you should be able to edit the top
-of the Makefile to point at your `soffice.exe` executable and whatever
-command line tool you're using to concatenate PDF documents. I don't
-know what tool concatenates PDF on Windows--I only play videogames on
-Windows.
+### Linux Prereqs:
 
-It's pretty easy to figure out the build if you know `make` a little
-bit and read the comments, and it's probably impossible to figure out
-if you don't know `make`. Teaching `make` is beyond the scope of this
-text. If it looks like gibberish to you, ask your techy friends if
-they know somebody.
+1. Make sure you have python3 installed. This is included on most
+   modern systems.
+
+2. Do `pip3 install pypdf2`.
+
+3. Install LibreOffice 6.0 or higher.
+
+
+### Windows Preqs:
+
+1. Download Python 3.9 or higher from the official website
+   (https://www.python.org/downloads/windows/). Use the version that
+   says "Download Windows installer" (_not_ "embeddable package").
+
+2. IMPORTANT! Check the box that says "Add Python 3 to PATH".
+   ![Add to path in installer](Image add_to_path.png)
+
+3. IMPORTANT! On the last step of the installer, click the option that
+   says "Disable path length limit".
+   ![Disable restrictions in installer](Image extend_path.png)
+
+4. Open `cmd` to get a command prompt. Type `pip3 install pypdf2` and
+   hit enter. That might complain about an old version of `pip`, but
+   don't worry about it so long as it says that pypdf2 was
+   successfully installed.
+
+5. Install LibreOffice 7.0 or higher.
+   IMPORTANT! Install LibreOffice in the default location.
+   (https://www.libreoffice.org/download/download/)
+
+
+### Playbook Definitions
+
+Playbooks are made up of multiple sections, each as a separate
+document. The playbook definition file tells the script which sections
+go together into which playbooks. Look at the included `playbooks.txt`
+for an example.
+
+Each line of the file consists of a final playbook filename, then an
+equal sign, then a list of each playbook section in the order they go
+into that playbook. The Mutagen Meta section is _automatically_
+appended to the end of every playbook created.
+
+```
+output_name = common/first_section your_game/second_section your_game/third_section
+```
+
+You can edit the included `playbooks.txt` or make a new one for your
+game.
+
+
+### Running the Build
+
+Once you've gotten the prereqs out of the way, you should be able to
+open a command prompt in the project directory and run the build.
+
+
+Linux: `./make_playbooks.py`
+Windows: `python make_playbooks.py`
+
+If you want to use a different playbook definition file, just put it
+at the end like:
+
+Linux: `./make_playbooks.py my_playbooks.txt`
+Windows: `python make_playbooks.py my_playbooks.txt`
+
+This will create a bunch of intermediary files in the `build`
+directory. You can ignore these.
+
+The complete PDF playbooks are created in `playbook_output`, with the
+electronic tracker teplates in a subdirectory.
+
+
+### Tracker Template Extraction
+
+The playbook builder script also extracts a computer-readable listing
+of all moves for each playbook. Each of these is stored in a separate
+file with a `.mutagen.json` extension. These files are intended for
+use in the (upcoming) digital playbook webapp.
+
+In order for this feature to work correctly, there are some technical
+requirements.
+
+1. Use _exactly_ the same symbols as the core sections. You should
+   _copy and paste_ the symbols--don't try to do it by sight, because
+   many symbols look similar or identical but have different computer
+   representations. For your convenience, there is a file
+   `unicode_symbols` that has all of the weird symbols used in the
+   playbooks.
+
+2. Define every one of your items or moves with `►` after the name. Do
+   _not_ use that symbol for any other purpose or in any other place.
+
+3. Include the `§` at the beginning of every section name.
+
+4. Use exactly the included `○△●▢` symbols for buyable and trackable
+   items. These are the only "clickable" symbols in the webapp.
+
+5. Avoid complex formatting in move text. Specifically, features like
+   tables, images, embedded spreadsheets, and all the other fancy shit
+   LibreOffice can do will break when the playbook is converted to
+   plain text for automatic parsing. Keep it simple.
+
 
 
 Copyright and License
@@ -192,7 +286,7 @@ http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to
 Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 
-## CC Share Alike? I thought you said commercial was cool!
+### CC Share Alike? I thought you said commercial was cool!
 
 Okay, stay with me for a minute. I've been hacking away at this engine
 for, like, a lot of hours now. I've got all the general rules to tell
@@ -204,8 +298,9 @@ What's more, you don't even have to print those pages in your
 book. You're gonna publish them in PDFs just like you'd planned for
 your character sheets. Character sheets you're not gonna have to
 design anymore--although of course you can tart them up if you've got
-the budget. You also get free modular document generation if you can
-find (or are) the right kind of nerd to run `make`.
+the budget. You also get free modular document generation and
+automatic, seamless, free integration into the Mutagen Character
+Tracker app.
 
 Unless you want to, you don't have to publish any mechanical rules in
 your book. You can fill every page with the awesome fruits of your

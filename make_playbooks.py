@@ -86,6 +86,7 @@ stage_section(META)
 already_staged = set()
 
 def make_playbook(pb_name, pb_list):
+    print("Making", pb_name)
     outfile = path.join(OUT_DIR, pb_name + ".pdf")
     outfile_json = path.join(JSON_DIR, pb_name + ".mutagen.json")
     
@@ -97,7 +98,6 @@ def make_playbook(pb_name, pb_list):
     
     # # extract JSON move list for PC playbooks only.
     if not 'gm_' in pb_name:
-        
         all_moves = sum([parse_moves(pbs) for pbs in pb_list], [])
         with open(outfile_json, 'w', encoding='utf8') as json_out:
             json_out.write(json.dumps({'items': all_moves, 'status': ''}))
@@ -132,7 +132,6 @@ with open(pb_def_file, encoding='utf8') as pb_defs:
         if '=' not in stripped: continue
         splits = stripped.split('=')
         pb_name = splits[0].strip()
-        print(splits[1])
         playbooks[pb_name] = [s.strip() for s in splits[1].split()]
 
 for k, v in playbooks.items():
