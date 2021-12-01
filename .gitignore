@@ -1,6 +1,3 @@
-*.txt
 **/.*lock*
-**/*.pdf
 build/*
-!/playbook_output/*.pdf
 /mutation

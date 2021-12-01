@@ -16,9 +16,9 @@ features I consider unique or outstanding:
   containing just what's necessary.
 
 * Made up of modular sections, playbooks are short and
-  self-contained. For most games and playbooks, players get 5-6 pages.
-  The GM playbook might be twice as long. Other than lore, nobody
-  needs to read anything else.
+  self-contained. For most games and playbooks, players get 5-6
+  (single) pages.  The GM playbook might be twice as long. Other than
+  lore, nobody needs to read anything else.
 
 * Mutagen is low-stress for players. The rules are brief, and printed
   right on your character sheet for easy reference. Mark Health right
@@ -28,30 +28,6 @@ features I consider unique or outstanding:
   go with the flow--without risk of drowning. Throw fun problems at
   your PCs without needing to pre-balance everything. Find out what
   happens along with them!
-
-
-# Raw Mutagen
-
-While Mutagen shines with custom playbooks, you can run a dope-ass
-game with just the vanilla Meta and Common Mutagen playbooks, without
-any specialized moves. These core playbooks define rules in terms of a
-few universal concepts and narrative goals that apply to most RPG
-scenarios, not in terms of what a character can specifically do.
-
-In a Raw Mutagen game, each PC mostly has access to the same powers
-and resources as the others--however you define that in your
-world. PCs can grow and get better at doing stuff with those powers,
-but they don't have moves that would let them defy reality differently
-than other PCs. Basically, they do whatever people (or whatever) can
-do in your world to drive a story forward. If that's driving oxen or a
-spaceship, it doesn't matter much for the rules.
-
-This works great playing "mundane" games, no matter what that means in
-your world. If your PCs are "regular" acid-spitting trans-Plutonian
-gene truckers, Raw Mutagen will take you to the stars. You need
-specialized moves or playbook sections when different PCs gain access
-to significantly different or unique in-game powers. They define the
-exceptions to your norm.
 
 
 # Playing with Mutagen
@@ -85,6 +61,31 @@ exceptions to your norm.
   playing Raw Mutagen in that world. "Hey, Art's out. Has everyone
   read some Discworld? Make up a concept for a city guard 'cause I've
   got an idea."
+
+
+# Raw Mutagen
+
+While Mutagen shines with custom playbooks, you can run a dope-ass
+game with just the vanilla Meta and Common Mutagen playbooks, without
+any specialized moves. These core playbooks define rules in terms of a
+few universal concepts and narrative goals that apply to most RPG
+scenarios, not in terms of what a character can specifically do.
+
+In a Raw Mutagen game, each PC mostly has access to the same powers
+and resources as the others--however you define that in your
+world. PCs can grow and get better at doing stuff with those powers,
+but they don't have moves that would let them defy reality differently
+than other PCs. Basically, they do whatever people (or whatever) can
+do in your world to drive a story forward. If that's driving oxen or a
+spaceship, it doesn't matter much for the rules.
+
+This works great playing "mundane" PCs, no matter what that means in
+your world. If your PCs are "regular" acid-spitting trans-Plutonian
+gene truckers, Raw Mutagen will take you to the stars. You need
+specialized moves or playbook sections when different PCs gain access
+to significantly different or unique in-game powers. They define the
+exceptions to your norm.
+
 
 # Building with Mutagen
 
@@ -122,7 +123,7 @@ your game or homebrew with Mutagen:
   might help you get into the Mutagen headspace when writing a game or
   homebrew using the system. There's also a simple automation
   framework for piecing together multiple playbooks into seamless
-  final documents for your players--if you're a computer nerd like me.
+  final documents for your players.
 
 * It's open source, even for commercial use. The core Mutagen system
   and several example playbooks are available for your own use,
@@ -162,15 +163,16 @@ follow the exact formatting/symbol conventions in the core sections,
 it'll also create an electronic playbook template for use in the
 (upcoming) Mutagen character tracker app.
 
-The build is tested on Ubuntu Linux and Windows 10 Home. I expect the
-Linux instructions can be used with only a little modification on Mac,
-but I don't have one and haven't tested it.
+The build is tested constantly on Ubuntu Linux and regularly on
+Windows 10 Home. I expect the Linux instructions can be used with only
+a little modification on Mac, but a tale old as time: I don't have one
+and haven't tested it.
 
 
 ### Linux Prereqs:
 
-1. Make sure you have python3 installed. This is included on most
-   modern systems.
+1. Make sure you have `python3` installed. This is included on most
+   modern distros.
 
 2. Do `pip3 install pypdf2`.
 
@@ -270,12 +272,14 @@ requirements.
 3. Include the `§` at the beginning of every section name.
 
 4. Use exactly the included `○△●▢` symbols for buyable and trackable
-   items. These are the only "clickable" symbols in the webapp.
+   items. These are the only "clickable" symbols in the app.
 
 5. Avoid complex formatting in move text. Specifically, features like
    tables, images, embedded spreadsheets, and all the other fancy shit
    LibreOffice can do will break when the playbook is converted to
-   plain text for automatic parsing. Keep it simple.
+   plain text for automatic parsing. Keep it simple, or you'll need to
+   go back and edit the JSON to clean things up (which is hell, trust
+   me).
 
 
 

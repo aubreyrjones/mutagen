@@ -30,26 +30,41 @@ def check_newer(pbs, extension):
     return False # doesn't exist, so build
 
 def make_pdf(pbs):
+    '''
+    Stage the PDF for a single section into ./build
+    '''
     if check_newer(pbs, '.pdf'): return
     print("Building pdf:", pbs)
     call([LIBREOFFICE, '--headless', '--convert-to', 'pdf', '--outdir', BUILD_DIR, pbs + ".odt"])
     sleep(0.25)
 
 def make_txt(pbs):
+    '''
+    Stage the plain-text for a single section into ./build (this is for later parsing)
+    '''
     if check_newer(pbs, '.txt'): return
     print("Building text:", pbs)
     call([LIBREOFFICE, '--headless', '--convert-to', 'txt:Text (encoded):UTF8', '--outdir', BUILD_DIR, pbs + ".odt"])
     sleep(0.25)
 
 def stage_section(pbs):
+    '''
+    Get a section ready for inclusion in playbooks.
+    '''
     make_pdf(pbs)
     make_txt(pbs)
 
 def split_section(pbs):
+    '''
+    Get just the section name from a section path.
+    '''
     return pbs.split('/')[-1]
 
 
 def parse_moves(pbs, do_wrap=False):
+    '''
+    Parse all the moves out of a plaintext playbook.
+    '''
     with open(staged_name(pbs) + '.txt', encoding='utf8') as f:
         lines = f.readlines()
     
@@ -73,19 +88,13 @@ def parse_moves(pbs, do_wrap=False):
     
     return wrapped_moves
 
-
-##
-## BUILD STUFF BELOW HERE
-##
-
-
-# stage the meta section
-META = 'common/meta'
-stage_section(META)
-
 already_staged = set()
 
 def make_playbook(pb_name, pb_list):
+    '''
+    Build a playbook from its constituent sections.
+    '''
+
     print("Making", pb_name)
     outfile = path.join(OUT_DIR, pb_name + ".pdf")
     outfile_json = path.join(JSON_DIR, pb_name + ".mutagen.json")
@@ -112,8 +121,21 @@ def make_playbook(pb_name, pb_list):
     pdf_merger.write(outfile)
     pdf_merger.close()
 
+
+##
+## BUILD SCRIPT BELOW HERE
+##
+
+# set up
+
 os.makedirs(BUILD_DIR, exist_ok=True)
 os.makedirs(JSON_DIR, exist_ok=True)
+
+
+# stage the meta section
+META = 'common/meta'
+stage_section(META)
+
 
 # Here's the default playbooks def file
 pb_def_file = 'playbooks.txt'
