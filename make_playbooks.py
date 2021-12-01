@@ -111,9 +111,9 @@ def make_playbook(pb_name, pb_list):
     
     # # extract JSON move list for PC playbooks only.
     if 'gm_' not in pb_name and '_gm' not in pb_name:
-        all_moves = sum([parse_moves(pbs) for pbs in pb_list], [])
-        with open(outfile_json, 'w', encoding='utf8') as json_out:
-            json_out.write(json.dumps({'items': all_moves, 'status': ''}))
+        all_moves = sum([parse_moves(pbs) for pbs in pb_list], []) # parse all the moves and put them in a single list together
+        with open(outfile_json, 'w', encoding='utf8') as json_out: 
+            json_out.write(json.dumps({'items': all_moves, 'status': ''})) # and write it out as JSON
 
     # build PDF
     pdf_merger = PdfFileMerger()
