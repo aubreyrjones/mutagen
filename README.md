@@ -228,19 +228,22 @@ game.
 ### Running the Build
 
 Once you've gotten the prereqs out of the way, you should be able to
-open a command prompt in the project directory and run the build.
+run the build.
+
+If your playbook definitions are in `playbooks.txt`, you can just:
+
+Linux: Run `./make_playbooks.py` from the command line.
+
+Windows: Double-click `make_playbooks.py`.
 
 
-Linux: `./make_playbooks.py`
-
-Windows: `python make_playbooks.py`
-
-If you want to use a different playbook definition file, just put it
-at the end like:
+If you want to use a different playbook definition file, you'll have
+to use the command line on both systems:
 
 Linux: `./make_playbooks.py my_playbooks.txt`
 
 Windows: `python make_playbooks.py my_playbooks.txt`
+
 
 This will create a bunch of intermediary files in the `build`
 directory. You can ignore these.
