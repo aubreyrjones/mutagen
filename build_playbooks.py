@@ -50,7 +50,7 @@ def split_section(pbs):
 
 
 def parse_moves(pbs, do_wrap=False):
-    with open(staged_name(pbs) + '.txt') as f:
+    with open(staged_name(pbs) + '.txt', encoding='utf8') as f:
         lines = f.readlines()
     
     moves = []
@@ -99,8 +99,8 @@ def make_playbook(pb_name, pb_list):
     if not 'gm_' in pb_name:
         
         all_moves = sum([parse_moves(pbs) for pbs in pb_list], [])
-        with open(outfile_json, 'w') as json_out:
-            json.dump({'items': all_moves, 'status': ''}, json_out)
+        with open(outfile_json, 'w', encoding='utf8') as json_out:
+            json_out.write(json.dumps({'items': all_moves, 'status': ''}))
 
     # build PDF
     pdf_merger = PdfFileMerger()
@@ -124,7 +124,7 @@ if len(sys.argv) > 1:
 # dictionary of all playbook defs
 playbooks = {}
 
-with open(pb_def_file) as pb_defs:
+with open(pb_def_file, encoding='utf8') as pb_defs:
     lines = pb_defs.readlines()
     for line in lines:
         stripped = line.strip()
