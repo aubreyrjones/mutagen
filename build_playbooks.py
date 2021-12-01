@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 import sys
+import os
 import json
+import argparse
 from subprocess import call
 from time import sleep
 from os import path
@@ -10,13 +12,14 @@ from PyPDF2 import PdfFileMerger
 
 LIBREOFFICE = '"C:\Program Files\LibreOffice\program\soffice.com"' if sys.platform == 'win32' else 'soffice'
 BUILD_DIR = 'build'
-OUT_DIR = 'complete'
+OUT_DIR = 'playbook_output'
+JSON_DIR = f'{OUT_DIR}/tracker_templates'
 
 
 def staged_name(pbs):
     return '/'.join([BUILD_DIR, split_section(pbs)])
 
-# return True if should build object.
+# return True if should build output.
 def check_newer(pbs, extension):
     sn = staged_name(pbs) + extension
     pbn = pbs + '.odt'
@@ -84,17 +87,20 @@ already_staged = set()
 
 def make_playbook(pb_name, pb_list):
     outfile = path.join(OUT_DIR, pb_name + ".pdf")
-    outfile_json = path.join(OUT_DIR, pb_name + ".mutagen.json")
+    outfile_json = path.join(JSON_DIR, pb_name + ".mutagen.json")
     
+    # Convert from ODT to PDF (and text)
     for pbs in pb_list:
         if pbs in already_staged: continue
         already_staged.add(pbs)
         stage_section(pbs)
     
-    # extract JSON move list
-    all_moves = sum([parse_moves(pbs) for pbs in pb_list], [])
-    with open(outfile_json, 'w') as json_out:
-        json.dump({'items': all_moves, 'status': ''}, json_out)
+    # # extract JSON move list for PC playbooks only.
+    if not 'gm_' in pb_name:
+        
+        all_moves = sum([parse_moves(pbs) for pbs in pb_list], [])
+        with open(outfile_json, 'w') as json_out:
+            json.dump({'items': all_moves, 'status': ''}, json_out)
 
     # build PDF
     pdf_merger = PdfFileMerger()
@@ -106,11 +112,28 @@ def make_playbook(pb_name, pb_list):
     pdf_merger.write(outfile)
     pdf_merger.close()
 
+os.makedirs(JSON_DIR, exist_ok=True)
 
-PLAYBOOKS = {
-    'wizard': ['common/common', 'pcs/wizard']
-}
+# Here's the default playbooks def file
+pb_def_file = 'playbooks.txt'
 
+# ...or one from the command line.
+if len(sys.argv) > 1:
+    pb_def_file = sys.argv[1]
 
-for k, v in PLAYBOOKS.items():
+# dictionary of all playbook defs
+playbooks = {}
+
+with open(pb_def_file) as pb_defs:
+    lines = pb_defs.readlines()
+    for line in lines:
+        stripped = line.strip()
+        if line.startswith('#'): continue
+        if '=' not in stripped: continue
+        splits = stripped.split('=')
+        pb_name = splits[0].strip()
+        print(splits[1])
+        playbooks[pb_name] = [s.strip() for s in splits[1].split()]
+
+for k, v in playbooks.items():
     make_playbook(k, v)
