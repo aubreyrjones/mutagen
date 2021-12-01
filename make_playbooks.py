@@ -10,7 +10,10 @@ from os import path
 from textwrap import wrap
 from PyPDF2 import PdfFileMerger
 
-LIBREOFFICE = '"C:\Program Files\LibreOffice\program\soffice.com"' if sys.platform == 'win32' else 'soffice'
+# If you're on windows, you'll need to edit that path if you didn't install in the default location.
+LIBREOFFICE = 'C:\Program Files\LibreOffice\program\soffice.com' if sys.platform == 'win32' else 'soffice'
+
+# These are probably fine for anybody, but they're broken out here anyway.
 BUILD_DIR = 'build'
 OUT_DIR = 'playbook_output'
 JSON_DIR = f'{OUT_DIR}/tracker_templates'
@@ -19,8 +22,10 @@ JSON_DIR = f'{OUT_DIR}/tracker_templates'
 def staged_name(pbs):
     return '/'.join([BUILD_DIR, split_section(pbs)])
 
-# return True if should build output.
 def check_newer(pbs, extension):
+    '''
+    Return true if the output is newer than the input.
+    '''
     sn = staged_name(pbs) + extension
     pbn = pbs + '.odt'
     if path.exists(sn):

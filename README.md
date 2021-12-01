@@ -252,9 +252,9 @@ electronic tracker teplates in a subdirectory.
 ### Tracker Template Extraction
 
 The playbook builder script also extracts a computer-readable listing
-of all moves for each playbook. Each of these is stored in a separate
-file with a `.mutagen.json` extension. These files are intended for
-use in the (upcoming) digital playbook webapp.
+of all moves for each playbook. Each playbook's moves are stored in a
+separate file with a `.mutagen.json` extension. These files are
+intended for use in the (upcoming) digital playbook webapp.
 
 In order for this feature to work correctly, there are some technical
 requirements.
@@ -269,12 +269,18 @@ requirements.
 2. Define every one of your items or moves with `►` after the name. Do
    _not_ use that symbol for any other purpose or in any other place.
 
-3. Include the `§` at the beginning of every section name.
+3. Include the `§` at the beginning of every section name. If you
+   don't, the last move before the section name will eat up and
+   include the section name and any flavor text after it.
 
 4. Use exactly the included `○△●▢` symbols for buyable and trackable
    items. These are the only "clickable" symbols in the app.
 
-5. Avoid complex formatting in move text. Specifically, features like
+5. Use the same format for aptitudes as in the core sections, with the
+   `○` on either side of the aptitude name and the `►` after the last
+   `○`: `○ APT_NAME ○ ○ ○ ►`. The number of `○` isn't important.
+
+6. Avoid complex formatting in move text. Specifically, features like
    tables, images, embedded spreadsheets, and all the other fancy shit
    LibreOffice can do will break when the playbook is converted to
    plain text for automatic parsing. Keep it simple, or you'll need to
@@ -342,4 +348,20 @@ free game engine you don't pay to print--that you can't even share
 *that much*?
 
 
+# Acknowledgements and Thanks
+
+Games that inspired Mutagen: _Blades in the Dark_, _Scum & Villany_,
+_Apocalypse World_, _GURPS_, _Vampire: the Masquerade_.
+
+
+Thanks to:
+
+* K for endless test reading.
+
+* L for endless enthusiasm and encouragement.
+
+* My online table: H, L, and K for being my first guinea pigs.
+
+* My kitchen table: E, Z, K, and B 'cause they didn't sign up for this
+  shit.
 
