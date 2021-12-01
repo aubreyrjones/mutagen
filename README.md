@@ -192,14 +192,15 @@ and haven't tested it.
    says "Disable path length limit".
    ![Disable restrictions in installer](./_windows_screenshots/extend_path.png)
 
-4. Open `cmd` to get a command prompt. Type `pip3 install pypdf2` and
-   hit enter. That might complain about an old version of `pip`, but
-   don't worry about it so long as it says that pypdf2 was
-   successfully installed.
+4. Double-click `SETUP.py`. This will download some requirements and
+   tell you if they were successfully installed. If it doesn't work,
+   it's typically because of a mistake in one of the steps above, or
+   because of something like anti-virus or other intrusive software.
 
 5. Install LibreOffice 7.0 or higher.
-   IMPORTANT! Install LibreOffice in the default location.
    (https://www.libreoffice.org/download/download/)
+
+   IMPORTANT! Install LibreOffice in the default location on your computer.
 
 
 ### Playbook Definitions
