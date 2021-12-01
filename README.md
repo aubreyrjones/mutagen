@@ -230,12 +230,14 @@ open a command prompt in the project directory and run the build.
 
 
 Linux: `./make_playbooks.py`
+
 Windows: `python make_playbooks.py`
 
 If you want to use a different playbook definition file, just put it
 at the end like:
 
 Linux: `./make_playbooks.py my_playbooks.txt`
+
 Windows: `python make_playbooks.py my_playbooks.txt`
 
 This will create a bunch of intermediary files in the `build`
