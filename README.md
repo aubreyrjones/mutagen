@@ -184,11 +184,11 @@ but I don't have one and haven't tested it.
    says "Download Windows installer" (_not_ "embeddable package").
 
 2. IMPORTANT! Check the box that says "Add Python 3 to PATH".
-   ![Add to path in installer](Image ./add_to_path.png)
+   ![Add to path in installer](Image ./_windows_screenshots/add_to_path.png)
 
 3. IMPORTANT! On the last step of the installer, click the option that
    says "Disable path length limit".
-   ![Disable restrictions in installer](Image ./extend_path.png)
+   ![Disable restrictions in installer](Image ./_windows_screenshots/extend_path.png)
 
 4. Open `cmd` to get a command prompt. Type `pip3 install pypdf2` and
    hit enter. That might complain about an old version of `pip`, but
