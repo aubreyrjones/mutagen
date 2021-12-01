@@ -3,14 +3,13 @@
 import sys
 import os
 import json
-import argparse
 from subprocess import call
 from time import sleep
 from os import path
 from textwrap import wrap
 from PyPDF2 import PdfFileMerger
 
-# If you're on windows, you'll need to edit that path if you didn't install in the default location.
+# If you're on windows and didn't install LibreOffice in the default location, you'll need to edit that path
 LIBREOFFICE = 'C:\Program Files\LibreOffice\program\soffice.com' if sys.platform == 'win32' else 'soffice'
 
 # These are probably fine for anybody, but they're broken out here anyway.
@@ -18,8 +17,18 @@ BUILD_DIR = 'build'
 OUT_DIR = 'playbook_output'
 JSON_DIR = f'{OUT_DIR}/tracker_templates'
 
+# Name of the meta section appended to playbooks.
+META = 'common/meta'
+
+
+#
+# Build-related functions.
+#
 
 def staged_name(pbs):
+    '''
+    Get a section name as it appears in the build dir.
+    '''
     return '/'.join([BUILD_DIR, split_section(pbs)])
 
 def check_newer(pbs, extension):
@@ -65,7 +74,6 @@ def split_section(pbs):
     '''
     return pbs.split('/')[-1]
 
-
 def parse_moves(pbs, do_wrap=False):
     '''
     Parse all the moves out of a plaintext playbook.
@@ -78,21 +86,28 @@ def parse_moves(pbs, do_wrap=False):
 
     for l in lines:
         if '►' in l:
-            moves.append(l)
+            moves.append(l)  # add a new move to the end of the list.
             latch = True
         elif '§' in l:
             latch = False
-            continue
         elif latch:
-            moves[-1] += l
+            moves[-1] += l  # append to the existing last move.
 
     if do_wrap:
         wrapped_moves = ['\n'.join(wrap(m)) for m in moves]
     else:
         wrapped_moves = moves
     
+    # Strip leading and trailing whitespace from the move descriptions.
+    # We want whitespace in the PDF version, but it looks bad in the
+    # web app.
+    wrapped_moves = [s.strip() for s in wrapped_moves]
+
     return wrapped_moves
 
+
+# track sections that are already built so we don't rebuild them for
+# each playbook that references them.
 already_staged = set()
 
 def make_playbook(pb_name, pb_list):
@@ -114,7 +129,7 @@ def make_playbook(pb_name, pb_list):
         already_staged.add(pbs)
         stage_section(pbs)
     
-    # # extract JSON move list for PC playbooks only.
+    # extract JSON move list for PC playbooks only.
     if 'gm_' not in pb_name and '_gm' not in pb_name:
         all_moves = sum([parse_moves(pbs) for pbs in pb_list], []) # parse all the moves and put them in a single list together
         with open(outfile_json, 'w', encoding='utf8') as json_out: 
@@ -136,13 +151,11 @@ def make_playbook(pb_name, pb_list):
 ##
 
 # set up
-
 os.makedirs(BUILD_DIR, exist_ok=True)
 os.makedirs(JSON_DIR, exist_ok=True)
 
 
 # stage the meta section
-META = 'common/meta'
 stage_section(META)
 
 
@@ -152,6 +165,7 @@ pb_def_file = 'playbooks.txt'
 # ...or one from the command line.
 if len(sys.argv) > 1:
     pb_def_file = sys.argv[1]
+
 
 # dictionary of all playbook defs
 playbooks = {}

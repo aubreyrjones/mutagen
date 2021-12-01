@@ -1,6 +1,7 @@
 # Example playbook definitions.
 # These are comments.
 # Whitespace formatting doesn't matter.
+# Use forward slashes (/) even on windows.
 
 
 # PC playbooks
