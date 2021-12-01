@@ -212,6 +212,9 @@ equal sign, then a list of each playbook section in the order they go
 into that playbook. The Mutagen Meta section is _automatically_
 appended to the end of every playbook created.
 
+Do NOT! include the extension (`.odt` or `.pdf`) on any of these
+file names. All of that is handled automatically.
+
 ```
 output_name = common/first_section your_game/second_section your_game/third_section
 ```
