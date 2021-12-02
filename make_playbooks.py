@@ -130,7 +130,7 @@ def make_playbook(pb_name, pb_list):
         stage_section(pbs)
     
     # extract JSON move list for PC playbooks only.
-    if 'gm_' not in pb_name and '_gm' not in pb_name:
+    if '_teaser' not in pb_name and '_gm' not in pb_name:
         all_moves = sum([parse_moves(pbs) for pbs in pb_list], []) # parse all the moves and put them in a single list together
         with open(outfile_json, 'w', encoding='utf8') as json_out: 
             json_out.write(json.dumps({'items': all_moves, 'status': ''})) # and write it out as JSON
@@ -140,7 +140,9 @@ def make_playbook(pb_name, pb_list):
     for pbs in pb_list:
         pdf_merger.append(staged_name(pbs) + '.pdf')
     
-    pdf_merger.append(staged_name(META) + '.pdf')
+    # don't add the rules if it's a teaser "playbook".
+    if '_teaser' not in pb_name:
+        pdf_merger.append(staged_name(META) + '.pdf')
 
     pdf_merger.write(outfile)
     pdf_merger.close()
