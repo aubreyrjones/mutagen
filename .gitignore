@@ -8,3 +8,4 @@
 build/*
 /mutation
 mutation_pbs.txt
+Makefile
