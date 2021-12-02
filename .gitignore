@@ -1,3 +1,10 @@
+*.pdf
+*.mutagen.json
+
+!/playbook_output/ex_*.pdf
+!/playbook_output/tracker_templates/ex_*.mutagen.json
+
 **/.*lock*
 build/*
 /mutation
+mutation_pbs.txt
