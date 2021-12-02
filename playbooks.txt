@@ -7,7 +7,7 @@
 # PC playbooks
 ex_pc_wizard        = common/common     pcs/wizard
 ex_pc_sorcerer      = common/common     pcs/sorcerer
-ex_pc_soma_adept    = common/common     pcs/soma_adept
+ex_pc_adept         = common/common     pcs/adept
 
 
 # GM playbook. Should contain `_gm` or `gm_` somewhere in the output name.
