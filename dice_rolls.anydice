@@ -1,0 +1,23 @@
+function: mutagen ROLL:n MODIFIER:n with SLOW:n CARRY:n GAIN:n {
+  TOTAL: (ROLL + MODIFIER)
+  if (TOTAL < SLOW) {
+    result: 0
+  }
+  if (TOTAL >= SLOW) & (TOTAL < CARRY) {
+    result: 1
+  }
+  if (TOTAL >= CARRY) & (TOTAL < GAIN) {
+    result: 2
+  }
+  if (TOTAL >= GAIN)  {
+    result: 3
+  }
+}
+
+SP: 7
+CP: 10
+GP: 13
+
+loop M over {-3..3} {
+  output [mutagen 2d6 M with SP CP GP] named "2d6+[M] breakdown with [SP],[CP],[GP]"
+}

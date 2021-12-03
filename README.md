@@ -186,11 +186,11 @@ and haven't tested it.
    says "Download Windows installer" (_not_ "embeddable package").
 
 2. IMPORTANT! Check the box that says "Add Python 3 to PATH".
-   ![Add to path in installer](./_windows_screenshots/add_to_path.png)
+   ![Add to path in installer](./_images/add_to_path.png)
 
 3. IMPORTANT! On the last step of the installer, click the option that
    says "Disable path length limit".
-   ![Disable restrictions in installer](./_windows_screenshots/extend_path.png)
+   ![Disable restrictions in installer](./_images/extend_path.png)
 
 4. Double-click `SETUP.py`. This will download some requirements and
    tell you if they were successfully installed. If it doesn't work,
