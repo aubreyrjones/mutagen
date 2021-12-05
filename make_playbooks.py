@@ -85,11 +85,9 @@ def parse_moves(pbs, do_wrap=False):
     latch = False
 
     for l in lines:
-        if '►' in l:
+        if '►' in l or '§' in l:
             moves.append(l)  # add a new move to the end of the list.
             latch = True
-        elif '§' in l:
-            latch = False
         elif latch:
             moves[-1] += l  # append to the existing last move.
 
@@ -105,6 +103,31 @@ def parse_moves(pbs, do_wrap=False):
 
     return wrapped_moves
 
+def replace_symbol(move_text, sym):
+    return move_text.replace(sym, f'<span class="tfs" onClick="_tf(event)">{sym}</span>')
+
+def markup_move(move_text):
+    title_end = move_text.find('►')
+    if title_end > 0:
+        move_text = f'<span onClick="_td(event)" class="iexp">{move_text[:title_end + 1]}</span><span class="item-desc">{move_text[title_end + 1:]}</span>'
+    elif move_text.startswith('§'):
+        line_end = move_text.find("\n")
+        if line_end > 0:
+            section_title = move_text[:line_end]
+            section_desc = move_text[line_end:]
+        else:
+            section_title = move_text
+            section_desc = ""
+        move_text = f'<span onClick="_td(event)" class="sexp">{section_title}</span><span class="item-desc">{section_desc}</span>'
+
+    move_text = move_text.replace("\n\n", "\n<p>")
+    move_text = move_text.replace("\n", '<br/>')
+    for s in '○△▢':
+        move_text = replace_symbol(move_text, s)
+    return move_text
+
+def markup_moves(move_list):
+    return [markup_move(m) for m in move_list]
 
 # track sections that are already built so we don't rebuild them for
 # each playbook that references them.
@@ -131,7 +154,7 @@ def make_playbook(pb_name, pb_list):
     
     # extract JSON move list for PC playbooks only.
     if '_teaser' not in pb_name and '_gm' not in pb_name:
-        all_moves = sum([parse_moves(pbs) for pbs in pb_list], []) # parse all the moves and put them in a single list together
+        all_moves = markup_moves(sum([parse_moves(pbs) for pbs in pb_list], [])) # parse all the moves and put them in a single list together
         with open(outfile_json, 'w', encoding='utf8') as json_out: 
             json_out.write(json.dumps({'items': all_moves, 'status': ''})) # and write it out as JSON
 
