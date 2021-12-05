@@ -109,7 +109,7 @@ def replace_symbol(move_text, sym):
 def markup_move(move_text):
     title_end = move_text.find('►')
     if title_end > 0:
-        move_text = f'<span onClick="_td(event)" class="iexp">{move_text[:title_end + 1]}</span><span class="item-desc">{move_text[title_end + 1:]}</span>'
+        move_text = f'<span class="ititle">{move_text[:title_end]}</span><span onClick="_td(event)" class="iexp">►</span><span class="item-desc">{move_text[title_end + 1:]}</span>'
     elif move_text.startswith('§'):
         line_end = move_text.find("\n")
         if line_end > 0:
