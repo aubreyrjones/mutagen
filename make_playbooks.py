@@ -110,19 +110,25 @@ def replace_symbol(move_text, sym, enableClick=True):
     return move_text.replace(sym, f'<span class="tfs" {oc}>{sym}</span>')
 
 def split_off_ititle(move_text, title_end):
+    pre_pips = ''
+    title_start = 0
+    if move_text[0] in '○△▢●':
+        pre_pips = move_text[0]
+        title_start = 1
+
     # '○△▢'
     for s in '○△▢':
-        m = move_text.find(s, 1, title_end)
+        m = move_text.find(s, title_start, title_end)
         if m > 0:
-            return move_text[:m], move_text[m:title_end]
-    return move_text[:title_end], ""
+            return pre_pips, move_text[title_start:m], move_text[m:title_end]
+    return pre_pips, move_text[title_start:title_end], ""
 
 def markup_move(move_text):
     title_end = move_text.find('►')
     if title_end > 0:
-        title, pips = split_off_ititle(move_text, title_end)
+        pre_pips, title, pips = split_off_ititle(move_text, title_end)
 
-        move_text = f'<span class="ititle" onClick="_td(event)">{title}</span>{pips}<span onClick="_td(event)" class="iexp">►</span><span class="item-desc">{move_text[title_end + 1:]}</span>'
+        move_text = f'{pre_pips}<span class="ititle" onClick="_td(event)">{title}</span>{pips}<span onClick="_td(event)" class="iexp">►</span><span class="item-desc">{move_text[title_end + 1:]}</span>'
     elif move_text.startswith('§'):
         line_end = move_text.find("\n")
         if line_end > 0:
