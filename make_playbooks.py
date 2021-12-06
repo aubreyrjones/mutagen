@@ -104,10 +104,10 @@ def parse_moves(pbs, do_wrap=False):
     return wrapped_moves
 
 def replace_symbol(move_text, sym, enableClick=True):
-    oc = ''
+    clz = 'ntfs'
     if enableClick:
-        oc = 'onClick="_tf(event)"'
-    return move_text.replace(sym, f'<span class="tfs" {oc}>{sym}</span>')
+        clz = 'tfs'
+    return move_text.replace(sym, f'<span class="{clz}">{sym}</span>')
 
 def split_off_ititle(move_text, title_end):
     pre_pips = ''
@@ -128,7 +128,7 @@ def markup_move(move_text):
     if title_end > 0:
         pre_pips, title, pips = split_off_ititle(move_text, title_end)
 
-        move_text = f'{pre_pips}<span class="ititle" onClick="_td(event)">{title}</span>{pips}<span onClick="_td(event)" class="iexp">►</span><span class="item-desc">{move_text[title_end + 1:]}</span>'
+        move_text = f'{pre_pips}<span class="ititle">{title}</span>{pips}<span class="iexp">► </span><span class="item-desc">{move_text[title_end + 2:]}</span>'
     elif move_text.startswith('§'):
         line_end = move_text.find("\n")
         if line_end > 0:
@@ -137,9 +137,9 @@ def markup_move(move_text):
         else:
             section_title = move_text
             section_desc = ""
-        move_text = f'<span onClick="_td(event)" class="sexp">{section_title}</span><span class="item-desc">{section_desc}</span>'
+        move_text = f'<span class="sexp">{section_title}</span><span class="item-desc">{section_desc}</span>'
 
-    move_text = move_text.replace("\n\n", "\n<p>")
+    move_text = move_text.replace("\n\n", "<p class=\"inl\">")
     move_text = move_text.replace("\n", '<br/>')
     for s in '○△▢':
         move_text = replace_symbol(move_text, s)
