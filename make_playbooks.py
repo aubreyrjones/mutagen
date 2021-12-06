@@ -103,13 +103,26 @@ def parse_moves(pbs, do_wrap=False):
 
     return wrapped_moves
 
-def replace_symbol(move_text, sym):
-    return move_text.replace(sym, f'<span class="tfs" onClick="_tf(event)">{sym}</span>')
+def replace_symbol(move_text, sym, enableClick=True):
+    oc = ''
+    if enableClick:
+        oc = 'onClick="_tf(event)"'
+    return move_text.replace(sym, f'<span class="tfs" {oc}>{sym}</span>')
+
+def split_off_ititle(move_text, title_end):
+    # '○△▢'
+    for s in '○△▢':
+        m = move_text.find(s, 1, title_end)
+        if m > 0:
+            return move_text[:m], move_text[m:title_end]
+    return move_text[:title_end], ""
 
 def markup_move(move_text):
     title_end = move_text.find('►')
     if title_end > 0:
-        move_text = f'<span class="ititle">{move_text[:title_end]}</span><span onClick="_td(event)" class="iexp">►</span><span class="item-desc">{move_text[title_end + 1:]}</span>'
+        title, pips = split_off_ititle(move_text, title_end)
+
+        move_text = f'<span class="ititle" onClick="_td(event)">{title}</span>{pips}<span onClick="_td(event)" class="iexp">►</span><span class="item-desc">{move_text[title_end + 1:]}</span>'
     elif move_text.startswith('§'):
         line_end = move_text.find("\n")
         if line_end > 0:
@@ -124,6 +137,7 @@ def markup_move(move_text):
     move_text = move_text.replace("\n", '<br/>')
     for s in '○△▢':
         move_text = replace_symbol(move_text, s)
+    move_text = replace_symbol(move_text, '●', False)
     return move_text
 
 def markup_moves(move_list):
