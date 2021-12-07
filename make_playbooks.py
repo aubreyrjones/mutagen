@@ -104,10 +104,10 @@ def parse_moves(pbs, do_wrap=False):
     return wrapped_moves
 
 def replace_symbol(move_text, sym, enableClick=True):
-    clz = 'ntfs'
+    clz = 'm-s'
     if enableClick:
-        clz = 'tfs'
-    return move_text.replace(sym, f'<span class="{clz}">{sym}</span>')
+        clz = 'm-c'
+    return move_text.replace(sym, f'<{clz}>{sym}</{clz}>')
 
 def split_off_ititle(move_text, title_end):
     pre_pips = ''
@@ -124,26 +124,33 @@ def split_off_ititle(move_text, title_end):
     return pre_pips, move_text[title_start:title_end], ""
 
 def markup_move(move_text):
+    # escape HTML tag markers.
+    move_text = move_text.replace(">", "&gt;")
+    move_text = move_text.replace("<", "&lt;")
+
+    # Mark up with spans 
     title_end = move_text.find('►')
     if title_end > 0:
         pre_pips, title, pips = split_off_ititle(move_text, title_end)
 
-        move_text = f'{pre_pips}<span class="ititle">{title}</span>{pips} ► <span class="item-desc">{move_text[title_end + 2:]}</span>'
+        move_text = f'<m-ihead>{pre_pips}<m-ititle>{title}</m-ititle>{pips} ►</m-ihead> <m-idesc>{move_text[title_end + 2:]}</m-idesc>'
     elif move_text.startswith('§'):
         line_end = move_text.find("\n")
         if line_end > 0:
             section_title = move_text[:line_end]
-            section_desc = f'<span class="sec-desc">{move_text[line_end:]}</span>'
+            section_desc = f'<m-sdesc>{move_text[line_end:]}</m-sdesc>'
         else:
             section_title = move_text
             section_desc = ""
-        move_text = f'<span class="stitle">{section_title}</span>{section_desc}'
+        move_text = f'<m-stitle>{section_title}</m-stitle>{section_desc}'
 
-    #move_text = move_text.replace("\n\n", "<p class=\"inl\">")
-    #move_text = move_text.replace("\n", '<br/>')
+    # mark up clickable symbols.
     for s in '○△▢':
         move_text = replace_symbol(move_text, s)
+
+    # And mark this one so it can be styled identically even if not clickable.
     move_text = replace_symbol(move_text, '●', False)
+
     return move_text
 
 def markup_moves(move_list):
