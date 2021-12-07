@@ -133,7 +133,7 @@ def markup_move(move_text):
     if title_end > 0:
         pre_pips, title, pips = split_off_ititle(move_text, title_end)
 
-        move_text = f'<m-ihead>{pre_pips}<m-ititle>{title}</m-ititle>{pips} ►</m-ihead> <m-idesc>{move_text[title_end + 2:]}</m-idesc>'
+        move_text = f'<m-i><m-ih>{pre_pips}<m-it>{title}</m-it>{pips} ►</m-ih> <m-id>{move_text[title_end + 2:]}</m-id></m-i>'
     elif move_text.startswith('§'):
         line_end = move_text.find("\n")
         if line_end > 0:
