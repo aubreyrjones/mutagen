@@ -3,6 +3,7 @@
 import sys
 import os
 import json
+import re
 from subprocess import call
 from time import sleep
 from os import path
@@ -103,53 +104,59 @@ def parse_moves(pbs, do_wrap=False):
 
     return wrapped_moves
 
-def replace_symbol(move_text, sym, enableClick=True):
-    clz = 'm-s'
-    if enableClick:
-        clz = 'm-c'
-    return move_text.replace(sym, f'<{clz}>{sym}</{clz}>')
+ROLL_RE = re.compile(r'⊞⌊(.+?)⌋')
+ROLL_REPLACE = r'<m-r>⊞⌊\1⌋</m-r>'
 
-def split_off_ititle(move_text, title_end):
-    pre_pips = ''
-    title_start = 0
-    if move_text[0] in '○△▢●':
-        pre_pips = move_text[0]
-        title_start = 1
+MATH_RE = re.compile(r'⌊(.+?)⌋')
+MATH_REPLACE = r'<m-m>⌊\1⌋</m-m>'
 
-    # '○△▢'
-    for s in '○△▢':
-        m = move_text.find(s, title_start, title_end)
-        if m > 0:
-            return pre_pips, move_text[title_start:m], move_text[m:title_end]
-    return pre_pips, move_text[title_start:title_end], ""
+RESULTS_RE = re.compile(r'^\s*([🡕🡒🡖🡓]+)(.+?)$', re.MULTILINE)
+RESULTS_REPLACE = r'<m-res><m-s>\1</m-s>\2</m-res>'
+
+LI_RE = re.compile(r'^\s*([•\d])+(.+?)$', re.MULTILINE)
+LI_REPLACE = r'<m-li>\1\2</m-li>'
+
+MOVE_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►(.+)\Z', re.MULTILINE | re.DOTALL)
+MOVE_REPLACE = r'<m-i><m-ih>\1<m-it>\3</m-it>\4 ►</m-ih><m-id>\6</m-id></m-i>'
+
+SECTION_RE = re.compile(r'^\s*§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
+
+CLICKABLE_RE = re.compile(r'([○△▢])')
+CLICKABLE_REPLACE = r'<m-c>\1</m-c>'
+
+SYM_RE = re.compile(r'([●])')
+SYM_REPLACE = r'<m-s>\1</m-s>'
+
+def section_replace(move_text):
+    m = SECTION_RE.match(move_text)
+    if not m:
+        return move_text
+    desc = ''
+    if m.group(2):
+        desc = f'<m-sdesc>{m.group(2)}</m-sdesc>'
+    return f'<m-stitle>§ {m.group(1)}</m-stitle>{desc}'
+
+def markup_with_regex(regex, replacement, move_text):
+    return regex.sub(replacement, move_text)
 
 def markup_move(move_text):
     # escape HTML tag markers.
     move_text = move_text.replace(">", "&gt;")
     move_text = move_text.replace("<", "&lt;")
 
-    # Mark up with spans 
-    title_end = move_text.find('►')
-    if title_end > 0:
-        pre_pips, title, pips = split_off_ititle(move_text, title_end)
+    move_text = section_replace(move_text)
 
-        move_text = f'<m-i><m-ih>{pre_pips}<m-it>{title}</m-it>{pips} ►</m-ih> <m-id>{move_text[title_end + 2:]}</m-id></m-i>'
-    elif move_text.startswith('§'):
-        line_end = move_text.find("\n")
-        if line_end > 0:
-            section_title = move_text[:line_end]
-            section_desc = f'<m-sdesc>{move_text[line_end:]}</m-sdesc>'
-        else:
-            section_title = move_text
-            section_desc = ""
-        move_text = f'<m-stitle>{section_title}</m-stitle>{section_desc}'
+    filters = [
+        (RESULTS_RE, RESULTS_REPLACE),
+        (LI_RE, LI_REPLACE),
+        (MOVE_RE, MOVE_REPLACE),
+        (ROLL_RE, ROLL_REPLACE),
+        (MATH_RE, MATH_REPLACE),
+        (CLICKABLE_RE, CLICKABLE_REPLACE),
+        (SYM_RE, SYM_REPLACE)]
 
-    # mark up clickable symbols.
-    for s in '○△▢':
-        move_text = replace_symbol(move_text, s)
-
-    # And mark this one so it can be styled identically even if not clickable.
-    move_text = replace_symbol(move_text, '●', False)
+    for regex, repl in filters:
+        move_text = markup_with_regex(regex, repl, move_text)
 
     return move_text
 
