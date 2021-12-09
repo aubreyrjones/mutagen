@@ -104,6 +104,23 @@ def parse_moves(pbs, do_wrap=False):
 
     return wrapped_moves
 
+# tag names:
+# m-r : roll
+# m-m : math
+# m-s : symbol
+# m-c : clickable symbol
+# m-res : roll result entry
+# m-li : bulletpoint/numbered list
+# m-i: item
+# m-ih : item header
+# m-it : item title
+# m-id : item description
+# m-stitle : section title
+# m-sdesc : section description
+# m-in : input field
+# m-il : input label
+# m-inv : input value
+
 ROLL_RE = re.compile(r'⊞⌊(.+?)⌋')
 ROLL_REPLACE = r'<m-r>⊞⌊\1⌋</m-r>'
 
@@ -127,17 +144,36 @@ CLICKABLE_REPLACE = r'<m-c>\1</m-c>'
 SYM_RE = re.compile(r'([●])')
 SYM_REPLACE = r'<m-s>\1</m-s>'
 
-def section_replace(move_text):
+# this is matching the unicode bracket write-in fields from the playbooks
+# the ⎪ below is not a pipe; that's the middle of the bracket
+INPUT_RE = re.compile(r'^\s*⎧[\s\n⎪]*?⎩\s*$', re.MULTILINE)
+INPUT_REPLACE = r'<m-in><m-inv>🖉</m-inv></m-in>'
+
+# this is for the strict 3-line variety with stuff appearing in the center line
+LABELED_INPUT_RE = re.compile(r'^\s*⎧\s*\n(.*)\n\s*⎩\s*$', re.MULTILINE)
+LABELED_INPUT_REPLACE = r'<m-in><m-il>\1</m-il><m-inv>🖉</m-inv></m-in>'
+
+def section_replace(move_text, debug=False):
     m = SECTION_RE.match(move_text)
     if not m:
         return move_text
     desc = ''
     if m.group(2):
         desc = f'<m-sdesc>{m.group(2)}</m-sdesc>'
-    return f'<m-stitle>§ {m.group(1)}</m-stitle>{desc}'
+    rval = f'<m-stitle>§ {m.group(1)}</m-stitle>{desc}'
+    if debug:
+        print(rval)
+        return move_text
+    else:
+        return rval
 
-def markup_with_regex(regex, replacement, move_text):
-    return regex.sub(replacement, move_text)
+def markup_with_regex(regex, replacement, move_text, debug=False):
+    rval = regex.sub(replacement, move_text)
+    if debug:
+        print(rval)
+        return move_text
+    else:
+        return rval
 
 def markup_move(move_text):
     # escape HTML tag markers.
@@ -147,6 +183,8 @@ def markup_move(move_text):
     move_text = section_replace(move_text)
 
     filters = [
+        (INPUT_RE, INPUT_REPLACE),
+        (LABELED_INPUT_RE, LABELED_INPUT_REPLACE),
         (RESULTS_RE, RESULTS_REPLACE),
         (LI_RE, LI_REPLACE),
         (MOVE_RE, MOVE_REPLACE),
