@@ -127,10 +127,10 @@ ROLL_REPLACE = r'<m-r>⊞⌊\1⌋</m-r>'
 MATH_RE = re.compile(r'⌊(.+?)⌋')
 MATH_REPLACE = r'<m-m>⌊\1⌋</m-m>'
 
-RESULTS_RE = re.compile(r'^\s*([🡕🡒🡖🡓]+)(.+?)$', re.MULTILINE)
+RESULTS_RE = re.compile(r'\n\s*([🡕🡒🡖🡓]+)(.+?)($|\Z)', re.MULTILINE)
 RESULTS_REPLACE = r'<m-res><m-s>\1</m-s>\2</m-res>'
 
-LI_RE = re.compile(r'^\s*([•\d])+(.+?)$', re.MULTILINE)
+LI_RE = re.compile(r'\n\s*([•\d])+(.+?)($|\Z)', re.MULTILINE)
 LI_REPLACE = r'<m-li>\1\2</m-li>'
 
 MOVE_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►(.+)\Z', re.MULTILINE | re.DOTALL)
@@ -185,8 +185,8 @@ def markup_move(move_text):
     filters = [
         (INPUT_RE, INPUT_REPLACE),
         (LABELED_INPUT_RE, LABELED_INPUT_REPLACE),
-        (RESULTS_RE, RESULTS_REPLACE),
         (LI_RE, LI_REPLACE),
+        (RESULTS_RE, RESULTS_REPLACE),
         (MOVE_RE, MOVE_REPLACE),
         (ROLL_RE, ROLL_REPLACE),
         (MATH_RE, MATH_REPLACE),
