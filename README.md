@@ -291,6 +291,19 @@ requirements.
    go back and edit the JSON to clean things up (which is hell, trust
    me).
 
+7. Use the LibreOffice unordered and ordered list options to create
+   lists.
+
+8. For text inputs (places where players are expected to put notes),
+   carefully follow the format shown in the Common Name/Concept/Drives
+   and Example Wizard Concentration items. Use the two-line example
+   for items where the player only needs to write a couple words. Use
+   4+ lines for a sentence.
+
+   Labeled inputs (like Drives or Concentration) must follow the exact
+   3-line formula. Horizontal spacing is not important, but the lines
+   are.  The first line has the bracket-top character; the second line
+   has the label; the third line has the bracket-bottom character.
 
 
 Copyright and License
