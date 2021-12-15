@@ -1,5 +1,5 @@
 from odf.opendocument import OpenDocumentText
-from odf.style import PageLayout, MasterPage, Header, Footer, PageLayoutProperties, Style, TextProperties, ParagraphProperties, Columns, Column
+from odf.style import PageLayout, MasterPage, Header, Footer, PageLayoutProperties, Style, TextProperties, ParagraphProperties, Columns, Column, DefaultStyle
 from odf.text import P, PageNumber, A, Span
 import lxml.etree as ET
 import zipfile
@@ -27,7 +27,7 @@ def build_skeleton_odt(filename):
                                     marginright='0.25in', numformat='1', writingmode='lr-tb')
     
     
-    columnsStyle = Columns(columncount=3)
+    columnsStyle = Columns(columncount=3, columngap="5mm")
     plp.addElement(columnsStyle)
     
     pl.addElement(plp)
@@ -36,17 +36,38 @@ def build_skeleton_odt(filename):
     mp = MasterPage(name="Standard", pagelayoutname=pl)
     textdoc.masterstyles.addElement(mp)
 
+    defaultPStyle = DefaultStyle(family="paragraph")
+    defaultPStyle.addElement(TextProperties(attributes={'fontsize': '9pt', 'fontfamily': "DejaVu Sans"}))
+    defaultPStyle.addElement(ParagraphProperties(attributes={'margintop': '2mm', 'keeptogether': 'always', 'registertrue': 'true'}))
+    textdoc.styles.addElement(defaultPStyle)
+
     secTitle = Style(name="SECTION_TITLE", family="paragraph")
-    secTitle.addElement(TextProperties(attributes={'fontsize': '16.1pt', 'fontweight': 'bold', 'fontfamily': "DejaVu Sans"}))
+    secTitle.addElement(TextProperties(attributes={'fontsize': '16.1pt', 'fontweight': 'bold'}))
     textdoc.styles.addElement(secTitle)
 
-    itemDesc = Style(name="ITEM_DESC", family="text")
-    itemDesc.addElement(TextProperties(attributes={'fontsize': '9pt', 'fontfamily': "DejaVu Sans"}))
+    itemDesc = Style(name="ITEM_DESC", family="paragraph")
+    itemDesc.addElement(TextProperties(attributes={'fontsize': '9pt'}))
     textdoc.styles.addElement(itemDesc)
 
     itemTitle = Style(name="ITEM_TITLE", family="text")
-    itemTitle.addElement(TextProperties(attributes={'fontsize': '9pt', 'fontweight': 'bold', 'fontfamily': "DejaVu Sans"}))
+    itemTitle.addElement(TextProperties(attributes={'fontsize': '9pt', 'fontweight': 'bold'}))
     textdoc.styles.addElement(itemTitle)
+
+    firstInputLine = Style(name="FIRST_INPUT_LINE", family="paragraph")
+    firstInputLine.addElement(ParagraphProperties(attributes={'margintop': '2mm', 'keepwithnext': 'always'}))
+    textdoc.styles.addElement(firstInputLine)
+
+    inputLine = Style(name="INPUT_LINE", family="paragraph")
+    inputLine.addElement(ParagraphProperties(attributes={'margintop': '0mm'}))
+    textdoc.styles.addElement(inputLine)
+
+    inputLabelLine = Style(name="INPUT_LABEL_LINE", family="paragraph")
+    inputLabelLine.addElement(ParagraphProperties(attributes={'margintop': '0mm', 'keepwithnext': 'always'}))
+    textdoc.styles.addElement(inputLabelLine)
+
+    lineItem = Style(name="LINE_ITEM", family="paragraph")
+    lineItem.addElement(ParagraphProperties(attributes={'margintop': '1mm'}))
+    textdoc.styles.addElement(lineItem)
 
     replace_target = P(text="replace_me")
     textdoc.text.addElement(replace_target)

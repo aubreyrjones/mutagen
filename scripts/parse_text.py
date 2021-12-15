@@ -71,12 +71,14 @@ SYM_REPLACE = r'<m-s>\1</m-s>'
 
 # this is matching the unicode bracket write-in fields from the playbooks
 # the ⎪ below is not a pipe; that's the middle of the bracket
-INPUT_RE = re.compile(r'^\s*⎧[\s\n⎪]*?⎩\s*$', re.MULTILINE)
+INPUT_RE = re.compile(r'^\s*(⎧[\s\n⎪]*?⎩)\s*$', re.MULTILINE)
 INPUT_REPLACE = r'<m-in><m-inv>🖉</m-inv></m-in>'
+XML_INPUT_REPLACE = r'<box-input>\1</box-input>'
 
 # this is for the strict 3-line variety with stuff appearing in the center line
 LABELED_INPUT_RE = re.compile(r'^\s*⎧\s*\n(.*)\n\s*⎩\s*$', re.MULTILINE)
 LABELED_INPUT_REPLACE = r'<m-in><m-il>\1</m-il><m-inv>🖉</m-inv></m-in>'
+XML_LABELED_INPUT_REPLACE = r'<labeled-input><m-il>\1</m-il></labeled-input>'
 
 # this is a (partial) fixup for linebreaks -> paragraphs so that we can use
 # standard HTML white-space rules. Why not just <p>? Because this one's mine. :)
@@ -133,17 +135,19 @@ def markup_move(move_text):
 def markup_moves(move_list):
     return [markup_move(m) for m in move_list]
 
-# This is very similar to the MOVE_RE above, except this only captures the
-# first paragraph.
+# This is very similar to the MOVE_RE above, except this only captures the first paragraph.
+# It also doesn't wrap the rest of the move in any semantic markup.
 FIRST_ITEM_PARAGRAPH_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►\s*(.+)$', re.MULTILINE)
 FIRST_ITEM_PARAGRAPH_REPLACE = r'<item-header-p><m-ih>\1\3\4 ► </m-ih>\6</item-header-p>'
 
 def markup_to_xml(move_text):
 
+    move_text = section_replace(move_text)
+
     filters = [
         (FIRST_ITEM_PARAGRAPH_RE, FIRST_ITEM_PARAGRAPH_REPLACE),
-        (INPUT_RE, INPUT_REPLACE),
-        (LABELED_INPUT_RE, LABELED_INPUT_REPLACE),
+        (INPUT_RE, XML_INPUT_REPLACE),
+        (LABELED_INPUT_RE, XML_LABELED_INPUT_REPLACE),
         (LI_RE, LI_REPLACE),
         (RESULTS_RE, RESULTS_REPLACE),
         (ROLL_RE, ROLL_REPLACE),
@@ -151,7 +155,6 @@ def markup_to_xml(move_text):
         (CLICKABLE_RE, CLICKABLE_REPLACE),
         (SYM_RE, SYM_REPLACE),
         (LINE_RE, LINE_REPLACE)]
-
     
     for regex, repl in filters:
         move_text = markup_with_regex(regex, repl, move_text)
