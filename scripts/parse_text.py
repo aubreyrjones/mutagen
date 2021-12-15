@@ -78,8 +78,11 @@ INPUT_REPLACE = r'<m-in><m-inv>🖉</m-inv></m-in>'
 LABELED_INPUT_RE = re.compile(r'^\s*⎧\s*\n(.*)\n\s*⎩\s*$', re.MULTILINE)
 LABELED_INPUT_REPLACE = r'<m-in><m-il>\1</m-il><m-inv>🖉</m-inv></m-in>'
 
+# this is a (partial) fixup for linebreaks -> paragraphs so that we can use
+# standard HTML white-space rules. Why not just <p>? Because this one's mine. :)
 LINE_RE = re.compile(r'(<m-id>|\n\n)(.+?)(</m-id>|$|\Z)', re.MULTILINE)
 LINE_REPLACE = r'\1<m-p>\2</m-p>\3'
+
 
 def section_replace(move_text, debug=False):
     m = SECTION_RE.match(move_text)
@@ -130,10 +133,30 @@ def markup_move(move_text):
 def markup_moves(move_list):
     return [markup_move(m) for m in move_list]
 
+# This is very similar to the MOVE_RE above, except this only captures the
+# first paragraph.
+FIRST_ITEM_PARAGRAPH_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►\s*(.+)$', re.MULTILINE)
+FIRST_ITEM_PARAGRAPH_REPLACE = r'<item-header-p><m-ih>\1\3\4 ► </m-ih>\6</item-header-p>'
 
-def mark_paragraphs(move_text):
+def markup_to_xml(move_text):
+
+    filters = [
+        (FIRST_ITEM_PARAGRAPH_RE, FIRST_ITEM_PARAGRAPH_REPLACE),
+        (INPUT_RE, INPUT_REPLACE),
+        (LABELED_INPUT_RE, LABELED_INPUT_REPLACE),
+        (LI_RE, LI_REPLACE),
+        (RESULTS_RE, RESULTS_REPLACE),
+        (ROLL_RE, ROLL_REPLACE),
+        (MATH_RE, MATH_REPLACE),
+        (CLICKABLE_RE, CLICKABLE_REPLACE),
+        (SYM_RE, SYM_REPLACE),
+        (LINE_RE, LINE_REPLACE)]
+
     
-    pass
+    for regex, repl in filters:
+        move_text = markup_with_regex(regex, repl, move_text)
+    
+    return move_text
 
 def render_xml(markedup_move_list):
     header = '<?xml version="1.0" encoding="utf8"?>'
@@ -145,10 +168,10 @@ def render_xml(markedup_move_list):
             if sectionLatched:
                 content.append("</section>")
             content.append("<section>")
-            content.append(m)
+            content.append(markup_to_xml(m))
             sectionLatched = True
         else:
-            content.append(m)
+            content.append(markup_to_xml(m))
     if sectionLatched: # close the final section
         content.append("</section>")
     content.append('</playbook>')
