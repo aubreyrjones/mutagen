@@ -34,15 +34,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="labeled-input">
-    <text---p text---style-name="FIRST_INPUT_LINE">⎧</text---p>
+    <text---p text---style-name="FIRST_INPUT_LINE">⎧ 🖉</text---p>
     <text---p text---style-name="INPUT_LINE"><xsl:apply-templates select="m-il" /></text---p>
-    <text---p text---style-name="INPUT_LINE">⎩</text---p>
+    <text---p text---style-name="LAST_INPUT_LINE">⎩</text---p>
 </xsl:template>
 
 <xsl:template match="labeled-input-stop">
-    <text---p text---style-name="FIRST_INPUT_LINE">⎧</text---p>
+    <text---p text---style-name="FIRST_INPUT_LINE">⎧ 🖉</text---p>
     <text---p text---style-name="INPUT_LINE"><xsl:apply-templates select="m-il" /></text---p>
-    <text---p text---style-name="INPUT_LINE_STOP">⎩</text---p>
+    <text---p text---style-name="LAST_INPUT_LINE_STOP">⎩</text---p>
 </xsl:template>
 
 <xsl:template match="m-il">
@@ -50,17 +50,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 
-<xsl:template match="m-li">
+<xsl:template match="line-item">
     <text---p text---style-name="LINE_ITEM"><xsl:apply-templates /></text---p>
 </xsl:template>
 
-<xsl:template match="m-li-stop">
+<xsl:template match="line-item-stop">
     <text---p text---style-name="LINE_ITEM_STOP"><xsl:apply-templates /></text---p>
 </xsl:template>
 
 
 <xsl:template match="box-start">
-    <text---p text---style-name="FIRST_INPUT_LINE">⎧</text---p>
+    <text---p text---style-name="FIRST_INPUT_LINE">⎧ 🖉</text---p>
 </xsl:template>
 
 <xsl:template match="box-cont">
@@ -68,11 +68,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="box-end">
-    <text---p text---style-name="INPUT_LINE">⎩</text---p>
+    <text---p text---style-name="LAST_INPUT_LINE">⎩</text---p>
 </xsl:template>
 
 <xsl:template match="box-end-stop">
-    <text---p text---style-name="INPUT_LINE_STOP">⎩</text---p>
+    <text---p text---style-name="LAST_INPUT_LINE_STOP">⎩</text---p>
 </xsl:template>
 
 <xsl:template match="m-res">
@@ -88,7 +88,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="m-s">
-    <xsl:apply-templates />
+    <text---span text---style-name="BOLD_SYMBOL"><xsl:apply-templates /></text---span>
 </xsl:template>
+
+<xsl:template match="m-r">
+    <text---span text---style-name="BOLD_SYMBOL"><xsl:apply-templates /></text---span>
+</xsl:template>
+
 
 </xsl:stylesheet> 

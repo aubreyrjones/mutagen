@@ -1,14 +1,14 @@
 import re
 
-def parse_moves(pbs_filename, do_wrap=False):
+def parse_moves(pbs_filename, keep_unheadered=False):
     '''
     Parse all the moves out of a plaintext playbook.
     '''
     with open(pbs_filename + '.txt', encoding='utf8') as f:
         lines = f.readlines()
     
-    moves = []
-    latch = False
+    moves = [""] if keep_unheadered else [] # []
+    latch = keep_unheadered # False
 
     for l in lines:
         if '►' in l or '§' in l:
@@ -17,14 +17,9 @@ def parse_moves(pbs_filename, do_wrap=False):
         elif latch:
             moves[-1] += l  # append to the existing last move.
 
-    if do_wrap:
-        wrapped_moves = ['\n'.join(wrap(m)) for m in moves]
-    else:
-        wrapped_moves = moves
+    wrapped_moves = moves
     
     # Strip leading and trailing whitespace from the move descriptions.
-    # We want whitespace in the PDF version, but it looks bad in the
-    # web app.
     wrapped_moves = [s.strip() for s in wrapped_moves]
 
     return wrapped_moves
@@ -61,7 +56,8 @@ LI_REPLACE = r'\n<m-li>\1\2\3</m-li>'
 MOVE_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►\s*(.+)\Z', re.MULTILINE | re.DOTALL)
 MOVE_REPLACE = r'<m-i><m-ih>\1<m-it>\3</m-it>\4 ► </m-ih><m-id>\6</m-id></m-i>'
 
-SECTION_RE = re.compile(r'^\s*§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
+#SECTION_RE = re.compile(r'^\s*§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
+SECTION_RE = re.compile(r'^.*?§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
 
 CLICKABLE_RE = re.compile(r'([○△▢])')
 CLICKABLE_REPLACE = r'<m-c>\1</m-c>'
@@ -110,6 +106,8 @@ def markup_with_regex(regex, replacement, move_text, debug=False):
 
 def markup_move(move_text):
     # escape HTML tag markers.
+    move_text.replace('\ufeff', '')
+    move_text.replace('\ubbef', '')
     move_text = move_text.replace(">", "&gt;")
     move_text = move_text.replace("<", "&lt;")
 
@@ -143,6 +141,7 @@ FIRST_ITEM_PARAGRAPH_REPLACE = r'<m-ih>\1\3\4 ► </m-ih>'
 ALREADY_STITLE_RE = re.compile(r'^\s*<m-stitle')
 ALREADY_SDESC_RE = re.compile(r'^\s*<m-sdesc')
 ALREADY_LABELED_INPUT = re.compile(r'^\s*<labeled-input')
+ALREADY_RESULT = re.compile(r'^\s*<m-res')
 ITEM_HEADER_LINE_RE = re.compile(r'^\s*\.*?►')
 BOX_INPUT_START_RE = re.compile(r'^\s*⎧')
 BOX_INPUT_CONT_RE = re.compile(r'^\s*⎪')
@@ -154,6 +153,7 @@ LINE_TABLE = [
     (ALREADY_STITLE_RE, None),
     (ALREADY_SDESC_RE, None),
     (ALREADY_LABELED_INPUT, 'DO-NOTHING'),
+    (ALREADY_RESULT, 'DO-NOTHING'),
     (BOX_INPUT_START_RE, 'box-start'),
     (BOX_INPUT_CONT_RE, 'box-cont'),
     (BOX_INPUT_END_RE, 'box-end'),
@@ -198,7 +198,7 @@ def markup_to_xml(move_text):
         # (INPUT_RE, XML_INPUT_REPLACE),
         (LABELED_INPUT_RE, XML_LABELED_INPUT_REPLACE),
         # (LI_RE, LI_REPLACE),
-        # (RESULTS_RE, RESULTS_REPLACE),
+        (RESULTS_RE, RESULTS_REPLACE),
         (ROLL_RE, ROLL_REPLACE),
         (MATH_RE, MATH_REPLACE),
         (CLICKABLE_RE, CLICKABLE_REPLACE),

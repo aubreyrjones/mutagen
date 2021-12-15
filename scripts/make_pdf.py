@@ -19,6 +19,28 @@ def dom_transform(xml_file):
     domString = ET.tostring(newdom, pretty_print=True, encoding='unicode').replace("---", ":")
     return domString
 
+def make_paragraph_style(textdoc, stylename, pAttr=None, tAttr=None):
+    s = Style(name=stylename, family="paragraph")
+    if pAttr:
+        s.addElement(ParagraphProperties(attributes=pAttr))
+    if tAttr:
+        s.addElement(TextProperties(attributes=tAttr))
+    
+    textdoc.styles.addElement(s)
+
+def make_with_stop(textdoc, stylename, pAttr=None, tAttr=None):
+    make_paragraph_style(textdoc, stylename, pAttr, tAttr)
+    if not pAttr:
+        pAttr = {}
+    pAttr.update({'keepwithnext': 'auto'})
+    make_paragraph_style(textdoc, stylename + '_STOP', pAttr, tAttr)
+
+def make_span_style(textdoc, stylename, tAttr):
+    s = Style(name=stylename, family="text")
+    s.addElement(TextProperties(attributes=tAttr))
+    textdoc.styles.addElement(s)
+
+
 def build_skeleton_odt(filename):
     textdoc = OpenDocumentText()
     pl = PageLayout(name="pagelayout")
@@ -38,36 +60,49 @@ def build_skeleton_odt(filename):
 
     defaultPStyle = DefaultStyle(family="paragraph")
     defaultPStyle.addElement(TextProperties(attributes={'fontsize': '9pt', 'fontfamily': "DejaVu Sans"}))
-    defaultPStyle.addElement(ParagraphProperties(attributes={'margintop': '2mm', 'keeptogether': 'always', 'registertrue': 'true'}))
+    defaultPStyle.addElement(ParagraphProperties(attributes={'margintop': '2mm', 'keeptogether': 'always', 'keepwithnext': 'auto', 'registertrue': 'true'}))
     textdoc.styles.addElement(defaultPStyle)
 
-    secTitle = Style(name="SECTION_TITLE", family="paragraph")
-    secTitle.addElement(TextProperties(attributes={'fontsize': '16.1pt', 'fontweight': 'bold'}))
-    textdoc.styles.addElement(secTitle)
+    make_paragraph_style(textdoc, "SECTION_TITLE", pAttr={'keepwithnext': 'always'}, tAttr={'fontsize': '16.1pt', 'fontweight': 'bold'})
+    make_with_stop(textdoc, "ITEM_DESC", pAttr={'keepwithnext': 'always'})
 
-    itemDesc = Style(name="ITEM_DESC", family="paragraph")
-    itemDesc.addElement(TextProperties(attributes={'fontsize': '9pt'}))
-    textdoc.styles.addElement(itemDesc)
+    make_span_style(textdoc, "ITEM_TITLE", {'fontsize': '9pt', 'fontweight': 'bold'})
+    make_span_style(textdoc, "BOLD_SYMBOL", {'fontsize': '9pt', 'fontweight': 'bold'})
 
-    itemTitle = Style(name="ITEM_TITLE", family="text")
-    itemTitle.addElement(TextProperties(attributes={'fontsize': '9pt', 'fontweight': 'bold'}))
-    textdoc.styles.addElement(itemTitle)
+    make_paragraph_style(textdoc, "FIRST_INPUT_LINE", pAttr={'margintop': '2mm', 'keepwithnext': 'always'})
+    make_paragraph_style(textdoc, "INPUT_LINE", pAttr={'margintop': '0mm', 'keepwithnext': 'always'})
+    make_with_stop(textdoc, "LAST_INPUT_LINE", pAttr={'margintop': '0mm', 'keepwithnext': 'always'})
 
-    firstInputLine = Style(name="FIRST_INPUT_LINE", family="paragraph")
-    firstInputLine.addElement(ParagraphProperties(attributes={'margintop': '2mm', 'keepwithnext': 'always'}))
-    textdoc.styles.addElement(firstInputLine)
+    make_with_stop(textdoc, "LINE_ITEM", pAttr={'margintop': '1mm'})
+    make_with_stop(textdoc, "RESULT_ITEM", pAttr={'margintop': '1mm'})
 
-    inputLine = Style(name="INPUT_LINE", family="paragraph")
-    inputLine.addElement(ParagraphProperties(attributes={'margintop': '0mm'}))
-    textdoc.styles.addElement(inputLine)
+    # secTitle = Style(name="SECTION_TITLE", family="paragraph")
+    # secTitle.addElement(TextProperties(attributes={'fontsize': '16.1pt', 'fontweight': 'bold'}))
+    # textdoc.styles.addElement(secTitle)
 
-    inputLabelLine = Style(name="INPUT_LABEL_LINE", family="paragraph")
-    inputLabelLine.addElement(ParagraphProperties(attributes={'margintop': '0mm', 'keepwithnext': 'always'}))
-    textdoc.styles.addElement(inputLabelLine)
+    # itemDesc = Style(name="ITEM_DESC", family="paragraph")
+    # itemDesc.addElement(TextProperties(attributes={'fontsize': '9pt'}))
+    # textdoc.styles.addElement(itemDesc)
 
-    lineItem = Style(name="LINE_ITEM", family="paragraph")
-    lineItem.addElement(ParagraphProperties(attributes={'margintop': '1mm'}))
-    textdoc.styles.addElement(lineItem)
+    # itemTitle = Style(name="ITEM_TITLE", family="text")
+    # itemTitle.addElement(TextProperties(attributes={'fontsize': '9pt', 'fontweight': 'bold'}))
+    # textdoc.styles.addElement(itemTitle)  
+
+    # firstInputLine = Style(name="FIRST_INPUT_LINE", family="paragraph")
+    # firstInputLine.addElement(ParagraphProperties(attributes={'margintop': '2mm', 'keepwithnext': 'always'}))
+    # textdoc.styles.addElement(firstInputLine)
+
+    # inputLine = Style(name="INPUT_LINE", family="paragraph")
+    # inputLine.addElement(ParagraphProperties(attributes={'margintop': '0mm'}))
+    # textdoc.styles.addElement(inputLine)
+
+    # inputLabelLine = Style(name="INPUT_LABEL_LINE", family="paragraph")
+    # inputLabelLine.addElement(ParagraphProperties(attributes={'margintop': '0mm', 'keepwithnext': 'always'}))
+    # textdoc.styles.addElement(inputLabelLine)
+
+    # lineItem = Style(name="LINE_ITEM", family="paragraph")
+    # lineItem.addElement(ParagraphProperties(attributes={'margintop': '1mm'}))
+    # textdoc.styles.addElement(lineItem)
 
     replace_target = P(text="replace_me")
     textdoc.text.addElement(replace_target)
