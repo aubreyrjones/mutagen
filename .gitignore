@@ -3,9 +3,11 @@
 
 !/playbook_output/ex_*.pdf
 !/playbook_output/tracker_templates/ex_*.mutagen.json
+blah*
 
 **/.*lock*
 build/*
 /mutation
 mutation_pbs.txt
 Makefile
+**/__pycache__
