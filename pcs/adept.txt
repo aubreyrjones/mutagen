@@ -1,0 +1,52 @@
+﻿You channel your magic through your body using Hong Kong action-flick martial arts.
+§ Adept Aptitudes
+● Kung Fu ○ ○ ○ ○ ► Fighting uncannily with empty fist and foot or with your iconic weapon—which might just be a specific body part. When you’re attacking with your body, you can choose to do non-lethal or life-threatening injuries. With your weapon, you can inflict deadly injuries.
+                       ⎧
+Iconic Weapon:
+                       ⎩
+○ Chi Control ○ ○ ○ ► Manipulating the chi within you to affect your bodily processes and your spiritual presence.
+§ Adept Moves
+○ Eyes of the Mantis ► You simultaneously see in all directions around you, except directly behind your head. You can individually track every threat you see without moving your head or even your eyes.
+
+○ What wires? ► You jump really high, can kick off the scenery to go even higher, and float gracefully back to the ground.
+
+○ Soar on green bamboo ► For just the barest moment, you stand and fight on an opponent’s weapon, the collapsing scenery, a tapestry, or some other infirm and improbable support.
+
+○ Kamedoken! ► You fire a concentrated blast of weaponized chi from your palms. It’s fast-pitch fast, and travels about 10m. For most purposes this counts as an attack with your body, but instead of Kung Fu, ⊞⌊Chi Control⌋.
+
+○ Body of Iron ► You reinforce your body with conditioning and your spirit. You permanently get rank 2 of ⌞Health⌝.
+
+○ With a fucking pencil! ► You grab an object close at hand. You can use that object as if it were your iconic weapon to ⌞make a story move⌝—after which the object is irretrievably lost or broken.
+
+○ Drunken Master ► Ignore any mental status while using Kung Fu to ⌞make a story move⌝.
+
+○ Fists of Steel ► When striking with hand or foot to ⌞make a story move⌝, the target’s material or composition can’t be why you get ⌞No Effect⌝.
+
+○ Down your pants? ► Any instant nobody’s looking at you, you either stash your iconic weapon seemingly “nowhere”; or you retrieve the weapon you previously stashed. You can only stash your iconic weapon, and only if it’s inanimate.
+
+○ The bigger they are... ► So long as your feet are planted firmly, you can throw an opponent many times larger than yourself.
+
+○ Get over here! ► So long as there’s a clear, straight path back to you, your iconic weapon will fly back into your hands whenever you will it—potentially dragging an opponent with it.
+
+○ You’re gonna need more guys ► You can handle several opponents as easily as you could the strongest of them alone.
+
+○ Let’s take this outside ► As an opponent throws the first blow, ⊞⌊Kung Fu⌋ to ⌞un-ass the area⌝. If you 🡕🡒🡖, you throw both yourself and your opponent somewhere nearby but deserted.
+
+○ Catch a bullet ► You catch or deflect a bullet or other projectile with your body or iconic weapon. You can only deal with one projectile at a time.
+
+○ Is this yours? ► You deflect a projectile toward a target of your choosing, perhaps whoever fired it. You must already have ⌞catch a bullet⌝ to buy this move.
+
+○ Spitting cobra ► You spray a noxious or mildly caustic liquid from your mouth. It travels about 2m.
+
+○ Transcendental projection ► You enter a deep meditation and leave your body as a spirit to travel anywhere on Earth in astral form. You move at airplane speeds. In this form, you cannot interact with anything physical, but you can fly and pass through solid objects. ⊞⌊Chi Control⌋.
+
+🡕 You can remain astral for an entire day, and enter any space not warded specifically against such intrusion.
+🡒 You can remain astral for a couple hours, but cannot enter any dwelling or place of spiritual or magical power.
+🡖 You can remain astral for maybe half an hour, but cannot enter any place that belongs to another—unless invited.
+🡓 Your astral form remains locked in your body.
+
+○ Chi Transfer ► Spend 1 ⌞Health⌝ to give someone else ⌊+1⌋ on all chi- or magic-related rolls for the rest of the scene.
+
+○ Exploding heart technique ► ⊞⌊Kung Fu⌋ to ⌞fuck ‘em up⌝. You resolve the move and they ⌞take harm⌝ as normal, except that they do not lose ⌞Health⌝ or apply injury-related ⌞status⌝ until some later time. Before you roll, choose how long it will take take the injuries to take effect.
+
+○ Fight through it ► For the purposes of trying to ⌞recuperate health⌝, doing Kung Fu never counts as strain or exertion.

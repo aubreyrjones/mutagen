@@ -1,0 +1,74 @@
+﻿You combine symbol and metaphor to link magical effects to their target.
+§ Witch Moves
+Enact Ritual ► You do magic by linking target and effect with a symbolic ritual. You might be the target.
+
+In order for someone or something to be your target, you must have a ⌞link⌝ to it. Describe how you invoke the link with your ritual.
+
+Describe how your ritual evokes your desired ⌞effect⌝ on your target. The more expressive and resonant with your effect, the better. Get weird. Say which ⌞ritual methods⌝ you’re using.
+
+When you enact a ritual to ⌞make a story move⌝, ⊞⌊combined methods⌋. This value starts at ⌊−1⌋ for the first method you’re using to evoke your effect in this ritual. For each additional method you add to the ritual, add ⌊+1⌋ to ⌊combined methods⌋ (to a max of ⌊+3⌋).
+
+🡖🡓 on your story move: the complications or costs are related to your ritual’s effect—except applied to your chagrin.
+
+Witch’s Familiar ► A common household animal has chosen to be your loyal familiar. A shockingly intelligent specimen, you can understand their speech and they yours. While fictionally an ordinary animal, your familiar has flawless “plot armor” and miraculously escapes certain death every time.
+                 ⎧
+Name/kind: 
+                 ⎩
+○ Your eyes a moment, friend ► You can see through your familiar’s eyes.
+
+○ My friend, my ambassador ► You can speak through your familiar’s mouth and hear through their ears.
+§ Links
+● Once whole, always one ► Create a link with a physical piece of your target. Assuming your spirit and body are still joined, you’re always part of yourself.
+
+○ The hands that hold the power ► Create a link by continuously or repeatedly touching your target through the ritual.
+
+○ Where goes my friend, I am there ► Same as ⌞the hands that hold the power⌝, but your familiar touches your target instead of you.
+
+○ I know Thee! ► Create a link with a being’s True Name. This is almost never how they introduce themselves. What does a True Name even sound like?
+
+○ This form belies thy nature ► Create a link with a detailed likeness or replica of your target.
+
+○ Like skin and bone go thee and this ► Create a link through an object that was once habitually, physically touching your target.
+
+○ Like of a kind (3) ► Create a link to your target through another of the same object. This won’t work for anything that has a True Name.
+
+○ Goes there the object of my eye (5) ► Create a link by pointing at your target.
+
+○ As thou callest thyself, I call thee (5) ► Create a link with a being’s full common name.
+
+○ By this image in my mind are you mine (8) ► Create a link by meditating on a recent personal memory of an interaction with your target.
+§ Effects
+● What thou send forth... ► Your ritual revisits on your target an echo of some effect you’ve recently witnessed them have on the world or its inhabitants.
+
+○ Against thy evil I am warded ► Your ritual protects you from a magical effect cast by your target; or your target could be the magical effect itself, if you can make a ⌞link⌝ to it somehow.
+
+○ Where art thou? ► Your ritual leads you to your target.
+
+○ Mirror, mirror... ► Your ritual provides answers for a question or two about your target or your target’s immediate surroundings.
+○ Feel thou this that thou mayst learn ► Your ritual causes your target to feel an overwhelming emotion of your choice under conditions of your choosing.
+
+○ Bound art thou! ► Your ritual causes your target overwhelming indecision or mental paralysis with regards to some plan or instinct you’re aware of.
+
+○ Thy pains I take myself ► Your ritual prevents an injury or reverses a recent injury to your target, but you yourself take a sympathetic injury doing 1 harm.
+
+○ All shall see thee as I do ► Your ritual causes others to perceive your target in some illusory, false, or misleading way.
+
+○ Let chaos make of thee her lover (3) ► Your ritual causes your target misfortune, bad luck, or accidents not resulting in serious injury.
+
+○ Thou hast earned my ire (4) ► Your ritual causes your target a serious injury.
+
+○ Thou wilt know my fury! (6) ► Your ritual causes your target a life-threatening injury.
+§ Ritual Methods
+● Ritual Sacrifice ► You cast away, ruin, kill, or destroy something significant that symbolizes your ritual’s effects.
+
+○ Ritual Props ► Non-destructively manipulate physical objects symbolizing your ritual effects.
+
+○ Ritual Dance ► Perform gestures, dances, or poses symbolizing your ritual’s effect.
+
+○ Ritual Inscription ► Write or engrave words symbolizing your ritual’s effect on a surface.
+
+○ Ritual Iconography ► Paint or engrave figures or images symbolizing your ritual’s effect on a surface.
+
+○ Ritual Speech ► Speak or vocalize words or sounds symbolizing your ritual’s effect.
+
+○ Ritual Music ► Sing or play music symbolizing your ritual’s effect.
