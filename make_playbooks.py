@@ -102,8 +102,10 @@ def make_playbook(pb_name, pb_list):
     # extract JSON move list for PC playbooks only.
     if '_teaser' not in pb_name and '_gm' not in pb_name:
         all_moves = markup_moves(sum([parse_moves(staged_name(pbs)) for pbs in pb_list], [])) # parse all the moves and put them in a single list together
-        with open(outfile_xml, 'w', encoding='utf8') as xml_out:
+        
+        with open(outfile_xml, 'w', encoding='utf8') as xml_out: # write it out as XML to build the PDF playbooks.
             xml_out.write(render_xml(all_moves))
+
         with open(outfile_json, 'w', encoding='utf8') as json_out: 
             json_out.write(json.dumps({'items': all_moves, 'status': ''})) # and write it out as JSON
 

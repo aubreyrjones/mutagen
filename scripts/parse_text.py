@@ -52,14 +52,14 @@ ROLL_REPLACE = r'<m-r>⊞⌊\1⌋</m-r>'
 MATH_RE = re.compile(r'⌊(.+?)⌋')
 MATH_REPLACE = r'<m-m>⌊\1⌋</m-m>'
 
-RESULTS_RE = re.compile(r'\n\s*([🡕🡒🡖🡓]+)(.+?)($|\Z)', re.MULTILINE)
-RESULTS_REPLACE = r'<m-res><m-s>\1</m-s>\2</m-res>'
+RESULTS_RE = re.compile(r'$\s*([🡕🡒🡖🡓]+)(.+?)($|\Z)', re.MULTILINE)
+RESULTS_REPLACE = r'\n<m-res><m-s>\1</m-s>\2</m-res>'
 
-LI_RE = re.compile(r'\n\s*([•\d])+(.+?)($|\Z)', re.MULTILINE)
-LI_REPLACE = r'<m-li>\1\2</m-li>'
+LI_RE = re.compile(r'$\s*([○△●]\s+)?([•\d])+(.+?)($|\Z)', re.MULTILINE)
+LI_REPLACE = r'\n<m-li>\1\2\3</m-li>'
 
-MOVE_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►(.+)\Z', re.MULTILINE | re.DOTALL)
-MOVE_REPLACE = r'<m-i><m-ih>\1<m-it>\3</m-it>\4 ►</m-ih><m-id>\6</m-id></m-i>'
+MOVE_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►\s*(.+)\Z', re.MULTILINE | re.DOTALL)
+MOVE_REPLACE = r'<m-i><m-ih>\1<m-it>\3</m-it>\4 ► </m-ih><m-id>\6</m-id></m-i>'
 
 SECTION_RE = re.compile(r'^\s*§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
 
@@ -77,6 +77,9 @@ INPUT_REPLACE = r'<m-in><m-inv>🖉</m-inv></m-in>'
 # this is for the strict 3-line variety with stuff appearing in the center line
 LABELED_INPUT_RE = re.compile(r'^\s*⎧\s*\n(.*)\n\s*⎩\s*$', re.MULTILINE)
 LABELED_INPUT_REPLACE = r'<m-in><m-il>\1</m-il><m-inv>🖉</m-inv></m-in>'
+
+LINE_RE = re.compile(r'(<m-id>|\n\n)(.+?)(</m-id>|$|\Z)', re.MULTILINE)
+LINE_REPLACE = r'\1<m-p>\2</m-p>\3'
 
 def section_replace(move_text, debug=False):
     m = SECTION_RE.match(move_text)
@@ -116,7 +119,8 @@ def markup_move(move_text):
         (ROLL_RE, ROLL_REPLACE),
         (MATH_RE, MATH_REPLACE),
         (CLICKABLE_RE, CLICKABLE_REPLACE),
-        (SYM_RE, SYM_REPLACE)]
+        (SYM_RE, SYM_REPLACE),
+        (LINE_RE, LINE_REPLACE)]
 
     for regex, repl in filters:
         move_text = markup_with_regex(regex, repl, move_text)
@@ -126,10 +130,14 @@ def markup_move(move_text):
 def markup_moves(move_list):
     return [markup_move(m) for m in move_list]
 
+
+def mark_paragraphs(move_text):
+    
+    pass
+
 def render_xml(markedup_move_list):
     header = '<?xml version="1.0" encoding="utf8"?>'
-    stylesheet = '<?xml-stylesheet type="text/xsl" href="pb2odt.xsl"?>'
-    content = [header, stylesheet]
+    content = [header]
     content.append('<playbook>')
     sectionLatched = False
     for m in markedup_move_list:

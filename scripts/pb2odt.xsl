@@ -23,23 +23,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
 <xsl:template match="m-i">
-    <text---p text---style-name="ITEM_BLOCK">
-        <xsl:apply-templates />
-    </text---p>
+    <text---p text---style-name="ITEM_DESC">
+    <text---span text---style-name="ITEM_TITLE"><xsl:value-of select="m-ih"/></text---span>
+    <xsl:apply-templates />
 </xsl:template>
 
-<xsl:template match="m-ih">
-        <text---span text---style-name="ITEM_TITLE"><xsl:apply-templates /></text---span>
-</xsl:template>
-
-<xsl:template match="m-it">
-    <xsl:value-of select="."/>
+<xsl:template match='m-p'>
+    <text---p text---style-name="ITEM_DESC"><xsl:apply-templates /></text---p>
 </xsl:template>
 
 <xsl:template match="m-id">
-    <text---span text---style-name="ITEM_DESC">
-        <xsl:apply-templates />
-    </text---span>
+    <xsl:apply-templates />
 </xsl:template>
 
 
