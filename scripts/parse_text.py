@@ -92,7 +92,7 @@ def section_replace(move_text, debug=False):
         return move_text
     desc = ''
     if m.group(2):
-        desc = f'<m-sdesc>{m.group(2)}</m-sdesc>'
+        desc = f'\n<m-sdesc>{m.group(2)}</m-sdesc>'
     rval = f'<m-stitle>§ {m.group(1)}</m-stitle>{desc}'
     if debug:
         print(rval)
@@ -137,28 +137,78 @@ def markup_moves(move_list):
 
 # This is very similar to the MOVE_RE above, except this only captures the first paragraph.
 # It also doesn't wrap the rest of the move in any semantic markup.
-FIRST_ITEM_PARAGRAPH_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►\s*(.+)$', re.MULTILINE)
-FIRST_ITEM_PARAGRAPH_REPLACE = r'<item-header-p><m-ih>\1\3\4 ► </m-ih>\6</item-header-p>'
+FIRST_ITEM_PARAGRAPH_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►')
+FIRST_ITEM_PARAGRAPH_REPLACE = r'<m-ih>\1\3\4 ► </m-ih>'
+
+ALREADY_STITLE_RE = re.compile(r'^\s*<m-stitle')
+ALREADY_SDESC_RE = re.compile(r'^\s*<m-sdesc')
+ALREADY_LABELED_INPUT = re.compile(r'^\s*<labeled-input')
+ITEM_HEADER_LINE_RE = re.compile(r'^\s*\.*?►')
+BOX_INPUT_START_RE = re.compile(r'^\s*⎧')
+BOX_INPUT_CONT_RE = re.compile(r'^\s*⎪')
+BOX_INPUT_END_RE = re.compile(r'^\s*⎩')
+RES_INPUT_LINE_RE = re.compile(r'^\s*[🡕🡒🡖🡓]')
+LINE_ITEM_LINE_RE = re.compile(r'^\s*•')
+
+LINE_TABLE = [
+    (ALREADY_STITLE_RE, None),
+    (ALREADY_SDESC_RE, None),
+    (ALREADY_LABELED_INPUT, 'DO-NOTHING'),
+    (BOX_INPUT_START_RE, 'box-start'),
+    (BOX_INPUT_CONT_RE, 'box-cont'),
+    (BOX_INPUT_END_RE, 'box-end'),
+    (RES_INPUT_LINE_RE, 'roll-result'),
+    (LINE_ITEM_LINE_RE, 'line-item')
+]
+
+LAST_TAG_STOP_RE = re.compile(r'^<([\w\-]+)>(.*?)</[\w\-]+>$')
+LAST_TAG_STOP_REPLACE = r'<\1-stop>\2</\1-stop>'
+
+def paragraph_type(line):
+    for regex, _type in LINE_TABLE:
+        if regex.match(line):
+            return _type
+    return 'm-p'
+
+def no_stop(line):
+    if paragraph_type(line) is None: return True
+    return False
+
+def markup_paragraphs(move_text):
+    lines = move_text.replace("\n\n", "\n").split("\n")
+
+    listTypeLatch = None
+    for i, l in enumerate(lines):
+        pType = paragraph_type(l)
+        if pType not in (None, 'DO-NOTHING'):
+            lines[i] = f'<{pType}>{l}</{pType}>'
+        else:
+            pass
+
+    if not no_stop(lines[-1]):
+        lines[-1] = LAST_TAG_STOP_RE.sub(LAST_TAG_STOP_REPLACE, lines[-1])
+
+    return "\n".join(lines)
 
 def markup_to_xml(move_text):
-
     move_text = section_replace(move_text)
 
     filters = [
         (FIRST_ITEM_PARAGRAPH_RE, FIRST_ITEM_PARAGRAPH_REPLACE),
-        (INPUT_RE, XML_INPUT_REPLACE),
+        # (INPUT_RE, XML_INPUT_REPLACE),
         (LABELED_INPUT_RE, XML_LABELED_INPUT_REPLACE),
-        (LI_RE, LI_REPLACE),
-        (RESULTS_RE, RESULTS_REPLACE),
+        # (LI_RE, LI_REPLACE),
+        # (RESULTS_RE, RESULTS_REPLACE),
         (ROLL_RE, ROLL_REPLACE),
         (MATH_RE, MATH_REPLACE),
         (CLICKABLE_RE, CLICKABLE_REPLACE),
-        (SYM_RE, SYM_REPLACE),
-        (LINE_RE, LINE_REPLACE)]
+        (SYM_RE, SYM_REPLACE)]
     
     for regex, repl in filters:
         move_text = markup_with_regex(regex, repl, move_text)
     
+    move_text = markup_paragraphs(move_text)
+
     return move_text
 
 def render_xml(markedup_move_list):
