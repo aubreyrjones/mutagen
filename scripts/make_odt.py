@@ -11,7 +11,7 @@ import os
 xslt_file = os.path.join(os.path.dirname(__file__), "pb2odt.xsl")
 
 def dom_transform(xml_file):
-    dom = ET.parse(xml_file)
+    dom = ET.fromstring(bytes(xml_file, encoding='utf8'))
     xslt = ET.parse(xslt_file)
     transform = ET.XSLT(xslt)
     newdom = transform(dom)
@@ -130,6 +130,3 @@ def replace_odt_content(filename, replace_target, new_content):
 def build_odt(in_xml, out_filename):
     build_skeleton_odt(out_filename)
     replace_odt_content(out_filename, '<office:text><text:p>replace_me</text:p></office:text>', dom_transform(in_xml))
-
-if __name__ == '__main__':
-    build_odt(sys.argv[1], sys.argv[2])

@@ -4,7 +4,9 @@ def parse_moves(pbs_filename, keep_unheadered=False):
     '''
     Parse all the moves out of a plaintext playbook.
     '''
-    with open(pbs_filename + '.txt', encoding='utf8') as f:
+    if not pbs_filename.endswith('.txt'):
+        pbs_filename += '.txt'
+    with open(pbs_filename, encoding='utf8') as f:
         lines = f.readlines()
     
     moves = [""] if keep_unheadered else [] # []
@@ -211,12 +213,12 @@ def markup_to_xml(move_text):
 
     return move_text
 
-def render_xml(markedup_move_list):
+def render_xml(move_list):
     header = '<?xml version="1.0" encoding="utf8"?>'
     content = [header]
     content.append('<playbook>')
     sectionLatched = False
-    for m in markedup_move_list:
+    for m in move_list:
         if m.startswith('<m-stitle>'):
             if sectionLatched:
                 content.append("</section>")
