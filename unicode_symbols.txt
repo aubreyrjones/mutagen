@@ -1,16 +1,61 @@
-○△●▢
-►
-⌞⌝
-⌞make a story move⌝
-⊞⌊⌋
-🡕🡒🡖🡓
-⌊⌋
-×÷−
-🗣
+Common symbols:
+►			define a move
 
-▻
-👍👎
+○ △ ● ▢			all purchase/resource symbols
+○			XP-buyable aptitude, move, or resource (clickable online)
+△			permission-only aptitude, move, or resource (clickable online)
+●			pre-bought aptitude, move, or resource
+▢			resource point tracker (clickable online)
 
-⎧
-⎪
-⎩
+
+⌞⌝			mark a term defined elsewhere
+⌞make a story move⌝	commonly used
+⌞take harm⌝		commonly used
+
+
+⊞⌊⌋			call for a roll
+🡕 🡒 🡖 🡓			roll result outcomes (gain, carry, slow, stall)
+
+⌊⌋			enclose math or quantities
+× ÷ + −			unambiguous math symbols (use for clarity instead of keyboard/programmer symbols)
+
+
+
+
+Write-in fields (editable online):
+[[			start a write-in field
+||			continue an unlabeled write-in field (if you want it taller than 2 lines)
+]]			close a write-in field
+
+
+[[			start a write-in field
+your own text		label a 3-line write-in field (cannot use || to extend it)
+]]			close a write-in field
+
+
+
+
+Manual text formatting:
+
+__your text__		underline
+//your text//		italics
+!!your text!!		bold
+
+* your text...		line item--asterisk must start paragraph
+🡕🡒 your text...		results block--one or more result symbol(s) must start paragraph
+
+
+
+
+Misc:
+🗣			talk to the GM
+
+
+
+
+
+GM playbook stuff:
+▻			define a co-move named the same as a player move
+
+👎			used to indicate commonly-confused story-move situations
+

@@ -95,9 +95,11 @@ and haven't tested it.
 1. Make sure you have `python3` installed. This is included on most
    modern distros.
 
-2. Do `pip3 install pypdf2`.
+2. Do `python3 SETUP.py`.
 
 3. Install LibreOffice 6.0 or higher.
+
+4. Install the `MutagenSans.ttf` and `MutagenSansBold.ttf` fonts from this repository.
 
 
 ### Windows Preqs:
@@ -123,6 +125,8 @@ and haven't tested it.
 
    IMPORTANT! Install LibreOffice in the default location on your computer.
 
+6. Install the `MutagenSans.ttf` and `MutagenSansBold.ttf` fonts from this repository.
+
 
 ### Playbook Definitions
 
@@ -131,23 +135,24 @@ document. The playbook definition file tells the script which sections
 go together into which playbooks. Look at the included `playbooks.txt`
 for an example.
 
-Each line of the file consists of a final playbook filename, then an
-equal sign, then a list of each playbook section in the order they go
-into that playbook. The Mutagen Meta section is _automatically_
-appended to the end of every playbook created.
+Each line of the file consists of a human-friendly playbook name, an
+equal sign, final playbook filename, another equal sign, then a list
+of each playbook section in the order they go into that playbook. The
+Mutagen Meta section is _automatically_ appended to the end of every
+playbook created.
 
-Do NOT! include the extension (`.txt` or `.pdf`) on any of these
-file names. All of that is handled automatically.
+Do NOT! include the extension (`.txt`, `.odt`, `.pdf` etc) on any of
+these file names. All of that is handled automatically.
 
 ```
-output_name = common/first_section your_game/second_section your_game/third_section
+Friendly, Human Readable Playbook Name = output_file_name = common/first_section your_game/second_section your_game/third_section
 ```
 
 You can edit the included `playbooks.txt` or make a new one for your
 game.
 
 
-x### Running the Build
+### Running the Build
 
 Once you've gotten the prereqs out of the way, you should be able to
 run the build.

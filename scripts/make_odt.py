@@ -60,7 +60,7 @@ def build_skeleton_odt(filename, title_text=''):
     textdoc.masterstyles.addElement(mp)
 
     defaultPStyle = DefaultStyle(family="paragraph")
-    defaultPStyle.addElement(TextProperties(attributes={'fontsize': '9pt', 'fontfamily': "DejaVu Sans"}))
+    defaultPStyle.addElement(TextProperties(attributes={'fontsize': '9pt', 'fontfamily': "MutagenSans"}))
     defaultPStyle.addElement(ParagraphProperties(attributes={'margintop': '2mm', 'keeptogether': 'always', 'keepwithnext': 'auto', 'registertrue': 'true'}))
     textdoc.styles.addElement(defaultPStyle)
 

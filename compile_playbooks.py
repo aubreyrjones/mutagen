@@ -13,14 +13,15 @@ import shutil
 from scripts.make_odt import build_odt
 
 # If you're on windows and didn't install LibreOffice in the default location, you'll need to edit that path
-LIBREOFFICE = 'C:\Program Files\LibreOffice\program\soffice.com' if sys.platform == 'win32' else 'soffice'
+# just use forward slashes, not back-slashes.
+LIBREOFFICE = 'C:/Program Files/LibreOffice/program/soffice.com' if sys.platform == 'win32' else 'soffice'
 
-# These are probably fine for anybody, but they're broken out here anyway.
+# These are probably fine for anybody, but they're configurable here anyway.
 BUILD_DIR = 'build'
 OUT_DIR = 'playbook_output'
 JSON_DIR = f'{OUT_DIR}/tracker_templates'
 
-# Name of the meta section appended to playbooks.
+# Name of the meta section appended to non-teaser playbooks.
 META = 'common/meta.odt'
 
 
@@ -36,20 +37,20 @@ def split_section(pbs):
 
 def staged_name(pbs, ext):
     '''
-    Get a section name as it appears in the build dir.
+    Get a section name as it appears in the build dir with that extension.
     '''
     basename = os.path.splitext(os.path.basename(pbs))[0]
     return '/'.join([BUILD_DIR, f'{basename}.{ext}'])
 
-def needs_rebuilt(input_files, output_file):
+def needs_rebuilt(input_files: list, output_file):
     '''
-    Return true if the output is newer than the input.
+    Return true if the output_file doesn't exist or is older than the input_files.
     '''
     for inf in input_files:
         if not path.exists(output_file): return True
         if path.getmtime(inf) > path.getmtime(output_file):
             return True
-    return False # doesn't exist, so build
+    return False
 
 def make_pdf(input_filename):
     '''
@@ -90,10 +91,8 @@ def stage_section(section_name):
 def parse_and_markup_span(section_seq):
     parsed_moves = sum([parse_moves(s) for s in section_seq], [])
     
-    web_markup = markup_moves(parsed_moves)
-    xml_markup = render_xml(parsed_moves)
-    return {'json': json.dumps({'items': web_markup, 'status': ''}),
-            'xml': xml_markup}
+    return {'xml': render_xml(parsed_moves),
+            'json': json.dumps({'items': markup_moves(parsed_moves), 'status': '', 'stuff': '', 'markup_version': 1})}
     
 
 def make_playbook(pb_name, human_name, pb_list):
@@ -138,10 +137,10 @@ def make_playbook(pb_name, human_name, pb_list):
             odtName = staged_name(pb_name + str(i), 'odt')
             if needs_rebuilt(span, odtName):
                 print(f'\tBuilding ODT from text: {" ".join(span)}')
-                with open(staged_name(odtName, 'xml'), 'w') as xmlfile:
+                with open(staged_name(odtName, 'xml'), 'w', encoding='utf-8-sig') as xmlfile:
                     xmlfile.write(markups['xml'])
                 build_odt(markups['xml'], odtName, human_name)
-            with open(json_file, 'w') as json_outfile:
+            with open(json_file, 'w', encoding='utf-8-sig') as json_outfile:
                 json_outfile.write(markups['json'])
         else:
             odtName = span
