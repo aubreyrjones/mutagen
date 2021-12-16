@@ -143,6 +143,13 @@ Iconic light:
 ○ Attentive Chrysalis ► Spend 1 Concentration. Over the course of a few minutes, you completely envelope a nearby willing or unconscious being in a tough, chitinous, protective cocoon. While in the cocoon, they remain unconscious and heal 1 ⌞Health⌝ per 24 hours they’re inside. The cocoon dissolves into goo and they wake up when you ⌞drop concentration⌝.
 
 
+○ Disrupt Concentration ► Spend 1 Mana. ⊞⌊Attainment⌋ to disrupt a ⌞spell⌝ that another Wizard of similar power is holding in Concentration. 
+
+🡕🡒 They ⌞drop concentration⌝ on that spell.
+🡖 They ⌞drop concentration⌝ on one spell at random.
+🡓 They maintain concentration.
+
+
 ○ Circle of Transit (3) ► Spend 3 Mana. Inscribe a simple circle on solid ground, up to 3m in diameter. When you trigger the spell, ⊞⌊Attainment⌋ to near-instantly transport everyone inside the circle to a destination of your choosing. Gear on their persons goes along, but not just loose cargo. One of the people in the circle must already have visited your approximate destination at some point in their life, but they don’t have to remember it. It works the same way if you’re in the circle or not.
 
 🡕 They arrive right on target and you restore 1 Mana.
@@ -153,13 +160,6 @@ Iconic light:
     • they each take a serious injury.
     • they arrive wildly off-target, maybe by miles—but not someplace immediately fatal.
     • they arrive scattered individually to different points within a few hundred meters of each other. You can’t choose this if there’s only one creature in the circle.
-
-
-○ Disrupt Concentration ► Spend 1 Mana. ⊞⌊Attainment⌋ to disrupt a ⌞spell⌝ that another Wizard of similar power is holding in Concentration. 
-
-🡕🡒 They ⌞drop concentration⌝ on that spell.
-🡖 They ⌞drop concentration⌝ on one spell at random.
-🡓 They maintain concentration.
 
 
 ○ Suppress Magic (2) ► Spend 1 Concentration. ⊞⌊Attainment⌋ to suppress any single magical effect while you hold this spell in Concentration.
