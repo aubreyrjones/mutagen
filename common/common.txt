@@ -1,31 +1,29 @@
-﻿§ Common Playbook
-You’re a PC. This playbook has what you need to define yourself and drive the story. The rules are at the end, but look around first.
-
-§ Common Resources
+﻿§ Common Resources
 
 Name ► We gotta call you something.
-⎧
-⎩
+[[
+]]
 
 
 Concept ► What’s your deal? Don’t just put a species and playbook name. Put what makes you cool, special, or exciting. ⌞Think for the camera⌝. You can change or refine this as you play.
-⎧
-⎪
-⎪
-⎪
-⎩
+[[
+||
+||
+||
+]]
 
 
 Drives ► What do you always want or need? What gets you out of bed to take exciting risks? Like, why even bother? 1 is fine, but 2 is better for you.
-⎧
-⎩
-⎧
-⎩
+[[
+]]
+
+[[
+]]
 
 
 🗣Profession ► If you’ve got a trade or career that isn’t covered by a PC playbook, put it here. This should be something many people could do in your world, but most don’t know how.
-⎧
-⎩
+[[
+]]
 
 
 Health ► Health abstractly represents the integrity and functionality of your body, mind, and spirit. When you’re weakened or injured, you ⌞take harm⌝, which might cause you to lose health.  When you erase your last health, ⌞you die⌝.
@@ -80,7 +78,7 @@ These are exciting things that many could get good at. They broadly cover a lot,
 ○ 🗣Professional Skills ○ ○ ○ ► Applying the educated, practiced, or specialized knowledge and skills of your trade or profession.
 
 
-§ Story Moves
+~~~§ Story Moves
 “Someone” means a person or anything animate. “Something” means anything inanimate.
 
 Fuck ‘em up ► You want to injure, incapacitate, or kill someone, so you get your hands dirty.

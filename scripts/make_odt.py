@@ -1,5 +1,5 @@
 from odf.opendocument import OpenDocumentText
-from odf.style import PageLayout, MasterPage, Header, Footer, PageLayoutProperties, Style, TextProperties, ParagraphProperties, Columns, Column, DefaultStyle
+from odf.style import PageLayout, MasterPage, Header, Footer, PageLayoutProperties, Style, TextProperties, ParagraphProperties, Columns, Column, DefaultStyle, ColumnSep
 from odf.text import P, PageNumber, A, Span
 import lxml.etree as ET
 import zipfile
@@ -41,15 +41,16 @@ def make_span_style(textdoc, stylename, tAttr):
     textdoc.styles.addElement(s)
 
 
-def build_skeleton_odt(filename):
+def build_skeleton_odt(filename, title_text=''):
     textdoc = OpenDocumentText()
     pl = PageLayout(name="pagelayout")
     plp = PageLayoutProperties(pagewidth='11in', pageheight='8.5in', printorientation="landscape",
-                                    margintop='0.25in', marginleft='0.25in', marginbottom='0.25in',
+                                    margintop='0.58in', marginleft='0.25in', marginbottom='0.25in',
                                     marginright='0.25in', numformat='1', writingmode='lr-tb')
     
     
-    columnsStyle = Columns(columncount=3, columngap="5mm")
+    columnsStyle = Columns(columncount=3, columngap="0.2in")
+    columnsStyle.addElement(ColumnSep(attributes={'style':'solid', 'width':'0.25pt'}))
     plp.addElement(columnsStyle)
     
     pl.addElement(plp)
@@ -63,46 +64,30 @@ def build_skeleton_odt(filename):
     defaultPStyle.addElement(ParagraphProperties(attributes={'margintop': '2mm', 'keeptogether': 'always', 'keepwithnext': 'auto', 'registertrue': 'true'}))
     textdoc.styles.addElement(defaultPStyle)
 
-    make_paragraph_style(textdoc, "SECTION_TITLE", pAttr={'keepwithnext': 'always'}, tAttr={'fontsize': '16.1pt', 'fontweight': 'bold'})
+    make_paragraph_style(textdoc, "SECTION_TITLE_BREAK", pAttr={'keepwithnext': 'always', 'breakbefore': 'column'}, tAttr={'fontsize': '14pt', 'fontweight': 'bold'})
+    make_paragraph_style(textdoc, "SECTION_TITLE", pAttr={'keepwithnext': 'always'}, tAttr={'fontsize': '14pt', 'fontweight': 'bold'})
+    
     make_with_stop(textdoc, "ITEM_DESC", pAttr={'keepwithnext': 'always'})
+    make_with_stop(textdoc, "ITEM_HEADING", pAttr={'keepwithnext': 'always', 'margintop': '3mm'})
 
     make_span_style(textdoc, "ITEM_TITLE", {'fontsize': '9pt', 'fontweight': 'bold'})
     make_span_style(textdoc, "BOLD_SYMBOL", {'fontsize': '9pt', 'fontweight': 'bold'})
 
-    make_paragraph_style(textdoc, "FIRST_INPUT_LINE", pAttr={'margintop': '2mm', 'keepwithnext': 'always'})
+    make_paragraph_style(textdoc, "FIRST_INPUT_LINE", pAttr={'margintop': '1mm', 'keepwithnext': 'always'})
     make_paragraph_style(textdoc, "INPUT_LINE", pAttr={'margintop': '0mm', 'keepwithnext': 'always'})
     make_with_stop(textdoc, "LAST_INPUT_LINE", pAttr={'margintop': '0mm', 'keepwithnext': 'always'})
 
-    make_with_stop(textdoc, "LINE_ITEM", pAttr={'margintop': '1mm'})
-    make_with_stop(textdoc, "RESULT_ITEM", pAttr={'margintop': '1mm'})
+    make_with_stop(textdoc, "LINE_ITEM", pAttr={'margintop': '1mm', 'marginleft': '2mm', 'keepwithnext': 'always'})
+    make_with_stop(textdoc, "RESULT_ITEM", pAttr={'margintop': '1mm', 'keepwithnext': 'always'})
 
-    # secTitle = Style(name="SECTION_TITLE", family="paragraph")
-    # secTitle.addElement(TextProperties(attributes={'fontsize': '16.1pt', 'fontweight': 'bold'}))
-    # textdoc.styles.addElement(secTitle)
+    make_paragraph_style(textdoc, "FOOTER_PAGE_NUMBER", pAttr={'textalign': 'right'}, tAttr={'fontsize': '8pt', 'fontweight': 'bold'})
 
-    # itemDesc = Style(name="ITEM_DESC", family="paragraph")
-    # itemDesc.addElement(TextProperties(attributes={'fontsize': '9pt'}))
-    # textdoc.styles.addElement(itemDesc)
-
-    # itemTitle = Style(name="ITEM_TITLE", family="text")
-    # itemTitle.addElement(TextProperties(attributes={'fontsize': '9pt', 'fontweight': 'bold'}))
-    # textdoc.styles.addElement(itemTitle)  
-
-    # firstInputLine = Style(name="FIRST_INPUT_LINE", family="paragraph")
-    # firstInputLine.addElement(ParagraphProperties(attributes={'margintop': '2mm', 'keepwithnext': 'always'}))
-    # textdoc.styles.addElement(firstInputLine)
-
-    # inputLine = Style(name="INPUT_LINE", family="paragraph")
-    # inputLine.addElement(ParagraphProperties(attributes={'margintop': '0mm'}))
-    # textdoc.styles.addElement(inputLine)
-
-    # inputLabelLine = Style(name="INPUT_LABEL_LINE", family="paragraph")
-    # inputLabelLine.addElement(ParagraphProperties(attributes={'margintop': '0mm', 'keepwithnext': 'always'}))
-    # textdoc.styles.addElement(inputLabelLine)
-
-    # lineItem = Style(name="LINE_ITEM", family="paragraph")
-    # lineItem.addElement(ParagraphProperties(attributes={'margintop': '1mm'}))
-    # textdoc.styles.addElement(lineItem)
+    f = Footer()
+    fp = P(stylename='FOOTER_PAGE_NUMBER')
+    fp.addElement(Span(text=f'{title_text} ⌬ '))
+    fp.addElement(PageNumber(text="1"))
+    f.addElement(fp)
+    mp.addElement(f)
 
     replace_target = P(text="replace_me")
     textdoc.text.addElement(replace_target)
@@ -127,6 +112,6 @@ def replace_odt_content(filename, replace_target, new_content):
     os.rename(tempname, filename)
 
 
-def build_odt(in_xml, out_filename):
-    build_skeleton_odt(out_filename)
+def build_odt(in_xml, out_filename, human_title_text=''):
+    build_skeleton_odt(out_filename, human_title_text)
     replace_odt_content(out_filename, '<office:text><text:p>replace_me</text:p></office:text>', dom_transform(in_xml))

@@ -55,9 +55,9 @@ def make_pdf(input_filename):
     '''
     Builds a PDF from an ODT.
     '''
-    print("Building pdf:", input_filename)
+    print("\t\tBuilding pdf:", input_filename)
     call([LIBREOFFICE, '--headless', '--convert-to', 'pdf', '--outdir', BUILD_DIR, input_filename])
-    sleep(0.25)
+    sleep(0.55) # we need this here so that we don't get ahead of LibreOffice.
     return staged_name(input_filename, 'pdf')
 
 def copy_odt(input_filename):
@@ -96,7 +96,7 @@ def parse_and_markup_span(section_seq):
             'xml': xml_markup}
     
 
-def make_playbook(pb_name, pb_list):
+def make_playbook(pb_name, human_name, pb_list):
     '''
     Build a playbook from its constituent sections.
     '''
@@ -130,14 +130,17 @@ def make_playbook(pb_name, pb_list):
             else:
                 spans.append([sec])
 
-    pdfs = []
+    pdfs = list()
     for i, span in enumerate(spans):
         odtName = None
         if isinstance(span, list):
             markups = parse_and_markup_span(span)
             odtName = staged_name(pb_name + str(i), 'odt')
             if needs_rebuilt(span, odtName):
-                build_odt(markups['xml'], odtName)
+                print(f'\tBuilding ODT from text: {" ".join(span)}')
+                with open(staged_name(odtName, 'xml'), 'w') as xmlfile:
+                    xmlfile.write(markups['xml'])
+                build_odt(markups['xml'], odtName, human_name)
             with open(json_file, 'w') as json_outfile:
                 json_outfile.write(markups['json'])
         else:
@@ -145,15 +148,20 @@ def make_playbook(pb_name, pb_list):
         pdf_span_name = staged_name(odtName, 'pdf')
         pdfs.append(pdf_span_name)
         if needs_rebuilt([odtName], pdf_span_name):
-            pdfs.append(make_pdf(odtName))
+            print(f"\tBuilding PDF from ODT: {odtName}")
+            make_pdf(odtName)
 
     # build PDF
-    pdf_merger = PdfFileMerger()
-    for pdf in pdfs:
-        pdf_merger.append(pdf)
+    if needs_rebuilt(pdfs, pdf_file):
+        print(f'\tJoining PDFs: {" ".join(pdfs)}')
+        pdf_merger = PdfFileMerger()
+        for pdf in pdfs:
+            pdf_merger.append(pdf)
 
-    pdf_merger.write(pdf_file)
-    pdf_merger.close()
+        pdf_merger.write(pdf_file)
+        pdf_merger.close()
+    else:
+        print("\tNothing to do.")
 
 
 ##
@@ -183,7 +191,7 @@ playbooks = {}
 # open the playbook definition and parse the lines
 # skip line starting with `#` as comments.
 # skip any line that doesn't have a `=` in it
-with open(pb_def_file, encoding='utf8') as pb_defs:
+with open(pb_def_file, encoding='utf-8-sig') as pb_defs:
     lines = pb_defs.readlines()
 
     for line in lines:
@@ -192,11 +200,13 @@ with open(pb_def_file, encoding='utf8') as pb_defs:
             if stripped.startswith('#'): continue
             if '=' not in stripped: continue
             splits = stripped.split('=')
-            pb_name = splits[0].strip()
-            playbooks[pb_name] = [s.strip() for s in splits[1].split()]
-        except:
+            human_name = splits[0].strip()
+            pb_name = splits[1].strip()
+            playbooks[pb_name] = (human_name, [s.strip() for s in splits[2].split()])
+        except Exception as ex:
+            print(ex)
             print("Error in playbook definition file", pb_def_file, "line:", line)
             exit(1)
 
 for k, v in playbooks.items():
-    make_playbook(k, v)
+    make_playbook(k, v[0], v[1])

@@ -1,4 +1,6 @@
-﻿You combine symbol and metaphor to link magical effects to their target.
+﻿~~~§ Witch Playbook
+You combine symbol and metaphor to link magical effects to their target.
+
 § Witch Moves
 Enact Ritual ► You do magic by linking target and effect with a symbolic ritual. You might be the target.
 
@@ -11,9 +13,9 @@ When you enact a ritual to ⌞make a story move⌝, ⊞⌊combined methods⌋. T
 🡖🡓 on your story move: the complications or costs are related to your ritual’s effect—except applied to your chagrin.
 
 Witch’s Familiar ► A common household animal has chosen to be your loyal familiar. A shockingly intelligent specimen, you can understand their speech and they yours. While fictionally an ordinary animal, your familiar has flawless “plot armor” and miraculously escapes certain death every time.
-                 ⎧
+[[
 Name/kind: 
-                 ⎩
+]]
 ○ Your eyes a moment, friend ► You can see through your familiar’s eyes.
 
 ○ My friend, my ambassador ► You can speak through your familiar’s mouth and hear through their ears.

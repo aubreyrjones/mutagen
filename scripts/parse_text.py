@@ -6,7 +6,7 @@ def parse_moves(pbs_filename, keep_unheadered=False):
     '''
     if not pbs_filename.endswith('.txt'):
         pbs_filename += '.txt'
-    with open(pbs_filename, encoding='utf8') as f:
+    with open(pbs_filename, encoding='utf-8-sig') as f:
         lines = f.readlines()
     
     moves = [""] if keep_unheadered else [] # []
@@ -52,14 +52,14 @@ MATH_REPLACE = r'<m-m>⌊\1⌋</m-m>'
 RESULTS_RE = re.compile(r'$\s*([🡕🡒🡖🡓]+)(.+?)($|\Z)', re.MULTILINE)
 RESULTS_REPLACE = r'\n<m-res><m-s>\1</m-s>\2</m-res>'
 
-LI_RE = re.compile(r'$\s*([○△●]\s+)?([•\d])+(.+?)($|\Z)', re.MULTILINE)
+LI_RE = re.compile(r'$\s*(\s+)?([•\d])+(.+?)($|\Z)', re.MULTILINE)
 LI_REPLACE = r'\n<m-li>\1\2\3</m-li>'
 
 MOVE_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►\s*(.+)\Z', re.MULTILINE | re.DOTALL)
 MOVE_REPLACE = r'<m-i><m-ih>\1<m-it>\3</m-it>\4 ► </m-ih><m-id>\6</m-id></m-i>'
 
 #SECTION_RE = re.compile(r'^\s*§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
-SECTION_RE = re.compile(r'^.*?§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
+SECTION_RE = re.compile(r'^(~~~)?§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
 
 CLICKABLE_RE = re.compile(r'([○△▢])')
 CLICKABLE_REPLACE = r'<m-c>\1</m-c>'
@@ -69,29 +69,36 @@ SYM_REPLACE = r'<m-s>\1</m-s>'
 
 # this is matching the unicode bracket write-in fields from the playbooks
 # the ⎪ below is not a pipe; that's the middle of the bracket
-INPUT_RE = re.compile(r'^\s*(⎧[\s\n⎪]*?⎩)\s*$', re.MULTILINE)
+INPUT_RE = re.compile(r'^\s*(\[\[[\s\n\|\|]*?\]\])\s*$', re.MULTILINE)
 INPUT_REPLACE = r'<m-in><m-inv>🖉</m-inv></m-in>'
 XML_INPUT_REPLACE = r'<box-input>\1</box-input>'
 
 # this is for the strict 3-line variety with stuff appearing in the center line
-LABELED_INPUT_RE = re.compile(r'^\s*⎧\s*\n(.*)\n\s*⎩\s*$', re.MULTILINE)
+LABELED_INPUT_RE = re.compile(r'^\s*\[\[\s*\n(.*)\n\s*\]\]\s*$', re.MULTILINE)
 LABELED_INPUT_REPLACE = r'<m-in><m-il>\1</m-il><m-inv>🖉</m-inv></m-in>'
-XML_LABELED_INPUT_REPLACE = r'<labeled-input><m-il>\1</m-il></labeled-input>'
+XML_LABELED_INPUT_REPLACE = r'\n<labeled-input><m-il>\1</m-il></labeled-input>'
 
 # this is a (partial) fixup for linebreaks -> paragraphs so that we can use
 # standard HTML white-space rules. Why not just <p>? Because this one's mine. :)
 LINE_RE = re.compile(r'(<m-id>|\n\n)(.+?)(</m-id>|$|\Z)', re.MULTILINE)
 LINE_REPLACE = r'\1<m-p>\2</m-p>\3'
 
+# here's non-paragraph line break items.
+LINE_BREAK_RE = re.compile(r'^(<m-[cs]>)(.+?)(</m-id>|$|\Z)', re.MULTILINE)
+LINE_BREAK_REPLACE = r'\n<m-br>\1\2</m-br>\3'
 
-def section_replace(move_text, debug=False):
+
+def section_replace(move_text, debug=False, detect_colbreak=False):
     m = SECTION_RE.match(move_text)
     if not m:
         return move_text
     desc = ''
-    if m.group(2):
-        desc = f'\n<m-sdesc>{m.group(2)}</m-sdesc>'
-    rval = f'<m-stitle>§ {m.group(1)}</m-stitle>{desc}'
+    attr = ''
+    if detect_colbreak and m.group(1):
+        attr = ' colbreak="true"'
+    if m.group(3):
+        desc = f'\n<m-sdesc>{m.group(3)}</m-sdesc>'
+    rval = f'<m-stitle{attr}>§ {m.group(2)}</m-stitle>{desc}'
     if debug:
         print(rval)
         return move_text
@@ -125,7 +132,8 @@ def markup_move(move_text):
         (MATH_RE, MATH_REPLACE),
         (CLICKABLE_RE, CLICKABLE_REPLACE),
         (SYM_RE, SYM_REPLACE),
-        (LINE_RE, LINE_REPLACE)]
+        (LINE_RE, LINE_REPLACE),
+        (LINE_BREAK_RE, LINE_BREAK_REPLACE)]
 
     for regex, repl in filters:
         move_text = markup_with_regex(regex, repl, move_text)
@@ -144,18 +152,19 @@ ALREADY_STITLE_RE = re.compile(r'^\s*<m-stitle')
 ALREADY_SDESC_RE = re.compile(r'^\s*<m-sdesc')
 ALREADY_LABELED_INPUT = re.compile(r'^\s*<labeled-input')
 ALREADY_RESULT = re.compile(r'^\s*<m-res')
-ITEM_HEADER_LINE_RE = re.compile(r'^\s*\.*?►')
-BOX_INPUT_START_RE = re.compile(r'^\s*⎧')
-BOX_INPUT_CONT_RE = re.compile(r'^\s*⎪')
-BOX_INPUT_END_RE = re.compile(r'^\s*⎩')
+ITEM_HEADER_LINE_RE = re.compile(r'^.*?►')
+BOX_INPUT_START_RE = re.compile(r'^\s*\[\[')
+BOX_INPUT_CONT_RE = re.compile(r'^\s*\|\|')
+BOX_INPUT_END_RE = re.compile(r'^\s*\]\]')
 RES_INPUT_LINE_RE = re.compile(r'^\s*[🡕🡒🡖🡓]')
-LINE_ITEM_LINE_RE = re.compile(r'^\s*•')
+LINE_ITEM_LINE_RE = re.compile(r'^\s*(•|\d+\.)')
 
 LINE_TABLE = [
     (ALREADY_STITLE_RE, None),
     (ALREADY_SDESC_RE, None),
     (ALREADY_LABELED_INPUT, 'DO-NOTHING'),
     (ALREADY_RESULT, 'DO-NOTHING'),
+    (ITEM_HEADER_LINE_RE, 'item-start'),
     (BOX_INPUT_START_RE, 'box-start'),
     (BOX_INPUT_CONT_RE, 'box-cont'),
     (BOX_INPUT_END_RE, 'box-end'),
@@ -193,7 +202,7 @@ def markup_paragraphs(move_text):
     return "\n".join(lines)
 
 def markup_to_xml(move_text):
-    move_text = section_replace(move_text)
+    move_text = section_replace(move_text, detect_colbreak=True)
 
     filters = [
         (FIRST_ITEM_PARAGRAPH_RE, FIRST_ITEM_PARAGRAPH_REPLACE),

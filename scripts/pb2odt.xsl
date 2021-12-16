@@ -12,6 +12,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:apply-templates />
 </xsl:template>
 
+<xsl:template match="m-stitle[@colbreak='true']">
+    <text---h text---style-name="SECTION_TITLE_BREAK"><xsl:value-of select="."/></text---h>
+</xsl:template>
 
 <xsl:template match="m-stitle">
     <text---h text---style-name="SECTION_TITLE"><xsl:value-of select="."/></text---h>
@@ -28,6 +31,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:template match='m-p-stop'>
     <text---p text---style-name="ITEM_DESC_STOP"><xsl:apply-templates /></text---p>
 </xsl:template>
+
+<xsl:template match='item-start'>
+    <text---p text---style-name="ITEM_HEADING"><xsl:apply-templates /></text---p>
+</xsl:template>
+
+<xsl:template match='item-start-stop'>
+    <text---p text---style-name="ITEM_HEADING_STOP"><xsl:apply-templates /></text---p>
+</xsl:template>
+
 
 <xsl:template match="m-ih">
     <text---span text---style-name="ITEM_TITLE"><xsl:apply-templates /></text---span>

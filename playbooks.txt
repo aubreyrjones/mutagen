@@ -5,11 +5,11 @@
 
 
 # PC playbooks
-lscwm_pc_wizard        = common/common     pcs/wizard
-lscwm_pc_sorcerer      = common/common     pcs/sorcerer
-lscwm_pc_adept         = common/common     pcs/adept
-lscwm_pc_witch         = common/common     pcs/witch
-raw_pc                = common/common
+LSCWM Playbook: Wizard            =   lscwm_pc_wizard        = common/common     pcs/wizard
+LSCWM Playbook: Sorcerer          =   lscwm_pc_sorcerer      = common/common     pcs/sorcerer
+LSCWM Playbook: Adept             =   lscwm_pc_adept         = common/common     pcs/adept
+LSCWM Playbook: Witch             =   lscwm_pc_witch         = common/common     pcs/witch
+Raw Mutagen Playbook              =   raw_pc                 = common/common
 
 # GM playbook. Should contain `_gm` somewhere in the output name.
-raw_gm                = gm/gm             gm/gm_common
+Raw Mutagen GM Playbook           =       raw_gm                = gm/gm             gm/gm_common

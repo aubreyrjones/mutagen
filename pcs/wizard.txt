@@ -1,27 +1,40 @@
-﻿You learned your magic through dedication to the craft, laboring to absorb the intricate incantations and gestures needed to cast each spell.
+﻿~~~§ Wizard Playbook
+You learned your magic through dedication to the craft, laboring to absorb the intricate incantations and gestures needed to cast each spell.
+
 § Wizard Resources
+
 Mana ► The stored magical energy within your body, Mana powers many of a wizard’s ⌞spells⌝.
 
 ● 1. ▢ ▢ ▢ ▢ ▢ ▢
 ○ 2. ▢ ▢ 
 ○ 3. ▢ ▢ 
 
+
 Concentration ► Holding a spell active requires enormous mental effort. You can hold a limited number of ⌞spells⌝ active at once. When you spend a Concentration, clear the ▢, but note the name of the active spell. So long as you’re alive, the spell’s effect is active until a move makes you erase its name.
 
 You cannot write down a new spell’s name in an occupied spot. You must ⌞drop concentration⌝ on the old spell first. However, you can refill the ▢ for a slot while still holding the last spell in it.
-        ⎧
+
+[[
 ● 1.▢
-        ⎩
-        ⎧
+]]
+
+[[
 ○ 2.▢
-        ⎩
-        ⎧
+]]
+
+[[
 ○ 3.▢
-        ⎩
+]]
+
+
 § Wizard Aptitudes
+
 ● Attainment ○ ○ ○ ► Shaping, manipulating, controlling, targeting, or applying ⌞cantrips⌝ and ⌞spells⌝ from this playbook.
+
+
 § Wizard Moves
 Soak Mana ► You can restore Mana by harmlessly absorbing what’s radiated from living creatures. By spending time around people, animals, or very lush vegetation, you gain 1 Mana for every 8 hours—it need not be continuous. If that’s not fast enough for you, maybe your power demands that you ⌞reap Mana⌝.
+
 
 Reap Mana ► You forcibly tear the Mana from a living creature to power your magic, stealing its life force with a touch. ⊞⌊Attainment⌋.
 
@@ -32,11 +45,15 @@ Reap Mana ► You forcibly tear the Mana from a living creature to power your ma
 🡖 You get 2 Mana and they take 2 harm.
 🡓 You don’t get any Mana and they’re unharmed.
 
+
 Restore Concentration ► ⌞Drop concentration⌝ on all the ⌞spells⌝ you’re currently holding. You can then gain 1 Concentration by meditating uninterrupted for most of an hour. Alternatively, if you can sleep restfully for a few hours and wake up with full Concentration.
+
 
 Drop Concentration ► When a move or the GM says so, or whenever you will it, erase a ⌞spell⌝ you’re holding in Concentration. The spell’s effects end more or less immediately.
 
+
 Lose Consciousness ► If you lose consciousness, you automatically ⌞drop concentration⌝ on all ⌞spells⌝.
+
 
 Lose Health ► When you lose ⌞health⌝ while you have any ⌞spells⌝ in Concentration, ⊞⌊Attainment⌋.
 
@@ -44,26 +61,40 @@ Lose Health ► When you lose ⌞health⌝ while you have any ⌞spells⌝ in Co
 🡖 You ⌞drop concentration⌝ on one spell at random.
 🡓 You ⌞drop concentration⌝ on all active spells.
 
+
 ○ Asbestos Hide ► You’re not injured by heat, electricity, or fire created by your ⌞spell⌝ effects.
+
 
 ○ Night Eyes ► You permanently have the ⌞status⌝ ‘completely colorblind’, but you can see perfectly even in the absolute absence of light. This doesn’t let you see invisible stuff or through obstructions like smoke and fog.
 
+
 ○ Fairy Torch ► You can summon or dismiss a floating, torch-bright iconic light source at will. This could be a small creature, spell effect, or artifact; but it’s always the same for you.
-                 ⎧
+[[
 Iconic light:
-                 ⎩
+]]
+
+
 § Cantrips
+
+
 ○ Fuse ► You instantly attach two objects by touching them together. The bond is about as strong as epoxy.
+
 
 ○ Cleave ► With a touch, you deliver a forceful cut like that of a sharp kitchen knife.
 
+
 ○ Clatter ► You cause a sharp but unidentifiable noise to emanate from any point in space you can see.
 
+
 ○ Flare ► You launch from your palm a brilliantly bright beam or streak of light in a color of your choice. The light is utterly harmless, but can be seen from miles around if launched into the air.
+
+
 § Spells
 ○ Flame Dart ► Spend 1 Mana. For the next couple minutes, you can voluntarily launch bullet-fast bolts of fire from your fingertip. Darts impact with a small but forceful explosion and intense heat.
 
+
 ○ Fireball ► Spend 1 Mana. You summon a ball of compressed fire to your palm. While you can perceive it, you can mentally move it around in space, including launching it at fast-pitch speeds. Its impact engulfs a 5m sphere in searing flame.
+
 
 ○ Flame Wall (1) ► Spend 1 Concentration. ⊞⌊Attainment⌋ to summon a magical wall of flame no longer than 40m. The wall’s path is straight, but you may conjure it anywhere you perceive in any orientation along the ground or any other solid plane.
 
@@ -72,27 +103,45 @@ Iconic light:
 🡖 It’s a waist-high wall.
 🡓 It’s a trail of very hot, knee-high flames.
 
+
 ○ Stunning Spark ► Spend 1 Mana. For the next couple minutes, your touch involuntarily delivers a tremendous, but non-lethal, electrical shock. The shock typically does no serious injury (0 harm), but thoroughly disrupts nerves and circuits.
+
 
 ○ Searing Arc (2) ► Spend 1 Concentration. While you hold the spell in Concentration, you can voluntarily emit monstrous arcs of targeted electrical current from your hands. They’ll shoot at least 10m, but it’s hard to hit small targets. Careful! The electricity arcs between nearby folks and objects.
 
+
 ○ Maxwell’s Demon (3) ► Spend 2 Mana. You can transfer heat from any source you perceive to any destination within 50m of the source.
+
 
 ○ Invisibility ► Spend 1 Concentration. While you hold the spell in Concentration, you’re invisible.
 
+
 ○ Bulletproof ► Spend 1 Mana. For a moment, blunt projectiles leave only bruises on your skin, no matter their speed or mass.
+
 
 ○ Deflect Arrows ► Spend 1 Mana. For the next few moments, any projectiles going no faster than a crossbow bolt are physically deflected away from your body.
 
+
 ○ Instill Emotion ► Spend 1 Mana. For the next few minutes, everyone around you feels an overwhelming emotion of your choice toward you. Alas, this cannot overcome hostility that has already devolved to violence.
 
-○ Clouding Mist ► Spend 1 Concentration. You fill a volume of space with absolutely opaque, but otherwise harmless, grey mist. You can fill a space as large as a stadium. How long it takes to fill depends on the volume, but no more than a minute. You and your allies can see through the mist with some difficulty.
 
 ○ Clarify ► Spend 1 Mana. Touch something to make its entire exterior surface physically transparent to visible light. If it’s solid, the entire object becomes transparent. It becomes opaque again when you stop touching it.
 
+
+○ Clouding Mist ► Spend 1 Concentration. You fill a volume of space with absolutely opaque, but otherwise harmless, grey mist. You can fill a space as large as a stadium. How long it takes to fill depends on the volume, but no more than a minute. You and your allies can see through the mist with some difficulty.
+
+
 ○ Glitch ► Spend 1 Mana. Inside of 50m, every electronic device more complicated than a wristwatch unceremoniously and permanently stops working. Data might be recoverable. Watch out for aeronautics and pacemakers.
 
+
 ○ Blink ► Spend 1 Mana. For the next few minutes, you can instantly flick from where you are to any point you can perceive, so long as you have an unimpeded straight path to it that your body could contort to fit through. If it matters, you do not physically traverse the space between source and destination.
+
+
+○ Stabilize ► Spend 2 Mana. Touch someone to temporarily heal their injuries. For the rest of the scene, or until they lose ⌞Health⌝ again, they can ignore all injury-related status and act as if they’re in perfect form.
+
+
+○ Attentive Chrysalis ► Spend 1 Concentration. Over the course of a few minutes, you completely envelope a nearby willing or unconscious being in a tough, chitinous, protective cocoon. While in the cocoon, they remain unconscious and heal 1 ⌞Health⌝ per 24 hours they’re inside. The cocoon dissolves into goo and they wake up when you ⌞drop concentration⌝.
+
 
 ○ Circle of Transit (3) ► Spend 3 Mana. Inscribe a simple circle on solid ground, up to 3m in diameter. When you trigger the spell, ⊞⌊Attainment⌋ to near-instantly transport everyone inside the circle to a destination of your choosing. Gear on their persons goes along, but not just loose cargo. One of the people in the circle must already have visited your approximate destination at some point in their life, but they don’t have to remember it. It works the same way if you’re in the circle or not.
 
@@ -105,15 +154,14 @@ Iconic light:
     • they arrive wildly off-target, maybe by miles—but not someplace immediately fatal.
     • they arrive scattered individually to different points within a few hundred meters of each other. You can’t choose this if there’s only one creature in the circle.
 
-○ Stabilize ► Spend 2 Mana. Touch someone to temporarily heal their injuries. For the rest of the scene, or until they lose ⌞Health⌝ again, they can ignore all injury-related status and act as if they’re in perfect form.
-
-○ Attentive Chrysalis ► Spend 1 Concentration. Over the course of a few minutes, you completely envelope a nearby willing or unconscious being in a tough, chitinous, protective cocoon. While in the cocoon, they remain unconscious and heal 1 ⌞Health⌝ per 24 hours they’re inside. The cocoon dissolves into goo and they wake up when you ⌞drop concentration⌝.
 
 ○ Disrupt Concentration ► Spend 1 Mana. ⊞⌊Attainment⌋ to disrupt a ⌞spell⌝ that another Wizard of similar power is holding in Concentration. 
 
 🡕🡒 They ⌞drop concentration⌝ on that spell.
 🡖 They ⌞drop concentration⌝ on one spell at random.
 🡓 They maintain concentration.
+
+
 ○ Suppress Magic (2) ► Spend 1 Concentration. ⊞⌊Attainment⌋ to suppress any single magical effect while you hold this spell in Concentration.
 
 🡕 You pick 1:

@@ -1,90 +1,29 @@
 Mutagen Tabletop RPG Engine
 ---------------------------
 
-This is the Mutagen Game Engine. It defines basic rules for an
-open-source, fiction-first tabletop roleplaying game. It has several
-features I consider unique or outstanding:
+This is the project page for the Mutagen Tabletop Game Engine. If
+you're a player or a GM, you probably want [the Mutagen
+website](https://www.mutagenrpg.com). This page is primarily meant for
+homebrewers and designers.
 
-* Mutagen puts fiction first. Everything in the game is designed to
-  help your table tell an exciting and surprising story
-  together. "Balance" be damned.
+Mutagen is a little different from other tabletop engines you might
+have met. It's a whole ecosystem. There are three main parts:
 
-* There's no separate rulebook or character sheet. A "playbook" serves
-  as both, providing all the rules and recordkeeping that the person
-  using it needs. Each player and the GM gets a playbook with exactly
-  what's relevant to their role, and each game has custom playbooks
-  containing just what's necessary.
+  * The flexible, extensible, fiction-first core rules.
+  * The document generation system contained in this project.
+  * The `mutagenrpg.com` website, which provides a web-app for live
+  character sheets.
 
-* Made up of modular sections, playbooks are short and
-  self-contained. For most games and playbooks, players get 5-6
-  (single) pages.  The GM playbook might be twice as long. Other than
-  lore, nobody needs to read anything else.
+Design philosophy for the rules themselves are in files under the
+`designer` directory.
 
-* Mutagen is low-stress for players. The rules are brief, and printed
-  right on your character sheet for easy reference. Mark Health right
-  next to the description of Health.
+The document generation system is described below. It creates PDF
+playbooks for printing and electronic playbooks for use on the
+website.
 
-* Mutagen is fun for GMs. Players owning the narrative means you can
-  go with the flow--without risk of drowning. Throw fun problems at
-  your PCs without needing to pre-balance everything. Find out what
-  happens along with them!
-
-
-# Playing with Mutagen
-
-* Mutagen uses dice. Random chance helps us tell surprising stories at
-  the table. And rolling dice is fun.
-
-* Mutagen is genre-blind and tone-blind, with the core playbooks
-  written in universal narrative terms.
-
-* Mutagen may be short, but it's deep. Because it's fiction first,
-  Mutagen doesn't fill pages with rules just to have cool stuff. It
-  just fills pages with cool stuff. Different playbooks permit wildly
-  varied playstyles within the same game, and wide choice in moves and
-  their application gives everybody options.
-
-* Mutagen works for campaigns. I've written it tersely as possible to
-  get out of the way; but it's designed to support full-length,
-  full-engagement campaigns. Bought every ○ in your playbook?  Make up
-  some new epic-tier moves.
-
-* Mutagen works for one-shots. Most people can read the rules in
-  about 10 minutes if they aren't interrupted, and explore the rest of
-  their playbooks in another 10 minutes. So long as the game's premise
-  is simple enough, many GMs can get a group playing in half an hour.
-
-* Mutagen is awesome for no-show/impromptu one-shots. When missing a
-  player, lots of us turn to one-page mini RPGs or boardgames. But if
-  everybody already knows Mutagen, you can get a one-shot going in no
-  time just by referencing some common media you've all seen and
-  playing Raw Mutagen in that world. "Hey, Art's out. Has everyone
-  read some Discworld? Make up a concept for a city guard 'cause I've
-  got an idea."
-
-
-# Raw Mutagen
-
-While Mutagen shines with custom playbooks, you can run a dope-ass
-game with just the vanilla Meta and Common Mutagen playbooks, without
-any specialized moves. These core playbooks define rules in terms of a
-few universal concepts and narrative goals that apply to most RPG
-scenarios, not in terms of what a character can specifically do.
-
-In a Raw Mutagen game, each PC mostly has access to the same powers
-and resources as the others--however you define that in your
-world. PCs can grow and get better at doing stuff with those powers,
-but they don't have moves that would let them defy reality differently
-than other PCs. Basically, they do whatever people (or whatever) can
-do in your world to drive a story forward. If that's driving oxen or a
-spaceship, it doesn't matter much for the rules.
-
-This works great playing "mundane" PCs, no matter what that means in
-your world. If your PCs are "regular" acid-spitting trans-Plutonian
-gene truckers, Raw Mutagen will take you to the stars. You need
-specialized moves or playbook sections when different PCs gain access
-to significantly different or unique in-game powers. They define the
-exceptions to your norm.
+The `mutagenrpg.com` website lets players upload the electronic
+playbooks created by the document generation system, edit write-in
+fields, toggle purchased powers, etc. 
 
 
 # Building with Mutagen
@@ -132,38 +71,20 @@ your game or homebrew with Mutagen:
   and stuff under regular trade law. See "Copyright and License" below
   for more.
 
-FAQ
----
-
-### I thought it was self-contained.
-
-That is not a question, but I take the rhetorical point. I'm doing my
-best to define everything in the core playbooks as clearly as I
-can. But given the extreme space constraints, I usually only get 1
-shot at defining a concept. While I've tried to pick framing and style
-so that most people understand what I'm writing, I know my description
-can't work for everybody. These FAQs are requests I've received for
-clarification from some portion of players, but not so many that I
-want to revise the rules themselves--or maybe I just haven't thought
-of a better solution.
-
-### No questions?
-
-I just eliminated the only major confusion feedback I've gotten. Go
-back in the repo to see what I'm talking about if you care enough. I'm
-sure there'll be more later.
 
 
-# Building Playbooks
+# Document Generation
 
-You can manually build full playbooks from their sections using
-LibreOffice, however it's much easier to use the included build
-system. Not only will it build pretty, integrated PDFs; but if you
-follow the exact formatting/symbol conventions in the core sections,
-it'll also create an electronic playbook template for use in the
-(upcoming) Mutagen character tracker app.
+You write Mutagen playbooks using Mutagen Markup. You'll edit most of
+the playbook files with a basic text editor, Notepad even, not a word
+processor. The Markup is then automatically turned into ODT, PDF, and
+electronic playbook files.
 
-The build is tested constantly on Ubuntu Linux and regularly on
+You can write separate playbook sections as separate files, and you
+can combine them as you like. The whole thing is turned into a single
+playbook by the automatic system.
+
+The system is tested constantly on Ubuntu Linux and regularly on
 Windows 10 Home. I expect the Linux instructions can be used with only
 a little modification on Mac, but a tale old as time: I don't have one
 and haven't tested it.
@@ -205,7 +126,7 @@ and haven't tested it.
 
 ### Playbook Definitions
 
-Playbooks are made up of multiple sections, each as a separate
+Playbooks are made up of multiple sections, each as a separate text
 document. The playbook definition file tells the script which sections
 go together into which playbooks. Look at the included `playbooks.txt`
 for an example.
@@ -215,7 +136,7 @@ equal sign, then a list of each playbook section in the order they go
 into that playbook. The Mutagen Meta section is _automatically_
 appended to the end of every playbook created.
 
-Do NOT! include the extension (`.odt` or `.pdf`) on any of these
+Do NOT! include the extension (`.txt` or `.pdf`) on any of these
 file names. All of that is handled automatically.
 
 ```
@@ -226,24 +147,24 @@ You can edit the included `playbooks.txt` or make a new one for your
 game.
 
 
-### Running the Build
+x### Running the Build
 
 Once you've gotten the prereqs out of the way, you should be able to
 run the build.
 
 If your playbook definitions are in `playbooks.txt`, you can just:
 
-Linux: Run `./make_playbooks.py` from the command line.
+Linux: Run `./compile_playbooks.py` from the command line.
 
-Windows: Double-click `make_playbooks.py`.
+Windows: Double-click `compile_playbooks.py`.
 
 
 If you want to use a different playbook definition file, you'll have
 to use the command line on both systems:
 
-Linux: `./make_playbooks.py my_playbooks.txt`
+Linux: `./compile_playbooks.py my_playbooks.txt`
 
-Windows: `python make_playbooks.py my_playbooks.txt`
+Windows: `python compile_playbooks.py my_playbooks.txt`
 
 
 This will create a bunch of intermediary files in the `build`
@@ -251,6 +172,35 @@ directory. You can ignore these.
 
 The complete PDF playbooks are created in `playbook_output`, with the
 electronic tracker teplates in a subdirectory.
+
+## Mutagen Markup
+
+Mutagen Markup is made from several uncommon unicode symbols. There's
+a reference in `unicode_symbols.txt`. As you write Mutagen playbooks,
+you can just copy and paste the symbols from there--that's what I
+do. It's a little weird at first, but it becomes a really tight
+shorthand pretty quickly.
+
+Line breaks and formatting are fairly important. Special line types
+like roll results, write-in fields, or list items won't work if you
+don't start them on a new line. Hit enter _twice_ to start a new
+regular-text paragraph.
+
+There are two basic blocks of text you can format:
+
+  * sections
+  * moves
+
+Sections start with `§`. Optionally, you can write `~~~§`, which will
+force a (print) column-break before that section. You can also write a
+(single) paragraph of text underneath the section to describe it.
+
+Moves start with a line containing `►`. Do not use that symbol
+anywhere else or for any other purpose.
+
+Look at `common/common.txt` under Common Aptitudes for examples of
+various special formats. Also check out `pcs/wizard.txt` under
+Concentration for labeled inputs examples.
 
 
 ### Tracker Template Extraction
@@ -284,17 +234,9 @@ requirements.
    `○` on either side of the aptitude name and the `►` after the last
    `○`: `○ APT_NAME ○ ○ ○ ►`. The number of `○` isn't important.
 
-6. Avoid complex formatting in move text. Specifically, features like
-   tables, images, embedded spreadsheets, and all the other fancy shit
-   LibreOffice can do will break when the playbook is converted to
-   plain text for automatic parsing. Keep it simple, or you'll need to
-   go back and edit the JSON to clean things up (which is hell, trust
-   me).
+6. Avoid complex formatting in move text. Keep it simple.
 
-7. Use the LibreOffice unordered and ordered list options to create
-   lists.
-
-8. For text inputs (places where players are expected to put notes),
+7. For text inputs (places where players are expected to put notes),
    carefully follow the format shown in the Common Name/Concept/Drives
    and Example Wizard Concentration items. Use the two-line example
    for items where the player only needs to write a couple words. Use
@@ -302,8 +244,8 @@ requirements.
 
    Labeled inputs (like Drives or Concentration) must follow the exact
    3-line formula. Horizontal spacing is not important, but the lines
-   are.  The first line has the bracket-top character; the second line
-   has the label; the third line has the bracket-bottom character.
+   are.  The first line has the bracket-top characters; the second line
+   has the label; the third line has the bracket-bottom characters.
 
 
 Copyright and License
@@ -363,6 +305,27 @@ Mana Guppy - Spend 1 Guppy Bait. If the conditions are right, you
 summon your Mana Guppy.` And you're telling me--the guy giving you a
 free game engine you don't pay to print--that you can't even share
 *that much*?
+
+FAQ
+---
+
+### I thought it was self-contained.
+
+That is not a question, but I take the rhetorical point. I'm doing my
+best to define everything in the core playbooks as clearly as I
+can. But given the extreme space constraints, I usually only get 1
+shot at defining a concept. While I've tried to pick framing and style
+so that most people understand what I'm writing, I know my description
+can't work for everybody. These FAQs are requests I've received for
+clarification from some portion of players, but not so many that I
+want to revise the rules themselves--or maybe I just haven't thought
+of a better solution.
+
+### No questions?
+
+I just eliminated the only major confusion feedback I've gotten. Go
+back in the repo to see what I'm talking about if you care enough. I'm
+sure there'll be more later.
 
 
 # Acknowledgements and Thanks
