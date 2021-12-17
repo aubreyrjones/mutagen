@@ -1,12 +1,11 @@
 Common symbols:
 ►			define a move
 
-○ △ ● ▢			all purchase/resource symbols
+○ △ ● ▢ 	all purchase/resource symbols
 ○			XP-buyable aptitude, move, or resource (clickable online)
 △			permission-only aptitude, move, or resource (clickable online)
 ●			pre-bought aptitude, move, or resource
 ▢			resource point tracker (clickable online)
-
 
 ⌞⌝			mark a term defined elsewhere
 ⌞make a story move⌝	commonly used
