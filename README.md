@@ -162,15 +162,14 @@ If your playbook definitions are in `playbooks.txt`, you can just:
 
 Linux: Run `./compile_playbooks.py` from the command line.
 
-Windows: Double-click `compile_playbooks.py`.
+Windows: Double-click `MAKE_PLAYBOOKS.bat`.
 
 
-If you want to use a different playbook definition file, you'll have
-to use the command line on both systems:
+If you want to use a different playbook definition file:
 
 Linux: `./compile_playbooks.py my_playbooks.txt`
 
-Windows: `python compile_playbooks.py my_playbooks.txt`
+Windows: Drag and drop your playbook definition file onto `MAKE_PLAYBOOKS.bat`.
 
 
 This will create a bunch of intermediary files in the `build`
@@ -179,13 +178,18 @@ directory. You can ignore these.
 The complete PDF playbooks are created in `playbook_output`, with the
 electronic tracker teplates in a subdirectory.
 
+Errors might be a bit cryptic right now. Sorry. :( Usually they're
+related to formatting paragraphs or write-in fields. Look for the
+error in the last file that it says it's processing. Usually there are
+clues for the kind of thing that screwed up in the error output.
+
 
 ## Playbook Definitions
 
-Playbooks are made up of multiple sections, each as a separate
-document. The playbook definition file tells the script which sections
-go together into which playbooks. Look at the included `playbooks.txt`
-for an example.
+Playbooks are made up of multiple sections, each as a separate text
+file or document. The playbook definition file tells the script which
+sections go together into which playbooks. Look at the included
+`playbooks.txt` for an example.
 
 Each line of the file consists of a human-friendly playbook name, an
 equal sign, final playbook filename, another equal sign, then a list

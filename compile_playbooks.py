@@ -52,13 +52,27 @@ def needs_rebuilt(input_files: list, output_file):
             return True
     return False
 
+import time
+
 def make_pdf(input_filename):
     '''
     Builds a PDF from an ODT.
     '''
-    print("\t\tBuilding pdf:", input_filename)
+    print(f"\t\tRendering ", end='')
+    render_start = time.time()
     call([LIBREOFFICE, '--headless', '--convert-to', 'pdf', '--outdir', BUILD_DIR, input_filename])
-    sleep(0.55) # we need this here so that we don't get ahead of LibreOffice.
+    
+    while not os.path.exists(staged_name(input_filename, 'pdf')):
+        # we need this loop here so that we don't get ahead of LibreOffice. 
+        # If you have LibreOffice already open, the command-line program can 
+        # quit before the file is written.
+        # The timeout is so that we don't wait forever if there's a real problem.
+        if (time.time() - render_start) > 30:
+            print("\n\nLibreOffice took longer than 30 seconds to render a PDF. This is weird. I'm bailing out.\n\n")
+            exit(10)
+    
+    render_end = time.time()
+    print(f"took {render_end - render_start:.2f}s.")
     return staged_name(input_filename, 'pdf')
 
 def copy_odt(input_filename):
@@ -88,19 +102,19 @@ def stage_section(section_name):
     if is_odt(input_file):
         copy_odt(input_file)
 
-def parse_and_markup_span(section_seq):
-    parsed_moves = sum([parse_moves(s) for s in section_seq], [])
+def parse_span(section_seq):
+    return sum([parse_moves(s) for s in section_seq], [])
     
-    return {'xml': render_xml(parsed_moves),
-            'json': json.dumps({'items': markup_moves(parsed_moves), 'status': '', 'stuff': '', 'markup_version': 1})}
-    
+
+def dump_json(parsed_moves):
+    return json.dumps({'items': markup_moves(parsed_moves), 'status': '', 'stuff': '', 'markup_version': 1})
 
 def make_playbook(pb_name, human_name, pb_list):
     '''
     Build a playbook from its constituent sections.
     '''
 
-    print("Making", pb_name)
+    print("\nMaking", pb_name)
     if len(pb_list) < 1:
         print(f'ERROR! No playbook sections specified. Skipping {pb_name}.')
         return
@@ -119,6 +133,8 @@ def make_playbook(pb_name, human_name, pb_list):
     
     resolved_inputs = list(map(resolve_input, pb_list))
 
+    madeSomething = False
+
     spans = []
     for sec in resolved_inputs:
         if is_odt(sec):
@@ -130,42 +146,57 @@ def make_playbook(pb_name, human_name, pb_list):
                 spans.append([sec])
 
     pdfs = list()
+    web_section_list = list()
+    for_web = list()
+
     for i, span in enumerate(spans):
         odtName = None
         if isinstance(span, list):
-            markups = parse_and_markup_span(span)
+            parsed_moves = parse_span(span)
+            web_section_list += span
+            for_web += parsed_moves
+
             odtName = staged_name(pb_name + str(i), 'odt')
-            
-            # write JSON
-            with open(json_file, 'w', encoding='utf-8') as json_outfile:
-                print(f'\tBuilding JSON from text: {" ".join(span)}')
-                json_outfile.write(markups['json'])
 
             # write XML and ODT
             if needs_rebuilt(span, odtName):
-                print(f'\tBuilding ODT from text: {" ".join(span)}')
+                madeSomething = True
+                print(f'\tIntermediate ODT from text:\t\t{" ".join(span)}')
+                xml = render_xml(parsed_moves)
                 with open(staged_name(odtName, 'xml'), 'w', encoding='utf-8') as xmlfile:
-                    xmlfile.write(markups['xml'])
-                build_odt(markups['xml'], odtName, human_name)
+                    # this is actually just written out for debug purposes. It's basically the last
+                    # stage before everything disappears into an XML/OpenOffice black hole.
+                    # the ODF library can give lots of errors, so we write the pre-XSLT XML first.
+                    xmlfile.write(xml)
+                build_odt(xml, odtName, human_name)
         else:
             odtName = span
+        
         pdf_span_name = staged_name(odtName, 'pdf')
         pdfs.append(pdf_span_name)
         if needs_rebuilt([odtName], pdf_span_name):
-            print(f"\tBuilding PDF from ODT: {odtName}")
+            print(f"\tIntermediate PDF from ODT:\t\t{odtName}")
             make_pdf(odtName)
+
+    # write JSON
+    if '_gm' not in pb_name and needs_rebuilt(web_section_list, json_file):
+        madeSomething = True
+        with open(json_file, 'w', encoding='utf-8') as json_outfile:
+            print(f'\tElectronic playbook from text:\t\t{" ".join(web_section_list)}')
+            json_outfile.write(dump_json(for_web))
 
     # build PDF
     if needs_rebuilt(pdfs, pdf_file):
-        print(f'\tJoining PDFs: {" ".join(pdfs)}')
+        madeSomething = True
+        print(f'\tBuilding final PDF:\t\t\t{" ".join(pdfs)}')
         pdf_merger = PdfFileMerger()
         for pdf in pdfs:
             pdf_merger.append(pdf)
 
         pdf_merger.write(pdf_file)
         pdf_merger.close()
-    else:
-        print("\tNothing to do.")
+    
+    if not madeSomething: print("\tNothing to do.")
 
 
 ##
