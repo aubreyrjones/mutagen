@@ -116,6 +116,7 @@ def replace_odt_content(filename, replace_target, new_content):
         zout.writestr(item, buffer)
     zout.close()
     zin.close()
+    os.remove(filename) # apparently on windows you can't rename over a file.
     os.rename(tempname, filename)
 
 
