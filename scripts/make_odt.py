@@ -1,6 +1,7 @@
 from odf.opendocument import OpenDocumentText
-from odf.style import PageLayout, MasterPage, Header, Footer, PageLayoutProperties, Style, TextProperties, ParagraphProperties, Columns, Column, DefaultStyle, ColumnSep
-from odf.text import P, PageNumber, A, Span
+from odf.style import PageLayout, MasterPage, Footer, PageLayoutProperties, Style, TextProperties, ParagraphProperties, Columns, Column, DefaultStyle, ColumnSep
+from odf.text import P, PageNumber, Span
+import odf.table
 import lxml.etree as ET
 import zipfile
 
@@ -41,7 +42,7 @@ def make_span_style(textdoc, stylename, tAttr):
     textdoc.styles.addElement(s)
 
 
-def build_skeleton_odt(filename, title_text=''):
+def build_skeleton_odt(filename, title_text='PLAYBOOK TITLE GOES HERE', game_title='GAME TITLE GOES HERE', author='AUTHOR GOES HERE'):
     textdoc = OpenDocumentText()
     pl = PageLayout(name="pagelayout")
     plp = PageLayoutProperties(pagewidth='11in', pageheight='8.5in', printorientation="landscape",
@@ -87,15 +88,40 @@ def build_skeleton_odt(filename, title_text=''):
     make_with_stop(textdoc, "LINE_ITEM", pAttr={'margintop': '1mm', 'marginleft': '2mm', 'keepwithnext': 'always'})
     make_with_stop(textdoc, "RESULT_ITEM", pAttr={'margintop': '1mm', 'keepwithnext': 'always'})
 
+    make_paragraph_style(textdoc, "FOOTER_GAME", pAttr={'textalign': 'left'}, tAttr={'fontsize': '8pt', 'fontweight': 'bold'})
+    make_paragraph_style(textdoc, "FOOTER_AUTHOR", pAttr={'textalign': 'center'}, tAttr={'fontsize': '8pt', 'fontweight': 'bold'})
     make_paragraph_style(textdoc, "FOOTER_PAGE_NUMBER", pAttr={'textalign': 'right'}, tAttr={'fontsize': '8pt', 'fontweight': 'bold'})
 
     f = Footer()
-    fp = P(stylename='FOOTER_PAGE_NUMBER')
-    fp.addElement(Span(text=f'{title_text} ⌬ '))
-    fp.addElement(PageNumber(text="1"))
-    f.addElement(fp)
     mp.addElement(f)
 
+    footer_table = odf.table.Table()
+    footer_table.addElement(odf.table.TableColumn(attributes={'numbercolumnsrepeated': 3}))
+    f.addElement(footer_table)
+
+    footer_row = odf.table.TableRow()
+    footer_table.addElement(footer_row)
+    
+    game_cell = odf.table.TableCell()
+    author_cell = odf.table.TableCell()    
+    page_cell = odf.table.TableCell()
+    footer_row.addElement(game_cell)
+    footer_row.addElement(author_cell)
+    footer_row.addElement(page_cell)
+
+    fp = P(stylename='FOOTER_GAME')
+    game_cell.addElement(fp)
+    fp.addElement(Span(text=f'{game_title}'))
+
+    fp = P(stylename='FOOTER_AUTHOR')
+    author_cell.addElement(fp)
+    fp.addElement(Span(text=f'{author}'))
+
+    fp = P(stylename='FOOTER_PAGE_NUMBER')
+    page_cell.addElement(fp)
+    fp.addElement(Span(text=f'{title_text} ⌬ '))
+    fp.addElement(PageNumber(text="1"))
+    
     replace_target = P(text="replace_me")
     textdoc.text.addElement(replace_target)
     textdoc.save(filename)
@@ -120,6 +146,6 @@ def replace_odt_content(filename, replace_target, new_content):
     os.rename(tempname, filename)
 
 
-def build_odt(in_xml, out_filename, human_title_text=''):
-    build_skeleton_odt(out_filename, human_title_text)
+def build_odt(in_xml, out_filename, human_title_text, game_title, author_info):
+    build_skeleton_odt(out_filename, human_title_text, game_title, author_info)
     replace_odt_content(out_filename, '<office:text><text:p>replace_me</text:p></office:text>', dom_transform(in_xml))

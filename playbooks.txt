@@ -3,13 +3,23 @@
 # Whitespace formatting doesn't matter.
 # Use forward slashes (/) even on windows.
 
+# set game title and author information. Caps are important!
+GAME = Late Stage Capitalism With Magic
+AUTHOR = © 2021 Aubrey R. Jones 🄯 CC-BY-SA 4.0
+
 
 # PC playbooks
-LSCWM Playbook: Sorcerer          =   lscwm_pc_sorcerer      = common/common     pcs/sorcerer
-LSCWM Playbook: Wizard            =   lscwm_pc_wizard        = common/common     pcs/wizard
-LSCWM Playbook: Adept             =   lscwm_pc_adept         = common/common     pcs/adept
-LSCWM Playbook: Witch             =   lscwm_pc_witch         = common/common     pcs/witch
-Raw Mutagen Playbook              =   raw_pc                 = common/common
+Playbook: Sorcerer          =   lscwm_pc_sorcerer      = common/common     pcs/sorcerer
+Playbook: Wizard            =   lscwm_pc_wizard        = common/common     pcs/wizard
+Playbook: Adept             =   lscwm_pc_adept         = common/common     pcs/adept
+Playbook: Witch             =   lscwm_pc_witch         = common/common     pcs/witch
 
-# GM playbook. Should contain `_gm` somewhere in the output name.
-Raw Mutagen GM Playbook           =       raw_gm                = gm/gm             gm/gm_common
+
+# you can set a new game and playbooks afterward will use that name.
+GAME = Raw Mutagen
+
+# Raw Mutagen common playbook on its own
+Playbook: Common            =   raw_pc                 = common/common
+
+# GM playbook. Should contain `_gm` somewhere in the output file name.
+Raw Mutagen GM Playbook     =   raw_gm                 = gm/gm             gm/gm_common

@@ -124,7 +124,7 @@ def dump_json(parsed_moves, pb_name):
                        'pb_name': pb_name})
 
 
-def make_playbook(pb_name, human_name, pb_list):
+def make_playbook(pb_name, human_name, pb_list, game_title, author_info):
     '''
     Build a playbook from its constituent sections.
     '''
@@ -188,7 +188,7 @@ def make_playbook(pb_name, human_name, pb_list):
                     # stage before everything disappears into an XML/OpenOffice black hole.
                     # the ODF library can give lots of errors, so we write the pre-XSLT XML first.
                     xmlfile.write(xml)
-                build_odt(xml, odtName, human_name)
+                build_odt(xml, odtName, human_name, game_title, author_info)
         else:
             odtName = span
         
@@ -203,7 +203,7 @@ def make_playbook(pb_name, human_name, pb_list):
         madeSomething = True
         with open(json_file, 'w', encoding='utf-8') as json_outfile:
             print(f'\tElectronic playbook from text:\t\t{" ".join(web_section_list)}')
-            json_outfile.write(dump_json(for_web, human_name))
+            json_outfile.write(dump_json(for_web, f'{game_title} — {human_name}'))
 
     # build PDF
     if needs_rebuilt(pdfs, pdf_file):
@@ -248,6 +248,10 @@ playbooks = {}
 # open the playbook definition and parse the lines
 # skip line starting with `#` as comments.
 # skip any line that doesn't have a `=` in it
+
+game_title = 'UNTITLED GAME'
+author_info = 'ANONYMOUS GAME DESIGNER'
+
 with open(pb_def_file, encoding='utf-8-sig') as pb_defs:
     lines = pb_defs.readlines()
 
@@ -259,14 +263,19 @@ with open(pb_def_file, encoding='utf-8-sig') as pb_defs:
             splits = stripped.split('=')
             human_name = splits[0].strip()
             pb_name = splits[1].strip()
-            playbooks[pb_name] = (human_name, [s.strip() for s in splits[2].split()])
+
+            if human_name == 'GAME':
+                game_title = pb_name
+                continue
+            if human_name == 'AUTHOR':
+                author_info = pb_name
+                continue
+            pb_list = [s.strip() for s in splits[2].split()]
+            make_playbook(pb_name, human_name, pb_list, game_title, author_info)
         except Exception as ex:
             print(ex)
             print("Error in playbook definition file", pb_def_file, "line:", line)
             exit(1)
-
-for k, v in playbooks.items():
-    make_playbook(k, v[0], v[1])
 
 _build_finished = time.time()
 
