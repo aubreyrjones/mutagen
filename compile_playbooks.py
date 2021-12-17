@@ -68,6 +68,7 @@ def make_pdf(input_filename):
     sn = staged_name(input_filename, 'pdf')
 
     while not os.path.exists(sn):
+        sleep(0.1)
         # we need this loop here so that we don't get ahead of LibreOffice. 
         # If you have LibreOffice already open, the command-line program can 
         # quit before the file is written.
@@ -115,8 +116,13 @@ def parse_span(section_seq):
     return sum([parse_moves(s) for s in section_seq], [])
     
 
-def dump_json(parsed_moves):
-    return json.dumps({'items': markup_moves(parsed_moves), 'status': '', 'stuff': '', 'markup_version': 1})
+def dump_json(parsed_moves, pb_name):
+    return json.dumps({'items': markup_moves(parsed_moves), 
+                       'status': '', 
+                       'stuff': '', 
+                       'markup_version': 1, 
+                       'pb_name': pb_name})
+
 
 def make_playbook(pb_name, human_name, pb_list):
     '''
@@ -197,7 +203,7 @@ def make_playbook(pb_name, human_name, pb_list):
         madeSomething = True
         with open(json_file, 'w', encoding='utf-8') as json_outfile:
             print(f'\tElectronic playbook from text:\t\t{" ".join(web_section_list)}')
-            json_outfile.write(dump_json(for_web))
+            json_outfile.write(dump_json(for_web, human_name))
 
     # build PDF
     if needs_rebuilt(pdfs, pdf_file):
@@ -266,5 +272,5 @@ _build_finished = time.time()
 
 total_elapsed = _build_finished - _build_start
 
-print(f'\n\nBuild took {total_elapsed:.2f}s. Spent {_time_rendering_pdfs:.2f}s in LibreOffice. {total_elapsed - _time_rendering_pdfs:.2f}s in this script.')
+print(f'\n\nBuild took {total_elapsed:.2f}s. Spent {_time_rendering_pdfs:.2f}s waiting for LibreOffice. {total_elapsed - _time_rendering_pdfs:.2f}s in this script.')
 
