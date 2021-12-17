@@ -10,6 +10,7 @@ from textwrap import wrap
 from PyPDF2 import PdfFileMerger
 from scripts.parse_text import parse_moves, markup_moves, render_xml
 import shutil
+import time
 from scripts.make_odt import build_odt
 
 # If you're on windows and didn't install LibreOffice in the default location, you'll need to edit that path
@@ -24,6 +25,8 @@ JSON_DIR = f'{OUT_DIR}/tracker_templates'
 # Name of the meta section appended to non-teaser playbooks.
 META = 'common/meta.odt'
 
+
+_time_rendering_pdfs = 0
 
 #
 # Build-related functions.
@@ -52,7 +55,6 @@ def needs_rebuilt(input_files: list, output_file):
             return True
     return False
 
-import time
 
 def make_pdf(input_filename):
     '''
@@ -60,9 +62,12 @@ def make_pdf(input_filename):
     '''
     print(f"\t\tRendering ", end='')
     render_start = time.time()
+
     call([LIBREOFFICE, '--headless', '--convert-to', 'pdf', '--outdir', BUILD_DIR, input_filename])
     
-    while not os.path.exists(staged_name(input_filename, 'pdf')):
+    sn = staged_name(input_filename, 'pdf')
+
+    while not os.path.exists(sn):
         # we need this loop here so that we don't get ahead of LibreOffice. 
         # If you have LibreOffice already open, the command-line program can 
         # quit before the file is written.
@@ -72,8 +77,12 @@ def make_pdf(input_filename):
             exit(10)
     
     render_end = time.time()
-    print(f"took {render_end - render_start:.2f}s.")
-    return staged_name(input_filename, 'pdf')
+    elapsed_time = render_end - render_start
+    global _time_rendering_pdfs
+    _time_rendering_pdfs += elapsed_time
+    print(f"took {elapsed_time:.2f}s.")
+
+    return sn
 
 def copy_odt(input_filename):
     '''
@@ -114,7 +123,15 @@ def make_playbook(pb_name, human_name, pb_list):
     Build a playbook from its constituent sections.
     '''
 
-    print("\nMaking", pb_name)
+
+    pdf_file = path.join(OUT_DIR, pb_name + ".pdf")
+    json_file = path.join(JSON_DIR, pb_name + ".mutagen.json")
+
+    print(f"*\nMaking `{human_name}`")
+    print(f'\tFinal PDF file:\t\t\t\t{pdf_file}')
+    print(f'\tFinal JSON file:\t\t\t{json_file}')
+    print('\t*')
+
     if len(pb_list) < 1:
         print(f'ERROR! No playbook sections specified. Skipping {pb_name}.')
         return
@@ -127,9 +144,6 @@ def make_playbook(pb_name, human_name, pb_list):
         if pbs in already_staged: continue
         already_staged.add(pbs)
         stage_section(pbs)
-
-    pdf_file = path.join(OUT_DIR, pb_name + ".pdf")
-    json_file = path.join(JSON_DIR, pb_name + ".mutagen.json")
     
     resolved_inputs = list(map(resolve_input, pb_list))
 
@@ -188,7 +202,7 @@ def make_playbook(pb_name, human_name, pb_list):
     # build PDF
     if needs_rebuilt(pdfs, pdf_file):
         madeSomething = True
-        print(f'\tBuilding final PDF:\t\t\t{" ".join(pdfs)}')
+        print(f'\tMerging final PDF:\t\t\t{" ".join(pdfs)}')
         pdf_merger = PdfFileMerger()
         for pdf in pdfs:
             pdf_merger.append(pdf)
@@ -196,12 +210,14 @@ def make_playbook(pb_name, human_name, pb_list):
         pdf_merger.write(pdf_file)
         pdf_merger.close()
     
-    if not madeSomething: print("\tNothing to do.")
+    if not madeSomething: print("\tUp to date. Nothing done.")
 
 
 ##
 ## BUILD SCRIPT BELOW HERE
 ##
+
+_build_start = time.time()
 
 # set up
 os.makedirs(BUILD_DIR, exist_ok=True)
@@ -245,3 +261,10 @@ with open(pb_def_file, encoding='utf-8-sig') as pb_defs:
 
 for k, v in playbooks.items():
     make_playbook(k, v[0], v[1])
+
+_build_finished = time.time()
+
+total_elapsed = _build_finished - _build_start
+
+print(f'\n\nBuild took {total_elapsed:.2f}s. Spent {_time_rendering_pdfs:.2f}s in LibreOffice. {total_elapsed - _time_rendering_pdfs:.2f}s in this script.')
+
