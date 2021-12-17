@@ -1,9 +1,11 @@
 ﻿~~~§ Sorcerer Playbook
 You do magic with sheer fucking force of will.
 
+
 § Sorcerer Meta Moves
 
-With great power... ► This playbook is about just describing novel magic and having it happen in the game, so your moves are super open-ended. But in order to define your power with the same personal scale as the other PCs in this game, there are some restrictions. Please abide by their spirit and work with your GM so everybody has fun.
+With great power... --> This playbook is about just describing novel magic and having it happen in the game, so your moves are super open-ended. But in order to define your power with the same personal scale as the other PCs in this game, there are some restrictions. Please abide by their spirit and work with your GM so everybody has fun.
+
 
 § Sorcerer Resources
 Will ► The overwhelming conviction that your magic should override the very laws of reality.
@@ -11,7 +13,10 @@ Will ► The overwhelming conviction that your magic should override the very la
 ● 1. ▢ ▢ ▢ 
 ○ 2. ▢
 ○ 3. ▢
+
+
 § Sorcerer Aptitudes: Threads
+
 These are the strands that a sorcerer weaves together to create their magic. Note that they have different max ratings. Not all threads are as easy to work, and none of them are as reliable as just getting your hands dirty.
 
 ○ Affecting an area ○ ► Weaving to affect a spatial area, its contents, or occupants.
@@ -45,10 +50,16 @@ These are the strands that a sorcerer weaves together to create their magic. Not
 ○ Reversing entropy ► Weaving to slow or undo the ravages of chaos.
 
 ○ Transit ○ ► Weaving to move or connect something without it crossing intervening space.
+
 § Sorcerer Moves
+
+
 Restore Will ► You restore 1 Will when you 🡕🡒 on any ⌞story move⌝.
 
+
 Lose Will ► You lose 1 Will when you 🡓 on any ⌞story move⌝.
+
+
 
 Weave magic ► You create and cast a magical effect defined by your creativity and mastery of the ⌞Threads⌝. You cannot make this move if you have 0 Will.
 
@@ -62,7 +73,7 @@ Your effect ends if you no longer perceive your target, dawn breaks, or you ⌞w
 
 Decide which Threads the effect depends on. If you’re unsure, ask the GM. You should rationalize creatively, but respect fiction and use common sense. Include every Thread that relates to the effect you’ve described, even if you haven’t bought that Thread. Try to stick to the part of the effect primarily in defiance of reality: you might weave to conjure fire, but it’s normal for fire to burn stuff.
 
-From all the Threads your effect depends on, the one with the lowest rating is the ⌊weak thread⌋ for this effect. If there are multiple with the same low rating, it doesn’t matter; pick one. If no Thread seems to fit, your ⌊weak thread⌋ is ⌊−1⌋.
+From all the Threads your effect depends on, the one with the lowest rating is the !!⌊weak thread⌋!! for this effect. If there are multiple with the same low rating, it doesn’t matter; pick one. If no Thread seems to fit, your ⌊weak thread⌋ is !!⌊−1⌋!!.
 
 If you’re gonna ⌞fuck ‘em up⌝, you can do at most ⌊weak thread + 1⌋ harm—this means 0 harm if your weak thread is −1. If you can’t do enough harm to fit the injuries your description would cause, you’ll need to describe a less devastating effect.
 

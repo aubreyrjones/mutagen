@@ -13,7 +13,7 @@ def parse_moves(pbs_filename, keep_unheadered=False):
     latch = keep_unheadered # False
 
     for l in lines:
-        if '►' in l or '§' in l:
+        if '►' in l or '-->' in l or '§' in l:
             moves.append(l)  # add a new move to the end of the list.
             latch = True
         elif latch:
@@ -43,6 +43,9 @@ def parse_moves(pbs_filename, keep_unheadered=False):
 # m-il : input label
 # m-inv : input value
 
+EASY_MOVE_DEF_RE = re.compile(r'-->')
+EASY_MOVE_DEF_REPLACE = r'►'
+
 ROLL_RE = re.compile(r'⊞⌊(.+?)⌋')
 ROLL_REPLACE = r'<m-r>⊞⌊\1⌋</m-r>'
 
@@ -51,6 +54,9 @@ MATH_REPLACE = r'<m-m>⌊\1⌋</m-m>'
 
 RESULTS_RE = re.compile(r'$\s*([🡕🡒🡖🡓]+)(.+?)($|\Z)', re.MULTILINE)
 RESULTS_REPLACE = r'\n<m-res><m-s>\1</m-s>\2</m-res>'
+
+EASY_LI_REPLACE_RE = re.compile(r'^\s*\*(.+)$', re.MULTILINE)
+EASY_LI_REPLACE_REPLACE = r'  •\1'
 
 LI_RE = re.compile(r'$\s*(\s+)?([•\d])+(.+?)($|\Z)', re.MULTILINE)
 LI_REPLACE = r'\n<m-li>\1\2\3</m-li>'
@@ -66,6 +72,19 @@ CLICKABLE_REPLACE = r'<m-c>\1</m-c>'
 
 SYM_RE = re.compile(r'([●])')
 SYM_REPLACE = r'<m-s>\1</m-s>'
+
+BOLD_RE = re.compile(r'!!(.+?)!!')
+BOLD_REPLACE = r'<b>\1</b>'
+
+ITALICS_RE = re.compile(r'\/\/(.+?)\/\/')
+ITALICS_REPLACE = r'<i>\1</i>'
+
+UNDERLINE_RE = re.compile(r'__(.+?)__')
+UNDERLINE_REPLACE = r'<u>\1</u>'
+
+CALLOUT_RE = re.compile(r'\{\{(.+?)\}\}')
+CALLOUT_REPLACE = r'⌞\1⌝'
+
 
 # this is matching the unicode bracket write-in fields from the playbooks
 # the ⎪ below is not a pipe; that's the middle of the bracket
@@ -114,7 +133,10 @@ def markup_with_regex(regex, replacement, move_text, debug=False):
         return rval
 
 def markup_move(move_text):
-    # escape HTML tag markers.
+    
+    move_text = markup_with_regex(EASY_MOVE_DEF_RE, EASY_MOVE_DEF_REPLACE, move_text)
+
+    # escape trash and HTML tag markers.
     move_text.replace('\ufeff', '')
     move_text.replace('\ubbef', '')
     move_text = move_text.replace(">", "&gt;")
@@ -125,13 +147,18 @@ def markup_move(move_text):
     filters = [
         (INPUT_RE, INPUT_REPLACE),
         (LABELED_INPUT_RE, LABELED_INPUT_REPLACE),
+        (EASY_LI_REPLACE_RE, EASY_LI_REPLACE_REPLACE),
         (LI_RE, LI_REPLACE),
         (RESULTS_RE, RESULTS_REPLACE),
         (MOVE_RE, MOVE_REPLACE),
+        (CALLOUT_RE, CALLOUT_REPLACE),
         (ROLL_RE, ROLL_REPLACE),
         (MATH_RE, MATH_REPLACE),
         (CLICKABLE_RE, CLICKABLE_REPLACE),
         (SYM_RE, SYM_REPLACE),
+        (BOLD_RE, BOLD_REPLACE),
+        (ITALICS_RE, ITALICS_REPLACE),
+        (UNDERLINE_RE, UNDERLINE_REPLACE),
         (LINE_RE, LINE_REPLACE),
         (LINE_BREAK_RE, LINE_BREAK_REPLACE)]
 
@@ -157,6 +184,7 @@ BOX_INPUT_START_RE = re.compile(r'^\s*\[\[')
 BOX_INPUT_CONT_RE = re.compile(r'^\s*\|\|')
 BOX_INPUT_END_RE = re.compile(r'^\s*\]\]')
 RES_INPUT_LINE_RE = re.compile(r'^\s*[🡕🡒🡖🡓]')
+
 LINE_ITEM_LINE_RE = re.compile(r'^\s*(•|\d+\.)')
 
 LINE_TABLE = [
@@ -202,18 +230,30 @@ def markup_paragraphs(move_text):
     return "\n".join(lines)
 
 def markup_to_xml(move_text):
+    move_text = markup_with_regex(EASY_MOVE_DEF_RE, EASY_MOVE_DEF_REPLACE, move_text)
+
+    move_text.replace('\ufeff', '')
+    move_text.replace('\ubbef', '')
+    move_text = move_text.replace(">", "&gt;")
+    move_text = move_text.replace("<", "&lt;")
+
     move_text = section_replace(move_text, detect_colbreak=True)
 
     filters = [
         (FIRST_ITEM_PARAGRAPH_RE, FIRST_ITEM_PARAGRAPH_REPLACE),
+        (EASY_LI_REPLACE_RE, EASY_LI_REPLACE_REPLACE),
         # (INPUT_RE, XML_INPUT_REPLACE),
         (LABELED_INPUT_RE, XML_LABELED_INPUT_REPLACE),
         # (LI_RE, LI_REPLACE),
         (RESULTS_RE, RESULTS_REPLACE),
+        (CALLOUT_RE, CALLOUT_REPLACE),
         (ROLL_RE, ROLL_REPLACE),
         (MATH_RE, MATH_REPLACE),
         (CLICKABLE_RE, CLICKABLE_REPLACE),
-        (SYM_RE, SYM_REPLACE)]
+        (SYM_RE, SYM_REPLACE),
+        (BOLD_RE, BOLD_REPLACE),
+        (ITALICS_RE, ITALICS_REPLACE),
+        (UNDERLINE_RE, UNDERLINE_REPLACE)]
     
     for regex, repl in filters:
         move_text = markup_with_regex(regex, repl, move_text)

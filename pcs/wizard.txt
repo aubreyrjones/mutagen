@@ -10,7 +10,7 @@ Mana ► The stored magical energy within your body, Mana powers many of a wizar
 ○ 3. ▢ ▢ 
 
 
-Concentration ► Holding a spell active requires enormous mental effort. You can hold a limited number of ⌞spells⌝ active at once. When you spend a Concentration, clear the ▢, but note the name of the active spell. So long as you’re alive, the spell’s effect is active until a move makes you erase its name.
+Concentration ► Holding a {{spell}} active requires enormous mental effort. You can hold a limited number of spells active at once. When you spend a Concentration, clear the ▢, but note the name of the active spell. So long as you’re alive, the spell’s effect is active until a move makes you erase its name.
 
 You cannot write down a new spell’s name in an occupied spot. You must ⌞drop concentration⌝ on the old spell first. However, you can refill the ▢ for a slot while still holding the last spell in it.
 
@@ -39,8 +39,8 @@ Soak Mana ► You can restore Mana by harmlessly absorbing what’s radiated fro
 Reap Mana ► You forcibly tear the Mana from a living creature to power your magic, stealing its life force with a touch. ⊞⌊Attainment⌋.
 
 🡕 You pick 1:
-    • you draw 3 Mana from a nearby latent leyline instead of your target. They’re unharmed.
-    • you get 4 Mana and take 3 harm.
+    * you draw 3 Mana from a nearby latent leyline instead of your target. They’re unharmed.
+    * you get 4 Mana and they take 3 harm.
 🡒 You get 3 Mana and they take 2 harm.
 🡖 You get 2 Mana and they take 2 harm.
 🡓 You don’t get any Mana and they’re unharmed.
@@ -150,26 +150,27 @@ Iconic light:
 🡓 They maintain concentration.
 
 
+○ Suppress Magic (2) ► Spend 1 Concentration. ⊞⌊Attainment⌋ to suppress any single magical effect while you hold this spell in Concentration.
+
+🡕 You pick 1:
+    * you permanently end the magical effect, even if you ⌞drop concentration⌝. If the effect is an intrinsic quality of an item or being, it comes back in 24 hours.
+    * You fully suppress the magical effect and restore 1 Concentration.
+🡒 You fully suppress the magical effect.
+🡖 You partially suppress the magical effect.
+🡓 You partially suppress the magical effect, but you pick 1:
+    * you spend 1 Mana.
+    * if you lose sight of the target effect, you ⌞drop concentration⌝ on Suppress Magic.
+    * you take a serious injury from backlash.
+
+
 ○ Circle of Transit (3) ► Spend 3 Mana. Inscribe a simple circle on solid ground, up to 3m in diameter. When you trigger the spell, ⊞⌊Attainment⌋ to near-instantly transport everyone inside the circle to a destination of your choosing. Gear on their persons goes along, but not just loose cargo. One of the people in the circle must already have visited your approximate destination at some point in their life, but they don’t have to remember it. It works the same way if you’re in the circle or not.
 
 🡕 They arrive right on target and you restore 1 Mana.
 🡒 They arrive right on target.
 🡖 You pick 1.
 🡓 You pick 2.
-    • the spell fizzles and they go nowhere.
-    • they each take a serious injury.
-    • they arrive wildly off-target, maybe by miles—but not someplace immediately fatal.
-    • they arrive scattered individually to different points within a few hundred meters of each other. You can’t choose this if there’s only one creature in the circle.
+    * the spell fizzles and they go nowhere.
+    * they each take a serious injury.
+    * they arrive wildly off-target, maybe by miles—but not someplace immediately fatal.
+    * they arrive scattered individually to different points within a few hundred meters of each other. You can’t choose this if there’s only one creature in the circle.
 
-
-○ Suppress Magic (2) ► Spend 1 Concentration. ⊞⌊Attainment⌋ to suppress any single magical effect while you hold this spell in Concentration.
-
-🡕 You pick 1:
-    • you permanently end the magical effect, even if you ⌞drop concentration⌝. If the effect is an intrinsic quality of an item or being, it comes back in 24 hours.
-    • You fully suppress the magical effect and restore 1 Concentration.
-🡒 You fully suppress the magical effect.
-🡖 You partially suppress the magical effect.
-🡓 You partially suppress the magical effect, but you pick 1:
-    • you spend 1 Mana.
-    • if you lose sight of the target effect, you ⌞drop concentration⌝ on Suppress Magic.
-    • you take a serious injury from backlash.

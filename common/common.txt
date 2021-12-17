@@ -26,7 +26,7 @@ Drives ► What do you always want or need? What gets you out of bed to take exc
 ]]
 
 
-Health ► Health abstractly represents the integrity and functionality of your body, mind, and spirit. When you’re weakened or injured, you ⌞take harm⌝, which might cause you to lose health.  When you erase your last health, ⌞you die⌝.
+Health ► Health abstractly represents the integrity and functionality of your body, mind, and spirit. When you’re weakened or injured, you ⌞take harm⌝, which might cause you to lose health.  When you erase your last health, //{{you die}}//.
 
 ● 1. ▢ ▢ ▢  (Human)
 △ 2. ▢ ▢ ▢  (Superhuman)
@@ -40,7 +40,7 @@ XP ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ► You get XP mostly for good storytelling. 
 
 
 § Common Aptitudes
-These are exciting things that many could get good at. They broadly cover a lot, but no list can be perfect.
+These are exciting things at which many could excel. They cover a lot, but no list can be perfect.
 
 ○ Expression ○ ○ ○ ► Creating, interpreting, or performing representations of emotion or intellect.
 
@@ -119,7 +119,7 @@ Go dark ► You want to avoid the consequences of discovery or detection, so you
 
 § Common Moves
 
-Resist consequences ► If you don’t like the consequences or complications the GM describes when you 🡖🡓 on a ⌞story move⌝, speak up and spend 1 Resist to insist they invent something less drastic instead. This isn’t the same as ⌞dispute fiction⌝; resist consequences whenever you think it’s advantageous in-game.
+Resist consequences ► If you don’t like the consequences or complications the GM describes when you 🡖🡓 on a ⌞story move⌝, speak up and __spend 1 Resist__ to insist they invent something less drastic instead. This isn’t the same as ⌞dispute fiction⌝; resist consequences whenever you think it’s advantageous in-game.
 
 
 Buy Resist ► Any time you make a ⌞story move⌝ and 🡕🡒, you can announce that you wish to convert it to 🡖 and restore 1 Resist. The GM has veto, but you should suggest the complication or cost.
@@ -129,6 +129,7 @@ Lead the group ► Spend 1 Resist. You lead others in a ⌞story move⌝ where y
 
 🡕 You restore 1 Resist and continue the story.
 🡒🡖 Everyone else rolls the same story move. They are free to describe their actions individually, along with what aptitudes they’re exercising. Their results don’t change the story, but if everyone 🡕🡒🡖, you restore 1 Resist before continuing the story.
+
 
 Grit your teeth ► In order to resist or overcome some overwhelming feeling or compulsion, you summon all of your willpower and determination.
 
@@ -140,13 +141,15 @@ When you make this move, decide with the GM on how much the feeling or compulsio
 🡕 You resist or overcome the feeling/compulsion, and you get 1XP.
 🡒 You resist or overcome the feeling/compulsion.
 🡖 You suppress the feeling/compulsion, but it’s still there. Choose a related ⌞status⌝ to keep for the rest of the scene.
-🡓 You spend 1 Resist or succumb to the feeling/compulsion.
+🡓 You spend 1 Resist __or__ succumb to the feeling/compulsion.
+
+
 Take harm ► You take ⌞harm⌝ when you’re injured or hurt in some way (or if a move says so). Unless a move says specifically how much harm you take, use the harm scale in the Meta playbook.
 
 When you take harm, take these steps:
 
-    1. Make any moves you can make.
-    2. Make any moves you must make.
+    1. Make any moves you __can__ make.
+    2. Make any moves you __must__ make.
     3. Decide if you have ⌞armor⌝ that applies.
     4. If now ⌊harm ≤ 0⌋, this move is over. Otherwise continue.
     5. Tell the GM how much harm you’re taking. They’ll roll some dice and say if anything changes.

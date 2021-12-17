@@ -107,5 +107,16 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <text---span text---style-name="BOLD_SYMBOL"><xsl:apply-templates /></text---span>
 </xsl:template>
 
+<xsl:template match="b">
+    <text---span text---style-name="GENERIC_BOLD"><xsl:apply-templates /></text---span>
+</xsl:template>
+
+<xsl:template match="i">
+    <text---span text---style-name="GENERIC_ITALIC"><xsl:apply-templates /></text---span>
+</xsl:template>
+
+<xsl:template match="u">
+    <text---span text---style-name="GENERIC_UNDERLINE"><xsl:apply-templates /></text---span>
+</xsl:template>
 
 </xsl:stylesheet> 

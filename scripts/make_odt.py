@@ -59,19 +59,25 @@ def build_skeleton_odt(filename, title_text=''):
     mp = MasterPage(name="Standard", pagelayoutname=pl)
     textdoc.masterstyles.addElement(mp)
 
+    MAIN_FONT_SIZE = '9pt'
+    HEADING_FONT_SIZE = '14pt'
+
     defaultPStyle = DefaultStyle(family="paragraph")
-    defaultPStyle.addElement(TextProperties(attributes={'fontsize': '9pt', 'fontfamily': "MutagenSans"}))
+    defaultPStyle.addElement(TextProperties(attributes={'fontsize': MAIN_FONT_SIZE, 'fontfamily': "MutagenSans"}))
     defaultPStyle.addElement(ParagraphProperties(attributes={'margintop': '2mm', 'keeptogether': 'always', 'keepwithnext': 'auto', 'registertrue': 'true'}))
     textdoc.styles.addElement(defaultPStyle)
 
-    make_paragraph_style(textdoc, "SECTION_TITLE_BREAK", pAttr={'keepwithnext': 'always', 'breakbefore': 'column'}, tAttr={'fontsize': '14pt', 'fontweight': 'bold'})
-    make_paragraph_style(textdoc, "SECTION_TITLE", pAttr={'keepwithnext': 'always'}, tAttr={'fontsize': '14pt', 'fontweight': 'bold'})
+    make_paragraph_style(textdoc, "SECTION_TITLE_BREAK", pAttr={'keepwithnext': 'always', 'breakbefore': 'column'}, tAttr={'fontsize': HEADING_FONT_SIZE, 'fontweight': 'bold'})
+    make_paragraph_style(textdoc, "SECTION_TITLE", pAttr={'keepwithnext': 'always'}, tAttr={'fontsize': HEADING_FONT_SIZE, 'fontweight': 'bold'})
     
     make_with_stop(textdoc, "ITEM_DESC", pAttr={'keepwithnext': 'always'})
     make_with_stop(textdoc, "ITEM_HEADING", pAttr={'keepwithnext': 'always', 'margintop': '3mm'})
 
-    make_span_style(textdoc, "ITEM_TITLE", {'fontsize': '9pt', 'fontweight': 'bold'})
-    make_span_style(textdoc, "BOLD_SYMBOL", {'fontsize': '9pt', 'fontweight': 'bold'})
+    make_span_style(textdoc, "ITEM_TITLE", {'fontsize': MAIN_FONT_SIZE, 'fontweight': 'bold'})
+    make_span_style(textdoc, "BOLD_SYMBOL", {'fontsize': MAIN_FONT_SIZE, 'fontweight': 'bold'})
+    make_span_style(textdoc, "GENERIC_BOLD", {'fontsize': MAIN_FONT_SIZE, 'fontweight': 'bold'})
+    make_span_style(textdoc, "GENERIC_ITALIC", {'fontsize': MAIN_FONT_SIZE, 'fontstyle': 'italic'})
+    make_span_style(textdoc, "GENERIC_UNDERLINE", {'fontsize': MAIN_FONT_SIZE, 'textunderlinetype': 'single'})
 
     make_paragraph_style(textdoc, "FIRST_INPUT_LINE", pAttr={'margintop': '1mm', 'keepwithnext': 'always'})
     make_paragraph_style(textdoc, "INPUT_LINE", pAttr={'margintop': '0mm', 'keepwithnext': 'always'})
