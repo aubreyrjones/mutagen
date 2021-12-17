@@ -43,6 +43,7 @@ def parse_moves(pbs_filename, keep_unheadered=False):
 # m-il : input label
 # m-inv : input value
 
+
 EASY_MOVE_DEF_RE = re.compile(r'-->')
 EASY_MOVE_DEF_REPLACE = r'►'
 
@@ -62,7 +63,7 @@ LI_RE = re.compile(r'$\s*(\s+)?([•\d])+(.+?)($|\Z)', re.MULTILINE)
 LI_REPLACE = r'\n<m-li>\1\2\3</m-li>'
 
 MOVE_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►\s*(.+)\Z', re.MULTILINE | re.DOTALL)
-MOVE_REPLACE = r'<m-i><m-ih>\1<m-it>\3</m-it>\4 ► </m-ih><m-id>\6</m-id></m-i>'
+MOVE_REPLACE = r'<m-i><m-ih>\1<m-it>\3</m-it>\4 ► </m-ih><m-id>\n\6\n</m-id></m-i>'
 
 #SECTION_RE = re.compile(r'^\s*§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
 SECTION_RE = re.compile(r'^(~~~)?§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
@@ -102,14 +103,28 @@ LABELED_INPUT_RE = re.compile(r'^\s*\[\[\s*\n(.*)\n\s*\]\]\s*$', re.MULTILINE)
 LABELED_INPUT_REPLACE = r'<m-in><m-il>\1</m-il><m-inv>🖉</m-inv></m-in>'
 XML_LABELED_INPUT_REPLACE = r'\n<labeled-input><m-il>\1</m-il></labeled-input>'
 
+# replace line continuations with nothing.
+CONTINUE_LINE_RE = re.compile(r'\n\s*\\')
+CONTINUE_LINE_REPLACE = r''
+
+# replace newline runs with 1 newline
+COALESCE_LINES_RE = re.compile(r'\n(\s*\n)+')
+COALESCE_LINES_REPLACE = '\n'
+
+# here's non-paragraph line break items. Starts with a single pipe.
+LINE_BREAK_RE = re.compile(r'^\s*\|(?!\|)(.+?)$', re.MULTILINE)
+LINE_BREAK_REPLACE = r'<m-br>\1</m-br>'
+
+# these are line-start tags that are okay to wrap in paragraph tags.
+PARAGRAPH_GREENLIST = ['m-c', 'm-r', 'm-m', 'm-s', 'u', 'i', 'b']
+PARAGRAPH_GREENLIST_FRAGMENT = "|".join([f'<{p}>' for p in PARAGRAPH_GREENLIST])
+
 # this is a (partial) fixup for linebreaks -> paragraphs so that we can use
 # standard HTML white-space rules. Why not just <p>? Because this one's mine. :)
-LINE_RE = re.compile(r'(<m-id>|\n\n)(.+?)(</m-id>|$|\Z)', re.MULTILINE)
-LINE_REPLACE = r'\1<m-p>\2</m-p>\3'
+_line_re_string = r'^\s*(?!\[\[|\]\]|\|\|)(?=[^<]|' + PARAGRAPH_GREENLIST_FRAGMENT + r')(.+)$'
+LINE_RE = re.compile(_line_re_string, re.MULTILINE)
+LINE_REPLACE = r'<m-p>\1</m-p>'
 
-# here's non-paragraph line break items.
-LINE_BREAK_RE = re.compile(r'^(<m-[cs]>)(.+?)(</m-id>|$|\Z)', re.MULTILINE)
-LINE_BREAK_REPLACE = r'\n<m-br>\1\2</m-br>\3'
 
 
 def section_replace(move_text, debug=False, print_mode=False):
@@ -146,6 +161,8 @@ def apply_regex_filters(filters: list, move_text, debug=False):
     return move_text
 
 EZ_REWRITE_FILTERS = [
+    (COALESCE_LINES_RE, COALESCE_LINES_REPLACE),
+    (CONTINUE_LINE_RE, CONTINUE_LINE_REPLACE),
     (EASY_MOVE_DEF_RE, EASY_MOVE_DEF_REPLACE),
     (EASY_LI_REPLACE_RE, EASY_LI_REPLACE_REPLACE),
     (CALLOUT_RE, CALLOUT_REPLACE),
@@ -197,8 +214,8 @@ def markup_move(move_text):
         (BOLD_RE, BOLD_REPLACE),
         (ITALICS_RE, ITALICS_REPLACE),
         (UNDERLINE_RE, UNDERLINE_REPLACE),
-        (LINE_RE, LINE_REPLACE),
-        (LINE_BREAK_RE, LINE_BREAK_REPLACE)]
+        (LINE_BREAK_RE, LINE_BREAK_REPLACE),
+        (LINE_RE, LINE_REPLACE)]
 
     move_text = apply_regex_filters(filters, move_text)
 
@@ -216,6 +233,7 @@ ALREADY_STITLE_RE = re.compile(r'^\s*<m-stitle')
 ALREADY_SDESC_RE = re.compile(r'^\s*<m-sdesc')
 ALREADY_LABELED_INPUT = re.compile(r'^\s*<labeled-input')
 ALREADY_RESULT = re.compile(r'^\s*<m-res')
+ALREADY_BREAK = re.compile(r'^\s*<m-br')
 ITEM_HEADER_LINE_RE = re.compile(r'^.*?►')
 BOX_INPUT_START_RE = re.compile(r'^\s*\[\[')
 BOX_INPUT_CONT_RE = re.compile(r'^\s*\|\|')
@@ -229,6 +247,7 @@ LINE_TABLE = [
     (ALREADY_SDESC_RE, None),
     (ALREADY_LABELED_INPUT, 'DO-NOTHING'),
     (ALREADY_RESULT, 'DO-NOTHING'),
+    (ALREADY_BREAK, 'DO-NOTHING'),
     (ITEM_HEADER_LINE_RE, 'item-start'),
     (BOX_INPUT_START_RE, 'box-start'),
     (BOX_INPUT_CONT_RE, 'box-cont'),
@@ -259,6 +278,7 @@ def markup_paragraphs(move_text, skip_stop):
         if pType not in (None, 'DO-NOTHING'):
             lines[i] = f'<{pType}>{l}</{pType}>'
         else:
+            # don't fix up
             pass
 
     if not (skip_stop or no_stop(lines[-1])):
@@ -278,6 +298,7 @@ def markup_to_xml(move_text):
         (FIRST_ITEM_PARAGRAPH_RE, FIRST_ITEM_PARAGRAPH_REPLACE),
         (LABELED_INPUT_RE, XML_LABELED_INPUT_REPLACE),
         (RESULTS_RE, RESULTS_REPLACE),
+        (LINE_BREAK_RE, LINE_BREAK_REPLACE),
         (ROLL_RE, ROLL_REPLACE),
         (MATH_RE, MATH_REPLACE),
         (CLICKABLE_RE, CLICKABLE_REPLACE),

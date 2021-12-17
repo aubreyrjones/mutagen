@@ -1,25 +1,34 @@
 ﻿~~~§ Witch Playbook
 You combine symbol and metaphor to link magical effects to their target.
 
+
 § Witch Moves
+
 Enact Ritual ► You do magic by linking target and effect with a symbolic ritual. You might be the target.
 
 In order for someone or something to be your target, you must have a ⌞link⌝ to it. Describe how you invoke the link with your ritual.
 
 Describe how your ritual evokes your desired ⌞effect⌝ on your target. The more expressive and resonant with your effect, the better. Get weird. Say which ⌞ritual methods⌝ you’re using.
 
-When you enact a ritual to ⌞make a story move⌝, ⊞⌊combined methods⌋. This value starts at ⌊−1⌋ for the first method you’re using to evoke your effect in this ritual. For each additional method you add to the ritual, add ⌊+1⌋ to ⌊combined methods⌋ (to a max of ⌊+3⌋).
+When you enact a ritual to ⌞make a story move⌝, ⊞⌊combined methods⌋. This value starts at ⌊−1⌋ for the first method you’re using to evoke your effect in this ritual. For each __additional__ method you add to the ritual, add ⌊+1⌋ to !!⌊combined methods⌋!! (to a max of ⌊+3⌋).
 
 🡖🡓 on your story move: the complications or costs are related to your ritual’s effect—except applied to your chagrin.
+
+
 
 Witch’s Familiar ► A common household animal has chosen to be your loyal familiar. A shockingly intelligent specimen, you can understand their speech and they yours. While fictionally an ordinary animal, your familiar has flawless “plot armor” and miraculously escapes certain death every time.
 [[
 Name/kind: 
 ]]
+
+
 ○ Your eyes a moment, friend ► You can see through your familiar’s eyes.
 
 ○ My friend, my ambassador ► You can speak through your familiar’s mouth and hear through their ears.
+
+
 § Links
+
 ● Once whole, always one ► Create a link with a physical piece of your target. Assuming your spirit and body are still joined, you’re always part of yourself.
 
 ○ The hands that hold the power ► Create a link by continuously or repeatedly touching your target through the ritual.
@@ -39,7 +48,10 @@ Name/kind:
 ○ As thou callest thyself, I call thee (5) ► Create a link with a being’s full common name.
 
 ○ By this image in my mind are you mine (8) ► Create a link by meditating on a recent personal memory of an interaction with your target.
+
+
 § Effects
+
 ● What thou send forth... ► Your ritual revisits on your target an echo of some effect you’ve recently witnessed them have on the world or its inhabitants.
 
 ○ Against thy evil I am warded ► Your ritual protects you from a magical effect cast by your target; or your target could be the magical effect itself, if you can make a ⌞link⌝ to it somehow.
@@ -60,7 +72,10 @@ Name/kind:
 ○ Thou hast earned my ire (4) ► Your ritual causes your target a serious injury.
 
 ○ Thou wilt know my fury! (6) ► Your ritual causes your target a life-threatening injury.
+
+
 § Ritual Methods
+
 ● Ritual Sacrifice ► You cast away, ruin, kill, or destroy something significant that symbolizes your ritual’s effects.
 
 ○ Ritual Props ► Non-destructively manipulate physical objects symbolizing your ritual effects.

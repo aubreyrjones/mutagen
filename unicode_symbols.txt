@@ -8,8 +8,8 @@ Common symbols:
 ○ △ ● ▢              	all purchase/resource symbols
 ○		            	XP-buyable aptitude, move, or resource (clickable online)
 △		            	permission-only aptitude, move, or resource (clickable online)
-●		            	pre-bought aptitude, move, or resource (not clickable)
 ▢		            	resource point tracker (clickable online)
+●		            	pre-bought aptitude, move, or resource (not clickable)
 
 ⌞⌝	                    mark a term defined elsewhere
 {{your text}}           same as above, but easier to type
@@ -38,9 +38,15 @@ Write-in fields (editable online):
 
 
 [[		            	start a write-in field
-your own text	       	label a 3-line write-in field (cannot use || to extend it)
+your text   	       	label a 3-line write-in field (cannot use || to extend it)
 ]]		            	close a write-in field
 
+
+
+Special paragraph types:
+
+* your text...	    	line item--asterisk must start paragraph
+🡕🡒 your text...	     results block--one or more result symbol(s) must start paragraph
 
 
 
@@ -50,13 +56,10 @@ __your text__	    	underline
 //your text//	    	italics
 !!your text!!	    	bold
 
+\your text              text on this line should be included in the previous paragraph
 
+|your text              text on this line should have minimal vertical separation from the previous one
 
-
-Special paragraph types:
-
-* your text...	    	line item--asterisk must start paragraph
-🡕🡒 your text...	     results block--one or more result symbol(s) must start paragraph
 
 
 

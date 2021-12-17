@@ -1,8 +1,6 @@
 ﻿~~~§ Sorcerer Playbook
 You do magic with sheer fucking force of will.
 
-I want to add a second paragraph here.
-
 
 § Sorcerer Meta Moves
 
@@ -10,11 +8,11 @@ With great power... --> This playbook is about just describing novel magic and h
 
 
 § Sorcerer Resources
-Will ► The overwhelming conviction that your magic should override the very laws of reality.
 
-● 1. ▢ ▢ ▢ 
-○ 2. ▢
-○ 3. ▢
+Will --> The overwhelming conviction that your magic should override the very laws of reality.
+|● 1. ▢ ▢ ▢ 
+|○ 2. ▢
+|○ 3. ▢
 
 
 § Sorcerer Aptitudes: Threads
@@ -53,8 +51,9 @@ These are the strands that a sorcerer weaves together to create their magic. Not
 
 ○ Transit ○ ► Weaving to move or connect something without it crossing intervening space.
 
-§ Sorcerer Moves
 
+
+§ Sorcerer Moves
 
 Restore Will ► You restore 1 Will when you 🡕🡒 on any {{story move}}.
 
@@ -66,6 +65,7 @@ Lose Will ► You lose 1 Will when you 🡓 on any ⌞story move⌝.
 Weave magic ► You create and cast a magical effect defined by your creativity and mastery of the ⌞Threads⌝. You cannot make this move if you have 0 Will.
 
 Describe what you want your weaving to do in defiance of reality’s edicts. This can be practically anything you can think of, but there are some rules:
+
     * weave magic on a personal, local, immediate scale.
     * target one “thing” at a time—that might be an area containing many occupants, but not 3 separate individuals.
     * you must directly perceive your target—not just something it’s part of or contained inside.

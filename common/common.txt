@@ -28,9 +28,9 @@ Drives ► What do you always want or need? What gets you out of bed to take exc
 
 Health ► Health abstractly represents the integrity and functionality of your body, mind, and spirit. When you’re weakened or injured, you ⌞take harm⌝, which might cause you to lose health.  When you erase your last health, //{{you die}}//.
 
-● 1. ▢ ▢ ▢  (Human)
-△ 2. ▢ ▢ ▢  (Superhuman)
-△ 3. ▢ ▢ ▢  (Boss-tier)
+|● 1. ▢ ▢ ▢  (Human)
+|△ 2. ▢ ▢ ▢  (Superhuman)
+|△ 3. ▢ ▢ ▢  (Boss-tier)
 
 
 Resist ▢ ▢ ► When you make a roll and don’t like the complications the GM describes, you can ⌞resist consequences⌝.

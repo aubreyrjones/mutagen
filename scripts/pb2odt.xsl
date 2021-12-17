@@ -32,6 +32,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <text---p text---style-name="ITEM_DESC_STOP"><xsl:apply-templates /></text---p>
 </xsl:template>
 
+<xsl:template match='m-br'>
+    <text---p text---style-name="ITEM_DESC_BR"><xsl:apply-templates /></text---p>
+</xsl:template>
+
+<xsl:template match='m-br-stop'>
+    <text---p text---style-name="ITEM_DESC_BR_STOP"><xsl:apply-templates /></text---p>
+</xsl:template>
+
 <xsl:template match='item-start'>
     <text---p text---style-name="ITEM_HEADING"><xsl:apply-templates /></text---p>
 </xsl:template>

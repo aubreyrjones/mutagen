@@ -72,6 +72,7 @@ def build_skeleton_odt(filename, title_text=''):
     
     make_with_stop(textdoc, "ITEM_DESC", pAttr={'keepwithnext': 'always'})
     make_with_stop(textdoc, "ITEM_HEADING", pAttr={'keepwithnext': 'always', 'margintop': '3mm'})
+    make_with_stop(textdoc, "ITEM_DESC_BR", pAttr={'keepwithnext': 'always', 'margintop': '1mm'})
 
     make_span_style(textdoc, "ITEM_TITLE", {'fontsize': MAIN_FONT_SIZE, 'fontweight': 'bold'})
     make_span_style(textdoc, "BOLD_SYMBOL", {'fontsize': MAIN_FONT_SIZE, 'fontweight': 'bold'})
