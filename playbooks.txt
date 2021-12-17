@@ -5,8 +5,8 @@
 
 
 # PC playbooks
-LSCWM Playbook: Wizard            =   lscwm_pc_wizard        = common/common     pcs/wizard
 LSCWM Playbook: Sorcerer          =   lscwm_pc_sorcerer      = common/common     pcs/sorcerer
+LSCWM Playbook: Wizard            =   lscwm_pc_wizard        = common/common     pcs/wizard
 LSCWM Playbook: Adept             =   lscwm_pc_adept         = common/common     pcs/adept
 LSCWM Playbook: Witch             =   lscwm_pc_witch         = common/common     pcs/witch
 Raw Mutagen Playbook              =   raw_pc                 = common/common

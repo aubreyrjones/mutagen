@@ -135,13 +135,18 @@ def make_playbook(pb_name, human_name, pb_list):
         if isinstance(span, list):
             markups = parse_and_markup_span(span)
             odtName = staged_name(pb_name + str(i), 'odt')
+            
+            # write JSON
+            with open(json_file, 'w', encoding='utf-8') as json_outfile:
+                print(f'\tBuilding JSON from text: {" ".join(span)}')
+                json_outfile.write(markups['json'])
+
+            # write XML and ODT
             if needs_rebuilt(span, odtName):
                 print(f'\tBuilding ODT from text: {" ".join(span)}')
                 with open(staged_name(odtName, 'xml'), 'w', encoding='utf-8') as xmlfile:
                     xmlfile.write(markups['xml'])
                 build_odt(markups['xml'], odtName, human_name)
-            with open(json_file, 'w', encoding='utf-8') as json_outfile:
-                json_outfile.write(markups['json'])
         else:
             odtName = span
         pdf_span_name = staged_name(odtName, 'pdf')

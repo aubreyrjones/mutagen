@@ -112,22 +112,25 @@ LINE_BREAK_RE = re.compile(r'^(<m-[cs]>)(.+?)(</m-id>|$|\Z)', re.MULTILINE)
 LINE_BREAK_REPLACE = r'\n<m-br>\1\2</m-br>\3'
 
 
-def section_replace(move_text, debug=False, detect_colbreak=False):
+def section_replace(move_text, debug=False, print_mode=False):
     m = SECTION_RE.match(move_text)
     if not m:
-        return move_text
+        return move_text, False
     desc = ''
     attr = ''
-    if detect_colbreak and m.group(1):
+    if print_mode and m.group(1):
         attr = ' colbreak="true"'
     if m.group(3):
-        desc = f'\n<m-sdesc>{m.group(3)}</m-sdesc>'
+        if print_mode:
+            desc = f'\n{m.group(3)}'
+        else:
+            desc = f'\n<m-sdesc>\n\n{m.group(3)}\n</m-sdesc>'
     rval = f'<m-stitle{attr}>§ {m.group(2)}</m-stitle>{desc}'
     if debug:
         print(rval)
-        return move_text
+        return move_text, True
     else:
-        return rval
+        return rval, True
 
 def markup_with_regex(regex, replacement, move_text, debug=False):
     rval = regex.sub(replacement, move_text)
@@ -178,7 +181,7 @@ def markup_move(move_text):
     
     move_text = preprocess_and_escape(move_text)
 
-    move_text = section_replace(move_text)
+    move_text, isSection = section_replace(move_text)
 
     filters = [
         (INPUT_RE, INPUT_REPLACE),
@@ -247,7 +250,7 @@ def no_stop(line):
     if paragraph_type(line) is None: return True
     return False
 
-def markup_paragraphs(move_text):
+def markup_paragraphs(move_text, skip_stop):
     lines = move_text.replace("\n\n", "\n").split("\n")
 
     listTypeLatch = None
@@ -258,7 +261,7 @@ def markup_paragraphs(move_text):
         else:
             pass
 
-    if not no_stop(lines[-1]):
+    if not (skip_stop or no_stop(lines[-1])):
         lines[-1] = LAST_TAG_STOP_RE.sub(LAST_TAG_STOP_REPLACE, lines[-1])
 
     return "\n".join(lines)
@@ -269,7 +272,7 @@ def markup_to_xml(move_text):
     '''
     move_text =  preprocess_and_escape(move_text)
 
-    move_text = section_replace(move_text, detect_colbreak=True)
+    move_text, isSection = section_replace(move_text, print_mode=True)
 
     filters = [
         (FIRST_ITEM_PARAGRAPH_RE, FIRST_ITEM_PARAGRAPH_REPLACE),
@@ -285,7 +288,7 @@ def markup_to_xml(move_text):
     
     move_text = apply_regex_filters(filters, move_text)
     
-    move_text = markup_paragraphs(move_text)
+    move_text = markup_paragraphs(move_text, isSection)
 
     return move_text
 
