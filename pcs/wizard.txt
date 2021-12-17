@@ -150,10 +150,10 @@ Iconic light:
 🡓 They maintain concentration.
 
 
-○ Suppress Magic (2) ► Spend 1 Concentration. ⊞⌊Attainment⌋ to suppress any single magical effect while you hold this spell in Concentration.
+○ Suppress Magic (2) ► Spend 1 Concentration. !+[Attainment] to suppress any single magical effect while you hold this spell in Concentration.
 
 🡕 You pick 1:
-    * you permanently end the magical effect, even if you ⌞drop concentration⌝. If the effect is an intrinsic quality of an item or being, it comes back in 24 hours.
+    * you permanently end the magical effect, even if you {{drop concentration}}. If the effect is an intrinsic quality of an item or being, it comes back in 24 hours.
     * You fully suppress the magical effect and restore 1 Concentration.
 🡒 You fully suppress the magical effect.
 🡖 You partially suppress the magical effect.

@@ -85,6 +85,11 @@ UNDERLINE_REPLACE = r'<u>\1</u>'
 CALLOUT_RE = re.compile(r'\{\{(.+?)\}\}')
 CALLOUT_REPLACE = r'⌞\1⌝'
 
+EASY_MATH_RE = re.compile(r'_\[(.+?)\]_')
+EASY_MATH_REPLACE = r'⌊\1⌋'
+
+EASY_ROLL_RE = re.compile(r'!\+\[(.+?)\]')
+EASY_ROLL_REPLACE = r'⊞⌊\1⌋'
 
 # this is matching the unicode bracket write-in fields from the playbooks
 # the ⎪ below is not a pipe; that's the middle of the bracket
@@ -132,15 +137,46 @@ def markup_with_regex(regex, replacement, move_text, debug=False):
     else:
         return rval
 
-def markup_move(move_text):
-    
-    move_text = markup_with_regex(EASY_MOVE_DEF_RE, EASY_MOVE_DEF_REPLACE, move_text)
+def apply_regex_filters(filters: list, move_text, debug=False):
+    for regex, repl in filters:
+        move_text = markup_with_regex(regex, repl, move_text, debug)
+    return move_text
+
+EZ_REWRITE_FILTERS = [
+    (EASY_MOVE_DEF_RE, EASY_MOVE_DEF_REPLACE),
+    (EASY_LI_REPLACE_RE, EASY_LI_REPLACE_REPLACE),
+    (CALLOUT_RE, CALLOUT_REPLACE),
+    (EASY_MATH_RE, EASY_MATH_REPLACE),
+    (EASY_ROLL_RE, EASY_ROLL_REPLACE)
+]
+
+def do_ez_rewrites(move_text):
+    '''
+    Do ascii digraph -> unicode glyph rewrites.
+
+    These are not permitted to generate any XHTML markup, just replace ascii shortcuts with unicode stuff.
+    '''
+    return apply_regex_filters(EZ_REWRITE_FILTERS, move_text)
+
+
+def preprocess_and_escape(move_text):
+    # rewrite ASCII digraphs and shortcuts into unicode for later parser passes
+    move_text = do_ez_rewrites(move_text)
 
     # escape trash and HTML tag markers.
     move_text.replace('\ufeff', '')
     move_text.replace('\ubbef', '')
     move_text = move_text.replace(">", "&gt;")
     move_text = move_text.replace("<", "&lt;")
+    
+    return move_text
+
+def markup_move(move_text):
+    '''
+    Mark up a move for web. This is semantic markup, not formatting markup for print.
+    '''
+    
+    move_text = preprocess_and_escape(move_text)
 
     move_text = section_replace(move_text)
 
@@ -151,7 +187,6 @@ def markup_move(move_text):
         (LI_RE, LI_REPLACE),
         (RESULTS_RE, RESULTS_REPLACE),
         (MOVE_RE, MOVE_REPLACE),
-        (CALLOUT_RE, CALLOUT_REPLACE),
         (ROLL_RE, ROLL_REPLACE),
         (MATH_RE, MATH_REPLACE),
         (CLICKABLE_RE, CLICKABLE_REPLACE),
@@ -162,8 +197,7 @@ def markup_move(move_text):
         (LINE_RE, LINE_REPLACE),
         (LINE_BREAK_RE, LINE_BREAK_REPLACE)]
 
-    for regex, repl in filters:
-        move_text = markup_with_regex(regex, repl, move_text)
+    move_text = apply_regex_filters(filters, move_text)
 
     return move_text
 
@@ -230,23 +264,17 @@ def markup_paragraphs(move_text):
     return "\n".join(lines)
 
 def markup_to_xml(move_text):
-    move_text = markup_with_regex(EASY_MOVE_DEF_RE, EASY_MOVE_DEF_REPLACE, move_text)
-
-    move_text.replace('\ufeff', '')
-    move_text.replace('\ubbef', '')
-    move_text = move_text.replace(">", "&gt;")
-    move_text = move_text.replace("<", "&lt;")
+    '''
+    Markup for print. This is formatting markup, not semantic markup for data processing.
+    '''
+    move_text =  preprocess_and_escape(move_text)
 
     move_text = section_replace(move_text, detect_colbreak=True)
 
     filters = [
         (FIRST_ITEM_PARAGRAPH_RE, FIRST_ITEM_PARAGRAPH_REPLACE),
-        (EASY_LI_REPLACE_RE, EASY_LI_REPLACE_REPLACE),
-        # (INPUT_RE, XML_INPUT_REPLACE),
         (LABELED_INPUT_RE, XML_LABELED_INPUT_REPLACE),
-        # (LI_RE, LI_REPLACE),
         (RESULTS_RE, RESULTS_REPLACE),
-        (CALLOUT_RE, CALLOUT_REPLACE),
         (ROLL_RE, ROLL_REPLACE),
         (MATH_RE, MATH_REPLACE),
         (CLICKABLE_RE, CLICKABLE_REPLACE),
@@ -255,8 +283,7 @@ def markup_to_xml(move_text):
         (ITALICS_RE, ITALICS_REPLACE),
         (UNDERLINE_RE, UNDERLINE_REPLACE)]
     
-    for regex, repl in filters:
-        move_text = markup_with_regex(regex, repl, move_text)
+    move_text = apply_regex_filters(filters, move_text)
     
     move_text = markup_paragraphs(move_text)
 

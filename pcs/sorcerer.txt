@@ -54,7 +54,7 @@ These are the strands that a sorcerer weaves together to create their magic. Not
 § Sorcerer Moves
 
 
-Restore Will ► You restore 1 Will when you 🡕🡒 on any ⌞story move⌝.
+Restore Will ► You restore 1 Will when you 🡕🡒 on any {{story move}}.
 
 
 Lose Will ► You lose 1 Will when you 🡓 on any ⌞story move⌝.
@@ -64,10 +64,10 @@ Lose Will ► You lose 1 Will when you 🡓 on any ⌞story move⌝.
 Weave magic ► You create and cast a magical effect defined by your creativity and mastery of the ⌞Threads⌝. You cannot make this move if you have 0 Will.
 
 Describe what you want your weaving to do in defiance of reality’s edicts. This can be practically anything you can think of, but there are some rules:
-    • weave magic on a personal, local, immediate scale.
-    • target one “thing” at a time—that might be an area containing many occupants, but not 3 separate individuals.
-    • you must directly perceive your target—not just something it’s part of or contained inside.
-    • don’t get in a rut—try not to repeat yourself too much in the same scene.
+    * weave magic on a personal, local, immediate scale.
+    * target one “thing” at a time—that might be an area containing many occupants, but not 3 separate individuals.
+    * you must directly perceive your target—not just something it’s part of or contained inside.
+    * don’t get in a rut—try not to repeat yourself too much in the same scene.
 
 Your effect ends if you no longer perceive your target, dawn breaks, or you ⌞weave magic⌝ again. When your effect ends, the logical changes, outcomes, and consequences caused by the effect do not reverse themselves. That building is still on fire, even if the spark is long faded.
 
@@ -77,6 +77,6 @@ From all the Threads your effect depends on, the one with the lowest rating is t
 
 If you’re gonna ⌞fuck ‘em up⌝, you can do at most ⌊weak thread + 1⌋ harm—this means 0 harm if your weak thread is −1. If you can’t do enough harm to fit the injuries your description would cause, you’ll need to describe a less devastating effect.
 
-When you weave magic to ⌞make a story move⌝, ⊞⌊weak thread⌋ for the story move.
+When you weave magic to ⌞make a story move⌝, !+[weak thread] for the story move.
 
 
