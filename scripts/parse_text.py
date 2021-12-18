@@ -63,7 +63,7 @@ ROLL_REPLACE = r'<m-r>⊞⌊\1⌋</m-r>'
 MATH_RE = re.compile(r'⌊(.+?)⌋')
 MATH_REPLACE = r'<m-m>⌊\1⌋</m-m>'
 
-RESULTS_RE = re.compile(r'$\s*([🡕🡒🡖🡓]+)(.+?)($|\Z)', re.MULTILINE)
+RESULTS_RE = re.compile(r'$\s*([🡕🡒🡖🡐]+)(.+?)($|\Z)', re.MULTILINE)
 RESULTS_REPLACE = r'\n<m-res><m-s>\1</m-s>\2</m-res>'
 
 EASY_LI_REPLACE_RE = re.compile(r'^\s*\*(.+)$', re.MULTILINE)
@@ -253,7 +253,7 @@ ITEM_HEADER_LINE_RE = re.compile(r'^.*?►')
 BOX_INPUT_START_RE = re.compile(r'^\s*\[\[')
 BOX_INPUT_CONT_RE = re.compile(r'^\s*\|\|')
 BOX_INPUT_END_RE = re.compile(r'^\s*\]\]')
-RES_INPUT_LINE_RE = re.compile(r'^\s*[🡕🡒🡖🡓]')
+RES_INPUT_LINE_RE = re.compile(r'^\s*[🡕🡒🡖🡐]')
 
 LINE_ITEM_LINE_RE = re.compile(r'^\s*(•|\d+\.)')
 

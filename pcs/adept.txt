@@ -69,7 +69,7 @@ Iconic Weapon:
 🡕 You can remain astral for an entire day, and enter any space not warded specifically against such intrusion.
 🡒 You can remain astral for a couple hours, but cannot enter any dwelling or place of spiritual or magical power.
 🡖 You can remain astral for maybe half an hour, but cannot enter any place that belongs to another—unless invited.
-🡓 Your astral form remains locked in your body.
+🡐 Your astral form remains locked in your body.
 
 
 ○ Chi Transfer ► Spend 1 ⌞Health⌝ to give someone else ⌊+1⌋ on all chi- or magic-related rolls for the rest of the scene.

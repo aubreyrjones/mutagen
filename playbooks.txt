@@ -9,7 +9,7 @@
 
 # set game title and author information for the footers. Note ALL CAPS.
 
-GAME        = Late Stage Capitalism With Magic (PLAYTEST 1)
+GAME        = Late Stage Capitalism With Magic (PT2)
 AUTHOR      = © 2021 Aubrey R. Jones 🄯 CC-BY-SA 4.0
 HOMEPAGE    = https://www.mutagenrpg.com/about
 
@@ -42,7 +42,7 @@ Playbook: Witch             =   pc_witch         = common/common     pcs/witch
 
 
 # you can set a new game and playbooks afterward will use that name.
-GAME        = Raw Mutagen⌬ v0.2
+GAME        = Raw Mutagen⌬ v0.3
 GAMESHORT   = raw
 
 # Raw Mutagen common playbook on its own

@@ -121,7 +121,7 @@ Go dark ► You want to avoid the consequences of discovery or detection, so you
 
 § Common Moves
 
-Resist consequences ► If you don’t like the consequences or complications the GM describes when you 🡖🡓 on a ⌞story move⌝, speak up and __spend 1 Resist__ to insist they invent something less drastic instead. This isn’t the same as ⌞dispute fiction⌝; resist consequences whenever you think it’s advantageous in-game.
+Resist consequences ► If you don’t like the consequences or complications the GM describes when you 🡖🡐 on a ⌞story move⌝, speak up and __spend 1 Resist__ to insist they invent something less drastic instead. This isn’t the same as ⌞dispute fiction⌝; resist consequences whenever you think it’s advantageous in-game.
 
 
 Buy Resist ► Any time you make a ⌞story move⌝ and 🡕🡒, you can announce that you wish to convert it to 🡖 and restore 1 Resist. The GM has veto, but you should suggest the complication or cost.
@@ -143,7 +143,7 @@ When you make this move, decide with the GM on how much the feeling or compulsio
 🡕 You resist or overcome the feeling/compulsion, and you get 1XP.
 🡒 You resist or overcome the feeling/compulsion.
 🡖 You suppress the feeling/compulsion, but it’s still there. Choose a related ⌞status⌝ to keep for the rest of the scene.
-🡓 You spend 1 Resist __or__ succumb to the feeling/compulsion.
+🡐 You spend 1 Resist __or__ succumb to the feeling/compulsion.
 
 
 Take harm ► You take ⌞harm⌝ when you’re injured or hurt in some way (or if a move says so). Unless a move says specifically how much harm you take, use the harm scale in the Meta playbook.

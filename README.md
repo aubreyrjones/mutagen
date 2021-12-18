@@ -286,7 +286,7 @@ playbook section `.txt` files. They'll mangle the text files.
 
 Inside Mutagen markup, each new line is considered a new
 paragraph. Some paragraphs are special, like line items (starting with
-a `*`) or result outcomes (starting with one of `🡕🡒🡖🡓`). But most
+a `*`) or result outcomes (starting with one of `🡕🡒🡖🡐`). But most
 lines of markup are just formatted as a new paragraph of regular text
 with a uniform separation between them.
 

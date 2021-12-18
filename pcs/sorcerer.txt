@@ -58,7 +58,7 @@ These are the strands that a sorcerer weaves together to create their magic. Not
 Restore Will ► You restore 1 Will when you 🡕🡒 on any {{story move}}.
 
 
-Lose Will ► You lose 1 Will when you 🡓 on any ⌞story move⌝.
+Lose Will ► You lose 1 Will when you 🡐 on any ⌞story move⌝.
 
 
 

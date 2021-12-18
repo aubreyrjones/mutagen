@@ -13,7 +13,7 @@ Describe how your ritual evokes your desired ⌞effect⌝ on your target. The mo
 
 When you enact a ritual to ⌞make a story move⌝, ⊞⌊combined methods⌋. This value starts at ⌊−1⌋ for the first method you’re using to evoke your effect in this ritual. For each __additional__ method you add to the ritual, add ⌊+1⌋ to !!_[combined methods]_!! (to a max of ⌊+3⌋).
 
-🡖🡓 on your story move: the complications or costs are related to your ritual’s effect—except applied to your chagrin.
+🡖🡐 on your story move: the complications or costs are related to your ritual’s effect—except applied to your chagrin.
 
 
 
