@@ -275,8 +275,8 @@ You need a good quality text editor, not a word processor. While you
 could use built-in Notepad, I would recommend an open-source text
 editor like:
 
-      * [Atom](https://atom.io/)
-      * [Notepad++](https://notepad-plus-plus.org/)
+  * [Atom](https://atom.io/)
+  * [Notepad++](https://notepad-plus-plus.org/)
 
 You absolutely should _not_ use Word or LibreOffice to edit the
 playbook section `.txt` files. They'll mangle the text files.
