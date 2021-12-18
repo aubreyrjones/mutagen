@@ -53,20 +53,28 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <text---span text---style-name="ITEM_TITLE"><xsl:apply-templates /></text---span>
 </xsl:template>
 
+<!-- OMG! I figured out a way to format this! It's horrible and ugly if you highlight in the PDF, but it's perfect in print. -->
+<!-- We have to do this because the variable-width font makes it impossible to line up the bracket characters perfectly with any other means. -->
+<!-- I tried table, but ODT requires fixed-width sizes and we don't know the physical width of the printed label string. -->
+<!-- This works efficiently because 99% of printers don't have white ink. They print nothing for white, as they assume that the paper is white. -->
 <xsl:template match="labeled-input">
-    <text---p text---style-name="FIRST_INPUT_LINE">⎧
-        <text---span text---style-name="INPUT_LABEL_STYLE"><xsl:apply-templates select="m-il" /></text---span>
+    <text---p text---style-name="FIRST_INPUT_LINE">
+        <text---span text---style-name="INPUT_LABEL_STYLE_INVISIBLE"><xsl:apply-templates select="m-il" /></text---span>⎧🖉
     </text---p>
-    <text---p text---style-name="INPUT_LINE">⎪</text---p>
-    <text---p text---style-name="LAST_INPUT_LINE">⎩</text---p>
+    <text---p text---style-name="INPUT_LINE"><text---span text---style-name="INPUT_LABEL_STYLE"><xsl:apply-templates select="m-il" /></text---span>⎪
+    </text---p>
+    <text---p text---style-name="LAST_INPUT_LINE"><text---span text---style-name="INPUT_LABEL_STYLE_INVISIBLE"><xsl:apply-templates select="m-il" /></text---span>⎩
+    </text---p>
 </xsl:template>
 
 <xsl:template match="labeled-input-stop">
-        <text---p text---style-name="FIRST_INPUT_LINE">⎧
-        <text---span text---style-name="INPUT_LABEL_STYLE"><xsl:apply-templates select="m-il" /></text---span>
+    <text---p text---style-name="FIRST_INPUT_LINE">
+        <text---span text---style-name="INPUT_LABEL_STYLE_INVISIBLE"><xsl:apply-templates select="m-il" /></text---span>⎧🖉
     </text---p>
-    <text---p text---style-name="INPUT_LINE">⎪</text---p>
-    <text---p text---style-name="LAST_INPUT_LINE_STOP">⎩</text---p>
+    <text---p text---style-name="INPUT_LINE"><text---span text---style-name="INPUT_LABEL_STYLE"><xsl:apply-templates select="m-il" /></text---span>⎪
+    </text---p>
+    <text---p text---style-name="LAST_INPUT_LINE_STOP"><text---span text---style-name="INPUT_LABEL_STYLE_INVISIBLE"><xsl:apply-templates select="m-il" /></text---span>⎩
+    </text---p>
 </xsl:template>
 
 <xsl:template match="m-il">
@@ -84,7 +92,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 
 <xsl:template match="box-start">
-    <text---p text---style-name="FIRST_INPUT_LINE">⎧ 🖉</text---p>
+    <text---p text---style-name="FIRST_INPUT_LINE">⎧🖉</text---p>
 </xsl:template>
 
 <xsl:template match="box-cont">

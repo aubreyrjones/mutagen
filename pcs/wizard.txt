@@ -46,7 +46,7 @@ Reap Mana ► You forcibly tear the Mana from a living creature to power your ma
 🡓 You don’t get any Mana and they’re unharmed.
 
 
-Restore Concentration ► ⌞Drop concentration⌝ on all the ⌞spells⌝ you’re currently holding. You can then gain 1 Concentration by meditating uninterrupted for most of an hour. Alternatively, if you can sleep restfully for a few hours and wake up with full Concentration.
+Restore Concentration ► ⌞Drop concentration⌝ on all the ⌞spells⌝ you’re currently holding. You can then gain 1 Concentration by meditating uninterrupted for most of an hour. Alternatively, you can sleep restfully for a few hours and wake up with full Concentration.
 
 
 Drop Concentration ► When a move or the GM says so, or whenever you will it, erase a ⌞spell⌝ you’re holding in Concentration. The spell’s effects end more or less immediately.
