@@ -317,11 +317,12 @@ There are two basic blocks of text you can format:
   * sections
   * moves
 
-Section names start with `§`. Optionally, you can write `~~~§`, which
-will force a column-break before that section when it's printed. You
-can write paragraphs of text underneath the section name to describe
-the section's contents. [You can't use line items, write-in fields,
-clickable symbols, or results blocks inside of section descriptions.]
+Section names start with `§` or `$`. Optionally, you can write `~~~§`
+or `~~~$`, which will force a column-break before that section in the
+PDF playbook. You can write paragraphs of text underneath the section
+name to describe the section's contents. [You can't use line items,
+write-in fields, clickable symbols, or results blocks inside of
+section descriptions.]
 
 Moves start with a paragraph containing `-->` or `►`. Do not use that
 symbol anywhere else or for any other purpose. Everything before the
