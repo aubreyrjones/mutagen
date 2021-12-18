@@ -172,7 +172,12 @@ Linux: `./compile_playbooks.py my_playbooks.txt`
 Windows: Drag and drop your playbook definition file onto `MAKE_PLAYBOOKS.bat`.
 
 
-This will create a bunch of intermediary files in the `build`
+Windows Pro Tip: It's not required, but your playbook builds will go a
+*LOT* faster (10x) if you open a copy of LibreOffice Writer before you
+run the build and leave it open while the build runs. You can just
+have a blank document in there with the window minimized.
+
+The build will create a bunch of intermediary files in the `build`
 directory. You can ignore these.
 
 The complete PDF playbooks are created in `playbook_output`, with the

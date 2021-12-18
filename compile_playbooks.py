@@ -86,7 +86,7 @@ def make_pdf(input_filename):
     elapsed_time = render_end - render_start
     global _time_rendering_pdfs
     _time_rendering_pdfs += elapsed_time
-    print(f"took {elapsed_time:.2f}s:\t\t{sn}")
+    print(f"took {elapsed_time:.2f}s:\t\t-> {sn}")
 
     return sn
 
@@ -137,26 +137,36 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
     Build a playbook from its constituent sections.
     '''
 
-    pdf_basename = pb_name + ".pdf"
-    pdf_file = path.join(OUT_DIR, pdf_basename)
-    json_file = path.join(JSON_DIR, pb_name + ".mutagen.json")
-
-    print(f"*\nMaking `{human_name}`")
-
     if len(pb_list) < 1:
         print(f'ERROR! No playbook sections specified. Skipping {pb_name}.')
         return
 
+    pdf_basename = pb_name + ".pdf"
+    pdf_file = path.join(OUT_DIR, pdf_basename)
+    json_file = path.join(JSON_DIR, pb_name + ".mutagen.json")
+
+    gets_json = '_teaser' not in pb_name and '_gm' not in pb_name
+
     # don't add the rules if it's a teaser "playbook".
     if '_teaser' not in pb_name:
         pb_list.append('common/meta')
+
+    # resolve inputs to existing files.
+    resolved_inputs = list(map(resolve_input, pb_list))
+
+    print(f"Making `{human_name}`")
+    print(f'\tInput sections:\t\t\t\t{" ".join(resolved_inputs)}')
+    print(f'\tOutput PDF:\t\t\t\t-> {pdf_file}')
+    if gets_json:
+        print(f'\tOutput JSON:\t\t\t\t-> {json_file}')
+    print('\t*')
 
     for pbs in pb_list:
         if pbs in already_staged: continue
         already_staged.add(pbs)
         stage_section(pbs)
     
-    resolved_inputs = list(map(resolve_input, pb_list))
+    
 
     madeSomething = False
 
@@ -204,7 +214,7 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
             make_pdf(odtName)
 
     # write JSON
-    if '_gm' not in pb_name and needs_rebuilt(web_section_list, json_file):
+    if gets_json and needs_rebuilt(web_section_list, json_file):
         madeSomething = True
         with open(json_file, 'w', encoding='utf-8') as json_outfile:
             print(f'\tElectronic playbook from text:\t\t{" ".join(web_section_list)}')
@@ -225,8 +235,7 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
         print("\tUp to date. Nothing done.")
     else:
         print('\t*')
-        print(f'\tFinal PDF file:\t\t\t\t{pdf_file}')
-        print(f'\tFinal JSON file:\t\t\t{json_file}')
+    print('*')
 
 
 ##
@@ -315,5 +324,5 @@ _build_finished = time.time()
 total_elapsed = _build_finished - _build_start
 script_time = total_elapsed - _time_rendering_pdfs
 
-print(f'\n\nBuild took {total_elapsed:.2f}s. Spent {_time_rendering_pdfs:.2f}s waiting for LibreOffice. {script_time:.2f}s in this script.')
+print(f'\nBuild took {total_elapsed:.2f}s. Spent {_time_rendering_pdfs:.2f}s waiting for LibreOffice. {script_time:.2f}s in this script.')
 
