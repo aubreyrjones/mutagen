@@ -60,12 +60,17 @@ def make_pdf(input_filename):
     '''
     Builds a PDF from an ODT.
     '''
+    sn = staged_name(input_filename, 'pdf')
+
+    if os.path.exists(sn):
+        # delete it first so we can reliably check that it's been created.
+        print(f"\t\tRemoving stale PDF:\t\t{sn}")
+        os.remove(sn)
+    
     print(f"\t\tRendering ", end='')
     render_start = time.time()
 
     call([LIBREOFFICE, '--headless', '--convert-to', 'pdf', '--outdir', BUILD_DIR, input_filename])
-    
-    sn = staged_name(input_filename, 'pdf')
 
     while not os.path.exists(sn):
         sleep(0.1)
@@ -81,7 +86,7 @@ def make_pdf(input_filename):
     elapsed_time = render_end - render_start
     global _time_rendering_pdfs
     _time_rendering_pdfs += elapsed_time
-    print(f"took {elapsed_time:.2f}s.")
+    print(f"took {elapsed_time:.2f}s:\t\t{sn}")
 
     return sn
 
@@ -116,13 +121,14 @@ def parse_span(section_seq):
     return sum([parse_moves(s) for s in section_seq], [])
     
 
-def dump_json(parsed_moves, pb_name, pdf_url, homepage):
+def dump_json(parsed_moves, pb_name, pdf_url, homepage, game_title):
     return json.dumps({'items': markup_moves(parsed_moves), 
                        'status': '', 
                        'stuff': '', 
-                       'markup_version': 2, 
+                       'markup_version': 3, 
                        'pdf': pdf_url,
                        'homepage': homepage,
+                       'game_title': game_title,
                        'pb_name': pb_name})
 
 
@@ -136,9 +142,6 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
     json_file = path.join(JSON_DIR, pb_name + ".mutagen.json")
 
     print(f"*\nMaking `{human_name}`")
-    print(f'\tFinal PDF file:\t\t\t\t{pdf_file}')
-    print(f'\tFinal JSON file:\t\t\t{json_file}')
-    print('\t*')
 
     if len(pb_list) < 1:
         print(f'ERROR! No playbook sections specified. Skipping {pb_name}.')
@@ -205,7 +208,7 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
         madeSomething = True
         with open(json_file, 'w', encoding='utf-8') as json_outfile:
             print(f'\tElectronic playbook from text:\t\t{" ".join(web_section_list)}')
-            json_outfile.write(dump_json(for_web, f'{game_title} — {human_name}', metadata['PDFSERVER'] + pdf_basename, metadata['HOMEPAGE']))
+            json_outfile.write(dump_json(for_web, f'{game_title} — {human_name}', metadata['PDFSERVER'] + pdf_basename, metadata['HOMEPAGE'], game_title))
 
     # build PDF
     if needs_rebuilt(pdfs, pdf_file):
@@ -218,7 +221,12 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
         pdf_merger.write(pdf_file)
         pdf_merger.close()
     
-    if not madeSomething: print("\tUp to date. Nothing done.")
+    if not madeSomething: 
+        print("\tUp to date. Nothing done.")
+    else:
+        print('\t*')
+        print(f'\tFinal PDF file:\t\t\t\t{pdf_file}')
+        print(f'\tFinal JSON file:\t\t\t{json_file}')
 
 
 ##

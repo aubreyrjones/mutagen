@@ -1,16 +1,17 @@
-﻿~~~§ Witch Playbook
+﻿~~~$ Witch Playbook
 You combine symbol and metaphor to link magical effects to their target.
 
 
-§ Witch Moves
+$ Witch Moves
 
-Enact Ritual ► You do magic by linking target and effect with a symbolic ritual. You might be the target.
+
+Enact Ritual --> You do magic by linking target and effect with a symbolic ritual. You might be the target.
 
 In order for someone or something to be your target, you must have a ⌞link⌝ to it. Describe how you invoke the link with your ritual.
 
 Describe how your ritual evokes your desired ⌞effect⌝ on your target. The more expressive and resonant with your effect, the better. Get weird. Say which ⌞ritual methods⌝ you’re using.
 
-When you enact a ritual to ⌞make a story move⌝, ⊞⌊combined methods⌋. This value starts at ⌊−1⌋ for the first method you’re using to evoke your effect in this ritual. For each __additional__ method you add to the ritual, add ⌊+1⌋ to !!⌊combined methods⌋!! (to a max of ⌊+3⌋).
+When you enact a ritual to ⌞make a story move⌝, ⊞⌊combined methods⌋. This value starts at ⌊−1⌋ for the first method you’re using to evoke your effect in this ritual. For each __additional__ method you add to the ritual, add ⌊+1⌋ to !!_[combined methods]_!! (to a max of ⌊+3⌋).
 
 🡖🡓 on your story move: the complications or costs are related to your ritual’s effect—except applied to your chagrin.
 

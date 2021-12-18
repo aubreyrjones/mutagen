@@ -1,6 +1,7 @@
 Common symbols:
 
-§                       define a section
+§ section name          define a section
+$ section name          same as above, but easier to type (not implemented yet)
 
 ►			            define a move
 -->                     same as above, but easier to type
@@ -27,7 +28,7 @@ Common symbols:
 _[math]_                same as above, but easier to type
 
 × ÷ + −		        	unambiguous math symbols (use for clarity instead of keyboard symbols)
-
+±
 
 
 

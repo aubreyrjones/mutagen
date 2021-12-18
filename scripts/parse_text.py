@@ -1,5 +1,15 @@
 import re
 
+LINE_HEADER_MATCH = re.compile(r'(►|-->)')
+SEC_HEADER_MATCH = re.compile(r'^\s*(~~~)?(\$|§)')
+
+def is_header(line):
+    if LINE_HEADER_MATCH.search(line):
+        return True
+    if SEC_HEADER_MATCH.search(line):
+        return True
+    return False
+
 def parse_moves(pbs_filename, keep_unheadered=False):
     '''
     Parse all the moves out of a plaintext playbook.
@@ -13,7 +23,7 @@ def parse_moves(pbs_filename, keep_unheadered=False):
     latch = keep_unheadered # False
 
     for l in lines:
-        if '►' in l or '-->' in l or '§' in l:
+        if is_header(l):
             moves.append(l)  # add a new move to the end of the list.
             latch = True
         elif latch:
@@ -65,8 +75,10 @@ LI_REPLACE = r'\n<m-li>\1\2\3</m-li>'
 MOVE_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►\s*(.+)\Z', re.MULTILINE | re.DOTALL)
 MOVE_REPLACE = r'<m-i><m-ih>\1<m-it>\3</m-it>\4 ► </m-ih><m-id>\n\6\n</m-id></m-i>'
 
-#SECTION_RE = re.compile(r'^\s*§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
-SECTION_RE = re.compile(r'^(~~~)?§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
+EASY_SECTION_RE = re.compile(r'^\s*(~~~)?\$', re.MULTILINE)
+EASY_SECTION_REPLACE = r'\1§'
+
+SECTION_RE = re.compile(r'^\s*(~~~)?§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
 
 CLICKABLE_RE = re.compile(r'([○△▢])')
 CLICKABLE_REPLACE = r'<m-c>\1</m-c>'
@@ -91,6 +103,8 @@ EASY_MATH_REPLACE = r'⌊\1⌋'
 
 EASY_ROLL_RE = re.compile(r'!\+\[(.+?)\]')
 EASY_ROLL_REPLACE = r'⊞⌊\1⌋'
+
+
 
 # this is matching the unicode bracket write-in fields from the playbooks
 # the ⎪ below is not a pipe; that's the middle of the bracket
@@ -161,6 +175,7 @@ def apply_regex_filters(filters: list, move_text, debug=False):
     return move_text
 
 EZ_REWRITE_FILTERS = [
+    (EASY_SECTION_RE, EASY_SECTION_REPLACE),
     (COALESCE_LINES_RE, COALESCE_LINES_REPLACE),
     (CONTINUE_LINE_RE, CONTINUE_LINE_REPLACE),
     (EASY_MOVE_DEF_RE, EASY_MOVE_DEF_REPLACE),
