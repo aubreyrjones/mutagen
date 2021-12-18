@@ -80,6 +80,7 @@ def build_skeleton_odt(filename, title_text='PLAYBOOK TITLE GOES HERE', game_tit
     make_span_style(textdoc, "GENERIC_BOLD", {'fontsize': MAIN_FONT_SIZE, 'fontweight': 'bold'})
     make_span_style(textdoc, "GENERIC_ITALIC", {'fontsize': MAIN_FONT_SIZE, 'fontstyle': 'italic'})
     make_span_style(textdoc, "GENERIC_UNDERLINE", {'fontsize': MAIN_FONT_SIZE, 'textunderlinetype': 'single'})
+    make_span_style(textdoc, "INPUT_LABEL_STYLE", {'fontsize': MAIN_FONT_SIZE, 'textunderlinetype': 'single'})
 
     make_paragraph_style(textdoc, "FIRST_INPUT_LINE", pAttr={'margintop': '1mm', 'keepwithnext': 'always'})
     make_paragraph_style(textdoc, "INPUT_LINE", pAttr={'margintop': '0mm', 'keepwithnext': 'always'})

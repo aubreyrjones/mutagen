@@ -300,6 +300,7 @@ with open(pb_def_file, encoding='utf-8-sig') as pb_defs:
 _build_finished = time.time()
 
 total_elapsed = _build_finished - _build_start
+script_time = total_elapsed - _time_rendering_pdfs
 
-print(f'\n\nBuild took {total_elapsed:.2f}s. Spent {_time_rendering_pdfs:.2f}s waiting for LibreOffice. {total_elapsed - _time_rendering_pdfs:.2f}s in this script.')
+print(f'\n\nBuild took {total_elapsed:.2f}s. Spent {_time_rendering_pdfs:.2f}s waiting for LibreOffice. {script_time:.2f}s in this script.')
 

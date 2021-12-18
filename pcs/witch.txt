@@ -18,7 +18,7 @@ When you enact a ritual to ⌞make a story move⌝, ⊞⌊combined methods⌋. T
 
 Witch’s Familiar ► A common household animal has chosen to be your loyal familiar. A shockingly intelligent specimen, you can understand their speech and they yours. While fictionally an ordinary animal, your familiar has flawless “plot armor” and miraculously escapes certain death every time.
 [[
-Name/kind: 
+Name/kind
 ]]
 
 

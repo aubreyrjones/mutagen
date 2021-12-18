@@ -7,16 +7,17 @@
 # Set things up.
 #
 
-# set game title, short prefix, and author information for the footers. Note ALL CAPS.
+# set game title and author information for the footers. Note ALL CAPS.
 
 GAME        = Late Stage Capitalism With Magic
-GAMESHORT   = lscwm
 AUTHOR      = © 2021 Aubrey R. Jones 🄯 CC-BY-SA 4.0
 
+# set game "short name" for file names. It's automatically made lower case, and spaces are converted to `_`.
+GAMESHORT   = lscwm
 
 
 # this is the directory where you're going to publicly serve your PDF character sheets.
-# this needs to be a publicly available web server directory. This won't work if you 
+# this needs to be a publicly available web server directory. Also, this won't work if you 
 # rename the PDFs before hosting them.
 # this won't break anything if it's wrong or missing. It's just for player convenience.
 # if you're not going to host them yourself and you're just going to
@@ -31,11 +32,12 @@ PDFSERVER   = https://www.mutagenrpg.com/static/pdf_sheets/
 #
 
 
-# PC playbooks -- should start with `pc`.
+# PC playbooks -- filenames should start with `pc`.
 Playbook: Sorcerer          =   pc_sorcerer      = common/common     pcs/sorcerer
 Playbook: Wizard            =   pc_wizard        = common/common     pcs/wizard
 Playbook: Adept             =   pc_adept         = common/common     pcs/adept
 Playbook: Witch             =   pc_witch         = common/common     pcs/witch
+
 
 
 # you can set a new game and playbooks afterward will use that name.
@@ -45,5 +47,5 @@ GAMESHORT   = raw
 # Raw Mutagen common playbook on its own
 Playbook: Common            =   pc                 = common/common
 
-# GM playbook -- should start with `gm`.
-Raw Mutagen GM Playbook     =   gm                 = gm/gm             gm/gm_common
+# GM playbook -- filenames should start with `gm`.
+Raw Mutagen GM Playbook     =   gm                 = gm/gm           gm/gm_common

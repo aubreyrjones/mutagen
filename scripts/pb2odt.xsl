@@ -54,14 +54,18 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="labeled-input">
-    <text---p text---style-name="FIRST_INPUT_LINE">⎧ 🖉</text---p>
-    <text---p text---style-name="INPUT_LINE"><xsl:apply-templates select="m-il" /></text---p>
+    <text---p text---style-name="FIRST_INPUT_LINE">⎧
+        <text---span text---style-name="INPUT_LABEL_STYLE"><xsl:apply-templates select="m-il" /></text---span>
+    </text---p>
+    <text---p text---style-name="INPUT_LINE">⎪</text---p>
     <text---p text---style-name="LAST_INPUT_LINE">⎩</text---p>
 </xsl:template>
 
 <xsl:template match="labeled-input-stop">
-    <text---p text---style-name="FIRST_INPUT_LINE">⎧ 🖉</text---p>
-    <text---p text---style-name="INPUT_LINE"><xsl:apply-templates select="m-il" /></text---p>
+        <text---p text---style-name="FIRST_INPUT_LINE">⎧
+        <text---span text---style-name="INPUT_LABEL_STYLE"><xsl:apply-templates select="m-il" /></text---span>
+    </text---p>
+    <text---p text---style-name="INPUT_LINE">⎪</text---p>
     <text---p text---style-name="LAST_INPUT_LINE_STOP">⎩</text---p>
 </xsl:template>
 
