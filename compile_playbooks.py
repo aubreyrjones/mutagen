@@ -116,21 +116,22 @@ def parse_span(section_seq):
     return sum([parse_moves(s) for s in section_seq], [])
     
 
-def dump_json(parsed_moves, pb_name):
+def dump_json(parsed_moves, pb_name, pdf_url):
     return json.dumps({'items': markup_moves(parsed_moves), 
                        'status': '', 
                        'stuff': '', 
                        'markup_version': 1, 
+                       'pdf': pdf_url,
                        'pb_name': pb_name})
 
 
-def make_playbook(pb_name, human_name, pb_list, game_title, author_info):
+def make_playbook(pb_name, human_name, pb_list, game_title, author_info, pdf_url):
     '''
     Build a playbook from its constituent sections.
     '''
 
-
-    pdf_file = path.join(OUT_DIR, pb_name + ".pdf")
+    pdf_basename = pb_name + ".pdf"
+    pdf_file = path.join(OUT_DIR, pdf_basename)
     json_file = path.join(JSON_DIR, pb_name + ".mutagen.json")
 
     print(f"*\nMaking `{human_name}`")
@@ -203,7 +204,7 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info):
         madeSomething = True
         with open(json_file, 'w', encoding='utf-8') as json_outfile:
             print(f'\tElectronic playbook from text:\t\t{" ".join(web_section_list)}')
-            json_outfile.write(dump_json(for_web, f'{game_title} — {human_name}'))
+            json_outfile.write(dump_json(for_web, f'{game_title} — {human_name}', pdf_url + pdf_basename))
 
     # build PDF
     if needs_rebuilt(pdfs, pdf_file):
@@ -250,7 +251,16 @@ playbooks = {}
 # skip any line that doesn't have a `=` in it
 
 game_title = 'UNTITLED GAME'
+game_prefix = '00ug'
 author_info = 'ANONYMOUS GAME DESIGNER'
+pdf_url = ''
+
+import re
+
+S_TO_S_RE = re.compile(r'\s+')
+
+def space_to_score(s):
+    return S_TO_S_RE.sub('_', s.lower())
 
 with open(pb_def_file, encoding='utf-8-sig') as pb_defs:
     lines = pb_defs.readlines()
@@ -267,11 +277,21 @@ with open(pb_def_file, encoding='utf-8-sig') as pb_defs:
             if human_name == 'GAME':
                 game_title = pb_name
                 continue
+            if human_name == 'GAMESHORT':
+                game_prefix = space_to_score(pb_name)
+                continue
             if human_name == 'AUTHOR':
                 author_info = pb_name
                 continue
+            if human_name == 'PDFSERVER':
+                trailing = "" if pb_name.endswith('/') else "/"
+                pdf_url = f'{pb_name}{trailing}'
+                continue
+
             pb_list = [s.strip() for s in splits[2].split()]
-            make_playbook(pb_name, human_name, pb_list, game_title, author_info)
+            full_pb_name = f'{game_prefix}_{pb_name}'
+
+            make_playbook(full_pb_name, human_name, pb_list, game_title, author_info, pdf_url)
         except Exception as ex:
             print(ex)
             print("Error in playbook definition file", pb_def_file, "line:", line)
