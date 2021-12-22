@@ -165,8 +165,7 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
         if pbs in already_staged: continue
         already_staged.add(pbs)
         stage_section(pbs)
-    
-    
+        
 
     madeSomething = False
 

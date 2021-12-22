@@ -1,0 +1,129 @@
+﻿~~~$ Mutagen Meta Playbook
+Defined and refined ► These rules define some concepts; then name, define, and use different types of them. Types with different names are different: “salty moves” aren’t “story moves”, but they’re both “moves”. No need to memorize, but try not to confuse similar names.
+
+[Example text; just visual reference] ► ⌞Boxed words⌝ are defined in the playbook by a text block with (nearly) that heading. __Emphasis__. Math and quantities in ⌊ ⌋: get ⌊5 × (bushes ÷ bears)⌋ berries.
+
+Moves ► A move is an action you can take as either a __player__ or a __character__ while playing this game. A move’s text describes how the move works. Usually a move has an in-game effect; sometimes it has activation conditions or costs.
+
+Meta moves, like this one, define or explain stuff. You ⌞make a move⌝ like this one just by reading it.
+
+Aptitudes ► An aptitude is a score representing affinity or proficiency at some challenging activity. ⌞Moves⌝ are verbs that say what you __can do__; aptitudes are nouns that track what you’re __good at__. Don’t confuse them.
+
+Resources ► A resource is some asset or quality you have in this game. Some resources are just notes you keep, but many are tracked with points that go up and down during play. Some combine both.
+
+Make a move ► You “make” a ⌞move⌝ by __doing something described in a move__. You may be __required__ to make a move by its description or by some other move. If there’s no move that kinda describes what you’re doing, or there is but you don’t have it, you can’t do that thing.
+
+If a move’s description says that some conditions apply, but those conditions aren’t met (and you can’t meet them), you can’t make the move. Same if it says there’s a cost that you can’t or won’t pay.
+
+Move chains ► Sometimes a ⌞move⌝ (parent) says that it applies when you’re making a different move (child) or that you should make another move (child) as a part of the parent. Unless otherwise stated, you’re making both moves: first parent, then child. Everything related to the child applies normally, unless the parent move says otherwise.
+
+Respect our limits ► This game is for everyone at the table. If somebody needs to ⌞state a limit⌝, immediately cut away or fade to black from whatever is upsetting them. Talk as a table about how to continue the story while embracing the limit.
+
+State a limit ► This is a game to have fun. If some theme, activity, or imagery of the story is ruining your fun, speak up. You don’t have to explain why, you only have to indicate what.
+      
+Think for the camera ► This game works better when we think like we’re directing a TV series more than writing a novel. Focus on what we can perceive with our senses here in the moment.
+
+Invent fiction ► This game shines when you speak up to refine, improve, or augment the scenario. It needs to make sense, and the GM has final veto, but the only firm rule is: don’t contradict anything already established. __Use this to set up a move or just to make shit cooler.__
+
+
+Be curious, not cautious ► This game is more fun when we play to find out what happens than when we play to keep our characters content. Stories about people who never take risks, never get hurt, who never fail leave fewer memories than stories about a hot fucking mess.
+
+Don’t sweat the meta ► In this game, it’s okay for you to know things that you don’t know, and to act on that knowledge when it would make shit cooler. Likewise, don’t keep secrets out-of-character. Be open so that folks can appreciate the badass shit you’re hiding in-character.
+
+
+Dispute fiction ► Sometimes the GM will say something they think is cool, but that would make you turn off a show you were watching. You’re trying to ⌞be curious, not cautious⌝ but whatever the GM said just seems to ruin the whole damn thing for you. Speak up and negotiate an alternative. This is your story too.
+Labeled items ► Items that are grouped together in a section might be referred to from inside a ⌞move⌝ by just the section name. This means any or all the items from that section and its subsections.
+
+
+Bought and free items ► Some items have a ○ or △; you buy these to select or improve your moves, aptitudes, and resources.
+
+Once bought, they mean the same. The difference is that you buy ○ at creation or with XP; but you cannot buy △ directly, only when a ⌞move⌝ or the GM says so.
+
+When you buy a ○ or get a △, fill it in solid. This is __typically__ permanent. Items with ● are “pre-bought”.
+
+Items with neither △, ○, nor ● are automatically in play if your playbook contains them.
+
+
+
+Aptitude Rating ► When you get an ⌞aptitude⌝, it starts at +0. Each __additional__ ○ you buy gives you another +1 to your modifier. If you don’t have an aptitude, but need to ⌞roll⌝ it anyway, roll with ⌊−1⌋.
+
+Some aptitudes have more or less ○ available. Buying more than 4 ○ lets you soak up penalties to rolls, but doesn’t let you exceed the maximum total modifier of +3 on a roll.
+
+
+
+Gated moves (0) ► Some moves have a number in parenthesis after the name. In order to buy such a move, you must already have at least that number of moves from the same subsection of your playbook.
+
+🗣Consult the GM ► Stuff with a 🗣 icon may not be appropriate for your story (at this time)—or it may have special fictional restrictions or implications. Talk to the GM about taking any 🗣 option. Please be cool if it’s unavailable; boundaries define stories.
+
+(Progress) Bars ► Progress bars are a GM-managed shared ⌞resource⌝ abstractly representing rising tension or sustained activity. A bar has a title and some number of ticks between 2 and 8. When the last tick is filled, whatever the title says happens.
+
+Tick a bar ► When the GM or a move says to tick a ⌞bar⌝, fill one tick on it. If they say to tick it some number of times, fill that many ticks.
+
+
+Resource points ► If applicable, each point of a particular ⌞resource⌝ is tracked with a ▢—maybe with an individual note attached. Some resources come in ranks with ○, permitting you to buy more ▢. Unless stated otherwise, you start the game with all resources full—except XP.
+
+When you “restore”, “gain” a resource, fill a ▢. You cannot have more of a resource than you have ▢ for it. If all your ▢ are full when you’re supposed to gain the resource, just don’t fill anything. 
+
+When you “spend” or “lose” a resource, erase a filled ▢. If you don’t have any filled ▢, you can’t make moves requiring you to __spend__ that resource. On the other hand, if a move’s effect says you __lose__ a resource you’re out of, just don’t erase anything—any other effects or consequences of the move still happen as normal, though.
+
+
+Lose what you spend ► Unless stated otherwise and regardless of where the cost appears in the move’s description text, you lose a move’s cost(s) __immediately before you roll__ and determine results. If there’s no roll, you just lose the ⌞resource⌝ before the move’s effect takes place.
+
+
+Harm ► Harm is abstract systemic or traumatic damage (not necessarily physical) sustained by someone or something __animate__. A single injury can do 1-3 harm. Unless a move says specifically how much harm it does, just use common sense and the scale below.
+
+One serious injury or many small ones—you want help—1 harm. A life-threatening injury—you need help—2 harm. An injury likely to outright kill someone—beyond help—3 harm.
+
+
+Status ► Status is everything established as currently true in the story about you (or something else) that is __either__ permanently different from how you began the story __or__ a significant but temporary deviation from the norm. In the rules, “a status” means a short, descriptive, free-form phrase that describes the change in status. If the GM or a move says you get a status, write it down. While a status is written down, nothing in the story can contradict it.
+
+Ex. “on fire”; “enraptured”; “scary”; “wanted by authorities”; “glowing”; “scared”; “has a third eye”.
+Remove a status ► Erase a ⌞status⌝ when a move or the GM says you can, or when it no longer makes sense for it to be true.
+
+Exploit status ► When you make a ⌞story move⌝, you can describe how you’re capitalizing on your (or someone’s) ⌞status⌝ to add +1 on your move. You can only do this once per story move.
+
+Read the dice ►  When you roll, you’ll get a number between −1 and 15. Results are defined not in terms of success and failure, but how your roll affects your metaphorical narrative “momentum” going forward.
+
+🡕 Gain Momentum: ≥13
+🡒 Carry Momentum: 10-12
+🡖 Lose Momentum: 7-9
+🡐 Reverse Momentum: ≤6
+
+Groups written together (e.g. 🡕🡒) mean __any__ of the results in that specific group. Read this like “gain or carry [momentum]”.
+
+Roll ► Rolls are indicated by ⊞⌊⌋ in a move like:
+    • with an ⌞aptitude⌝: ⊞⌊Nurture⌋. 
+    • with a number: ⊞⌊−1⌋ or ⊞⌊+0⌋.
+    • with a ⌊special term⌋ defined in a move’s text.
+
+Sum the ⌊enclosed text value⌋ plus any bonuses or penalties the GM or a move may tell you about. Mind any negative signs. Finally, cap the ⌊total⌋ at ±3.
+
+Roll ⌊2d6 + total⌋ and ⌞read the dice⌝.
+
+Unless stated otherwise, the effect of your roll is described by the next momentum icons (🡕🡒🡖🡐). If one or more icons is missing, it means there’s no particular effect for that result.
+
+Alternate rolls ► If a move says “⊞⌊something weird⌋ for/to/on [another move]”, use the weird roll in the child move instead of whatever the normal roll would be. Modifiers apply normally.
+
+Low/Zero Effect ► When you’re describing how you make a ⌞story move⌝, the GM might say you’ll have Low Effect or Zero Effect. This means even if you 🡕🡒, you won’t get (all of) what you want.
+
+⚠ Story moves ⚠ ► Story ⌞moves⌝ decide what happens next when you act in the face of conflict, risk, or adversity to get what you want. They serve the same purpose as system rules in other games, but in a flexible way that puts the fiction first. They answer “okay, so then what happens?”
+
+Most regular moves flatly describe something you can do, but they don’t address why you’re doing it, what you hope to ultimately achieve. A metaphor: you slam on the brakes while you're driving, but are you trying to __avoid__ or to __cause__ a collision? Another: you fence with the Duchess, but are you trying to __kill__ or to __teach__ her?
+
+Each story move follows the same formula: it states what you want to achieve, and it gives a hint at how you’re trying to get it. When figuring out which story move you’re making, the hint about method is less important than the part about your intent.
+
+There aren’t many story moves; they’re in the Common playbook. I intend them to be fairly universal. Please think metaphorically when applying them to weird situations.
+
+
+Make a story move ► When you make a ⌞story move⌝, describe how you’re trying to achieve your goal in-game. Be specific. Wait a sec before rolling; the GM might have something to say.
+
+If no other move is saying what to roll with, decide if your action description depends __logically and primarily__ on ⌊any appropriate ⌞aptitude⌝⌋ you’ve got. Use common sense and talk as a table.
+
+⊞⌊Any appropriate aptitude⌋; __or__ ⊞⌊−1⌋ if you don’t have one that applies.
+
+The GM playbook has stuff about what might happen for each story move, but they share this formula:
+
+🡕 You get what you want with an unexpected benefit.
+🡒 You get basically what you want.
+🡖 You get what you want, but there’s some trade-off, consequence, or complication.
+🡐 It might not be your fault, but you don’t get what you want—or you do get it, plus something even worse.
