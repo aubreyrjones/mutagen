@@ -5,9 +5,9 @@ You learned your magic through dedication to the craft, laboring to absorb the i
 
 Mana ► The stored magical energy within your body, Mana powers many of a wizard’s ⌞spells⌝.
 
-● 1. ▢ ▢ ▢ ▢ ▢ ▢
-○ 2. ▢ ▢ 
-○ 3. ▢ ▢ 
+|● 1. ▢ ▢ ▢ ▢ ▢ ▢
+|○ 2. ▢ ▢ 
+|○ 3. ▢ ▢ 
 
 
 Concentration ► Holding a {{spell}} active requires enormous mental effort. You can hold a limited number of spells active at once. When you spend a Concentration, clear the ▢, but note the name of the active spell. So long as you’re alive, the spell’s effect is active until a move makes you erase its name.
