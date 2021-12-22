@@ -1,1 +1,6 @@
-Mutagen Sans is based on DejaVu Sans, which is a derivative work of a Bitstream font licensed under their 
+Mutagen Sans is based on DejaVu Sans, which is a derivative work of a Bitstream font, used under public license.
+https://dejavu-fonts.github.io/
+
+Some glyphs are imported from Symbola, used under public license.
+https://fontlibrary.org/en/font/symbola
+
