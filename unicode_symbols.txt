@@ -1,7 +1,12 @@
 Common symbols:
 
+## any text or markup   this line will be _entirely skipped_ during processing
+
 § section name          define a section
-$ section name          same as above, but easier to type (not implemented yet)
+$ section name          same as above, but easier to type
+
+~~~§                    define a section with a column-break before it
+~~~$                    same as above, but easier to type
 
 ►			            define a move
 -->                     same as above, but easier to type

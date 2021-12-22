@@ -1,6 +1,6 @@
 from odf.opendocument import OpenDocumentText
 from odf.style import PageLayout, MasterPage, Footer, PageLayoutProperties, Style, TextProperties, ParagraphProperties, Columns, Column, DefaultStyle, ColumnSep
-from odf.text import P, PageNumber, Span
+from odf.text import P, PageNumber, Span, PageCount
 import odf.table
 import lxml.etree as ET
 import zipfile
@@ -124,6 +124,8 @@ def build_skeleton_odt(filename, title_text='PLAYBOOK TITLE GOES HERE', game_tit
     page_cell.addElement(fp)
     fp.addElement(Span(text=f'{title_text} ⌬ '))
     fp.addElement(PageNumber(text="1"))
+    fp.addElement(Span(text="/"))
+    fp.addElement(PageCount(text="1"))
     
     replace_target = P(text="replace_me")
     textdoc.text.addElement(replace_target)

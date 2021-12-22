@@ -3,6 +3,8 @@ import re
 LINE_HEADER_MATCH = re.compile(r'(►|-->)')
 SEC_HEADER_MATCH = re.compile(r'^\s*(~~~)?(\$|§)')
 
+COMMENT_LINE = re.compile(r'^\s*##')
+
 def is_header(line):
     if LINE_HEADER_MATCH.search(line):
         return True
@@ -23,6 +25,7 @@ def parse_moves(pbs_filename, keep_unheadered=False):
     latch = keep_unheadered # False
 
     for l in lines:
+        if COMMENT_LINE.match(l): continue
         if is_header(l):
             moves.append(l)  # add a new move to the end of the list.
             latch = True
@@ -58,13 +61,13 @@ EASY_MOVE_DEF_RE = re.compile(r'-->')
 EASY_MOVE_DEF_REPLACE = r'►'
 
 ROLL_RE = re.compile(r'⊞⌊(.+?)⌋')
-ROLL_REPLACE = r'<m-r>⊞⌊\1⌋</m-r>'
+ROLL_REPLACE = r'<m-r><m-s>⊞</m-s>⌊\1⌋</m-r>'
 
 MATH_RE = re.compile(r'⌊(.+?)⌋')
 MATH_REPLACE = r'<m-m>⌊\1⌋</m-m>'
 
 RESULTS_RE = re.compile(r'$\s*([🡕🡒🡖🡐]+)(.+?)($|\Z)', re.MULTILINE)
-RESULTS_REPLACE = r'\n<m-res><m-s>\1</m-s>\2</m-res>'
+RESULTS_REPLACE = r'\n<m-res>\1 \2</m-res>'
 
 EASY_LI_REPLACE_RE = re.compile(r'^\s*\*(.+)$', re.MULTILINE)
 EASY_LI_REPLACE_REPLACE = r'  •\1'
@@ -83,7 +86,7 @@ SECTION_RE = re.compile(r'^\s*(~~~)?§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTAL
 CLICKABLE_RE = re.compile(r'([○△▢])')
 CLICKABLE_REPLACE = r'<m-c>\1</m-c>'
 
-SYM_RE = re.compile(r'([●])')
+SYM_RE = re.compile(r'(?!<m-s>)([●🗣🡕🡒🡖🡐►])')
 SYM_REPLACE = r'<m-s>\1</m-s>'
 
 BOLD_RE = re.compile(r'!!(.+?)!!')

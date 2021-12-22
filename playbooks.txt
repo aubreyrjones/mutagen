@@ -9,7 +9,7 @@
 
 # set game title and author information for the footers. Note ALL CAPS.
 
-GAME        = Late Stage Capitalism With Magic (PT2)
+GAME        = Late Stage Capitalism With Magic (PT3)
 AUTHOR      = © 2021 Aubrey R. Jones 🄯 CC-BY-SA 4.0
 HOMEPAGE    = https://www.mutagenrpg.com/about
 

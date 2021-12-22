@@ -125,7 +125,7 @@ def dump_json(parsed_moves, pb_name, pdf_url, homepage, game_title):
     return json.dumps({'items': markup_moves(parsed_moves), 
                        'status': '', 
                        'stuff': '', 
-                       'markup_version': 3, 
+                       'markup_version': 4, 
                        'pdf': pdf_url,
                        'homepage': homepage,
                        'game_title': game_title,
