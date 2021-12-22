@@ -8,7 +8,7 @@ from time import sleep
 from os import path
 from textwrap import wrap
 from PyPDF2 import PdfFileMerger
-from scripts.parse_text import parse_moves, markup_moves, render_xml
+from scripts.parse_text import parse_moves, markup_moves, render_xml, MARKUP_VERSION
 import shutil
 import time
 from scripts.make_odt import build_odt
@@ -125,7 +125,7 @@ def dump_json(parsed_moves, pb_name, pdf_url, homepage, game_title):
     return json.dumps({'items': markup_moves(parsed_moves), 
                        'status': '', 
                        'stuff': '', 
-                       'markup_version': 4, 
+                       'markup_version': MARKUP_VERSION, 
                        'pdf': pdf_url,
                        'homepage': homepage,
                        'game_title': game_title,

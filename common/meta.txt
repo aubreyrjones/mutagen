@@ -1,7 +1,5 @@
 ﻿~~~$ Mutagen Meta Playbook
 
-[Example text; just visual reference] ► ⌞Boxed words⌝ are defined in the playbook by a text block with (nearly) that heading. __Emphasis__. Math and quantities in ⌊ ⌋: get ⌊5 × (bushes ÷ bears)⌋ berries.
-
 ##
 
 Respect our limits ► This game is for everyone at the table. If somebody needs to ⌞state a limit⌝, immediately cut away or fade to black from whatever is upsetting them. Talk as a table about how to continue the story while embracing the limit.
@@ -18,6 +16,8 @@ Think for the camera ► This game works better when we think like we’re direc
 
 Invent fiction ► This game shines when you speak up to refine, improve, or augment the scenario. It needs to make sense, and the GM has final veto, but the only firm rule is: don’t contradict anything already established. __Use this to set up a move or just to make shit cooler.__
 
+Ex.: The duke is wearing my favorite designer. Lucky I've always got my switchblade. Surely there's a forklift in this warehouse. It's a giant revolver, with fuckoff shells like Vienna sausages.
+
 ##
 
 Be curious, not cautious ► This game is more fun when we play to find out what happens than when we play to keep our characters content. Stories about people who never take risks, never get hurt, who never fail leave fewer memories than stories about a hot fucking mess.
@@ -29,6 +29,10 @@ Don’t sweat the meta ► In this game, it’s okay for you to know things that
 ##
 
 Dispute fiction ► Sometimes the GM will say something they think is cool, but that would make you turn off a show you were watching. You’re trying to ⌞be curious, not cautious⌝ but whatever the GM said just seems to ruin the whole damn thing for you. Speak up and negotiate an alternative. This is your story too.
+
+##
+
+[Just example text] ► ⌞Boxed words⌝ are defined in the playbook by a text block with (nearly) that heading. __Emphasis__. Math and quantities in ⌊ ⌋: get ⌊5 × (bushes ÷ bears)⌋ berries.
 
 ##
 
@@ -75,9 +79,9 @@ Items with neither △, ○, nor ● are automatically in play if your playbook 
 
 ##
 
-Aptitude Rating ► When you get an ⌞aptitude⌝, it starts at +0. Each __additional__ ○ you buy gives you another +1 to your modifier. If you don’t have an aptitude, but need to ⌞roll⌝ it anyway, roll with ⌊−1⌋.
+Aptitude Rating ► When you get your first ● in an ⌞aptitude⌝, your rating starts at +0. Each __additional__ ● you buy gives you another +1 to your modifier. If you don’t have an aptitude, but need to ⌞roll⌝ it anyway, roll with ⌊−1⌋.
 
-Some aptitudes have more or less ○ available. Buying more than 4 ○ lets you soak up penalties to rolls, but doesn’t let you exceed the maximum total modifier of +3 on a roll.
+Some aptitudes have more or less ○ available. Buying more than 4 ● lets you soak up penalties to rolls, but doesn’t let you exceed the maximum total modifier of +3 on a roll.
 
 ##
 
@@ -143,7 +147,7 @@ Groups written together (e.g. 🡕🡒) mean __any__ of the results in that spec
 ##
 
 Roll ► Rolls are indicated by ⊞⌊⌋ in a move like:
-    • with an ⌞aptitude⌝: ⊞⌊Nurture⌋. 
+    • with an ⌞aptitude⌝ rating: ⊞⌊Nurture⌋. 
     • with a number: ⊞⌊−1⌋ or ⊞⌊+0⌋.
     • with a ⊞⌊special term⌋ defined in a move’s text.
 
@@ -175,7 +179,7 @@ There aren’t many story moves; they’re in the Common playbook. I intend them
 
 Make a story move ► When you make a ⌞story move⌝, describe how you’re trying to achieve your goal in-game. Be specific. Wait a sec before rolling; the GM might have something to say.
 
-If no other move is saying what to roll with, decide if your action description depends __logically and primarily__ on ⌊any appropriate ⌞aptitude⌝⌋ you’ve got. Use common sense and talk as a table.
+If no other move is saying what to roll with, decide if your action description depends __logically and primarily__ on !!⌊any appropriate ⌞aptitude⌝⌋!! you’ve got. Use common sense and talk as a table.
 
 ⊞⌊Any appropriate aptitude⌋; __or__ ⊞⌊−1⌋ if you don’t have one that applies.
 
@@ -188,5 +192,5 @@ The GM playbook has stuff about what might happen for each story move, but they 
 
 ##
 
-About Mutagen⌬ --> _[mutagenrpg.com]_ _[v0.3]_
+Mutagen⌬RPG --> _[mutagenrpg.com]_ _[v0.3]_
 |Meta+Common © 2021 Aubrey Jones 🄯 CC-BY-SA 4.0
