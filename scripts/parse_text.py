@@ -86,7 +86,10 @@ SECTION_RE = re.compile(r'^\s*(~~~)?§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTAL
 CLICKABLE_RE = re.compile(r'([○△▢])')
 CLICKABLE_REPLACE = r'<m-c>\1</m-c>'
 
-SYM_RE = re.compile(r'(?!<m-s>)([●🗣🡕🡒🡖🡐►])')
+# pick up all the symbols that we've given special meaning to so that we can lex
+# them for screen readers.
+# ⌊⌋ in here makes screen readers hiccup, but also lexes the symbols... dunno what to do.
+SYM_RE = re.compile(r'(?!<m-s>)([●🗣🡕🡒🡖🡐►⌊⌋])')
 SYM_REPLACE = r'<m-s>\1</m-s>'
 
 BOLD_RE = re.compile(r'!!(.+?)!!')

@@ -1,34 +1,6 @@
 ﻿~~~$ Mutagen Meta Playbook
 
-
-Defined and refined ► These rules define some concepts; then name, define, and use different types of them. Types with different names are different: “salty moves” aren’t “story moves”, but they’re both “moves”. No need to memorize, but try not to confuse similar names.
-
 [Example text; just visual reference] ► ⌞Boxed words⌝ are defined in the playbook by a text block with (nearly) that heading. __Emphasis__. Math and quantities in ⌊ ⌋: get ⌊5 × (bushes ÷ bears)⌋ berries.
-
-##
-
-Moves ► A move is an action you can take as either a __player__ or a __character__ while playing this game. A move’s text describes how the move works. Usually a move has an in-game effect; sometimes it has activation conditions or costs.
-
-Meta moves, like this one, define or explain stuff. You ⌞make a move⌝ like this one just by reading it.
-
-##
-
-Aptitudes ► An aptitude is a score representing affinity or proficiency at some challenging activity. ⌞Moves⌝ are verbs that say what you __can do__; aptitudes are nouns that track what you’re __good at__. Don’t confuse them.
-
-##
-
-Resources ► A resource is some asset or quality you have in this game. Some resources are just notes you keep, but many are tracked with points that go up and down during play. Some combine both.
-
-##
-
-
-Make a move ► You “make” a ⌞move⌝ by __doing something described in a move__. You may be __required__ to make a move by its description or by some other move. If there’s no move that kinda describes what you’re doing, or there is but you don’t have it, you can’t do that thing.
-
-If a move’s description says that some conditions apply, but those conditions aren’t met (and you can’t meet them), you can’t make the move. Same if it says there’s a cost that you can’t or won’t pay.
-
-##
-
-Move chains ► Sometimes a ⌞move⌝ (parent) says that it applies when you’re making a different move (child) or that you should make another move (child) as a part of the parent. Unless otherwise stated, you’re making both moves: first parent, then child. Everything related to the child applies normally, unless the parent move says otherwise.
 
 ##
 
@@ -57,6 +29,35 @@ Don’t sweat the meta ► In this game, it’s okay for you to know things that
 ##
 
 Dispute fiction ► Sometimes the GM will say something they think is cool, but that would make you turn off a show you were watching. You’re trying to ⌞be curious, not cautious⌝ but whatever the GM said just seems to ruin the whole damn thing for you. Speak up and negotiate an alternative. This is your story too.
+
+##
+
+Defined and refined ► These rules define some concepts; then name, define, and use different types of them. Types with different names are different: “salty moves” aren’t “story moves”, but they’re both “moves”. No need to memorize, but try not to confuse similar names.
+
+##
+
+Moves ► A move is an action you can take as either a __player__ or a __character__ while playing this game. A move’s text describes how the move works. Usually a move has an in-game effect; sometimes it has activation conditions or costs.
+
+Meta moves, like this one, define or explain stuff. You ⌞make a move⌝ like this one just by reading it.
+
+##
+
+Aptitudes ► An aptitude is a score representing affinity or proficiency at some challenging activity. ⌞Moves⌝ are verbs that say what you __can do__; aptitudes are nouns that track what you’re __good at__. Don’t confuse them.
+
+##
+
+Resources ► A resource is some asset or quality you have in this game. Some resources are just notes you keep, but many are tracked with points that go up and down during play. Some combine both.
+
+##
+
+
+Make a move ► You “make” a ⌞move⌝ by __doing something described in a move__. You may be __required__ to make a move by its description or by some other move. If there’s no move that kinda describes what you’re doing, or there is but you don’t have it, you can’t do that thing.
+
+If a move’s description says that some conditions apply, but those conditions aren’t met (and you can’t meet them), you can’t make the move. Same if it says there’s a cost that you can’t or won’t pay.
+
+##
+
+Move chains ► Sometimes a ⌞move⌝ (parent) says that it applies when you’re making a different move (child) or that you should make another move (child) as a part of the parent. Unless otherwise stated, you’re making both moves: first parent, then child. Everything related to the child applies normally, unless the parent move says otherwise.
 
 ##
 
