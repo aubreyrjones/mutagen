@@ -17,7 +17,7 @@ When you enact a ritual to ⌞make a story move⌝, ⊞⌊combined methods⌋. T
 
 
 
-Witch’s Familiar ► A common household animal has chosen to be your loyal familiar. A shockingly intelligent specimen, you can understand their speech and they yours. While fictionally an ordinary animal, your familiar has flawless “plot armor” and miraculously escapes certain death every time.
+Witch's Familiar ► A common household animal has chosen to be your loyal familiar. A shockingly intelligent specimen, you can understand their speech and they yours. While fictionally an ordinary animal, your familiar has flawless “plot armor” and miraculously escapes certain death every time.
 [[
 Name/kind:
 ]]
@@ -30,9 +30,9 @@ Name/kind:
 
 § Links
 
-● Once whole, always one ► Create a link with a physical piece of your target. Assuming your spirit and body are still joined, you’re always part of yourself.
+● The hands that hold the power ► Create a link by continuously or repeatedly touching your target through the ritual. Assuming your spirit and body are still joined, you’re always touching yourself.
 
-○ The hands that hold the power ► Create a link by continuously or repeatedly touching your target through the ritual.
+○ Once whole, always one ► Create a link with a physical piece of your target.
 
 ○ Where goes my friend, I am there ► Same as ⌞the hands that hold the power⌝, but your familiar touches your target instead of you.
 
@@ -77,9 +77,10 @@ Name/kind:
 
 § Ritual Methods
 
-● Ritual Sacrifice ► You cast away, ruin, kill, or destroy something significant that symbolizes your ritual’s effects.
+## in play test, player kept wanting to sacrifice the link material itself.
+## ● Ritual Sacrifice ► Cast away, ruin, kill, or destroy something significant that symbolizes your ritual’s effects.
 
-○ Ritual Props ► Non-destructively manipulate physical objects symbolizing your ritual effects.
+● Ritual Props ► Manipulate physical objects symbolizing your ritual effects.
 
 ○ Ritual Dance ► Perform gestures, dances, or poses symbolizing your ritual’s effect.
 
