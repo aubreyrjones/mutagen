@@ -75,7 +75,7 @@ Iconic Weapon:
 ○ Chi Transfer ► Spend 1 ⌞Health⌝ to give someone else ⌊+1⌋ on all chi- or magic-related rolls for the rest of the scene.
 
 
-○ Exploding heart technique ► ⊞⌊Kung Fu⌋ to ⌞fuck ‘em up⌝. You resolve the move and they ⌞take harm⌝ as normal, except that they do not lose ⌞Health⌝ or apply injury-related ⌞status⌝ until some later time. Before you roll, choose how long it will take take the injuries to take effect.
+○ Exploding heart technique ► ⊞⌊Kung Fu⌋ to ⌞fuck ‘em up⌝. You resolve the move and they ⌞take harm⌝ as normal, except that they do not lose ⌞Health⌝ or apply injury-related ⌞status⌝ until some later time. Before you roll, choose how long before the injuries will take effect.
 
 
 ○ Fight through it ► For the purposes of trying to ⌞recuperate health⌝, doing Kung Fu never counts as strain or exertion.

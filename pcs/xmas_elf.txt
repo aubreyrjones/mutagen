@@ -1,0 +1,145 @@
+~~~$ Elf Playbook
+
+You've been enslaved by Santa and his junta for long enough. It's time for the Svartalfs to reclaim their northern homeland!
+
+##
+
+
+
+$ Elf Resources
+
+Stocking Stuffers ▢ ▢ ▢ ▢ ▢ --> You've got a pouch full of little "gifts" for Santa's crew. Use them to {{stuff their stocking}}.
+
+##
+
+
+
+$ Elf Aptitudes
+
+○ Xmas Fucking Cheer ○ ○ ○ --> Tapping into the Spirit of Xmas to bring joy—and justice—to the world.
+
+##
+
+
+
+$ Elf Moves
+
+Small... --> You're 1m (3ft) tall, at best. You weigh perhaps 25kg (50lb).
+
+##
+
+...but sturdy --> You automatically and permanently get rank 2 of {{Health}}.
+
+##
+
+Cold adapted --> The cold, no matter how deep, doesn't bother you at all.
+
+##
+
+Flammable --> Not only will fire hurt you, your flesh is actively flammable.
+
+##
+
+Everybody's doing it --> Peppermint candy has a drug-like, euphoric, disorienting effect on you and all elves. The effects are short-lived: the high from an after-dinner mint might last only a few minutes.
+
+##
+
+○ Variable stature --> You can change your size at will, shrinking as small as a mouse or growing as large as a human adult. You can hold the altered size for several minutes before reverting to your normal stature. You can't make this move more than once per scene.
+
+##
+
+○ Gonna find out... --> You can tell on sight whether another Elf is a collaborator or loyal to Svartalfheim.
+
+##
+
+○ One of the "good ones" --> For whatever reason, Santa's junta thinks you're on their side. Boy are __they__ wrong.
+
+##
+
+○ Privilege of command --> You get !!_[+1]_!! to your roll when you {{compel compliance}} from any Svartalf loyal to liberation.
+
+##
+
+○ Talk to reindeer --> You can speak to and understand the reindeer Santa uses to pull his sleigh—and fill his jolly belly.
+
+## 
+
+○ A twinkle of the eye --> You become invisible. You become visible again when you wish it, or when you interact with another conscious being.
+
+##
+
+○ Elf from IT --> You've got a password and biometrics on file. !+[Xmas Fucking Cheer] when you try to {{make it chooch}} or {{go apeshit}} on the advanced technology Santa uses to surveil and control the Elves.
+
+##
+
+○ There's dirt everywhere --> You've been assigned to clean, and consequently been inside and seen, __nearly__ everywhere in the compound.
+
+##
+
+○ Flight crew --> You've got one of the streamlined anti-grav packs that elite Elvish squadrons use to resupply Santa mid-air during his delivery flights. !+[Xmas Fucking Cheer] when using the AG pack to {{make a story move}}.
+
+##
+
+○ Shop nurse --> You've got the neural interface to operate the nanotech-powered rapid healing stations scattered around the compound and necessitated by the general working conditions there. Put your buddy in the healing chamber, plug your brain into the socket, then !+[Xmas Fucking Cheer].
+🡕🡒🡖 They restore 3, 2, or 1 {{Health}} respectively.
+🡐 They are __not__ healed, and pick 1:
+  * you suffer feedback and take 1 harm.
+  * the healing machine is ruined.
+
+##
+
+○ On a shelf --> You can teleport from any storage to any other storage that you've personally seen before. You must get into or onto the first storage, and you physically climb out or off from the second.
+
+##
+
+○ Heavy weapon --> You've got an improbably large and devastating weapon of some sort.
+[[
+Type/name
+]]
+
+##
+
+##○ Land of Sweets --> You eat any piece of the scenery as if it were a similar quantity of sugar-preserved plums.
+
+##
+
+● Stuff their stocking --> You pull out a {{Stocking Stuffer}} and {{make a story move}} with it. The stuffer can be literally anything that would physically fit in an average Xmas stocking.
+
+##
+
+● Re-gift to the people --> Any time you're in one of Santa's sweatshops or security offices, you can attempt to refill your {{Stocking Stuffers}} by expropriating some of Santa's shit. !+[Xmas Fucking Cheer]
+
+🡕 Pick 1:
+  * You get 2 {{Stocking Stuffers}}.
+  * You get 1 Stocking Stuffer __and__ you restore 1 {{Resist}}.
+🡒 You get 1 Stocking Stuffer.
+🡖 There's nothing for you here.
+🡐 You shouldn't root around in locked drawers.
+
+##
+
+● Open a present --> Any time you're in one of Santa's sweatshops, you can grab a nearby present and unwrap it. It can be of any size that would fit on Santa's sleigh. Say what you're wishing for, then !+[Xmas Fucking Cheer].
+
+🡕 You get whatever you asked for, plus there's something extra in the box. Pick 1:
+  * it's something destructive.
+  * it's something protective.
+  * it's a clue of some sort.
+  * it's a key of some sort.
+
+🡒 You get whatever you asked for.
+
+🡖 You get... kinda what you asked for. Pick 1:
+  * it's a cheap knock off—you just know it's gonna break.
+  * batteries (or ammo) not included.
+  * some assembly required.
+  * the controls are confusing, and the manual's in... jeeze, what language is that?
+  * it works fine, but it's booby-trapped somehow.
+
+🡐 You don't get what you wanted. Oh no, not at all.
+
+##
+
+
+
+
+##

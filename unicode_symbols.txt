@@ -27,7 +27,7 @@ $ section name          same as above, but easier to type
 ⊞⌊⌋	                  	call for a roll
 !+[modifier]            same as above, but easier to type
 
-🡕 🡒 🡖 🡓 🡐                roll result outcomes (gain, carry, lose, reverse)
+🡕 🡒 🡖 🡐                roll result outcomes (gain, carry, lose, reverse)
 
 ⌊⌋	                   	enclose math or quantities
 _[math]_                same as above, but easier to type

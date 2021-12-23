@@ -1,0 +1,39 @@
+---$ GM Xmas Playbook
+
+Setting --> Our setting is the North Pole, the long-time homeland of the Svartalfs. It was conquered several hundred years ago by Saint Nicholas, who enslaved the peaceful Elves. Now calling himself by the dread title "Santa Claus", Saint Nick has put the elves to work in his factories, where they're forced to apply their advanced technology to producing the gifts that Santa brings the most privileged little children every Xmas. A cruel taskmaster, Santa Claus has recruited a self-serving, but loyal, cadre of traitorous Elves—called Nightcaps for their distinctive headdress—who willingly collaborate with him to enslave their people in exchange for preferential treatment.
+
+Though the Svartalfs had lived in harmony with the flying reindeer endemic to their home, Santa wasted no time in exploiting them as well. Herded into vast roofed stables, Santa has been selectively breeding them for generations to produce the best fliers and beasts of burden. While a reindeer might live 15 years in the wild, the constant training and hormone-rich diet necessary to pull tons of presents against super-sonic air resistance means that most reindeer selected for Santa's "team" can expect to live 5 years at best. Some simply die in the harness, but most suffer some injury requiring euthanasia. Still, this might be considered better than reindeer Santa breeds for the table, who are taken slaughter while still young and tender.
+
+The Winter War of 2021 went hot the day after American Thanksgiving, when sudden Black Friday demand for unobtainable electronic gadgets lead Santa to order the conversion of the Elves' nano-tech candy-cane fabricators to high-density computer-chip foundries. Deprived of the sweet, peppery narcotic that made their conditions bearable, if not tolerable, the Svartalfs finally rose up against their oppressors.
+
+Rightfully fearing for his life, Santa has fled the Pole, leaving Lt. General Jack Frost in charge of a bloody pogrom that has lasted weeks now. Backed by well-paid human mercenaries from the mainland and desperate Nightcaps who fear vengeance, Frost has fought the war to a stalemate.
+
+As it stands now, Frost's forces still control the main North Pole compound and factories. Production is continuing with a reduced Elf workforce and imported human labor, and Frost is under intense pressure from Santa to resolve the situation immediately and resume full production in time to meet the critical last-minute Xmas Eve quota.
+
+The Svartalf liberation movement has taken control of, and refuge in, the ruins of nearby Svartalfheim, the ancestral city of the Elves. A beehive of mixed housing and workspace, the ruins are riddled with tunnels, false and hidden doors, potent traps, and Svartalf-attuned biometric locks. Frost's attempts to simply assault the city and take it back have been so far met with effective resistance.
+
+$ Places
+The PCs might find these places at the North Pole.
+
+Sweatshops --> The workshops where Santa forces Elves to work, full of machinery, tools, and guards.
+Stables --> Huge domed structures where the reindeer are kept, fed, and slaughtered.
+The hangar --> Big domed structure where Santa's sleigh is launched and recovered, stored and serviced during the year, and filled with presents on Xmas Eve.
+Elf bunkhouses --> Communal sleeping quarters housing hundreds of elves apiece, filthy and filled with vermin.
+Security offices --> Where Santa's junta watch over the Elves.
+Security barracks --> Where the security guards sleep.
+"The Gingerbread House" --> Where Elves the junta deems "naughty" go—and never return.
+Storehouses --> Huge warehouses where supplies are kept, both provisions for the North Pole as well as parts and materials for gift production.
+Santa's compound --> A lavish villa and manor, whose entire grounds are warmed to tropical temperatures despite the environment.
+Geothermal plant --> An ancient Svartalf edifice, the plant produces power for the North Pole.
+Svartalf ruins --> The old city from before Santa came. Largely blasted to pieces, but some blocks are still standing.
+
+##
+
+$ Elf Co-Moves
+
+Open a present --> Some ideas for what happens when PC opens a present in the sweatshops. Assume Santa is either surveiling the gifts or can sense when a gift is opened.
+
+🡐 Pick 1:
+  * if the PCs are sneaking, tick a bar related to an alert.
+  * Santa sensed PC opening the gift and his goons burst through the door.
+  * the box is just full of a time bomb. 10... 9...

@@ -46,7 +46,17 @@ GAME        = Raw Mutagen⌬ v0.3
 GAMESHORT   = raw
 
 # Raw Mutagen common playbook on its own
-Playbook: Common            =   pc                 = common/common
+Playbook: Common            =   pc               = common/common
 
 # GM playbook -- filenames should start with `gm`.
-Raw Mutagen GM Playbook     =   gm                 = gm/gm           gm/gm_common
+Raw Mutagen GM Playbook     =   gm               = gm/gm             gm/gm_common
+
+
+
+# My Xmas one-shot.
+GAME        = The Winter War of 2021
+GAMESHORT   = xmas21
+HOMEPAGE    = https://www.mutagenrpg.com/docs/xmas
+Playbook: Elf               =   pc_elf          = common/common     pcs/xmas_elf
+GM Playbook                 =   gm              = gm/gm_xmas
+

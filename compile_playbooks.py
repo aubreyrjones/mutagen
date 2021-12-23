@@ -129,7 +129,7 @@ def dump_json(parsed_moves, pb_name, pdf_url, homepage, game_title):
                        'pdf': pdf_url,
                        'homepage': homepage,
                        'game_title': game_title,
-                       'pb_name': pb_name})
+                       'pb_name': pb_name}, indent=1)
 
 
 def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadata):
