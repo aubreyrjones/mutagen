@@ -180,8 +180,19 @@ have a blank document in there with the window minimized.
 The build will create a bunch of intermediary files in the `build`
 directory. You can ignore these.
 
-The complete PDF playbooks are created in `playbook_output`, with the
-electronic tracker teplates in a subdirectory.
+The complete PDF playbooks are created in `playbook_output`.
+
+For playbooks including Mutagen Markup, the electronic playbook is
+included as an internal attachment to each PDF file. "Magic" PDFs like
+this are identified with `.mutagen.pdf` as the suffix. Players upload
+the PDF playbook directly to the online character tracker app to
+create a character. You don't need to involve me. Thiss is one of the
+major benefits of the Mutagen system.
+
+The document builder also creates a `tracker_templates.zip` file
+including all the electronic playbooks as raw files. You can send me
+that file if you'd like your playbooks included in the [the character
+creation list](https://www.mutagenrpg/all) on the main website.
 
 Errors might be a bit cryptic right now. Sorry. :( Usually they're
 related to formatting paragraphs or write-in fields. Look for the
