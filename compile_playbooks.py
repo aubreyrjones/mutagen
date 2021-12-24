@@ -7,11 +7,13 @@ from subprocess import call
 from time import sleep
 from os import path
 from textwrap import wrap
+import zipfile
 from PyPDF2 import PdfFileMerger
 from scripts.parse_text import parse_moves, markup_moves, render_xml, MARKUP_VERSION
 import shutil
 import time
 from scripts.make_odt import build_odt
+import zlib
 
 # If you're on windows and didn't install LibreOffice in the default location, you'll need to edit that path
 # just use forward slashes, not back-slashes.
@@ -20,11 +22,13 @@ LIBREOFFICE = 'C:/Program Files/LibreOffice/program/soffice.com' if sys.platform
 # These are probably fine for anybody, but they're configurable here anyway.
 BUILD_DIR = 'build'
 OUT_DIR = 'playbook_output'
-JSON_DIR = f'{OUT_DIR}/tracker_templates'
+JSON_DIR = f'{BUILD_DIR}/tracker_templates'
 
 # Name of the meta section appended to non-teaser playbooks.
 META = 'common/meta.odt'
 
+OUT_EXT = 'mutagen.pdf'
+DOT_OUT_EXT = '.' + OUT_EXT
 
 _time_rendering_pdfs = 0
 
@@ -60,7 +64,7 @@ def make_pdf(input_filename):
     '''
     Builds a PDF from an ODT.
     '''
-    sn = staged_name(input_filename, 'pdf')
+    sn = staged_name(input_filename, "pdf")
 
     if os.path.exists(sn):
         # delete it first so we can reliably check that it's been created.
@@ -132,6 +136,32 @@ def dump_json(parsed_moves, pb_name, pdf_url, homepage, game_title):
                        'pb_name': pb_name}, indent=1)
 
 
+RECOVERY_TARGET = '%%EOF\n'.encode('ascii')
+
+def recover_json_from_mjz(filename):
+    with open(filename, 'rb') as mjz:
+        stream = mjz.read()
+    
+    eof_pos = stream.find(RECOVERY_TARGET)
+    zip_part = stream[eof_pos + len(RECOVERY_TARGET):]
+    decompressed = zlib.decompress(zip_part).decode("utf8")
+    #print(decompressed)
+    return decompressed
+
+def compress_and_append_json(json_file, pdf_file):
+    '''
+    Take a json file, compress the binary stream of it, and append that to another file (ostensibly
+    a PDF).
+    '''
+    with open(json_file, 'rb') as jf:
+        jstream = jf.read()
+    
+    jstream = zlib.compress(jstream, 9)
+    
+    with open(pdf_file, 'ab') as pf:
+        pf.write(jstream)
+
+
 def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadata):
     '''
     Build a playbook from its constituent sections.
@@ -141,11 +171,11 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
         print(f'ERROR! No playbook sections specified. Skipping {pb_name}.')
         return
 
-    pdf_basename = pb_name + ".pdf"
+    gets_json = '_teaser' not in pb_name and '_gm' not in pb_name
+
+    pdf_basename = pb_name + (DOT_OUT_EXT if gets_json else '.pdf')
     pdf_file = path.join(OUT_DIR, pdf_basename)
     json_file = path.join(JSON_DIR, pb_name + ".mutagen.json")
-
-    gets_json = '_teaser' not in pb_name and '_gm' not in pb_name
 
     # don't add the rules if it's a teaser "playbook".
     if '_teaser' not in pb_name:
@@ -157,8 +187,6 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
     print(f"Making `{human_name}`")
     print(f'\tInput sections:\t\t\t\t{" ".join(resolved_inputs)}')
     print(f'\tOutput PDF:\t\t\t\t-> {pdf_file}')
-    if gets_json:
-        print(f'\tOutput JSON:\t\t\t\t-> {json_file}')
     print('\t*')
 
     for pbs in pb_list:
@@ -206,7 +234,7 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
         else:
             odtName = span
         
-        pdf_span_name = staged_name(odtName, 'pdf')
+        pdf_span_name = staged_name(odtName, "pdf")
         pdfs.append(pdf_span_name)
         if needs_rebuilt([odtName], pdf_span_name):
             print(f"\tIntermediate PDF from ODT:\t\t{odtName}")
@@ -220,7 +248,11 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
             json_outfile.write(dump_json(for_web, f'{game_title} — {human_name}', metadata['PDFSERVER'] + pdf_basename, metadata['HOMEPAGE'], game_title))
 
     # build PDF
-    if needs_rebuilt(pdfs, pdf_file):
+    final_deps = list(pdfs)
+    if gets_json:
+        final_deps.append(json_file)
+
+    if needs_rebuilt(final_deps, pdf_file):
         madeSomething = True
         print(f'\tMerging final PDF:\t\t\t{" ".join(pdfs)}')
         pdf_merger = PdfFileMerger()
@@ -229,6 +261,10 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
 
         pdf_merger.write(pdf_file)
         pdf_merger.close()
+
+        if gets_json:
+            print(f'\tAppending electronic playbook:\t\t{json_file}')
+            compress_and_append_json(json_file, pdf_file)
     
     if not madeSomething: 
         print("\tUp to date. Nothing done.")
@@ -245,6 +281,7 @@ _build_start = time.time()
 
 # set up
 os.makedirs(BUILD_DIR, exist_ok=True)
+os.makedirs(OUT_DIR, exist_ok=True)
 os.makedirs(JSON_DIR, exist_ok=True)
 
 
@@ -317,6 +354,17 @@ with open(pb_def_file, encoding='utf-8-sig') as pb_defs:
             print(ex)
             print("Error in playbook definition file", pb_def_file, "line:", line)
             exit(1)
+
+tracker_templates = os.listdir(JSON_DIR)
+
+tracker_filename = os.path.join(OUT_DIR, 'tracker_templates.zip')
+
+print(f'Zipping tracker templates into {tracker_filename}. Send this to `mutagenrpg.com` if you want.')
+with zipfile.ZipFile(tracker_filename, 'w') as tracker_zip:
+    for tt in tracker_templates:
+        with tracker_zip.open(tt, 'w') as of:
+            with open(os.path.join(JSON_DIR, tt), 'rb') as _if:
+                of.write(_if.read())
 
 _build_finished = time.time()
 
