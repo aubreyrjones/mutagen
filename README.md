@@ -26,6 +26,27 @@ playbooks created by the document generation system, edit write-in
 fields, toggle purchased powers, etc. 
 
 
+# High Level Overview
+
+Publishing with Mutagen is easy.
+
+  1. Write your fiction, world, and setting using whatever publishing
+     techniques you favor.
+
+  2. Write a 1-2 page playbook for each playable class or archetype
+     in your game. You'll write this using Mutagen Markup to mark 
+     formatting and structure.
+
+  3. Run the automatic document builder from this project.
+
+  4. Distribute the playbook PDFs to your players however you'd 
+     intended to publish electronic character sheets anyway.
+
+  5. Your players can print the PDF to use offline, or they can upload 
+     it directly to `mutagenrpg.com` and use the electronic playbook 
+     automatically generated and attached by the document builder.
+
+
 # Building with Mutagen
 
 Mutagen is designed from the ground up to support modular additions in
@@ -186,8 +207,8 @@ For playbooks including Mutagen Markup, the electronic playbook is
 included as an internal attachment to each PDF file. "Magic" PDFs like
 this are identified with `.mutagen.pdf` as the suffix. Players upload
 the PDF playbook directly to the online character tracker app to
-create a character. You don't need to involve me. Thiss is one of the
-major benefits of the Mutagen system.
+create a character. You don't need to involve me. This autonomy 
+is one of the major benefits of the Mutagen system.
 
 The document builder also creates a `tracker_templates.zip` file
 including all the electronic playbooks as raw files. You can send me
@@ -230,7 +251,7 @@ or `.odt` files. THEY ARE TREATED VERY DIFFERENTLY.
 
 Text files are assumed to contain Mutagen Markup. They are parsed by
 the document builder, then automatically formatted as player playbook
-sections. Additionally and criticaly, the sections and moves are
+sections. Additionally and critically, the sections and moves are
 encoded for use in the online character tracker app.
 
 Pre-formatted ODT documents are ONLY INCLUDED IN THE PDF EDITION of
@@ -239,15 +260,14 @@ final playbook PDF, but _they are NOT encoded for the online tracker_.
 
 In general, each player playbook should be written in Mutagen Markup
 so that it's compatible with the online character tracker. Inside of
-player playbooks, use ODT playbook sections rarely or never; and then
+player playbooks, use ODT playbook sections never or rarely; and then
 only for flavor, fiction, and informational material that doesn't need
 to be tracked or routinely referenced after a first play session.
 
-In contrast to player playbooks, which have lots of trackable stuff
-and people who are only reading what's in front of them on the web
-app, it's okay for GM playbooks and teaser documents to mostly or
-entirely consist of ODT documents. These are meant to be read-only
-documents anyway, and no tracker data is generated for them.
+Keep in mind that the online character tracker provides substantial
+accessibility support for GMs and players using assistive technology.
+Using Mutagen Markup means that what you've written will be available
+to the widest audience possible.
 
 
 ## Mutagen Markup
@@ -260,7 +280,7 @@ your playbook sections. There's a reference in
 here's a short one taken from `pcs/sorcerer.txt`:
 
 ```
-§ Sorcerer Resources
+$ Sorcerer Resources
 
 Will --> The overwhelming conviction that your magic should override the very laws of reality.
 |● 1. ▢ ▢ ▢ 

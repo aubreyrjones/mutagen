@@ -3,6 +3,7 @@
 import sys
 import os
 import json
+import io
 from subprocess import call
 from time import sleep
 from os import path
@@ -13,7 +14,6 @@ from scripts.parse_text import parse_moves, markup_moves, render_xml, MARKUP_VER
 import shutil
 import time
 from scripts.make_odt import build_odt
-import zlib
 
 # If you're on windows and didn't install LibreOffice in the default location, you'll need to edit that path
 # just use forward slashes, not back-slashes.
@@ -31,6 +31,16 @@ OUT_EXT = 'mutagen.pdf'
 DOT_OUT_EXT = '.' + OUT_EXT
 
 _time_rendering_pdfs = 0
+
+EPB_README = '''I applaud your curiosity checking in here.
+The other file in this `.zip` is an electronic playbook.
+It's a JSON file full of special semantic XHTML markup.
+At the time of this writing, these electronic playbooks are
+compatible with `mutagenrpg.com/all`. If you got this out of a 
+PDF, you don't need to extract anything; just upload the 
+PDF to the website. If you don't have a PDF, you can upload
+this `.zip` file or the `.json`.
+'''
 
 #
 # Build-related functions.
@@ -136,6 +146,20 @@ def dump_json(parsed_moves, pb_name, pdf_url, homepage, game_title):
                        'pb_name': pb_name}, indent=1)
 
 
+def recover_json_from_zip(zipstream):
+    try:
+        instream = io.BytesIO(zipstream)
+        with zipfile.ZipFile(instream, 'r') as zf:
+            files = zf.namelist()
+            for f in files:
+                if f.lower().endswith('.json'):
+                    return zf.read(f)
+        return None
+    except Exception as ex:
+        print("\n", ex)
+        return None
+        
+
 def recover_json_from_pdf(filename):
     try:
         with open(filename, 'rb') as instream:
@@ -148,15 +172,21 @@ def recover_json_from_pdf(filename):
                     dataIndex = fileNames.index(f) + 1
                     fDict = fileNames[dataIndex].getObject()
                     fData = fDict['/EF']['/F'].getData()
-                    if name.lower().endswith('.mutagen.json'):
-                        return zlib.decompress(fData)
-    except:
+                    if name.lower().endswith('.zip'):
+                        recovered = recover_json_from_zip(fData)
+                        if recovered: return recovered
         return None
+    except Exception as ex:
+        print("\n", ex)
+        return None    
 
 
 def compress_json(json_file):
-    with open(json_file, 'rb') as jf:
-        return zlib.compress(jf.read(), 9)
+    outstream = io.BytesIO()
+    with zipfile.ZipFile(outstream, 'w', compression=zipfile.ZIP_DEFLATED) as zf:
+        zf.writestr('readme.txt', EPB_README.encode('utf8'))
+        zf.writestr(os.path.basename(json_file), open(json_file, 'rb').read())
+    return outstream.getvalue()
 
 
 def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadata):
@@ -259,7 +289,7 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
         if gets_json:
             print(f'\tAttaching electronic playbook:\t\t{json_file}')
             # reach into the pdf writer to attach our compressed electronic playbook.
-            pdf_merger.output.addAttachment(os.path.basename(json_file), compress_json(json_file))
+            pdf_merger.output.addAttachment(f'{pb_name}.zip', compress_json(json_file))
 
         pdf_merger.write(pdf_file)
         pdf_merger.close()
@@ -365,11 +395,9 @@ tracker_templates = os.listdir(JSON_DIR)
 tracker_filename = os.path.join(OUT_DIR, 'tracker_templates.zip')
 
 print(f'Zipping tracker templates into {tracker_filename}. Send this to `mutagenrpg.com` if you want.')
-with zipfile.ZipFile(tracker_filename, 'w') as tracker_zip:
+with zipfile.ZipFile(tracker_filename, 'w', compression=zipfile.ZIP_DEFLATED) as tracker_zip:
     for tt in tracker_templates:
-        with tracker_zip.open(tt, 'w') as of:
-            with open(os.path.join(JSON_DIR, tt), 'rb') as _if:
-                of.write(_if.read())
+        tracker_zip.writestr(tt, open(os.path.join(JSON_DIR, tt), 'rb').read())
 
 _build_finished = time.time()
 
