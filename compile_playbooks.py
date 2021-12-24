@@ -8,7 +8,7 @@ from time import sleep
 from os import path
 from textwrap import wrap
 import zipfile
-from PyPDF2 import PdfFileMerger
+from PyPDF2 import PdfFileMerger, PdfFileReader
 from scripts.parse_text import parse_moves, markup_moves, render_xml, MARKUP_VERSION
 import shutil
 import time
@@ -136,30 +136,27 @@ def dump_json(parsed_moves, pb_name, pdf_url, homepage, game_title):
                        'pb_name': pb_name}, indent=1)
 
 
-RECOVERY_TARGET = '%%EOF\n'.encode('ascii')
+def recover_json_from_pdf(filename):
+    try:
+        with open(filename, 'rb') as instream:
+            reader = PdfFileReader(instream)
+            catalog = reader.trailer["/Root"]
+            fileNames = catalog['/Names']['/EmbeddedFiles']['/Names']
+            for f in fileNames:
+                if isinstance(f, str):
+                    name = f
+                    dataIndex = fileNames.index(f) + 1
+                    fDict = fileNames[dataIndex].getObject()
+                    fData = fDict['/EF']['/F'].getData()
+                    if name.lower().endswith('.mutagen.json'):
+                        return zlib.decompress(fData)
+    except:
+        return None
 
-def recover_json_from_mjz(filename):
-    with open(filename, 'rb') as mjz:
-        stream = mjz.read()
-    
-    eof_pos = stream.find(RECOVERY_TARGET)
-    zip_part = stream[eof_pos + len(RECOVERY_TARGET):]
-    decompressed = zlib.decompress(zip_part).decode("utf8")
-    #print(decompressed)
-    return decompressed
 
-def compress_and_append_json(json_file, pdf_file):
-    '''
-    Take a json file, compress the binary stream of it, and append that to another file (ostensibly
-    a PDF).
-    '''
+def compress_json(json_file):
     with open(json_file, 'rb') as jf:
-        jstream = jf.read()
-    
-    jstream = zlib.compress(jstream, 9)
-    
-    with open(pdf_file, 'ab') as pf:
-        pf.write(jstream)
+        return zlib.compress(jf.read(), 9)
 
 
 def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadata):
@@ -252,19 +249,27 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
     if gets_json:
         final_deps.append(json_file)
 
-    if needs_rebuilt(final_deps, pdf_file):
+    if needs_rebuilt(pdfs, pdf_file):
         madeSomething = True
-        print(f'\tMerging final PDF:\t\t\t{" ".join(pdfs)}')
+        print(f'\tMerging final PDF:\t\t\t{" ".join(final_deps)}')
         pdf_merger = PdfFileMerger()
         for pdf in pdfs:
             pdf_merger.append(pdf)
+
+        if gets_json:
+            print(f'\tAttaching electronic playbook:\t\t{json_file}')
+            # reach into the pdf writer to attach our compressed electronic playbook.
+            pdf_merger.output.addAttachment(os.path.basename(json_file), compress_json(json_file))
 
         pdf_merger.write(pdf_file)
         pdf_merger.close()
 
         if gets_json:
-            print(f'\tAppending electronic playbook:\t\t{json_file}')
-            compress_and_append_json(json_file, pdf_file)
+            with open(json_file, 'rb') as check_file:
+                print(f'\tChecking PDF:', end='')
+                if check_file.read() != recover_json_from_pdf(pdf_file):
+                    raise RuntimeError("Recovered JSON doesn't match.")
+                print(f'\t\t\t\tOK.')
     
     if not madeSomething: 
         print("\tUp to date. Nothing done.")
@@ -324,36 +329,36 @@ with open(pb_def_file, encoding='utf-8-sig') as pb_defs:
     lines = pb_defs.readlines()
 
     for line in lines:
-        try:
-            stripped = line.strip()
-            if stripped.startswith('#'): continue
-            if '=' not in stripped: continue
-            splits = stripped.split('=')
-            human_name = splits[0].strip()
-            pb_name = splits[1].strip()
+##        try:
+        stripped = line.strip()
+        if stripped.startswith('#'): continue
+        if '=' not in stripped: continue
+        splits = stripped.split('=')
+        human_name = splits[0].strip()
+        pb_name = splits[1].strip()
 
-            if human_name == 'GAME':
-                game_title = pb_name
-                continue
-            if human_name == 'GAMESHORT':
-                game_prefix = space_to_score(pb_name)
-                continue
-            if human_name == 'AUTHOR':
-                author_info = pb_name
-                continue
-            if human_name in ('PDFSERVER', 'HOMEPAGE'):
-                trailing = "" if human_name != 'PDFSERVER' or pb_name.endswith('/') else "/"
-                metadata[human_name] = f'{pb_name}{trailing}'
-                continue
+        if human_name == 'GAME':
+            game_title = pb_name
+            continue
+        if human_name == 'GAMESHORT':
+            game_prefix = space_to_score(pb_name)
+            continue
+        if human_name == 'AUTHOR':
+            author_info = pb_name
+            continue
+        if human_name in ('PDFSERVER', 'HOMEPAGE'):
+            trailing = "" if human_name != 'PDFSERVER' or pb_name.endswith('/') else "/"
+            metadata[human_name] = f'{pb_name}{trailing}'
+            continue
 
-            pb_list = [s.strip() for s in splits[2].split()]
-            full_pb_name = f'{game_prefix}_{pb_name}'
+        pb_list = [s.strip() for s in splits[2].split()]
+        full_pb_name = f'{game_prefix}_{pb_name}'
 
-            make_playbook(full_pb_name, human_name, pb_list, game_title, author_info, metadata)
-        except Exception as ex:
-            print(ex)
-            print("Error in playbook definition file", pb_def_file, "line:", line)
-            exit(1)
+        make_playbook(full_pb_name, human_name, pb_list, game_title, author_info, metadata)
+        # except Exception as ex:
+        #     print(ex)
+        #     print("Error in playbook definition file", pb_def_file, "line:", line)
+        #     exit(1)
 
 tracker_templates = os.listdir(JSON_DIR)
 
