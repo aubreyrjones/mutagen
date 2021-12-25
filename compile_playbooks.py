@@ -30,9 +30,9 @@ META = 'common/meta.odt'
 OUT_EXT = 'pdf'
 DOT_OUT_EXT = '.' + OUT_EXT
 
+MAPE_VERSION = 'MAPE v0.1'
+
 _build_time = datetime.datetime.now().strftime("%Y%m%d%H%M")
-
-
 _time_rendering_pdfs = 0
 
 EPB_README = '''I applaud your curiosity checking in here.
@@ -299,6 +299,8 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
             '/Title': human_name,
             '/Subject': game_title,
             '/CreationDate': _build_time,
+            '/ModDate': _build_time,
+            '/Creator': MAPE_VERSION,
             '/Keywords': 'MutagenRPG.com'
         })
 
