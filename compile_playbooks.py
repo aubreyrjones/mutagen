@@ -272,7 +272,7 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
         madeSomething = True
         with open(json_file, 'w', encoding='utf-8') as json_outfile:
             print(f'\tElectronic playbook from text:\t\t{" ".join(web_section_list)}')
-            json_outfile.write(dump_json(for_web, f'{game_title} — {human_name}', metadata['PDFSERVER'] + pdf_basename, metadata['HOMEPAGE'], game_title))
+            json_outfile.write(dump_json(for_web, human_name, metadata['PDFSERVER'] + pdf_basename, metadata['HOMEPAGE'], game_title))
 
     # build PDF
     final_deps = list(pdfs)

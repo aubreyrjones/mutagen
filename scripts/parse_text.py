@@ -1,6 +1,6 @@
 import re
 
-MARKUP_VERSION = 5
+MARKUP_VERSION = 6
 
 LINE_HEADER_MATCH = re.compile(r'(►|-->)')
 SEC_HEADER_MATCH = re.compile(r'^\s*(~~~)?(\$|§)')
