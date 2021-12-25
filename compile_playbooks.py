@@ -409,6 +409,7 @@ print(f'Zipping tracker templates into {tracker_filename}. Send this to `mutagen
 with zipfile.ZipFile(tracker_filename, 'w', compression=zipfile.ZIP_DEFLATED) as tracker_zip:
     for tt in tracker_templates:
         tracker_zip.writestr(tt, open(os.path.join(JSON_DIR, tt), 'rb').read())
+    tracker_zip.writestr('playbooks.txt', open(pb_def_file, 'rb').read())
 
 _build_finished = time.time()
 

@@ -65,7 +65,7 @@ Resist consequences --> This is a PC’s main tool to redeem shitty rolls, and t
 ##
 
 
-§ Story Moves
+~~~§ Story Moves
 
 You know already, but these are the backbone of your story. Regular moves might say you can throw a fireball, but only a story move tells us what happens when it hits.
 
@@ -79,11 +79,9 @@ Most PC move blocks list the momentum results from best to worst (🡕🡒🡖�
 
 However, story moves start with 🡒. This is for several reasons:
 
-1. 🡒 is the “default” outcome for the move. If it’s not interesting to roll, this is the outcome.
-
-2. I write 🡕🡖 outcomes as “differences” from the default 🡒 outcome.
-
-3. The 🡐 outcome is in a clear and consistent place.
+  1. 🡒 is the “default” outcome for the move. If it’s not interesting to roll, this is the outcome.
+  2. I write 🡕🡖 outcomes as “differences” from the default 🡒 outcome.
+  3. The 🡐 outcome is in a clear and consistent place.
 
 Bullet-point option blocks are exactly that: options. They’re not exhaustive lists. Any time you can think of something cooler or more specific to what’s happening in your story, do that! The options are to give you ideas, not limit you.
 

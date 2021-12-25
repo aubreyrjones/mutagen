@@ -199,10 +199,14 @@ directory. You can ignore these.
 The complete PDF playbooks are created in `playbook_output`.
 
 For playbooks including Mutagen Markup, the electronic playbook is
-included as an internal attachment to each PDF file. GMs and players 
-upload the PDF playbook directly to the online character tracker app 
-to view the playbook or create a character. You don't need to involve 
-me. This autonomy is one of the major benefits of the Mutagen system.
+included as an internal attachment to each PDF file. You only need
+to distribute the unaltered PDF to enable full compatibility with
+the Mutagen ecosystem.
+
+GMs and players upload the PDF playbook directly to the online 
+character tracker app to view the playbook or create a character. 
+You don't need to involve me. This autonomy is one of the major 
+benefits of the Mutagen system.
 
 The document builder also creates a `tracker_templates.zip` file
 including all the electronic playbooks as raw files. You can send me
@@ -222,17 +226,26 @@ file or document. The playbook definition file tells the script which
 sections go together into which playbooks. Look at the included
 `playbooks.txt` for an example.
 
-Each line of the file consists of a human-friendly playbook name, an
-equal sign, final playbook filename, another equal sign, then a list
-of each playbook section in the order they go into that playbook.
+Some lines of the file consist of definitions for the publishing
+engine. They look like an ALL CAPS name and a text value, separated 
+by an equals sign. They look like this:
 
-The Mutagen Meta section is _automatically_ appended to the end of
-every playbook created, both player and GM. The Meta section is
-omitted if the filename contains `_teaser`.
+```
+AUTHOR = © 2021 Aubrey R. Jones 🄯 CC-BY-SA 4.0
+```
+
+Most lines of the file define a new playbook. They consist of a 
+human-friendly playbook name, an equals sign, final playbook 
+filename, another equals sign, then a list of each playbook section 
+in the order they go into that playbook.
 
 ```
 Friendly, Human Readable Playbook Name = output_file_name = common/first_section your_game/second_section your_game/third_section
 ```
+
+The Mutagen Meta section is _automatically_ appended to the end of
+every playbook created, both player and GM. The Meta section is
+omitted if the filename contains `_teaser`.
 
 Do NOT! include the extension (`.txt`, `.odt`, `.pdf` etc) on any of
 these file names. All of that is handled automatically.
@@ -252,16 +265,16 @@ Pre-formatted ODT documents are ONLY INCLUDED IN THE PDF EDITION of
 the playbook. They are converted to PDF as-is and included in the
 final playbook PDF, but _they are NOT encoded for the online tracker_.
 
-In general, each player playbook should be written in Mutagen Markup
+In general, playbooks should be written in Mutagen Markup
 so that it's compatible with the online character tracker. Inside of
-player playbooks, use ODT playbook sections never or rarely; and then
-only for flavor, fiction, and informational material that doesn't need
-to be tracked or routinely referenced after a first play session.
+playbooks, use ODT sections never or rarely; and then only for flavor, 
+fiction, and informational material that doesn't need to be tracked or 
+routinely referenced after a first play session.
 
 Keep in mind that the online character tracker provides substantial
 accessibility support for GMs and players using assistive technology.
-Using Mutagen Markup means that what you've written will be available
-to the widest audience possible.
+Writing playbooks in Mutagen Markup means that what you've written will 
+be available to the widest audience possible.
 
 
 ## Mutagen Markup
@@ -309,7 +322,7 @@ playbook section `.txt` files. They'll mangle the text files.
 
 ### Paragraph Formatting
 
-Inside Mutagen markup, each new line is considered a new
+Inside Mutagen Markup, each new line is considered a new
 paragraph. Some paragraphs are special, like line items (starting with
 a `*`) or result outcomes (starting with one of `🡕🡒🡖🡐`). But most
 lines of markup are just formatted as a new paragraph of regular text
@@ -317,7 +330,9 @@ with a uniform separation between them.
 
 Extra blank lines between paragraphs in the markup are ignored, so you
 can separate your paragraphs with multiple lines while you're writing
-them in the `.txt` file.
+them in the `.txt` file. You can also add comments by starting a line
+with `##`; comment lines are skipped and ignored by the publishing
+engine.
 
 I suggest turning on the "soft word wrap" (sometimes just "word wrap")
 feature in your text editor so that paragraphs extending over very
@@ -354,7 +369,7 @@ symbol anywhere else or for any other purpose. Everything before the
 arrow (including clickable symbols) is considered the move's
 header. Everything after the arrow is considered that move's
 description. Every following paragraph is considered part of that
-move, until you start a new move.
+move, until you start a new move or section.
 
 
 ### Notes/Recap 
