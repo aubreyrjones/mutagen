@@ -1,6 +1,6 @@
 import re
 
-MARKUP_VERSION = 6
+MARKUP_VERSION = 7
 
 LINE_HEADER_MATCH = re.compile(r'(►|-->)')
 SEC_HEADER_MATCH = re.compile(r'^\s*(~~~)?(\$|§)')
@@ -46,17 +46,22 @@ def parse_moves(pbs_filename, keep_unheadered=False):
 # m-m : math
 # m-s : symbol
 # m-c : clickable symbol
-# m-res : roll result entry
-# m-li : bulletpoint/numbered list
+
 # m-i: item
 # m-ih : item header
 # m-it : item title
 # m-id : item description
+
 # m-stitle : section title
 # m-sdesc : section description
+
 # m-in : input field
 # m-il : input label
 # m-inv : input value
+# m-res : roll result entry
+# m-p: paragraph
+# m-li : line item
+# m-br: line-break paragraph
 
 
 EASY_MOVE_DEF_RE = re.compile(r'-->')
@@ -91,7 +96,7 @@ CLICKABLE_REPLACE = r'<m-c>\1</m-c>'
 # pick up all the symbols that we've given special meaning to so that we can lex
 # them for screen readers.
 # ⌊⌋ in here makes screen readers hiccup, but also lexes the symbols... dunno what to do.
-SYM_RE = re.compile(r'([●🗣🡕🡒🡖🡐►])')
+SYM_RE = re.compile(r'([●🗣🡕🡒🡖🡐►👎])')
 SYM_REPLACE = r'<m-s>\1</m-s>'
 
 MATH_SYM_RE = re.compile(r'([⌊⌋])')
@@ -103,7 +108,7 @@ ITALICS_RE = re.compile(r'\/\/(.+?)\/\/')
 ITALICS_REPLACE = r'<i>\1</i>'
 
 UNDERLINE_RE = re.compile(r'__(.+?)__')
-UNDERLINE_REPLACE = r'<u>\1</u>'
+UNDERLINE_REPLACE = r'<em>\1</em>'
 
 CALLOUT_RE = re.compile(r'\{\{(.+?)\}\}')
 CALLOUT_REPLACE = r'⌞\1⌝'

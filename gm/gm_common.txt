@@ -1,0 +1,144 @@
+$ GM Common Playbook
+This is gonna be a little out of order. Story moves are on their own pages so you can re-order them wherever is convenient in your playbook.
+
+$ Resources
+
+Concept --> This is a main XP hook for PCs. Try to help your players define a bold concept. It shouldn’t drown in details, but it should give a clear picture of what that character’s “about”.
+
+Ex. Creepy but lonely Victorian child vampire. Ridiculed investigator touched by the paranormal. Detective with a cheerful demeanor and cold heart. Brawler with a tragic past and a ruined shoulder.
+
+##
+
+Drives --> This is a secondary XP hook for PCs. Again, try to keep these bold. Also try to keep them actionable: something they can actively, objectively pursue.
+
+It’s okay if they want to choose concrete long-term goals (“find lost father”), but encourage folks to have at least one Drive that’s more abstract (“spread corruption”) or immediate (“find Twinkies”). They probably can’t look for their lost father in every story, but they can always scrounge for snack cakes.
+
+##
+
+🗣Profession --> This works with ⌞Professional Skills⌝ to give PCs access to specialized but “mundane” skills. The idea is to let someone put down “Doctor” or “Plumber” and access the skills and knowledge a doctor or plumber would have.
+
+One issue is that I don’t know what’s “mundane” in your world, or even in your story. You could be med students telling a story set in a hospital, and you’ve got highly-technical playbooks written for each medical specialty. Or you might be playing in the stone age and there’s just no such thing as a doctor. Or you could be telling a story where “Space Pirate” is just a day job.
+
+The best candidate for a profession is a job secondary to the focus of your story, but still “possible” in your world. Secondary here doesn’t mean that the skills themselves are irrelevant (a doctor might use her skills a lot in a combat-heavy story), but that you’re not trying to directly explore the specific powers and skills of that job.
+
+The other concern is that they choose a very broad profession label that basically serves as a catch-all aptitude. The broadest example I can think of is “Soldier”, which in the modern military could mean doing anything from flying helicopters to programming computers. Other examples might include “Scientist” and “Thief”. Honestly, even a “Doctor” is probably a specialist in the real world.
+
+Ask the PC what they trained in specifically, what they actually do. Were they a mess cook or special forces infantry? Do they study beetles or lightning? Do they pickpocket or burgle? Family medicine or podiatry? Once you’ve narrowed down their career to their actual responsibilities and activities, it’s rarely a catch-all.
+
+##
+
+Health --> They’ve only got 3 health, but your PCs are only as squishy as you want people to be. Remember that injuries cause harm which depletes health. So if getting shot in the gut isn’t a big deal in your world, call that 1 harm.
+
+Letting them buy △ effectively promotes them to superhuman regardless of how you judge injuries and harm. Because an injury can only do up to 3 harm, a healthy character with rank 2 of health can canonically get hit by a bus or a bomb and stand back up. This is intentional, to make superhuman characters feel like they can really take a beating—at least once.
+
+##
+
+Resist --> See the {{resist consequences}} co-move.
+
+##
+
+XP --> See the Earn XP co-move.
+
+##
+
+$ Aptitudes
+
+These are intended to be “universal”, just broad classes of “mundane” stuff that people can get good at. Remember that character concepts are defined in bold strokes, so it’s okay for what they’re good at to also be defined in bold terms.
+
+I’m going to save space by not walking through every one of these. It really doesn’t matter where your table decides some particular activity fits—there’s no balance issues or anything like that to worry about.
+
+
+##
+
+🗣Spooky Shit --> Just make sure you’re on the same page as your PC about what “spooky” means in your world. There might be nothing supernatural in one game world, so this is just about theatrics. In another world, you’d use this to commune with ghosts. It could also refer to conspiracy theory or just unexplained phenomena, again “real” or not.
+
+##
+
+🗣Professional Skills --> See the Profession co-move.
+
+##
+
+$ Moves
+
+Resist consequences --> This is a PC’s main tool to redeem shitty rolls, and they have to buy resist by accepting fun consequences when they’d otherwise sail through. So definitely make the new complication way less bad. You might even consider just making the complication disappear and letting them 🡒.
+
+##
+
+
+§ Story Moves
+
+You know already, but these are the backbone of your story. Regular moves might say you can throw a fireball, but only a story move tells us what happens when it hits.
+
+Since they get so much use, story moves are set up differently from regular moves. Each one has a column of its own. It starts with a description of what a PC named “PC” is trying to achieve in the story. 
+
+If PC is acting on or against another animate thing or person, that animate entity is called “Alex”.
+
+👎 Blocks like these mention goals that are commonly confused for that story move’s goal—then they’ll tell you the right move.
+
+Most PC move blocks list the momentum results from best to worst (🡕🡒🡖🡐). 
+
+However, story moves start with 🡒. This is for several reasons:
+
+1. 🡒 is the “default” outcome for the move. If it’s not interesting to roll, this is the outcome.
+
+2. I write 🡕🡖 outcomes as “differences” from the default 🡒 outcome.
+
+3. The 🡐 outcome is in a clear and consistent place.
+
+Bullet-point option blocks are exactly that: options. They’re not exhaustive lists. Any time you can think of something cooler or more specific to what’s happening in your story, do that! The options are to give you ideas, not limit you.
+
+~~~$ Fuck ‘em up 
+
+PC wants to inflict injury on someone to maim, neutralize, or kill them. This doesn’t have to be in combat, for instance if PC set someone up for an “accident”. It’s also okay if the injury is non-lethal: Alex just doesn’t take harm, but takes a status of appropriate severity instead.
+
+|👎 The victim is inanimate—go apeshit.
+
+|👎 PC actually wants Alex to do some specific thing, like run away, shut up, or hand over the money—compel compliance.
+
+🡒 PC does the injury as they’ve described. If Alex is a PC, they take harm. For NPCs, consider having them retreat, pass out, or die. Only desperate or determined fighters are likely to counter-attack.
+
+🡕 Bonus:
+    • PC picks an injury status for Alex.
+    • Alex has cool loot.
+    • PC’s attack takes out additional enemies.
+    • Alex’s allies are intimidated.
+    • Better physical position (e.g. high ground).
+
+🡖 Complication:
+    • PC gets injured in the struggle—by Alex, their ally, or the environment.
+    • Alex or the struggle is noisy.
+    • There’s (meaningful) collateral damage.
+    • PC’s weapon is temporarily disabled.
+    • Someone (unintended) saw it happen.
+
+🡐 What stalled them?
+    • PC missed.
+    • Alex has armor or cover.
+    • Alex parries, dodges, or evades.
+    • Some mechanism or device fails.
+    • Someone else gets in the way.
+      
+What’s next?
+    • Alex counter-attacks.
+    • Alex summons help.
+    • Alex escapes.
+    • The authorities arrive.
+
+~~~$ Compel compliance 
+
+PC wants Alex to do something specific. Not just a reaction, but the particular thing that the PC wants. PC’s desire could be anything from “be quiet” to “learn this concerto”. PC doesn’t need to use threats or force on Alex. They could use commanding presence, clever manipulation, or just bribery.
+
+|👎 PC wants Alex to feel positively about them—schmooze ‘em.
+
+|👎 PC wants to distract Alex or get them to believe a falsehood—fool ‘em.
+
+🡒 PC gets their way and Alex does as PC says. If Alex is a PC, they get 1 XP for going along with it, but they don’t have to.
+
+🡕 Bonus:
+    • blahblah
+
+🡖 Complication:
+
+🡐 What stalled them?
+
+What’s next?

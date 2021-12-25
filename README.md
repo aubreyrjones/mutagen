@@ -12,7 +12,7 @@ have met. It's a whole ecosystem. There are three main parts:
   * The flexible, extensible, fiction-first core rules.
   * The document generation system contained in this project.
   * The `mutagenrpg.com` website, which provides a web-app for live
-  character sheets.
+    character sheets.
 
 Design philosophy for the rules themselves are in files under the
 `designer` directory.
@@ -30,8 +30,8 @@ fields, toggle purchased powers, etc.
 
 Publishing with Mutagen is easy.
 
-  1. Write your fiction, world, and setting using whatever publishing
-     techniques you favor.
+  1. Write and distribute your fiction, world, and setting using 
+     whatever publishing techniques you favor.
 
   2. Write a 1-2 page playbook for each playable class or archetype
      in your game. You'll write this using Mutagen Markup to mark 
@@ -42,9 +42,10 @@ Publishing with Mutagen is easy.
   4. Distribute the playbook PDFs to your players however you'd 
      intended to publish electronic character sheets anyway.
 
-  5. Your players can print the PDF to use offline, or they can upload 
+  5. Your players can print their PDF to use offline, or they can upload 
      it directly to `mutagenrpg.com` and use the electronic playbook 
-     automatically generated and attached by the document builder.
+     that was automatically generated and attached by the document 
+     builder.
 
 
 # Building with Mutagen
@@ -53,7 +54,7 @@ Mutagen is designed from the ground up to support modular additions in
 the form of new moves and playbook sections. Because the flexible
 _story moves_ system resolves risk and conflict in the story, you
 don't need to include those kinds of considerations when designing a
-move. A move can be as simple as "○ Speak to Animals - You can speak
+move. A move can be as simple as "○ Speak to Animals --> You can speak
 to and understand animals."
 
 You can add moves piecemeal as much as you want (that's how I built
@@ -78,12 +79,6 @@ your game or homebrew with Mutagen:
   moves you make up and jot on notepaper before or during the game
   sessions. Formalize things into playbooks when you're ready; or
   don't.
-
-* There's meta-meta support. :) There's a Designer playbook which
-  might help you get into the Mutagen headspace when writing a game or
-  homebrew using the system. There's also a simple automation
-  framework for piecing together multiple playbooks into seamless
-  final documents for your players.
 
 * It's open source, even for commercial use. The core Mutagen system
   and several example playbooks are available for your own use,
@@ -147,7 +142,7 @@ don't have one and haven't tested it.
 
 ## Windows Preqs:
 
-1. Download Python 3.9 or higher from the official website
+1. Download and install Python 3.9 or higher from the official website
    (https://www.python.org/downloads/windows/). Use the version that
    says "Download Windows installer" (_not_ "embeddable package").
 
@@ -165,10 +160,9 @@ don't have one and haven't tested it.
    of a mistake in one of the steps above, or because of something
    like anti-virus or other intrusive software.
 
-5. Install LibreOffice 7.0 or higher.
-   (https://www.libreoffice.org/download/download/)
-
-   IMPORTANT! Install LibreOffice in the default location on your computer.
+5. Install LibreOffice 7.0 or higher. IMPORTANT! Install LibreOffice in the 
+   default location on your computer.
+   (https://www.libreoffice.org/download/download/)  
 
 6. Install the `MutagenSans.ttf` and `MutagenSansBold.ttf` fonts from
    this repository.
@@ -183,7 +177,8 @@ If your playbook definitions are in `playbooks.txt`, you can just:
 
 Linux: Run `./compile_playbooks.py` from the command line.
 
-Windows: Double-click `MAKE_PLAYBOOKS.bat`.
+Windows: Double-click `MAKE_PLAYBOOKS.bat`. Bypass whatever silly security 
+warning pops up. You trust me, right?
 
 
 If you want to use a different playbook definition file:
@@ -204,11 +199,10 @@ directory. You can ignore these.
 The complete PDF playbooks are created in `playbook_output`.
 
 For playbooks including Mutagen Markup, the electronic playbook is
-included as an internal attachment to each PDF file. "Magic" PDFs like
-this are identified with `.mutagen.pdf` as the suffix. Players upload
-the PDF playbook directly to the online character tracker app to
-create a character. You don't need to involve me. This autonomy 
-is one of the major benefits of the Mutagen system.
+included as an internal attachment to each PDF file. GMs and players 
+upload the PDF playbook directly to the online character tracker app 
+to view the playbook or create a character. You don't need to involve 
+me. This autonomy is one of the major benefits of the Mutagen system.
 
 The document builder also creates a `tracker_templates.zip` file
 including all the electronic playbooks as raw files. You can send me
@@ -330,9 +324,9 @@ feature in your text editor so that paragraphs extending over very
 long lines are visually (but not actually) wrapped around for easier
 reading. This is often in the "view" or "document" menu.
 
-You can also continue a paragraph into a new line by starting the new
-line with `\`. This will force the text on the new line to be treated
-as part of the preceding paragraph.
+You can also explicitly continue a paragraph into a new line by starting 
+the new line with `\`. This will force the text on the new line to be 
+treated as part of the preceding paragraph.
 
 If you want to insert a line break, but not have a regular paragraph
 separation (useful for outlining ranks of resources for instance), you
@@ -351,16 +345,14 @@ There are two basic blocks of text you can format:
 Section names start with `§` or `$`. Optionally, you can write `~~~§`
 or `~~~$`, which will force a column-break before that section in the
 PDF playbook. You can write paragraphs of text underneath the section
-name to describe the section's contents. [You can't use line items,
-write-in fields, clickable symbols, or results blocks inside of
-section descriptions.]
+name to describe the section's contents. [Don't use write-in 
+fields or clickable symbols inside of section descriptions. They won't 
+work right in the app.]
 
 Moves start with a paragraph containing `-->` or `►`. Do not use that
 symbol anywhere else or for any other purpose. Everything before the
 arrow (including clickable symbols) is considered the move's
-header.
-
-Everything after the arrow is considered that move's
+header. Everything after the arrow is considered that move's
 description. Every following paragraph is considered part of that
 move, until you start a new move.
 
@@ -417,7 +409,7 @@ Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 ### CC Share Alike? I thought you said commercial was cool!
 
 Okay, stay with me for a minute. I've been hacking away at this engine
-for, like, a lot of hours now. I've got all the general rules to tell
+for, like, a lot of weeks now. I've got all the general rules to tell
 an exciting adventure story cut down to 4 pages that work unchanged
 for (most) any world. Even if you knew you'd license an engine, did
 you expect to get it down to 4 pre-written pages?
@@ -426,7 +418,7 @@ What's more, you don't even have to print those pages in your
 book. You're gonna publish them in PDFs just like you'd planned for
 your character sheets. Character sheets you're not gonna have to
 design anymore, since they're automatically generated. You also get
-free integration into the Mutagen Character Tracker app.
+free, seamless integration into the Mutagen Character Tracker app.
 
 Unless you want to, you don't have to publish any mechanical rules in
 your book. You can fill every page with the awesome fruits of your
@@ -435,10 +427,10 @@ narrative beat. Or you can cut your page count and widen your margin.
 
 If you don't screw it up, you're going to write 1-2 pages for the
 playbook representing each class or whatever in your game. And since
-there's literally no space for lore or worldbuilding in those measley
+there's literally no space for lore or worldbuilding in those measly
 columns, they're gonna be almost 100% game mechanics.
 
-Finally you've got to remember: this is a fiction first game, so the
+Finally you've got to remember: this is a fiction-first game, so the
 'game mechanics' just call right back into the fiction anyway. That'd
 be the book you're selling. [Or actually it could be a movie, a novel,
 Patreon serial, or any other media you're making. I'd love to see some

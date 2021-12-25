@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import sys
 import os
 import json
@@ -13,6 +12,7 @@ from PyPDF2 import PdfFileMerger, PdfFileReader
 from scripts.parse_text import parse_moves, markup_moves, render_xml, MARKUP_VERSION
 import shutil
 import time
+import datetime
 from scripts.make_odt import build_odt
 
 # If you're on windows and didn't install LibreOffice in the default location, you'll need to edit that path
@@ -27,8 +27,11 @@ JSON_DIR = f'{BUILD_DIR}/tracker_templates'
 # Name of the meta section appended to non-teaser playbooks.
 META = 'common/meta.odt'
 
-OUT_EXT = 'mutagen.pdf'
+OUT_EXT = 'pdf'
 DOT_OUT_EXT = '.' + OUT_EXT
+
+_build_time = datetime.datetime.now().strftime("%Y%m%d%H%M")
+
 
 _time_rendering_pdfs = 0
 
@@ -198,7 +201,7 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
         print(f'ERROR! No playbook sections specified. Skipping {pb_name}.')
         return
 
-    gets_json = '_teaser' not in pb_name and '_gm' not in pb_name
+    gets_json = '_teaser' not in pb_name
 
     pdf_basename = pb_name + (DOT_OUT_EXT if gets_json else '.pdf')
     pdf_file = path.join(OUT_DIR, pdf_basename)
@@ -290,6 +293,14 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
             print(f'\tAttaching electronic playbook:\t\t{json_file}')
             # reach into the pdf writer to attach our compressed electronic playbook.
             pdf_merger.output.addAttachment(f'{pb_name}.zip', compress_json(json_file))
+
+        pdf_merger.addMetadata({
+            '/Author': author_info,
+            '/Title': human_name,
+            '/Subject': game_title,
+            '/CreationDate': _build_time,
+            '/Keywords': 'MutagenRPG.com'
+        })
 
         pdf_merger.write(pdf_file)
         pdf_merger.close()

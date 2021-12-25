@@ -1,12 +1,12 @@
 Common symbols:
 
-## any text or markup   this line will be _entirely skipped_ during processing
+## any text or markup   this line will be entirely skipped and ignored during processing
 
 § section name          define a section
-$ section name          same as above, but easier to type
+$ section name          same as above, but maybe easier to type
 
-~~~§                    define a section with a column-break before it
-~~~$                    same as above, but easier to type
+~~~§ section name       define a section with a column-break before it
+~~~$ section name       same as above, but maybe easier to type
 
 ►			            define a move
 -->                     same as above, but easier to type
@@ -39,7 +39,7 @@ _[math]_                same as above, but easier to type
 
 Write-in fields (editable online):
 [[		            	start a write-in field
-||		            	continue an unlabeled write-in field (if you want it taller than 2 lines)
+||		            	continue an unlabeled write-in field (if you want it taller than 2 lines in print)
 ]]		            	close a write-in field
 
 
@@ -58,9 +58,9 @@ Special paragraph types:
 
 Manual text formatting:
 
-__your text__	    	underline
-//your text//	    	italics
-!!your text!!	    	bold
+__your text__	    	underline. Use this for emphasis (important for online screen reader).
+//your text//	    	italics. Use this only to call out active moves.
+!!your text!!	    	bold. Use this only for things related to rolls.
 
 \your text              text on this line should be included in the previous paragraph
 

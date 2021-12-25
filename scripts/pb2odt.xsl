@@ -139,4 +139,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <text---span text---style-name="GENERIC_UNDERLINE"><xsl:apply-templates /></text---span>
 </xsl:template>
 
+<xsl:template match="em">
+    <text---span text---style-name="GENERIC_UNDERLINE"><xsl:apply-templates /></text---span>
+</xsl:template>
+
 </xsl:stylesheet> 

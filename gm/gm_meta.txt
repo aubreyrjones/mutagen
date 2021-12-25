@@ -1,0 +1,194 @@
+$ GM Meta Playbook
+
+Audience ► This playbook is for GMs of a game using the Mutagen Engine. There’re no secrets, so players are welcome; but the GM’s experience is not the same as the player’s, and this playbook doesn’t mince words about it.
+
+##
+
+Prereqs ► Read the Mutagen Meta section at the back of this playbook. Everything builds from that. Also read a PC playbook so you have an idea what that’s like.
+
+##
+
+Fiction first ► Everything in this game flows from the fiction, not the other way around. Play by figuring out what would logically happen in the “real” world, then figuring out which game mechanic might apply. 
+
+A good example is harm: injuries create harm, not the other way around. One of the NPCs shot somebody in the chest: we all know that’s a life-threatening wound, so they take that’s 2 harm. If you got shot with the exact same gun in the hand? 1 harm. In the face? 3 harm. The gun doesn’t do some fixed amount of damage, see? It’s based on what y’all said happened in the story.
+
+##
+
+Love the PCs ► You’ve gotta love the PCs. You’ve gotta be their biggest fan in the whole world. You’ve gotta be curious about them. This is a matter of attitude, and it’s your responsibility; this isn’t about your players making cool enough characters.
+
+We’re mediators and facilitators, not auteurs ► If you want to have an epic quest line plotted on a 3-act structure with predetermined encounters and maybe branching results, you’re better at plot than I am, and I encourage you to write a book.
+
+Our role as a GM in this game isn’t to carry the PCs through a plot. Our job is to provide problems to solve, NPCs and scenery, suspense, and consequences. Otherwise the PCs should be writing as much of the story as you can get them to. The more of the story you’ve got them writing, the more epic your contributions feel when you do come in with something you’ve been working on.
+
+##
+
+Plan to improv ► Instead of spending your prep time plotting out intricate storylines and nuanced recurring villains that your players often ignore, just write down cool ideas you have in a notebook. One of these could be an NPC concept, a neat item, an idea for an adventure hook, or a location. Just put down a few key details that distinguishes this corner bar from that corner bar, and move on to the next idea.
+
+Then when your players decide to go off to wherever on their own agendas, you can deftly slip in these fragmentary ideas like you’ve got a whole world meticulously prepared. They won’t even notice you’ve only got 8 words written down about Tobias Trim because you’ve got them doing all the storytelling and inventing fiction anyway, right?
+
+Just give them the problem ► Don’t bother trying to balance story problems so that they’re “solvable”. First off, not everybody can fix every problem. But more importantly, PCs in this typically game have larger than life powers in-world, and players have ridiculous amounts of narrative control. They typically can find a solution to most problems—often awesome and shocking solutions you’d never predict.
+
+Failure’s also always an option. Since you don’t have any plot planned, you don’t need the PCs to overcome that challenge just to keep the plot on track. You can always just let them take the loss and try something else.
+
+##
+
+Name (almost) everybody and everything ► Go online and get a name generator and just make a huge list of names. Print it out, bring it to the table, and whenever the PCs interact with an individual NPC, give that NPC a name from the list. You don’t have to be dogmatic about this—sometimes the bouncer’s just “the bouncer”—but I find it adds a lot for nearly everybody to have a name.
+
+Oh, and just tell the players. Part of the point is to make the players see the NPCs as people, which doesn’t work if you hide the name. If an NPC’s identity is secret, give them an alias.
+
+##
+
+The symbols are different here ► In the rest of the playbooks, the symbols △, ○, and ● have one meaning. In this playbook they have another.
+
+##
+
+Free Moves ► Make moves with a ● whenever you think it’d be cool, or whenever another move suggests it.
+
+##
+
+Co-Moves ► Moves defined in the GM playbook with the same name as a move in a PC playbook are called "co-moves". You make a co-move when a PC makes their move of the same name.
+
+##
+
+Game Options ► Moves with △ are optional moves. You should decide before you start playing a new campaign whether or not you want to use the move, as these typically have big impacts on the story. If you decide you’re going to use one of the optional moves, fill the △ so that you remember your choice and stay consistent.
+
+##
+
+Moves --> Moves are literally the only things you can do in this game. ⌞Aptitudes⌝ and ⌞resources⌝ describe the character, but moves are what let PCs do stuff in the present.
+
+##
+
+Aside from story moves, the rest of the moves a PC has deal with basically “exceptions to the rule”. Normal people don’t throw fireballs, but wizards do and get a move to let them defy the norm. If throwing fireballs is super common in your world, then it wouldn’t need a move.
+
+##
+
+Aptitudes --> Aptitudes basically let us say what a character is good at. Without aptitudes, every PC would have the same chance of succeeding at anything; and any PC would have the same chance of succeeding at everything. Separating aptitudes from moves lets us link them in interesting ways, letting players do the same things via different methods.
+
+##
+
+Resources --> On a technical level, everything the PCs or you “have”, including stuff like ⌞status⌝, is a resource. But also resources are probably the easiest base concept to grasp: they’re notes, or points, or some combination of notes and points. They start full, and stay that way, until a move says otherwise.
+
+##
+
+Respect our limits --> I highly suggest finding a gaming consent form and having your players fill it out before the first session. This is a non-confrontational way to find out what somebody really might have a problem with. Then when you’re building your world and scenarios, you can avoid things that will upset folks.
+
+##
+
+State a limit --> This means you too! Just say, “Jill, I know that might be how she acts, but I’m not comfortable with playing out your character doing that. Could we skip it?”
+
+##
+
+Invent fiction --> Let them invent fiction, damnit! If they’re not contradicting something established or that you’re holding in surprise, just enjoy the ride.
+
+Push them to engage by leaving blanks in your world. For instance, write down a dark ritual with blanks for the horrible implements, and ask the players what each tool is as the sinister priest pulls it from his robe. A few scenes like this, and they’ll be volunteering stuff.
+
+##
+
+Don’t sweat the meta --> To a large degree, this goes for you too. Don’t whisper in players’ ears and pass notes. Don’t hide names of people or places (unless the literal name itself ruins a surprise; in which case, maybe rename it).
+
+If you’re playing some kind of fish-out-of-water game, don’t go describing a cellphone as a “black crystalline slab with several raised protrusions on one edge”. Nobody will picture what you have in your head, so it won’t be a cool puzzle… it’s just fucking confusing. Say what it is, and let the PCs roleplay not knowing what it is.
+
+##
+
+Dispute fiction --> This is complicated and ultimately emotional. In other games, it comes up when PCs die—so Mutagen eliminates that issue—but it can still come up if you kill off a favorite NPC in an unsatisfying way. It’s also liable to come up if you just arbitrary erase progress toward PC goals—and for good reason.
+
+##
+
+Bought and free items --> Be careful approving PCs to buy △, as they’re typically game-altering if the world’s not designed to incorporate them directly. The only △s in Common are for superhuman levels of Health, but some PC playbooks include them.
+
+##
+
+🗣Consult the GM --> Stuff with 🗣 tends to be not so much game-altering as stuff that will mean something very different in different games. A player might take Spooky Shit assuming it’ll let them talk to ghosts; but there are no ghosts in your world, and you think Spooky Shit is about government conspiracies. So the icon gets y’all talking.
+
+##
+
+(Progress) Bars --> A progress bar is super simple. You can make them prettier, but here’s an ugly example:
+|You defuse the bomb: ▢▢▢▢
+It’s a thing that’s gonna happen, and it’s a number of ticks for it to happen. Use more ticks to represent more complicated or time-consuming tasks.
+
+Use bars to represent rising tension or progress. They can also be used to represent long-term tasks and projects.
+
+The point of a bar is to show rising tension to the players. There’s no point in making one if you’re going to keep it hidden.
+
+##
+
+Tick a bar --> Don’t tick bars just based on time passage.
+
+Lose what you spend --> The critical part here is that you spend your resource, roll, then find out what happens. This is critical because if you 🡕 on special moves, you often restore the resource you just spent.
+
+##
+
+Status --> These sometimes trip people up, especially if they’re used to computer RPGs. In this game, a status is literally anything appropriate—there’s no list of statuses. Moves might set or refer to some specific status, but for the most part it’s anything that’s true of something that might change at some point.
+
+Ex. broken arm; exhausted; hungry; bleeding out; vulnerable to mistletoe; looking fly; limping; recognized by the Duke; on fire.
+
+No need to be dogmatic about writing stuff if it’s going to be short-lived. Nobody’s “on fire” for long.
+
+##
+
+Read the dice --> The critical part here is that dice results aren’t in terms of success or failure, but in terms of ⌞narrative momentum⌝.
+
+##
+
+Roll --> First off, the max total roll is ⌊2d6 ±3⌋. That’s for the sum of any relevant aptitude, bonuses, and penalties. Do the sum first so that high aptitudes can soak up penalties, then cap at ±3.
+
+Some moves use rolls to determine special effects—just leave those be—but most of the time PCs will roll for ⌞story moves⌝. 
+
+##
+##
+
+Narrative momentum --> This concept represents the ease and control with which the PCs are moving through the story. It’s put in these terms so that we keep the fiction first and focus on interesting evolution of the plot.
+
+Imagine a locked door; the only reasonable entrance. The rest of your interesting story is inside.
+
+If dice rolls decide literal success and failure at a task, it’s easily possible that your thief fails to pick the lock; your brute fails to smash the door. How does your story evolve from here? Abandon it? Deus ex machina? Re-rolls? Defy your story’s logic and say there’s an even less fortified entrance? And what does it say about the PCs that they couldn’t competently thieve or brutalize?
+
+In this game, instead of dice deciding whether you succeed or fail at a task, they decide whether you get what you want in the immediate and how your attempt affects your ability to get what you want in the near future.
+
+The default state of most characters in most stories is 🡒 (carrying momentum). They’re moving forward according to their plan, dealing with the challenges that they’ve prepared for—they have the initiative. An action hero is kicking ass, but each ass-kicking is its own small challenge. A lawyer is handling a tough witness, but the opposition still has a case.
+
+Low points for characters come when they 🡐 (stall momentum). Their plans unravel somehow, and they’re forced to regroup and react—they’ve lost the initiative. The action hero is flanked and surrounded. Opposing counsel brings out some slam-dunk evidence.
+
+Note that in the 🡐 examples, our PCs didn’t do anything wrong. They didn’t go from kicking ass and lawyering to floundering incompetently; they’ve just run into a new, bigger problem that demands they regroup and try a new strategy.
+
+Which also isn’t to say that 🡐 never implies failure. If it makes sense and is interesting for the PC to fail at their task, that might be part of 🡐. But their failure should come with some kind of new and interesting narrative problem so that the story can keep moving forward. They should never just be in a position to “try again”.
+
+Sometimes a character faces a challenge that they overcome, but which costs them something in the process or makes it harder for them to stick to their plan. In game terms, we say they 🡖 (slow momentum). The action hero takes a wound, forcing him to fight off-handed. The lawyer humiliates opposition to win a point, making an enemy.
+
+On rare occasions, a character gets what they want plus they find themselves in a position to more easily get what they want next. They 🡕 (gain momentum). The action hero appropriates a machine gun from his last foe. The judge sustains the lawyer’s objection, and also realizes there’s been a procedural error in her favor.
+
+When we roll in this game, especially for a story move, we’re not asking chance to decide whether or not the PC can do what they’re good at. We’re asking whether being good is enough to get them what they want, and where they stand with regards to their next problem.
+
+##
+##
+
+Low/Zero Effect --> Sometimes a PC’s plan to achieve something just wouldn’t work. Not in the sense that they’ll fail to complete the plan, but in the sense that completing the plan won’t achieve anything. You should limit effect sparingly, only to keep player actions in line with the story world’s logic.
+
+This is also your main tool to keep players honest about what abilities they’re trying to roll with. Low Effect might strain credulity, while Zero breaks it.
+
+Use Low Effect when the PC will get less of what they want if they succeed. He’s armored, but it’s cloth—less harm. You’re a fast driver, but you’re in a jalopy—closer race. You want to ⊞Fighting to cook for a troop of people in a war zone—yeah, I can kinda see that.
+
+Use Zero Effect when the PC will get none of what they want. It’s full plate—no harm. You’re fast, but the car’s on fire—you’re walking. You want to ⊞Fighting to re-plant an orchid—how’s that work?
+
+##
+
+● Set a penalty/bonus ► Sometimes there’s an aspect of the scenario or a character’s ⌞status⌝ that would imply they’d have a better or worse chance of completing a ⌞story move⌝. This is different from ⌞Low/Zero Effect⌝, because it’s about the chance of the plan itself encountering complications as they’ve described it; if they pull it off, they’ll achieve their goal just fine, but will they even get that far?
+
+Mechanically, this works basically like ⌞exploit status⌝. Tell the PC to add +1 for some status that would make it easier for them to succeed; hit them with −1 for some status that would make it harder for them to succeed.
+
+##
+
+Story moves --> These moves are the core of this whole game. They PCs push a story forward while maintaining risk and surprise. You could tell a complete RPG without anything but the story moves, although characters would feel bland and undifferentiated.
+
+Story moves deal with universal goals that RPG PCs might have from moment to moment in a story. They cover the vast majority of risky, exciting shit that happens in a game. But they don’t care how they do the thing.
+
+For instance, everybody can try to break an important object (⌞go apeshit⌝) to move the story forward. For the sake of figuring out what would be cool if they 🡖 while doing it, it doesn’t matter if they used karate or a blowtorch.
+
+##
+
+Make a story move --> You’ll often need to help players figure out which story move they’re actually making. Ask what they hope to achieve with their actions and pick the move that goes with their narrative goals, don’t focus on how they’re trying to get it or what aptitudes they’re trying to use.
+
+Once you have their actual goals and therefore the move figured out, they can decide based on their described action if they’ve got an aptitude that’s helping them. Be lenient, but keep players honest about whether their aptitude is really at the core of their action.
+
+The individual story co-moves have a lot more concrete information and examples.
+

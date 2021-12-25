@@ -192,5 +192,5 @@ The GM playbook has stuff about what might happen for each story move, but they 
 
 ##
 
-Mutagen⌬RPG --> _[mutagenrpg.com]_ _[v0.3]_
+Mutagen⌬RPG --> _[mutagenrpg.com]_ _[v0.4]_
 |Meta+Common © 2021 Aubrey Jones 🄯 CC-BY-SA 4.0
