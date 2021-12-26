@@ -12,8 +12,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:apply-templates />
 </xsl:template>
 
-<xsl:template match="m-stitle[@colbreak='true']">
+<xsl:template match="m-stitle[@break='column']">
     <text---h text---style-name="SECTION_TITLE_BREAK"><xsl:value-of select="."/></text---h>
+</xsl:template>
+
+<xsl:template match="m-stitle[@break='page']">
+    <text---h text---style-name="SECTION_TITLE_PAGE_BREAK"><xsl:value-of select="."/></text---h>
 </xsl:template>
 
 <xsl:template match="m-stitle">

@@ -69,6 +69,7 @@ def build_skeleton_odt(filename, title_text='PLAYBOOK TITLE GOES HERE', game_tit
     textdoc.styles.addElement(defaultPStyle)
 
     make_paragraph_style(textdoc, "SECTION_TITLE_BREAK", pAttr={'keepwithnext': 'always', 'breakbefore': 'column'}, tAttr={'fontsize': HEADING_FONT_SIZE, 'fontweight': 'bold'})
+    make_paragraph_style(textdoc, "SECTION_TITLE_PAGE_BREAK", pAttr={'keepwithnext': 'always', 'breakbefore': 'page'}, tAttr={'fontsize': HEADING_FONT_SIZE, 'fontweight': 'bold'})
     make_paragraph_style(textdoc, "SECTION_TITLE", pAttr={'keepwithnext': 'always'}, tAttr={'fontsize': HEADING_FONT_SIZE, 'fontweight': 'bold'})
     
     make_with_stop(textdoc, "ITEM_DESC", pAttr={'keepwithnext': 'always'})

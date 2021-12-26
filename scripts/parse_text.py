@@ -3,7 +3,7 @@ import re
 MARKUP_VERSION = 7
 
 LINE_HEADER_MATCH = re.compile(r'(►|-->)')
-SEC_HEADER_MATCH = re.compile(r'^\s*(~~~)?(\$|§)')
+SEC_HEADER_MATCH = re.compile(r'^\s*(!?~~~)?(\$|§)')
 
 COMMENT_LINE = re.compile(r'^\s*##')
 
@@ -14,7 +14,7 @@ def is_header(line):
         return True
     return False
 
-def parse_moves(pbs_filename, keep_unheadered=False):
+def parse_moves(pbs_filename):
     '''
     Parse all the moves out of a plaintext playbook.
     '''
@@ -23,8 +23,8 @@ def parse_moves(pbs_filename, keep_unheadered=False):
     with open(pbs_filename, encoding='utf-8-sig') as f:
         lines = f.readlines()
     
-    moves = [""] if keep_unheadered else [] # []
-    latch = keep_unheadered # False
+    moves = []
+    latch = False
 
     for l in lines:
         if COMMENT_LINE.match(l): continue
@@ -85,10 +85,10 @@ LI_REPLACE = r'\n<m-li>\1\2\3</m-li>'
 MOVE_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►\s*(.+)\Z', re.MULTILINE | re.DOTALL)
 MOVE_REPLACE = r'<m-i><m-ih>\1<m-it>\3</m-it>\4 ► </m-ih><m-id>\n\6\n</m-id></m-i>'
 
-EASY_SECTION_RE = re.compile(r'^\s*(~~~)?\$', re.MULTILINE)
+EASY_SECTION_RE = re.compile(r'^\s*(!?~~~)?\$', re.MULTILINE)
 EASY_SECTION_REPLACE = r'\1§'
 
-SECTION_RE = re.compile(r'^\s*(~~~)?§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
+SECTION_RE = re.compile(r'^\s*(!?~~~)?§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
 
 CLICKABLE_RE = re.compile(r'([○△▢])')
 CLICKABLE_REPLACE = r'<m-c>\1</m-c>'
@@ -163,7 +163,10 @@ def section_replace(move_text, debug=False, print_mode=False):
     desc = ''
     attr = ''
     if print_mode and m.group(1):
-        attr = ' colbreak="true"'
+        if m.group(1)[0] == '!':
+            attr = ' break="page"'
+        else:
+            attr = ' break="column"'
     if m.group(3):
         if print_mode:
             desc = f'\n{m.group(3)}'
