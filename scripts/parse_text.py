@@ -1,4 +1,5 @@
 import re
+import os.path
 
 MARKUP_VERSION = 7
 
@@ -14,6 +15,16 @@ def is_header(line):
         return True
     return False
 
+INCLUDE_LINE = re.compile(r'^\s*#!include\s*(\S+)')
+
+def handle_include(line, cur_file):
+    m = INCLUDE_LINE.match(line)
+    if not m:
+        return None
+    include_file = m.group(1)
+    include_path = os.path.join(os.path.dirname(cur_file), include_file)
+    return parse_moves(include_path)
+
 def parse_moves(pbs_filename):
     '''
     Parse all the moves out of a plaintext playbook.
@@ -27,6 +38,10 @@ def parse_moves(pbs_filename):
     latch = False
 
     for l in lines:
+        included_moves = handle_include(l, pbs_filename)
+        if included_moves:
+            moves += included_moves
+            continue
         if COMMENT_LINE.match(l): continue
         if is_header(l):
             moves.append(l)  # add a new move to the end of the list.
