@@ -1,0 +1,76 @@
+
+§ Common Moves
+
+Resist consequences ► If you don’t like the consequences or complications the GM describes when you 🡖🡐 on a ⌞story move⌝, speak up and __spend 1 Resist__ to insist they invent something less drastic instead. This isn’t the same as ⌞dispute fiction⌝; resist consequences whenever you think it’s advantageous in-game.
+
+
+Buy Resist ► Any time you make a ⌞story move⌝ and 🡕🡒, you can announce that you wish to convert it to 🡖 and restore 1 Resist. The GM has veto, but you should suggest the complication or cost.
+
+
+Lead the group ► Spend 1 Resist. You lead others in a ⌞story move⌝ where you’ll succeed or fail as a group. You roll the move as normal and everyone canonically shares your result. Before you continue the story, use your result from the story move below:
+
+🡕 You restore 1 Resist and continue the story.
+🡒🡖 Everyone else rolls the same story move. They are free to describe their actions individually, along with what aptitudes they’re exercising. Their results don’t change the story, but if everyone 🡕🡒🡖, you restore 1 Resist before continuing the story.
+
+
+Grit your teeth ► In order to resist or overcome some overwhelming feeling or compulsion, you summon all of your willpower and determination.
+
+When you make this move, decide with the GM on how much the feeling or compulsion resonates with your Concept and Drives:
+    • ⊞⌊−1⌋ if it reinforces your concept.
+    • ⊞⌊+0⌋ if it has nothing to do with your concept.
+    • ⊞⌊+1⌋ if it opposes your concept.
+
+🡕 You resist or overcome the feeling/compulsion, and you get 1XP.
+🡒 You resist or overcome the feeling/compulsion.
+🡖 You suppress the feeling/compulsion, but it’s still there. Choose a related ⌞status⌝ to keep for the rest of the scene.
+🡐 You spend 1 Resist __or__ succumb to the feeling/compulsion.
+
+
+Take harm ► You take ⌞harm⌝ when you’re injured or hurt in some way (or if a move says so). Unless a move says specifically how much harm you take, use the harm scale in the Meta playbook.
+
+When you take harm, take these steps:
+
+    1. Make any moves you __can__ make.
+    2. Make any moves you __must__ make.
+    3. Decide if you have ⌞armor⌝ that applies.
+    4. If now ⌊harm ≤ 0⌋, this move is over. Otherwise continue.
+    5. Tell the GM how much harm you’re taking. They’ll roll some dice and say if anything changes.
+    6. Write down any status you may have gotten.
+    7. Lose 1 health for each harm.
+    8. If you have 0 health, ⌞you die⌝ and this move is over.
+    9. Make any moves you must make when you lose health (vs take harm).
+
+
+Armor ► Armor is worn to protect you from ⌞harm⌝. Armor has a rating in the range 1-3. If it would make sense for your armor to protect you from the kind of harm you’re taking, reduce the harm by the armor’s rating.
+
+When determining the rating of armor, look at the harm scale and decide what severity of injury the armor would protect you from.
+
+
+You die ► You’ve lost your last ⌞health⌝ or a move says you die. You can go sweetly into the night and build a new character to love. Or…
+
+You’re out of the scene for now, but you somehow survived. You come back later with 1 health and a permanent, severe ⌞status⌝ of the GM’s choice. Explain to the group what happened.
+
+
+Recuperate health ► If you don’t have access to accelerated healing, you can heal naturally by resting and recuperating. It takes 1 month of limited exertion to heal 1 health. Any time you engage in an activity that would strain or exert the injured part of your body, you make no progress healing that week. If you lose health again while healing, start over.
+
+##
+
+Pursue a project --> You advance a project represented with a {{bar}} by describing what you're doing and !+[any appropriate aptitude] like when you {{make a story move}}. If you're starting a new story, ask the GM to create a new bar.
+
+🡕🡒🡖 Tick the project's bar 3, 2, or 1 time(s), respectively.
+🡐 You've suffered a setback of some sort and you don't tick the bar at all. What happened?
+
+##
+
+Earn XP ► When you finish a play session, it’s time to decide what ⌞XP⌝ you’ve earned. Talk as a group about this: maybe they remember something you forgot. Ultimately, though, it’s up to you.
+
+You get 1 XP for each item below that you (not the GM) think is true for this play session. You can only take each item once, even if you did the thing multiple times in the session.
+    • At no point did ⌞you die⌝.
+    • You made a particularly badass or clutch ⌞story move⌝ that reinforced your Concept.
+    • You suffered a particularly painful (or hilarious) blunder as a result of playing to your Concept—this doesn’t have to be a bad roll.
+    • You made a ⌞story move⌝ to pursue a Drive.
+    • You offer the GM honest-but-gentle constructive feedback when they do GM XP.
+      
+
+Level up ► When you fill your last XP, you can spend all your XP to fill a ○ in your playbook—you must fulfill all other criteria to buy the item. 🗣 Instead of buying a ○, the GM might let you buy or remove a permanent ⌞status⌝. You probably can’t buy a △, but you could ask anyway.
+
