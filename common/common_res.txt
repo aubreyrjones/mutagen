@@ -13,7 +13,7 @@ Concept ► What’s your deal? Don’t just put a species and playbook name. Pu
 ]]
 
 
-Drives ► What do you always want or need? What gets you out of bed to take exciting risks? Like, why even bother? 1 is fine, but 2 is better for you.
+Drives ► What do you always want or need? What gets you out of bed to take exciting risks? 1 is fine, but 2 is better for you.
 [[
 1.
 ]]
@@ -28,7 +28,7 @@ Drives ► What do you always want or need? What gets you out of bed to take exc
 ]]
 
 
-Health ► Health abstractly represents the integrity and functionality of your body, mind, and spirit. When you’re weakened or injured, you ⌞take harm⌝, which might cause you to lose health.  When you erase your last health, //{{you die}}//.
+Health ► Health abstractly represents the integrity and functionality of your body, mind, and spirit. When you ⌞take harm⌝, you might lose health.  When you erase your last health, {{you die}}.
 
 |● 1. ▢ ▢ ▢  (Human)
 |△ 2. ▢ ▢ ▢  (Superhuman)
@@ -38,4 +38,4 @@ Health ► Health abstractly represents the integrity and functionality of your 
 Resist ▢ ▢ ► When you make a roll and don’t like the complications the GM describes, you can ⌞resist consequences⌝.
 
 
-XP ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ► You get XP mostly for good storytelling. When you fill your last XP, ⌞level up⌝.
+XP ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ► You {{earn XP}} mostly for good storytelling. When you fill your last XP, ⌞level up⌝.
