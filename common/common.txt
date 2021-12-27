@@ -176,6 +176,14 @@ You’re out of the scene for now, but you somehow survived. You come back later
 
 Recuperate health ► If you don’t have access to accelerated healing, you can heal naturally by resting and recuperating. It takes 1 month of limited exertion to heal 1 health. Any time you engage in an activity that would strain or exert the injured part of your body, you make no progress healing that week. If you lose health again while healing, start over.
 
+##
+
+Pursue a project --> You advance a project represented with a {{bar}} by describing what you're doing and !+[any appropriate aptitude] like when you {{make a story move}}. If you're starting a new story, ask the GM to create a new bar.
+
+🡕🡒🡖 Tick the project's bar 3, 2, or 1 time(s), respectively.
+🡐 You've suffered a setback of some sort and you don't tick the bar at all. What happened?
+
+##
 
 Earn XP ► When you finish a play session, it’s time to decide what ⌞XP⌝ you’ve earned. Talk as a group about this: maybe they remember something you forgot. Ultimately, though, it’s up to you.
 

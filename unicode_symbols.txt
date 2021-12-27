@@ -1,84 +1,93 @@
-Common symbols:
+This file has the syntax for Mutagen Markup. The left-hand column has the syntax, 
+and the right-hand column has the description.
 
-## any text or markup   this line will be entirely skipped and ignored during processing
 
+Publishing engine:
+
+#!include filename      copy all of the text from `filename` into this location.
+                        filename is relative to the current file
+
+## any text or markup   this line should be entirely skipped and ignored during processing
+
+
+Block definitions:
 § section name          define a section
 $ section name          same as above, but maybe easier to type
 
-~~~§ section name       define a section with a column-break before it
-~~~$ section name       same as above, but maybe easier to type
+~~~$ section name       define a section with a column-break before it
+!~~~$ section name      define a section with a page-break before it
 
-!~~~$ section name	define a section with a page-break before it
-
-►			            define a move
+►                       define a move
 -->                     same as above, but easier to type
 
-○ △ ● ▢              	all purchase/resource symbols
-○		            	XP-buyable aptitude, move, or resource (clickable online)
-△		            	permission-only aptitude, move, or resource (clickable online)
-▢		            	resource point tracker (clickable online)
-●		            	pre-bought aptitude, move, or resource (not clickable)
-▲
-
-⌞⌝	                    mark a term defined elsewhere
-{{your text}}           same as above, but easier to type
-
-⌞make a story move⌝	    commonly used
-⌞take harm⌝     		commonly used
 
 
-⊞⌊⌋	                  	call for a roll
-!+[modifier]            same as above, but easier to type
+Symbols:
+○ △ ● ▲ ▢                all purchase/resource symbols
+○                        XP-buyable aptitude, move, or resource (clickable online)
+△                        permission-only aptitude, move, or resource (clickable online)
+▢                        resource point tracker (clickable online)
+●                        pre-bought aptitude, move, or resource (not clickable)
+▲                        obtained permission-only point
 
-🡕 🡒 🡖 🡐                roll result outcomes (gain, carry, lose, reverse)
+⌞⌝                       mark a term defined elsewhere
+{{your text}}            same as above, but easier to type
 
-⌊⌋	                   	enclose math or quantities
-_[math]_                same as above, but easier to type
+⌞make a story move⌝      commonly used
+⌞take harm⌝              commonly used
 
-× ÷ + −		        	unambiguous math symbols (use for clarity instead of keyboard symbols)
-±
+
+⊞⌊⌋                      call for a roll
+!+[modifier]             same as above, but easier to type
+
+🡕 🡒 🡖 🡐                 roll result outcomes (gain, carry, lose, reverse)
+
+⌊⌋                       enclose math or quantities
+_[math]_                 same as above, but easier to type
+
+× ÷ + −                  unambiguous math symbols (use for clarity instead of keyboard symbols)
+± ≤ ≥
 
 
 
 Write-in fields (editable online):
-[[		            	start a write-in field
-||		            	continue an unlabeled write-in field (if you want it taller than 2 lines in print)
-]]		            	close a write-in field
+[[                       start a write-in field
+||                       continue an unlabeled write-in field (if you want it taller than 2 lines in print)
+]]                       close a write-in field
 
 
-[[		            	start a write-in field
-your text   	       	label a 3-line write-in field (cannot use || to extend it)
-]]		            	close a write-in field
+[[                       start a write-in field
+your text                label a 3-line write-in field (cannot use || to extend it)
+]]                       close a write-in field
 
 
 
 Special paragraph types:
 
-* your text...	    	line item--asterisk must start paragraph
-🡕🡒 your text...	     results block--one or more result symbol(s) must start paragraph
+* your text...           line item--asterisk must start paragraph
+🡕🡒 your text...         results block--one or more result symbol(s) must start paragraph
 
 
 
 Manual text formatting:
 
-__your text__	    	underline. Use this for emphasis (important for online screen reader).
-//your text//	    	italics. Use this only to call out active moves.
-!!your text!!	    	bold. Use this only for things related to rolls.
+__your text__            underline. Use this for emphasis (important for online screen reader).
+//your text//            italics. Use this only to call out active moves.
+!!your text!!            bold. Use this only for things related to rolls.
 
-\your text              text on this line should be included in the previous paragraph
+\your text               text on this line should be included in the previous paragraph
+|your text               the paragraph on this line should be minimally-separated from the previous one
 
-|your text              text on this line should have minimal vertical separation from the previous one
-
-—                       emdash. The system doesn't do anything special with it, but it's handy.
+—                        emdash. The system doesn't do anything special with it, but it's handy.
 
 
 Misc:
-🗣			            talk to the GM
+🗣                        talk to the GM
 
 
 
 
 GM playbook stuff:
 
-👎		            	used to indicate commonly-confused story-move situations
+👎                        used to indicate commonly-confused story-move situations
 
