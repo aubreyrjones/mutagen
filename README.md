@@ -193,10 +193,10 @@ Windows Pro Tip: It's not required, but your playbook builds will go a
 run the build and leave it open while the build runs. You can just
 have a blank document in there with the window minimized.
 
-The build will create a bunch of intermediary files in the `build`
-directory. You can ignore these.
-
 The complete PDF playbooks are created in `playbook_output`.
+
+(Intermediary files are created in a `_build` subdirectory; you can 
+ignore these files or safely delete them.)
 
 For playbooks including Mutagen Markup, the electronic playbook is
 included as an internal attachment to each PDF file. You only need

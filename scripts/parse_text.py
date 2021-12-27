@@ -23,6 +23,8 @@ def resolve_include(fragment, cur_file):
 def spider_includes(pbs_filename, already_included: set):
     if not pbs_filename.endswith('.txt'):
         pbs_filename += '.txt'
+
+    if pbs_filename in already_included: return
     already_included.add(pbs_filename)
 
     to_recurse = set()

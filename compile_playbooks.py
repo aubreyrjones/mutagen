@@ -13,16 +13,12 @@ from scripts.parse_text import parse_moves, markup_moves, render_xml, spider_inc
 import shutil
 import time
 import datetime
+import argparse
 from scripts.make_odt import build_odt
 
 # If you're on windows and didn't install LibreOffice in the default location, you'll need to edit that path
 # just use forward slashes, not back-slashes.
 LIBREOFFICE = 'C:/Program Files/LibreOffice/program/soffice.com' if sys.platform == 'win32' else 'soffice'
-
-# These are probably fine for anybody, but they're configurable here anyway.
-BUILD_DIR = 'build'
-OUT_DIR = 'playbook_output'
-JSON_DIR = f'{BUILD_DIR}/tracker_templates'
 
 # Name of the meta section appended to non-teaser playbooks.
 META = 'common/meta.odt'
@@ -329,24 +325,23 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
 ## BUILD SCRIPT BELOW HERE
 ##
 
+ap = argparse.ArgumentParser(description='Compile Mutagen playbooks.')
+ap.add_argument('--outdir', type=str, required=False, default='playbook_output', help='Specify the output directory.')
+ap.add_argument('pbd', nargs='?', default='playbooks.txt', type=str, help='Playbook definitions file.')
+args = ap.parse_args()
+
+pb_def_file = args.pbd
+
+OUT_DIR = args.outdir
+BUILD_DIR = os.path.join(OUT_DIR, '_build')
+JSON_DIR = os.path.join(BUILD_DIR, 'tracker_templates')
+
 _build_start = time.time()
 
 # set up
 os.makedirs(BUILD_DIR, exist_ok=True)
 os.makedirs(OUT_DIR, exist_ok=True)
 os.makedirs(JSON_DIR, exist_ok=True)
-
-
-# stage the meta section
-#stage_section(META)
-
-
-# Here's the default playbooks def file
-pb_def_file = 'playbooks.txt'
-
-# ...or one from the command line.
-if len(sys.argv) > 1:
-    pb_def_file = sys.argv[1]
 
 
 # dictionary of all playbook defs

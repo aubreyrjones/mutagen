@@ -13,20 +13,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="m-stitle[@break='column']">
-    <text---p text---style-name="SECTION_TITLE_BREAK"><xsl:value-of select="."/></text---p>
+    <text---h text---style-name="SECTION_TITLE_BREAK" text---outlinelevel="1"><xsl:value-of select="."/></text---h>
 </xsl:template>
 
 <xsl:template match="m-stitle[@break='page']">
-    <text---p text---style-name="SECTION_TITLE_PAGE_BREAK"><xsl:value-of select="."/></text---p>
-</xsl:template>
-
-<xsl:template match="m-stitle[@break='fpage']">
-    <text---p text---style-name="SECTION_TITLE_BREAK" />
-    <text---p text---style-name="SECTION_TITLE_PAGE_BREAK"><xsl:value-of select="."/></text---p>
+    <text---h text---style-name="SECTION_TITLE_PAGE_BREAK" text---outlinelevel="1"><xsl:value-of select="."/></text---h>
 </xsl:template>
 
 <xsl:template match="m-stitle">
-    <text---p text---style-name="SECTION_TITLE"><xsl:value-of select="."/></text---p>
+    <text---h text---style-name="SECTION_TITLE" text---outlinelevel="1"><xsl:value-of select="."/></text---h>
 </xsl:template>
 
 <xsl:template match="m-sdesc">

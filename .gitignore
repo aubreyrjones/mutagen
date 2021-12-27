@@ -2,6 +2,7 @@
 *.mutagen.json
 
 /playbook_output/*
+/vampire_out/*
 blah*
 
 **/.*lock*
