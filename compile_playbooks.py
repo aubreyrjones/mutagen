@@ -9,7 +9,7 @@ from os import path
 from textwrap import wrap
 import zipfile
 from PyPDF2 import PdfFileMerger, PdfFileReader
-from scripts.parse_text import parse_moves, markup_moves, render_xml, MARKUP_VERSION
+from scripts.parse_text import parse_moves, markup_moves, render_xml, spider_includes, MARKUP_VERSION
 import shutil
 import time
 import datetime
@@ -250,8 +250,12 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
 
             odtName = staged_name(pb_name + str(i), 'odt')
 
+            span_deps = set()
+            for txt in span:
+                spider_includes(txt, span_deps)
+            
             # write XML and ODT
-            if needs_rebuilt(span, odtName):
+            if needs_rebuilt(list(span_deps), odtName):
                 madeSomething = True
                 print(f'\tIntermediate ODT from text:\t\t{" ".join(span)}')
                 xml = render_xml(parsed_moves)

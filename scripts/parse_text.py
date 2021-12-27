@@ -17,12 +17,33 @@ def is_header(line):
 
 INCLUDE_LINE = re.compile(r'^\s*#!include\s*(\S+)')
 
+def resolve_include(fragment, cur_file):
+    return os.path.join(os.path.dirname(cur_file), fragment)
+
+def spider_includes(pbs_filename, already_included: set):
+    if not pbs_filename.endswith('.txt'):
+        pbs_filename += '.txt'
+    already_included.add(pbs_filename)
+
+    to_recurse = set()
+
+    with open(pbs_filename, 'r') as cur_file:
+        for l in cur_file.readlines():
+            m = INCLUDE_LINE.match(l)
+            if not m: continue
+            include_path = resolve_include(m.group(1), pbs_filename)
+            to_recurse.add(include_path)
+    
+    for rec in to_recurse:
+        spider_includes(rec, already_included)
+
+
 def handle_include(line, cur_file):
     m = INCLUDE_LINE.match(line)
     if not m:
         return None
     include_file = m.group(1)
-    include_path = os.path.join(os.path.dirname(cur_file), include_file)
+    include_path = resolve_include(include_file, cur_file)
     return parse_moves(include_path)
 
 def parse_moves(pbs_filename):
