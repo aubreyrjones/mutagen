@@ -48,10 +48,22 @@ Lead the group ► Spend 1 Resist. You lead others in a ⌞story move⌝ where y
 
 ##
 
-Pursue a project --> You advance a project represented with a {{bar}} by describing what you're doing and !+[any appropriate aptitude] like when you {{make a story move}}. If you're starting a new story, ask the GM to create a new bar.
+Pursue a project --> You advance a project represented with a {{bar}} by describing what you're doing and !+[any appropriate aptitude] like when you {{make a story move}}. If you're starting a new project, ask the GM to create a new bar.
 
 🡕🡒🡖 Tick the project's bar 3, 2, or 1 time(s), respectively.
 🡐 You've suffered a setback of some sort and you don't tick the bar at all. What happened?
+
+##
+
+Get something weird --> You acquire some kind of uncommon in-game item or asset via "mundane" means that wouldn't be interesting to play out via {{story moves}}. Describe what you're doing, and !+[any appropriate aptitude] like when you {{make a story move}}.
+
+🡕 You get the thing, plus something extra.
+🡒 You get the thing.
+🡖 You get the thing, but pick 1:
+  * you're injured acquiring it.
+  * it's more expensive than expected.
+  * it's inferior quality.
+🡐 You can't get the thing right now.
 
 ##
 
@@ -62,7 +74,7 @@ When you make this move, decide with the GM on how much the feeling or compulsio
     • ⊞⌊+0⌋ if it has nothing to do with your concept.
     • ⊞⌊+1⌋ if it opposes your concept.
 
-🡕 You resist or overcome the feeling/compulsion, and you get 1XP.
+🡕 You resist or overcome the feeling/compulsion and you get 1 Resist.
 🡒 You resist or overcome the feeling/compulsion.
 🡖 You suppress the feeling/compulsion, but it’s still there. Choose a related ⌞status⌝ to keep for the rest of the scene.
 🡐 You spend 1 Resist __or__ succumb to the feeling/compulsion.
