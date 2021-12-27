@@ -65,6 +65,7 @@ def needs_rebuilt(input_files: list, output_file):
     for inf in input_files:
         if not path.exists(output_file): return True
         if path.getmtime(inf) > path.getmtime(output_file):
+            if VERBOSE: print(f'[`{inf}` triggering build.]')
             return True
     return False
 
@@ -215,7 +216,6 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
 
     print(f"Making `{human_name}`")
     print(f'\tInput sections:\t\t\t\t{" ".join(resolved_inputs)}')
-    print(f'\tOutput PDF:\t\t\t\t-> {pdf_file}')
     print('\t*')
 
     for pbs in pb_list:
@@ -260,7 +260,9 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
             # write XML and ODT
             if needs_rebuilt(list(span_deps), odtName):
                 madeSomething = True
-                print(f'\tIntermediate ODT from text:\t\t{format_deps_list(span, pretty_spider)}\n\t\t\t\t\t\t*')
+                if VERBOSE: print(f'\tIntermediate ODT from text:\t\t{format_deps_list(span, pretty_spider)}\n\t\t\t\t\t\t*')
+                #else: print(f'\tIntermediate ODT from text:\t\t{" ".join(span)}\n\t\t\t\t\t\t*')
+
                 xml = render_xml(parsed_moves)
                 with open(staged_name(odtName, 'xml'), 'w', encoding='utf-8') as xmlfile:
                     # this is actually just written out for debug purposes. It's basically the last
@@ -281,7 +283,9 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
     if gets_json and needs_rebuilt(list(used_sections), json_file):
         madeSomething = True
         with open(json_file, 'w', encoding='utf-8') as json_outfile:
-            print(f'\tElectronic playbook from text:\t\t{format_deps_list(web_section_list, pretty_spider)}\n\t\t\t\t\t\t*')
+            if VERBOSE: print(f'\tElectronic playbook from text:\t\t{format_deps_list(web_section_list, pretty_spider)}\n\t\t\t\t\t\t*')
+            #else: print(f'\tElectronic playbook from text:\t\t{" ".join(web_section_list)}\n\t\t\t\t\t\t*')
+
             json_outfile.write(dump_json(for_web, human_name, metadata['PDFSERVER'] + pdf_basename, metadata['HOMEPAGE'], game_title))
 
     # build PDF
@@ -291,7 +295,7 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
 
     if needs_rebuilt(final_deps, pdf_file):
         madeSomething = True
-        print(f'\tMerging final PDF:\t\t\t{" ".join(pdfs)}')
+        print(f'\tMerging PDFs:\t\t\t\t{" ".join(pdfs)}')
         pdf_merger = PdfFileMerger()
         for pdf in pdfs:
             pdf_merger.append(pdf)
@@ -316,15 +320,16 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
 
         if gets_json:
             with open(json_file, 'rb') as check_file:
-                print(f'\tChecking PDF:', end='')
+                if VERBOSE: print(f'\tChecking PDF:', end='')
                 if check_file.read() != recover_json_from_pdf(pdf_file):
                     raise RuntimeError("Recovered JSON doesn't match.")
-                print(f'\t\t\t\tOK.')
+                if VERBOSE: print(f'\t\t\t\tOK.')
     
     if not madeSomething: 
         print("\tUp to date. Nothing done.")
     else:
         print('\t*')
+    print(f'\tOutput PDF:\t\t\t\t-> {pdf_file}')
     print('*')
 
 
@@ -334,6 +339,7 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
 
 ap = argparse.ArgumentParser(description='Compile Mutagen playbooks.')
 ap.add_argument('--outdir', type=str, required=False, default='playbook_output', help='Specify the output directory.')
+ap.add_argument('--verbose', default=False, const=True, action='store_const', help="Be extra verbose in the output.")
 ap.add_argument('pbd', nargs='?', default='playbooks.txt', type=str, help='Playbook definitions file.')
 args = ap.parse_args()
 
@@ -342,6 +348,7 @@ pb_def_file = args.pbd
 OUT_DIR = args.outdir
 BUILD_DIR = os.path.join(OUT_DIR, '_build')
 JSON_DIR = os.path.join(BUILD_DIR, 'tracker_templates')
+VERBOSE = args.verbose
 
 _build_start = time.time()
 

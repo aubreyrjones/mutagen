@@ -20,15 +20,18 @@ INCLUDE_LINE = re.compile(r'^\s*#!include\s*(\S+)')
 def resolve_include(fragment, cur_file):
     return os.path.join(os.path.dirname(cur_file), fragment)
 
-def read_pbs(pbs_filename):
+def fixup_pbs(pbs_filename):
     if not pbs_filename.endswith('.txt'):
-        pbs_filename += '.txt'
+        return pbs_filename + '.txt'
+    return pbs_filename
+
+def read_pbs(pbs_filename):
+    pbs_filename = fixup_pbs(pbs_filename)
     with open(pbs_filename, encoding='utf-8-sig') as f:
         return f.readlines()
 
 def spider_includes(pbs_filename, already_included: set, pretty_spider: dict):
-    if not pbs_filename.endswith('.txt'):
-        pbs_filename += '.txt'
+    pbs_filename = fixup_pbs(pbs_filename)
 
     if pbs_filename in already_included: return
     already_included.add(pbs_filename)
@@ -40,19 +43,20 @@ def spider_includes(pbs_filename, already_included: set, pretty_spider: dict):
         m = INCLUDE_LINE.match(l)
         if not m: continue
         include_path = resolve_include(m.group(1), pbs_filename)
-        pretty_spider[pbs_filename].append(include_path)
+        pretty_spider[pbs_filename].append(fixup_pbs(include_path))
         to_recurse.add(include_path)
-        print("spidering", include_path)
 
     for rec in to_recurse:
         spider_includes(rec, already_included, pretty_spider)
 
 
-def format_pretty_spider(pretty_spider, filename):
+def format_pretty_spider(pretty_spider, filename, depth=1):
     if filename not in pretty_spider:
         return "!NOT FOUND!"
+    tab_in = '\t\t\t\t\t\t' + ('\t' * depth)
+    tab_out = '' if depth == 1 else '\n\t\t\t\t\t\t' + ('\t' * (depth - 1))
     if not pretty_spider[filename]: return filename
-    return f'{filename} [{" ".join(pretty_spider[filename])}]'
+    return f'{filename}\n{tab_in}[{" ".join([format_pretty_spider(pretty_spider, inc, depth + 1) for inc in pretty_spider[filename]])}]{tab_out}'
 
 
 def handle_include(line, cur_file):
@@ -61,7 +65,6 @@ def handle_include(line, cur_file):
         return None
     include_file = m.group(1)
     include_path = resolve_include(include_file, cur_file)
-    print("including", include_path)
     return parse_moves(include_path)
 
 
