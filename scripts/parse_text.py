@@ -1,7 +1,7 @@
 import re
 import os.path
 
-MARKUP_VERSION = 7
+MARKUP_VERSION = 8
 
 LINE_HEADER_MATCH = re.compile(r'(►|-->)')
 SEC_HEADER_MATCH = re.compile(r'^\s*(!?~~~)?(\$|§)')
@@ -100,7 +100,7 @@ LI_REPLACE = r'\n<m-li>\1\2\3</m-li>'
 MOVE_RE = re.compile(r'^\s*(([○△▢●]\s*)*)(.+?)(\s*([○△▢●]\s*?)*)\s*►\s*(.+)\Z', re.MULTILINE | re.DOTALL)
 MOVE_REPLACE = r'<m-i><m-ih>\1<m-it>\3</m-it>\4 ► </m-ih><m-id>\n\6\n</m-id></m-i>'
 
-EASY_SECTION_RE = re.compile(r'^\s*(!?~~~)?\$', re.MULTILINE)
+EASY_SECTION_RE = re.compile(r'^\s*(!?!?~~~)?\$', re.MULTILINE)
 EASY_SECTION_REPLACE = r'\1§'
 
 SECTION_RE = re.compile(r'^\s*(!?~~~)?§\s*(.+?)$\s*(.*)', re.MULTILINE | re.DOTALL)
@@ -111,7 +111,7 @@ CLICKABLE_REPLACE = r'<m-c>\1</m-c>'
 # pick up all the symbols that we've given special meaning to so that we can lex
 # them for screen readers.
 # ⌊⌋ in here makes screen readers hiccup, but also lexes the symbols... dunno what to do.
-SYM_RE = re.compile(r'([●🗣🡕🡒🡖🡐►👎])')
+SYM_RE = re.compile(r'([●🗣🡕🡒🡖🡐►👎▲])')
 SYM_REPLACE = r'<m-s>\1</m-s>'
 
 MATH_SYM_RE = re.compile(r'([⌊⌋])')

@@ -8,6 +8,8 @@ $ section name          same as above, but maybe easier to type
 ~~~§ section name       define a section with a column-break before it
 ~~~$ section name       same as above, but maybe easier to type
 
+!~~~$ section name	define a section with a page-break before it
+
 ►			            define a move
 -->                     same as above, but easier to type
 
@@ -16,6 +18,7 @@ $ section name          same as above, but maybe easier to type
 △		            	permission-only aptitude, move, or resource (clickable online)
 ▢		            	resource point tracker (clickable online)
 ●		            	pre-bought aptitude, move, or resource (not clickable)
+▲
 
 ⌞⌝	                    mark a term defined elsewhere
 {{your text}}           same as above, but easier to type
@@ -76,7 +79,6 @@ Misc:
 
 
 GM playbook stuff:
-▻                      define a co-move named the same as a player move
 
 👎		            	used to indicate commonly-confused story-move situations
 
