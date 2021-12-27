@@ -9,7 +9,7 @@ from os import path
 from textwrap import wrap
 import zipfile
 from PyPDF2 import PdfFileMerger, PdfFileReader
-from scripts.parse_text import parse_moves, markup_moves, render_xml, spider_includes, MARKUP_VERSION
+from scripts.parse_text import parse_moves, markup_moves, render_xml, spider_includes, format_pretty_spider, MARKUP_VERSION
 import shutil
 import time
 import datetime
@@ -188,6 +188,9 @@ def compress_json(json_file):
     return outstream.getvalue()
 
 
+def format_deps_list(deps_list, pretty_spider):
+    return "\n\t\t\t\t\t\t".join([format_pretty_spider(pretty_spider, s) for s in deps_list])
+
 def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadata):
     '''
     Build a playbook from its constituent sections.
@@ -235,25 +238,29 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
 
     pdfs = list()
     web_section_list = list()
+    used_sections = set()
     for_web = list()
+    pretty_spider = dict()
 
     for i, span in enumerate(spans):
         odtName = None
         if isinstance(span, list):
             parsed_moves = parse_span(span)
-            web_section_list += span
             for_web += parsed_moves
+            web_section_list += span
 
             odtName = staged_name(pb_name + str(i), 'odt')
 
             span_deps = set()
             for txt in span:
-                spider_includes(txt, span_deps)
+                spider_includes(txt, span_deps, pretty_spider)
+
+            used_sections.update(span_deps)
             
             # write XML and ODT
             if needs_rebuilt(list(span_deps), odtName):
                 madeSomething = True
-                print(f'\tIntermediate ODT from text:\t\t{" ".join(span)}')
+                print(f'\tIntermediate ODT from text:\t\t{format_deps_list(span, pretty_spider)}\n\t\t\t\t\t\t*')
                 xml = render_xml(parsed_moves)
                 with open(staged_name(odtName, 'xml'), 'w', encoding='utf-8') as xmlfile:
                     # this is actually just written out for debug purposes. It's basically the last
@@ -271,10 +278,10 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
             make_pdf(odtName)
 
     # write JSON
-    if gets_json and needs_rebuilt(web_section_list, json_file):
+    if gets_json and needs_rebuilt(list(used_sections), json_file):
         madeSomething = True
         with open(json_file, 'w', encoding='utf-8') as json_outfile:
-            print(f'\tElectronic playbook from text:\t\t{" ".join(web_section_list)}')
+            print(f'\tElectronic playbook from text:\t\t{format_deps_list(web_section_list, pretty_spider)}\n\t\t\t\t\t\t*')
             json_outfile.write(dump_json(for_web, human_name, metadata['PDFSERVER'] + pdf_basename, metadata['HOMEPAGE'], game_title))
 
     # build PDF
@@ -282,9 +289,9 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
     if gets_json:
         final_deps.append(json_file)
 
-    if needs_rebuilt(pdfs, pdf_file):
+    if needs_rebuilt(final_deps, pdf_file):
         madeSomething = True
-        print(f'\tMerging final PDF:\t\t\t{" ".join(final_deps)}')
+        print(f'\tMerging final PDF:\t\t\t{" ".join(pdfs)}')
         pdf_merger = PdfFileMerger()
         for pdf in pdfs:
             pdf_merger.append(pdf)

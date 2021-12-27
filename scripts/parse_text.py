@@ -20,24 +20,39 @@ INCLUDE_LINE = re.compile(r'^\s*#!include\s*(\S+)')
 def resolve_include(fragment, cur_file):
     return os.path.join(os.path.dirname(cur_file), fragment)
 
-def spider_includes(pbs_filename, already_included: set):
+def read_pbs(pbs_filename):
+    if not pbs_filename.endswith('.txt'):
+        pbs_filename += '.txt'
+    with open(pbs_filename, encoding='utf-8-sig') as f:
+        return f.readlines()
+
+def spider_includes(pbs_filename, already_included: set, pretty_spider: dict):
     if not pbs_filename.endswith('.txt'):
         pbs_filename += '.txt'
 
     if pbs_filename in already_included: return
     already_included.add(pbs_filename)
+    pretty_spider[pbs_filename] = []
 
     to_recurse = set()
 
-    with open(pbs_filename, 'r') as cur_file:
-        for l in cur_file.readlines():
-            m = INCLUDE_LINE.match(l)
-            if not m: continue
-            include_path = resolve_include(m.group(1), pbs_filename)
-            to_recurse.add(include_path)
-    
+    for l in read_pbs(pbs_filename):
+        m = INCLUDE_LINE.match(l)
+        if not m: continue
+        include_path = resolve_include(m.group(1), pbs_filename)
+        pretty_spider[pbs_filename].append(include_path)
+        to_recurse.add(include_path)
+        print("spidering", include_path)
+
     for rec in to_recurse:
-        spider_includes(rec, already_included)
+        spider_includes(rec, already_included, pretty_spider)
+
+
+def format_pretty_spider(pretty_spider, filename):
+    if filename not in pretty_spider:
+        return "!NOT FOUND!"
+    if not pretty_spider[filename]: return filename
+    return f'{filename} [{" ".join(pretty_spider[filename])}]'
 
 
 def handle_include(line, cur_file):
@@ -46,16 +61,15 @@ def handle_include(line, cur_file):
         return None
     include_file = m.group(1)
     include_path = resolve_include(include_file, cur_file)
+    print("including", include_path)
     return parse_moves(include_path)
+
 
 def parse_moves(pbs_filename):
     '''
     Parse all the moves out of a plaintext playbook.
     '''
-    if not pbs_filename.endswith('.txt'):
-        pbs_filename += '.txt'
-    with open(pbs_filename, encoding='utf-8-sig') as f:
-        lines = f.readlines()
+    lines = read_pbs(pbs_filename)
     
     moves = []
     latch = False
