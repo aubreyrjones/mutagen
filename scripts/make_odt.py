@@ -155,6 +155,6 @@ def replace_odt_content(filename, replace_target, new_content):
 def build_odt(in_xml, out_filename, human_title_text, game_title, author_info):
     build_skeleton_odt(out_filename, human_title_text, game_title, author_info)
     xformed_xml = dom_transform(in_xml)
-    with open(out_filename + '.xml', 'w') as xformed_file:
+    with open(out_filename + '.xml', 'w', encoding='utf-8') as xformed_file:
         xformed_file.write(xformed_xml)
     replace_odt_content(out_filename, '<office:text><text:p>replace_me</text:p></office:text>', xformed_xml)
