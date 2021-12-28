@@ -344,11 +344,14 @@ ap.add_argument('pbd', nargs='?', default='playbooks.txt', type=str, help='Playb
 args = ap.parse_args()
 
 pb_def_file = args.pbd
-
 OUT_DIR = args.outdir
-BUILD_DIR = os.path.join(OUT_DIR, '_build')
-JSON_DIR = os.path.join(BUILD_DIR, 'tracker_templates')
 VERBOSE = args.verbose
+
+# building these with os.path.join confuses the hell out of Windows for some reason.
+# just use the forward slash here. It seems okay elsewhere.
+BUILD_DIR = "/".join((OUT_DIR, '_build'))
+JSON_DIR = "/".join((BUILD_DIR, 'tracker_templates'))
+
 
 _build_start = time.time()
 
