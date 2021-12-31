@@ -12,7 +12,7 @@ In order for someone or something to be your target, you must have a ⌞link⌝ 
 
 Describe how your ritual evokes your desired ⌞effect⌝ on your target. The more expressive and resonant with your effect, the better. Get weird. Say which ⌞ritual methods⌝ you’re using.
 
-When you enact a ritual to ⌞make a story move⌝, ⊞⌊combined methods⌋. This value starts at ⌊−1⌋ for the first method you’re using to evoke your effect in this ritual. For each __additional__ method you add to the ritual, add ⌊+1⌋ to !!_[combined methods]_!! (to a max of ⌊+3⌋).
+When you enact a ritual to ⌞make a story move⌝, ⊞⌊combined methods⌋. This value starts at ⌊+0⌋ for the first method you’re using to evoke your effect in this ritual. For each __additional__ method you add to the ritual, add ⌊+1⌋ to !!_[combined methods]_!! (to a max of ⌊+3⌋).
 
 🡖🡐 on your story move: the complication or reversal is related to your ritual’s effect—except applied to your chagrin.
 

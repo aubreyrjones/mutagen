@@ -32,7 +32,11 @@ Dispute fiction ► Sometimes the GM will say something they think is cool, but 
 
 ##
 
-[Just example text] ► ⌞Boxed words⌝ are defined in the playbook by a text block with (nearly) that heading. __Emphasis__. Math and quantities in ⌊ ⌋: get ⌊5 × (bushes ÷ bears)⌋ berries.
+##[Just example text] ► ⌞Boxed words⌝ are defined in the playbook by a text block with (nearly) that heading. __Emphasis__. Math and quantities in ⌊ ⌋: get ⌊5 × (bushes ÷ bears)⌋ berries.
+
+##
+
+How to play --> Say what you're doing. You can do "normal" stuff or {{make a move}} representing uncanny or supernatural abilities. If you or the GM think that your actions solve a problem in the story, you'll {{make a story move}} and roll for it.
 
 ##
 
@@ -101,6 +105,10 @@ Tick a bar ► When the GM or a move says to tick a ⌞bar⌝, fill one tick on 
 
 ##
 
+##Inventory and equipment --> Since you're liable to accumulate plenty of stuff, write down what you have in a notebook. When it comes to what you're carrying, just go with what would be cool and make sense in your story.
+
+##
+
 Resource points ► If applicable, each point of a particular ⌞resource⌝ is tracked with a ▢—maybe with an individual note attached. Some resources come in ranks with ○, permitting you to buy more ▢. Unless stated otherwise, you start the game with all resources full—except XP.
 
 When you “restore”, “gain” a resource, fill a ▢. You cannot have more of a resource than you have ▢ for it. If all your ▢ are full when you’re supposed to gain the resource, just don’t fill anything. 
@@ -119,7 +127,9 @@ One serious injury or many small ones—you want help—1 harm. A life-threateni
 
 ##
 
-Status ► Status is everything established as currently true in the story about you (or something else) that is __either__ permanently different from how you began the story __or__ a significant but temporary deviation from the norm. In the rules, “a status” means a short, descriptive, free-form phrase that describes the change in status. If the GM or a move says you get a status, write it down. While a status is written down, nothing in the story can contradict it.
+Status ► Status is everything established as currently true in the story about you (or something else) that is __either__ permanently different from how you began the story __or__ a significant but temporary deviation from the norm. In the rules, “a status” means a short, descriptive, free-form phrase that describes the change in status.
+
+If the GM or a move says you get a status, write it down in the Status page of your playbook. While a status is written down, nothing in the story can contradict it.
 
 Ex. “on fire”; “enraptured”; “scary”; “wanted by authorities”; “glowing”; “scared”; “has a third eye”.
 
@@ -139,7 +149,7 @@ Each result range is identified with an arrow symbol:
 
 🡕 Gain Momentum !!_[roll 13 or more]_!!
 🡒 Carry Momentum !!_[roll between 10 and 12]_!! 
-🡖 Lose Momentum !!_[roll between 7 and 9]_!! 
+🡖 Yield Momentum !!_[roll between 7 and 9]_!! 
 🡐 Reverse Momentum !!_[roll 6 or less]_!! 
 
 Groups written together (e.g. 🡕🡒) mean __any__ of the results in that specific group. Read this like “gain or carry [momentum]”.
@@ -192,5 +202,5 @@ The GM playbook has stuff about what might happen for each story move, but they 
 
 ##
 
-Mutagen⌬RPG --> _[mutagenrpg.com]_ _[v0.5]_
+Mutagen⌬RPG --> _[mutagenrpg.com]_ _[v0.6]_
 |Meta+Common © 2021 Aubrey Jones 🄯 CC-BY-SA 4.0

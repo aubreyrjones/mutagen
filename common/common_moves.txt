@@ -5,15 +5,16 @@ Take harm ► You take ⌞harm⌝ when you’re injured or hurt in some way (or 
 
 When you take harm, take these steps:
 
-    1. Make any moves you __can__ make.
-    2. Make any moves you __must__ make.
-    3. Decide if you have ⌞armor⌝ that applies.
-    4. If now ⌊harm ≤ 0⌋, this move is over. Otherwise continue.
-    5. Tell the GM how much harm you’re taking. They’ll roll some dice and say if anything changes.
-    6. Write down any status you may have gotten.
-    7. Lose 1 health for each harm.
-    8. If you have 0 health, ⌞you die⌝ and this move is over.
+    1. Decide with the GM how serious your injury is.
+    2. The GM will roll some dice and say if there's anything special about this injury.
+    3. Make any moves you __can__ when taking harm.
+    4. Decide if you have ⌞armor⌝ that applies.
+    5. If now ⌊harm ≤ 0⌋, this move is over. Otherwise continue.
+    6. Make any moves you __must__ when taking harm.
+    7. Write down any change in your {{status}}.
+    8. Lose 1 health for each harm.
     9. Make any moves you must make when you lose health (vs take harm).
+    10. If you have 0 health, ⌞you die⌝.
 
 ##
 
@@ -37,39 +38,47 @@ Resist consequences ► If you don’t like the consequences or complications th
 
 ##
 
+##
+
 Buy Resist ► Any time you make a ⌞story move⌝ and 🡕🡒, you can announce that you wish to convert it to 🡖 and restore 1 Resist. The GM has veto, but you should suggest the complication or cost.
 
 ##
 
-Lead the group ► Spend 1 Resist. You lead others in a ⌞story move⌝ where you’ll succeed or fail as a group. You roll the move as normal and everyone canonically shares your result. Before you continue the story, use your result from the story move below:
+Lead the group ► Spend 1 Resist. You lead others in a ⌞story move⌝ where you'll share an outcome. You roll the move as normal and everyone canonically shares your result. Before you continue the story, use your result from the story move below:
 
 🡕 You restore 1 Resist and continue the story.
-🡒🡖 Everyone else rolls the same story move. They are free to describe their actions individually, along with what aptitudes they’re exercising. Their results don’t change the story, but if everyone 🡕🡒🡖, you restore 1 Resist before continuing the story.
+🡒🡖 Everyone else makes the same story move. They are free to describe their actions individually and roll appropriately. Their results don’t change the story, but if everyone 🡕🡒🡖, you restore 1 Resist before continuing the story.
 
 ##
 
 Pursue a project --> You advance a project represented with a {{bar}} by describing what you're doing and !+[any appropriate aptitude] like when you {{make a story move}}. If you're starting a new project, ask the GM to create a new bar.
 
-🡕🡒🡖 Tick the project's bar 3, 2, or 1 time(s), respectively.
+🡕🡒🡖 Tick the project's bar 3, 2, or 1 time(s) respectively.
 🡐 You've suffered a setback of some sort and you don't tick the bar at all. What happened?
 
 ##
 
-Get something weird --> You acquire some kind of uncommon in-game item or asset via "mundane" means that wouldn't be interesting to play out via {{story moves}}. Describe what you're doing, and !+[any appropriate aptitude] like when you {{make a story move}}.
+Get something weird --> You acquire some kind of uncommon item or asset via "mundane" means that wouldn't be interesting to play out via {{story moves}}. Describe what you're doing, and !+[any appropriate aptitude] like when you {{make a story move}}.
 
 🡕 You get the thing, plus something extra.
 🡒 You get the thing.
 🡖 You get the thing, but pick 1:
   * you're injured acquiring it.
-  * it's more expensive than expected.
-  * it's inferior quality.
+  * it's more costly than expected to acquire.
+  * it's of inferior quality.
 🡐 You can't get the thing right now.
+
+##
+
+Lend a hand --> You help else someone to {{make a story move}}. Describe how you're helping, and !+[any appropriate aptitude].
+
+🡕🡒🡖 They add _[+3]_, _[+2]_, or _[+1]_ respectively.
 
 ##
 
 Grit your teeth ► In order to resist or overcome some overwhelming feeling or compulsion, you summon all of your willpower and determination.
 
-When you make this move, decide with the GM on how much the feeling or compulsion resonates with your Concept and Drives:
+Decide with the GM on how much the feeling or compulsion resonates with your Concept and Drives:
     • ⊞⌊−1⌋ if it reinforces your concept.
     • ⊞⌊+0⌋ if it has nothing to do with your concept.
     • ⊞⌊+1⌋ if it opposes your concept.
@@ -94,3 +103,4 @@ You get 1 XP for each item below that you (not the GM) think is true for this pl
 
 Level up ► When you fill your last XP, you can spend all your XP to fill a ○ in your playbook—you must fulfill all other criteria to buy the item. 🗣 Instead of buying a ○, the GM might let you buy or remove a permanent ⌞status⌝. You probably can’t buy a △, but you could ask anyway.
 
+##

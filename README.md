@@ -253,23 +253,23 @@ these file names. All of that is handled automatically.
 You can edit the included `playbooks.txt` or make a new one for your
 game.
 
-Each playbook can contain a mix of sections written as either `.txt`
-or `.odt` files. THEY ARE TREATED VERY DIFFERENTLY.
+Each playbook can contain a mix of sections written as either `.txt`, 
+`.odt`, or `.pdf` files. **THEY ARE TREATED VERY DIFFERENTLY.**
 
 Text files are assumed to contain Mutagen Markup. They are parsed by
 the document builder, then automatically formatted as player playbook
 sections. Additionally and critically, the sections and moves are
 encoded for use in the online character tracker app.
 
-Pre-formatted ODT documents are ONLY INCLUDED IN THE PDF EDITION of
-the playbook. They are converted to PDF as-is and included in the
+Pre-formatted ODT and PDF documents are ONLY INCLUDED IN THE PDF EDITION 
+of the playbook. They are converted to PDF or included as-is in the
 final playbook PDF, but _they are NOT encoded for the online tracker_.
 
 In general, playbooks should be written in Mutagen Markup
 so that it's compatible with the online character tracker. Inside of
-playbooks, use ODT sections never or rarely; and then only for flavor, 
-fiction, and informational material that doesn't need to be tracked or 
-routinely referenced after a first play session.
+playbooks, use pre-formatted sections never or rarely; and then only 
+for flavor, fiction, and informational material that doesn't need to 
+be tracked or routinely referenced after a first play session.
 
 Keep in mind that the online character tracker provides substantial
 accessibility support for GMs and players using assistive technology.

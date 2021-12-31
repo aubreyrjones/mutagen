@@ -35,7 +35,7 @@ Health ► Health abstractly represents the integrity and functionality of your 
 |△ 3. ▢ ▢ ▢  (Boss-tier)
 
 
-Resist ▢ ▢ ► When you make a roll and don’t like the complications the GM describes, you can ⌞resist consequences⌝.
+Resist ▢ ▢ ► When you make a roll and don’t like the complications the GM describes, you can ⌞resist consequences⌝. At the start of each play session, restore 1 Resist automatically.
 
 
 XP ▢ ▢ ▢ ▢ ▢ ▢ ▢ ▢ ► You {{earn XP}} mostly for good storytelling. When you fill your last XP, ⌞level up⌝.

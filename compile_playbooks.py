@@ -116,12 +116,17 @@ def resolve_input(section_name):
         return section_name + '.txt'
     elif os.path.exists(section_name + '.odt'):
         return section_name + '.odt'
+    elif os.path.exists(section_name + '.pdf'):
+        return section_name + '.pdf'
     else:
         print("Input file not found: " + section_name)
         exit(1)
 
 def is_odt(filename):
     return filename.endswith('.odt')
+
+def is_pdf(filename):
+    return filename.endswith('.pdf')
 
 already_staged = set()
 
@@ -211,6 +216,9 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
     if '_teaser' not in pb_name:
         pb_list.append('common/meta')
 
+    if '_pc' in pb_name:
+        pb_list.append('common/status_stuff')
+
     # resolve inputs to existing files.
     resolved_inputs = list(map(resolve_input, pb_list))
 
@@ -228,7 +236,7 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
 
     spans = []
     for sec in resolved_inputs:
-        if is_odt(sec):
+        if is_odt(sec) or is_pdf(sec):
             spans.append(sec)
         else:
             if spans and isinstance(spans[-1], list):
@@ -270,14 +278,17 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
                     # the ODF library can give lots of errors, so we write the pre-XSLT XML first.
                     xmlfile.write(xml)
                 build_odt(xml, odtName, human_name, game_title, author_info)
-        else:
+        elif span.endswith('.odt'):
             odtName = span
         
-        pdf_span_name = staged_name(odtName, "pdf")
-        pdfs.append(pdf_span_name)
-        if needs_rebuilt([odtName], pdf_span_name):
-            print(f"\tIntermediate PDF from ODT:\t\t{odtName}")
-            make_pdf(odtName)
+        if isinstance(span, str) and span.endswith('.pdf'):
+            pdfs.append(span)
+        else:
+            pdf_span_name = staged_name(odtName, "pdf")
+            pdfs.append(pdf_span_name)
+            if needs_rebuilt([odtName], pdf_span_name):
+                print(f"\tIntermediate PDF from ODT:\t\t{odtName}")
+                make_pdf(odtName)
 
     # write JSON
     if gets_json and needs_rebuilt(list(used_sections), json_file):
