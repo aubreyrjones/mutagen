@@ -1,5 +1,5 @@
-§ Common Aptitudes
-These are exciting things at which many could excel. They cover a lot, but no list can be perfect.
+~~~§ Common Aptitudes
+These are exciting things at which many could excel.
 
 ○ Expression ○ ○ ○ ► Creating, interpreting, or performing representations of emotion or intellect.
 
@@ -28,7 +28,7 @@ These are exciting things at which many could excel. They cover a lot, but no li
 ○ Relations ○ ○ ○ ► Manipulating, negotiating, or navigating interpersonal relationships with deep empathy and insight—we get it, you fuck.
 
 
-○ Fieldcraft ○ ○ ○ ► Applying the training and experience you can only acquire out there—wherever "there" might be.
+○ Fieldcraft ○ ○ ○ ► Drawing on the training and experience you can only acquire out there—wherever "there" might be.
 
 
 ○ Shady Shit ○ ○ ○ ► Practicing the secret tricks of the trade for those who lurk beyond the edge of polite society.
@@ -37,4 +37,6 @@ These are exciting things at which many could excel. They cover a lot, but no li
 ○ 🗣Spooky Shit ○ ○ ○ ► Interacting with the weird, esoteric, and uncanny on its own terms—or at least you think so.
 
 
-○ 🗣Professional Skills ○ ○ ○ ► Applying the educated, practiced, or specialized knowledge and skills of your trade or profession.
+○ 🗣Professional Skills ○ ○ ○ ► Applying the specialized, educated, and practiced knowledge and skills of a trade or profession. Write it down.
+[[
+]]

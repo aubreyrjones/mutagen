@@ -40,13 +40,15 @@ Symbols:
 ⊞⌊⌋                      call for a roll
 !+[modifier]             same as above, but easier to type
 
-🡕 🡒 🡖 🡐                 roll result outcomes (gain, carry, lose, reverse)
+🡕 🡒 🡖 🡐                                  roll result outcomes (gain, carry, lose, reverse)
 
 ⌊⌋                       enclose math or quantities
 _[math]_                 same as above, but easier to type
 
 × ÷ + −                  unambiguous math symbols (use for clarity instead of keyboard symbols)
-± ≤ ≥
+± ≤ ≥                    in particular, the `−` is treated very differently from keyboard `-` by
+                         the LibreOffice typesetter. The math `−` won't trigger break-on-hyphen.
+
 
 
 
@@ -65,7 +67,7 @@ your text                label a 3-line write-in field (cannot use || to extend 
 Special paragraph types:
 
 * your text...           line item--asterisk must start paragraph
-🡕🡒 your text...         results block--one or more result symbol(s) must start paragraph
+🡕🡒 your text...          results block--one or more result symbol(s) must start paragraph
 
 
 
@@ -83,8 +85,6 @@ __your text__            underline. Use this for emphasis (important for online 
 
 Misc:
 🗣                        talk to the GM
-
-
 
 
 GM playbook stuff:

@@ -156,7 +156,7 @@ Groups written together (e.g. 🡕🡒) mean __any__ of the results in that spec
 
 ##
 
-Roll ► Rolls are indicated by ⊞⌊⌋ in a move like:
+Roll ► Rolls are indicated ⊞⌊like this⌋ in a move:
     • with an ⌞aptitude⌝ rating: ⊞⌊Nurture⌋. 
     • with a number: ⊞⌊−1⌋ or ⊞⌊+0⌋.
     • with a ⊞⌊special term⌋ defined in a move’s text.
@@ -202,5 +202,5 @@ The GM playbook has stuff about what might happen for each story move, but they 
 
 ##
 
-Mutagen⌬RPG --> _[mutagenrpg.com]_ _[v0.6]_
-|Meta+Common © 2021 Aubrey Jones 🄯 CC-BY-SA 4.0
+Mutagen⌬RPG --> _[mutagenrpg.com]_ _[v0.7]_
+|Meta+Common ©2021 Aubrey Jones 🄯CC-BY-SA 4.0

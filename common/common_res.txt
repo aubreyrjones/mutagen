@@ -23,9 +23,9 @@ Drives ► What do you always want or need? What gets you out of bed to take exc
 ]]
 
 
-🗣Profession ► If you’ve got a trade or career that isn’t covered by a PC playbook, put it here. This should be something many people could do in your world, but most don’t know how.
-[[
-]]
+##🗣Profession ► If you’ve got a trade or career that isn’t covered by a PC playbook, put it here. This should be something many people could do in your world, but most don’t know how.
+##[[
+##]]
 
 
 Health ► Health abstractly represents the integrity and functionality of your body, mind, and spirit. When you ⌞take harm⌝, you might lose health.  When you erase your last health, {{you die}}.

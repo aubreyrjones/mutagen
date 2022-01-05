@@ -34,14 +34,14 @@ PDFSERVER   = https://www.mutagenrpg.com/static/pdf_sheets/
 
 # PC playbooks -- filenames should start with `pc`.
 Playbook: Sorcerer          =   pc_sorcerer      = common/common     pcs/sorcerer
-Playbook: Wizard            =   pc_wizard        = common/common     pcs/wizard
+Playbook: Wizard            =   pc_wizard        = pcs/wizard_intro common/common     pcs/wizard
 Playbook: Adept             =   pc_adept         = common/common     pcs/adept
 Playbook: Witch             =   pc_witch         = common/common     pcs/witch
 
 
 
 # you can set a new game and playbooks afterward will use that name.
-GAME        = Raw Mutagen⌬ v0.6
+GAME        = Raw Mutagen⌬ v0.7
 GAMESHORT   = raw
 
 # Raw Mutagen common playbook on its own

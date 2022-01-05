@@ -7,8 +7,8 @@ When you take harm, take these steps:
 
     1. Decide with the GM how serious your injury is.
     2. The GM will roll some dice and say if there's anything special about this injury.
-    3. Make any moves you __can__ when taking harm.
-    4. Decide if you have ⌞armor⌝ that applies.
+    3. Apply any ⌞armor⌝ you think is appropriate.
+    4. Make any moves you __can__ when taking harm.
     5. If now ⌊harm ≤ 0⌋, this move is over. Otherwise continue.
     6. Make any moves you __must__ when taking harm.
     7. Write down any change in your {{status}}.

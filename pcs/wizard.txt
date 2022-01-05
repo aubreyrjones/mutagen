@@ -1,7 +1,4 @@
-﻿~~~§ Wizard Playbook
-You learned your magic through dedication to the craft, laboring to absorb the intricate incantations and gestures needed to cast each spell.
-
-§ Wizard Resources
+﻿~~~§ Wizard Resources
 
 Mana ► The stored magical energy within your body, Mana powers many of a wizard’s ⌞spells⌝.
 
