@@ -70,9 +70,10 @@ Get something weird --> You acquire some kind of uncommon item or asset via "mun
 
 ##
 
-Lend a hand --> You help else someone to {{make a story move}}. Describe how you're helping, and !+[any appropriate aptitude].
+Lend a hand --> Describe how you're helping someone to {{make a story move}}. !+[Any appropriate aptitude].
 
-🡕🡒🡖 They add _[+3]_, _[+2]_, or _[+1]_ respectively.
+🡕🡒🡖 They add _[+2]_, _[+1]_, or _[+0]_ respectively.
+🡐 You get in the way and they get _[−1]_.
 
 ##
 
@@ -83,10 +84,10 @@ Decide with the GM on how much the feeling or compulsion resonates with your Con
     • ⊞⌊+0⌋ if it has nothing to do with your concept.
     • ⊞⌊+1⌋ if it opposes your concept.
 
-🡕 You resist or overcome the feeling/compulsion and you get 1 Resist.
-🡒 You resist or overcome the feeling/compulsion.
-🡖 You suppress the feeling/compulsion, but it’s still there. Choose a related ⌞status⌝ to keep for the rest of the scene.
-🡐 You spend 1 Resist __or__ succumb to the feeling/compulsion.
+🡕 You overcome the feeling and get 1 Resist.
+🡒 You overcome the feeling.
+🡖 You suppress the feeling, but it’s still there. Choose a related ⌞status⌝ to keep for the rest of the scene.
+🡐 You spend 1 Resist __or__ succumb to the feeling.
 
 ##
 

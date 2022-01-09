@@ -65,9 +65,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <text---p text---style-name="FIRST_INPUT_LINE">
         <text---span text---style-name="INPUT_LABEL_STYLE_INVISIBLE"><xsl:apply-templates select="m-il" /></text---span>⎧🖉
     </text---p>
-        <text---p text---style-name="INPUT_LINE"><text---span text---style-name="INPUT_LABEL_STYLE"><xsl:apply-templates select="m-il" /></text---span>⎨
+    <text---p text---style-name="INPUT_LINE">
+        <text---span text---style-name="INPUT_LABEL_STYLE"><xsl:apply-templates select="m-il" /></text---span>⎨
     </text---p>
-        <text---p text---style-name="LAST_INPUT_LINE"><text---span text---style-name="INPUT_LABEL_STYLE_INVISIBLE"><xsl:apply-templates select="m-il" /></text---span>⎩
+    <text---p text---style-name="LAST_INPUT_LINE">
+        <text---span text---style-name="INPUT_LABEL_STYLE_INVISIBLE"><xsl:apply-templates select="m-il" /></text---span>⎩
     </text---p>
 </xsl:template>
 

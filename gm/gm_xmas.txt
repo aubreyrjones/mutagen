@@ -1,4 +1,4 @@
-~~~$ GM Xmas Playbook
+$ GM Xmas Playbook
 
 Setting --> Our setting is the North Pole, the long-time homeland of the Svartalfs. It was conquered several hundred years ago by Saint Nicholas, who enslaved the peaceful Elves. Now calling himself by the dread title "Santa Claus", Saint Nick has put the elves to work in his factories, where they're forced to apply their advanced technology to producing the gifts that Santa brings the most privileged little children every Xmas. A cruel taskmaster, Santa Claus has recruited a self-serving, but loyal, cadre of traitorous Elves—called Nightcaps for their distinctive headdress—who willingly collaborate with him to enslave their people in exchange for preferential treatment.
 

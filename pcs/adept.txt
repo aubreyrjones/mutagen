@@ -1,9 +1,4 @@
-﻿~~~§ Adept Playbook
-
-You channel your magic through your body using Hong Kong action-flick martial arts.
-
-
-§ Adept Aptitudes
+﻿~~~§ Adept Aptitudes
 
 ● Kung Fu ○ ○ ○ ○ ► Fighting uncannily with empty fist and foot or with your iconic weapon—which might just be a specific body part. When you’re attacking with your body, you can choose to do non-lethal or life-threatening injuries. With your weapon, you can inflict deadly injuries.
 [[

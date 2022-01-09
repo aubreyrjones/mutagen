@@ -197,6 +197,7 @@ def compress_json(json_file):
 def format_deps_list(deps_list, pretty_spider):
     return "\n\t\t\t\t\t\t".join([format_pretty_spider(pretty_spider, s) for s in deps_list])
 
+
 def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadata):
     '''
     Build a playbook from its constituent sections.
@@ -212,8 +213,9 @@ def make_playbook(pb_name, human_name, pb_list, game_title, author_info, metadat
     pdf_file = path.join(OUT_DIR, pdf_basename)
     json_file = path.join(JSON_DIR, pb_name + ".mutagen.json")
 
-    # don't add the rules if it's a teaser "playbook".
-    if '_teaser' not in pb_name:
+    if '!nometa' in pb_list:
+        pb_list.remove('!nometa')
+    else:
         pb_list.append('common/meta')
 
     if '_pc' in pb_name:

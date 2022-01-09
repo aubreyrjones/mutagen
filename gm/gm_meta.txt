@@ -1,4 +1,4 @@
-$ GM Meta Playbook
+~~~$ GM Meta Playbook
 
 Audience ► This playbook is for GMs of a game using the Mutagen Engine. There’re no secrets, so players are welcome; but the GM’s experience is not the same as the player’s, and this playbook doesn’t mince words about it.
 

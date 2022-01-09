@@ -33,10 +33,10 @@ PDFSERVER   = https://www.mutagenrpg.com/static/pdf_sheets/
 #
 
 # PC playbooks -- filenames should start with `pc`.
-Playbook: Sorcerer          =   pc_sorcerer      = common/common     pcs/sorcerer
-Playbook: Wizard            =   pc_wizard        = pcs/wizard_intro common/common     pcs/wizard
-Playbook: Adept             =   pc_adept         = common/common     pcs/adept
-Playbook: Witch             =   pc_witch         = common/common     pcs/witch
+Playbook: Sorcerer          =   pc_sorcerer      = pcs/sorcerer_intro   common/common     pcs/sorcerer
+Playbook: Wizard            =   pc_wizard        = pcs/wizard_intro     common/common     pcs/wizard
+Playbook: Adept             =   pc_adept         = pcs/adept_intro      common/common     pcs/adept
+Playbook: Witch             =   pc_witch         = pcs/witch_intro      common/common     pcs/witch
 
 
 

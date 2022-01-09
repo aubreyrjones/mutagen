@@ -200,7 +200,7 @@ LINE_BREAK_RE = re.compile(r'^\s*\|(?!\|)(.+?)$', re.MULTILINE)
 LINE_BREAK_REPLACE = r'<m-br>\1</m-br>'
 
 # these are line-start tags that are okay to wrap in paragraph tags.
-PARAGRAPH_GREENLIST = ['m-c', 'm-r', 'm-m', 'm-s', 'u', 'i', 'b']
+PARAGRAPH_GREENLIST = ['m-c', 'm-r', 'm-m', 'm-s', 'u', 'i', 'b', 'em']
 PARAGRAPH_GREENLIST_FRAGMENT = "|".join([f'<{p}>' for p in PARAGRAPH_GREENLIST])
 
 # this is a (partial) fixup for linebreaks -> paragraphs so that we can use

@@ -1,9 +1,4 @@
-﻿~~~$ Witch Playbook
-
-You combine symbol and metaphor to link magical effects to their target.
-
-
-$ Witch Moves
+﻿~~~$ Witch Moves
 
 
 Enact Ritual --> You do magic by linking target and effect with a symbolic ritual. You might be the target.
